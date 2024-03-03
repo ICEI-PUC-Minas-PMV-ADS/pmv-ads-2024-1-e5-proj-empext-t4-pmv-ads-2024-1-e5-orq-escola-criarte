@@ -8,9 +8,12 @@ Apresente uma visão geral do que será abordado nesta parte do documento, enume
 
 ## Arquitetura e Tecnologias
 
-● Visual Studio Code(desenvolvimento do código)
+● Visual Studio Code(desenvolvimento do código) 
+
 ● Typescript e React native Expo(front-end)
-● Asp .Net Core 6(back-end)
+
+● Asp .Net Core 6(back-end) 
+
 
 ## Project Model Canvas
 
