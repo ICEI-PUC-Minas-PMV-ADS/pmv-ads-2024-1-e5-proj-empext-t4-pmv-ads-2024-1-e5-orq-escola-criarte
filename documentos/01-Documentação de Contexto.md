@@ -18,18 +18,8 @@ Acesso: 28/02/2023
 
 ## Problema
 
-  O presente projeto pretende resolver o problema de dificuldade de acesso direto e com informações atualizadas sobre as atividades, e eventos realizados pela ONG denominada Escola Criarte em Belo Horizonte, MG. Além disso, o projeto busca oferecer um aplicativo dinâmico, de fácil manipulação pelo usuário, que seja um canal de comunicação entre a instituição e a sociedade para divulgar o seu trabalho de educação musical com clareza, transparência, e que transmita confiabilidade de modo a atrair voluntários, novos alunos, e possíveis doações. 
+  O presente projeto pretende resolver o problema de dificuldade de comunicação e com informações atualizadas sobre as atividades, e eventos realizados pela ONG denominada Escola Criarte em Belo Horizonte, MG. Além disso, o projeto busca oferecer um aplicativo dinâmico, de fácil manipulação pelo usuário, que seja um canal de comunicação entre a instituição e a sociedade para divulgar o seu trabalho de educação musical com clareza, transparência, e que transmita confiabilidade de modo a atrair voluntários, novos alunos, e possíveis doações. 
 
-Nesse momento você deve apresentar o problema que a sua aplicação deve  resolver. No entanto, não é a hora de comentar sobre a aplicação.
-
-Descreva também o contexto em que essa aplicação será usada, se  houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de  fato existir, pois ainda não é a hora de apresentar requisitos  detalhados ou projetos.
-
-Nesse momento, o grupo pode optar por fazer uso  de ferramentas como Design Thinking, que permite um olhar de ponta a ponta para o problema.
-
-> **Links Úteis**:
-> - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz Certezas, Suposições e Dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
 
 ## Objetivos
 
@@ -40,26 +30,21 @@ Os objetivos específicos são:
 •	Permitir a recuperação de senha através da inserção do e-mail cadastrado;
 •	Fornecer ao usuário informações de contato da Escola Criarte como e-mail, telefone, instagram, horário de atendimento, endereço, WhatsApp.
 
-Aqui você deve descrever os objetivos do trabalho indicando que o objetivo geral é desenvolver um software para solucionar o problema apresentado acima. 
-
-Apresente também alguns (pelo menos 2) objetivos específicos dependendo de onde você vai querer concentrar a sua prática investigativa, ou como você vai aprofundar no seu trabalho.
- 
-> **Links Úteis**:
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
 
 ## Justificativa
 
-Descreva a importância ou a motivação para trabalhar com esta aplicação que você escolheu. Indique as razões pelas quais você escolheu seus objetivos específicos ou as razões para aprofundar em certos aspectos do software.
+Foi escolhida uma aplicação mobile para desenvolvermos, pois é um meio de acesso simples e facilitado para todos os pais e alunos do projeto, uma vez que nem todos possuem acesso de forma fácil e frequente a um computador ou notebook para acessar a aplicação. Hoje a comunicação do projeto é feita via grupo de WhatsApp e existem muitas ramificações de grupos. A aplicação mobile poderia facilmente se tornar um meio de acesso centralizado para todos, contendo informações de forma organizada para que fique de fácil compreensão para todos, e através disso muitos dos grupos de WhatsApp poderiam ser desfeitos, minimizando a desinformação sobre assuntos importantes do projeto.
 
-O grupo de trabalho pode fazer uso de questionários, entrevistas e dados estatísticos, que podem ser apresentados, com o objetivo de esclarecer detalhes do problema que será abordado pelo grupo.
 
-> **Links Úteis**:
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
 
 ## Relação com a Extensão Universitária
 
-Relacionar a situação-problema da organização com o impacto social esperado com a implantação do sistema sociotécnico.
+Com a solução apresentada por nós esperamos que a instituição consiga se desenvolver de forma transparante, trazendo confiança e credibilidade a todos que fazem parte, e também permita que novas pessoas conheçam o projeto e se sintam motivadas a realizar doações ou se oferecerem para ajudar o prjeto de outras formas, e isso se mostra algo de grande valia, uma vez que a institução não possui fins lucrativos e depende muito de doações e mão de obra voluntária para seguir adiante.
 
 ## Descrição do Parceiro
 
-Apresente uma descrição resumida sobre a organização onde o projeto será desenvolvido para que possa ser compreendido o cenário sistema sociotécnico.
+O projeto existe a 22 anos na região de Venda Nova, na zona norte de Belo Horizonte, e visa tornar o ensino da música erudita acessível para a população de zonas mais periféricas da cidade, algo que hoje é muito dificil devido ao alto custo das aulas, aquisição de instrumentos desse tipo e a localização previlegiada da maior parte das instituições de ensino desse tipo de música. 
+
+O projeto conta com mão de obra voluntária e doações para suas atividades continuarem, o que é muito dificil de encontrar. Graças a isso muitos aspectos importantes para a boa imagem da instituição ficam defasados, como a divulgação em redes sociais, reformas das estruturas fisicas do projeto e organização no geral.
+
+Apesar disso o projeto já é muito reconhecido e elogiado, e ao longo desses 22 anos já participou de diversos eventos importantes dentre eles: eventos para prefeituras de BH e região metropolitana, escolas, igrejas, ações realizadas pela PMMG, OAB e também diversas organizações privadas de renome. Foi premiada algumas vezes na Camara Municipal de BH e elogiado por diversos políticos dado a natureza da iniciativa tomada pelo fundado Maestro José Alarico.
