@@ -1,23 +1,25 @@
-# TÍTULO DO PROJETO
+# Informativo OEC
+`CURSO` Análise e Desenvolvimento de Sistemas
 
-`CURSO`
+`DISCIPLINA` Projeto: Desenvolvimento de um Sistema Sociotécnico Inovador
 
-`DISCIPLINA`
+`SEMESTRE` Eixo 5
 
-`SEMESTRE`
-
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+A ONG Escola Criarte ensina música clássica para jovens de regiões periféricas de BH atua na região norte, em Venda Nova e Pampulha, contando com o apoio da comunidade e sem fins lucrativos. atualmente, estão utilizando o Instagram como meio de divulgação senso asssim visamos a criação de um aplicativo para facilitar o acesso às informações sobre a instituição, visando tornar a comunicação mais profissional e eficiente.
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
+* Bruno Roberto Olympio Ferreira
+* Guilherme Henrique Monteiro Cal
+* Lucia Raquel Ramos Berger
+* Pedro Henrique Caetano Soares
+* Rafael Alves de Souza
+* Warlen do Carmo Alves
+
 
 ## Orientador
 
-* Nome completo do professor 1
+* João Carlos Oliveira Caetano
 
 ## Instruções de utilização
 
