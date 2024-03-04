@@ -46,7 +46,12 @@ Apresente uma visão geral do que será abordado nesta parte do documento, enume
 
 ## Arquitetura e Tecnologias
 
-o	Descreva brevemente a arquitetura definida para o projeto e as tecnologias a serem utilizadas. Sugere-se a criação de um diagrama de componentes da solução.
+● Visual Studio Code(desenvolvimento do código) 
+
+● Typescript e React native Expo(front-end)
+
+● Asp .Net Core 6(back-end) 
+
 
 ## Project Model Canvas
 
