@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "J4S+H1C2kg23bJssg30yU4KDU3mfP3t0uNgngl1I0MnAHflkiBmGnvBVt2Y+aHS4mobydgIrbC22AMkEUSKv3g==",
+  "dgSpecHash": "LgealeP06Sd4RQDIf+83bVaaSO9j6umNJr8rtFyjnZYGe2ugmw3skf6U3IkzSdqcxlggaFiQExRWjJ3n8ISL3Q==",
   "success": true,
-  "projectFilePath": "C:\\Dev\\InformativoOEC\\src\\backend\\InformativoOEC\\InformativoOEC.Infra\\InformativoOEC.Infra.csproj",
+  "projectFilePath": "C:\\Dev\\InformativoOEC\\pmv-ads-2024-1-e5-proj-empext-t4-pmv-ads-2024-1-e5-orq-escola-criarte\\codigo-fonte\\backend\\InformativoOEC\\InformativoOEC.Infra\\InformativoOEC.Infra.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Bruno\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.16\\microsoft.entityframeworkcore.7.0.16.nupkg.sha512",

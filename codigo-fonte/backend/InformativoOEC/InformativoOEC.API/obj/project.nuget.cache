@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PQatE2Oxgt6e0G7ahzGbWtUz1RAEsaZBKi0xqh3vCDqMVtE0yShhEj4xr7jcWLJGh7dmRFaBRLwB375lZ4wjkg==",
+  "dgSpecHash": "+TnqUmHEYCjBZzs5p7FrelSXfl8ifuyZvQESggA3+CkyryS7/F9g0ieexbQXyBVYDb8ikftInAQItkFctmFB9A==",
   "success": true,
-  "projectFilePath": "C:\\Dev\\InformativoOEC\\src\\backend\\InformativoOEC\\InformativoOEC.API\\InformativoOEC.API.csproj",
+  "projectFilePath": "C:\\Dev\\InformativoOEC\\pmv-ads-2024-1-e5-proj-empext-t4-pmv-ads-2024-1-e5-orq-escola-criarte\\codigo-fonte\\backend\\InformativoOEC\\InformativoOEC.API\\InformativoOEC.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Bruno\\.nuget\\packages\\fluentvalidation\\11.5.1\\fluentvalidation.11.5.1.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",

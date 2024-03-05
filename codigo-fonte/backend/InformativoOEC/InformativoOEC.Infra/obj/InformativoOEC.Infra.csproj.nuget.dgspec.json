@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Dev\\InformativoOEC\\src\\backend\\InformativoOEC\\InformativoOEC.Infra\\InformativoOEC.Infra.csproj": {}
+    "C:\\Dev\\InformativoOEC\\pmv-ads-2024-1-e5-proj-empext-t4-pmv-ads-2024-1-e5-orq-escola-criarte\\codigo-fonte\\backend\\InformativoOEC\\InformativoOEC.Infra\\InformativoOEC.Infra.csproj": {}
   },
   "projects": {
-    "C:\\Dev\\InformativoOEC\\src\\backend\\InformativoOEC\\InformativoOEC.Core\\InformativoOEC.Core.csproj": {
+    "C:\\Dev\\InformativoOEC\\pmv-ads-2024-1-e5-proj-empext-t4-pmv-ads-2024-1-e5-orq-escola-criarte\\codigo-fonte\\backend\\InformativoOEC\\InformativoOEC.Core\\InformativoOEC.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Dev\\InformativoOEC\\src\\backend\\InformativoOEC\\InformativoOEC.Core\\InformativoOEC.Core.csproj",
+        "projectUniqueName": "C:\\Dev\\InformativoOEC\\pmv-ads-2024-1-e5-proj-empext-t4-pmv-ads-2024-1-e5-orq-escola-criarte\\codigo-fonte\\backend\\InformativoOEC\\InformativoOEC.Core\\InformativoOEC.Core.csproj",
         "projectName": "InformativoOEC.Core",
-        "projectPath": "C:\\Dev\\InformativoOEC\\src\\backend\\InformativoOEC\\InformativoOEC.Core\\InformativoOEC.Core.csproj",
+        "projectPath": "C:\\Dev\\InformativoOEC\\pmv-ads-2024-1-e5-proj-empext-t4-pmv-ads-2024-1-e5-orq-escola-criarte\\codigo-fonte\\backend\\InformativoOEC\\InformativoOEC.Core\\InformativoOEC.Core.csproj",
         "packagesPath": "C:\\Users\\Bruno\\.nuget\\packages\\",
-        "outputPath": "C:\\Dev\\InformativoOEC\\src\\backend\\InformativoOEC\\InformativoOEC.Core\\obj\\",
+        "outputPath": "C:\\Dev\\InformativoOEC\\pmv-ads-2024-1-e5-proj-empext-t4-pmv-ads-2024-1-e5-orq-escola-criarte\\codigo-fonte\\backend\\InformativoOEC\\InformativoOEC.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -65,14 +65,14 @@
         }
       }
     },
-    "C:\\Dev\\InformativoOEC\\src\\backend\\InformativoOEC\\InformativoOEC.Infra\\InformativoOEC.Infra.csproj": {
+    "C:\\Dev\\InformativoOEC\\pmv-ads-2024-1-e5-proj-empext-t4-pmv-ads-2024-1-e5-orq-escola-criarte\\codigo-fonte\\backend\\InformativoOEC\\InformativoOEC.Infra\\InformativoOEC.Infra.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Dev\\InformativoOEC\\src\\backend\\InformativoOEC\\InformativoOEC.Infra\\InformativoOEC.Infra.csproj",
+        "projectUniqueName": "C:\\Dev\\InformativoOEC\\pmv-ads-2024-1-e5-proj-empext-t4-pmv-ads-2024-1-e5-orq-escola-criarte\\codigo-fonte\\backend\\InformativoOEC\\InformativoOEC.Infra\\InformativoOEC.Infra.csproj",
         "projectName": "InformativoOEC.Infra",
-        "projectPath": "C:\\Dev\\InformativoOEC\\src\\backend\\InformativoOEC\\InformativoOEC.Infra\\InformativoOEC.Infra.csproj",
+        "projectPath": "C:\\Dev\\InformativoOEC\\pmv-ads-2024-1-e5-proj-empext-t4-pmv-ads-2024-1-e5-orq-escola-criarte\\codigo-fonte\\backend\\InformativoOEC\\InformativoOEC.Infra\\InformativoOEC.Infra.csproj",
         "packagesPath": "C:\\Users\\Bruno\\.nuget\\packages\\",
-        "outputPath": "C:\\Dev\\InformativoOEC\\src\\backend\\InformativoOEC\\InformativoOEC.Infra\\obj\\",
+        "outputPath": "C:\\Dev\\InformativoOEC\\pmv-ads-2024-1-e5-proj-empext-t4-pmv-ads-2024-1-e5-orq-escola-criarte\\codigo-fonte\\backend\\InformativoOEC\\InformativoOEC.Infra\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -95,8 +95,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Dev\\InformativoOEC\\src\\backend\\InformativoOEC\\InformativoOEC.Core\\InformativoOEC.Core.csproj": {
-                "projectPath": "C:\\Dev\\InformativoOEC\\src\\backend\\InformativoOEC\\InformativoOEC.Core\\InformativoOEC.Core.csproj"
+              "C:\\Dev\\InformativoOEC\\pmv-ads-2024-1-e5-proj-empext-t4-pmv-ads-2024-1-e5-orq-escola-criarte\\codigo-fonte\\backend\\InformativoOEC\\InformativoOEC.Core\\InformativoOEC.Core.csproj": {
+                "projectPath": "C:\\Dev\\InformativoOEC\\pmv-ads-2024-1-e5-proj-empext-t4-pmv-ads-2024-1-e5-orq-escola-criarte\\codigo-fonte\\backend\\InformativoOEC\\InformativoOEC.Core\\InformativoOEC.Core.csproj"
               }
             }
           }
