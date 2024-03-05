@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+*.vsidx
+/codigo-fonte/backend/InformativoOEC/.vs/InformativoOEC/DesignTimeBuild/.dtbcache.v2
+/codigo-fonte/backend/InformativoOEC/.vs/InformativoOEC/FileContentIndex/12b0fe84-f841-4731-85c9-555d5352fcee.vsidx
+/codigo-fonte/backend/InformativoOEC/.vs/InformativoOEC/v17/.suo
+/codigo-fonte/backend/InformativoOEC/.vs/InformativoOEC/FileContentIndex/42df653f-f092-49aa-ba4f-b02d4ecffdae.vsidx
+/codigo-fonte/backend/InformativoOEC/.vs/InformativoOEC/FileContentIndex/6e2d4b7c-0737-4d64-82b4-1414fd89d1b2.vsidx
+/codigo-fonte/backend/InformativoOEC/.vs/InformativoOEC/FileContentIndex/ca6d66a1-f754-45b4-883b-bdeb361a2eac.vsidx
