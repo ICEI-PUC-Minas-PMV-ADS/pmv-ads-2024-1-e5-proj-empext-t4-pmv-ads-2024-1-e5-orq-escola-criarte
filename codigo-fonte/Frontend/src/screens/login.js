@@ -6,7 +6,6 @@ import ButtonComponent from '../components/Button';
 import InputComponent from '../components/Input'
 import loginScreenStyles from '../styles/LoginScreenStyles';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import Header  from '../components/Header';
 import { useNavigation } from '@react-navigation/native';
 
 const LoginScreen = () =>{

@@ -8,7 +8,7 @@ function Contacts () {
 
     return(
         <View>
-            <Button onPress={() => navigation.navigate('LoginScreen')} mode="contained">Entrar</Button>
+            <Button mode="contained">Entrar</Button>
         </View>
     )
 }
