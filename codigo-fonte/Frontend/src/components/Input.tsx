@@ -4,8 +4,19 @@ import { TextInput } from 'react-native-paper';
 import { inputStyles } from '../styles/globalStyles';
 
 interface InputProps {
-  label: string;
-  secureTextEntry?: boolean;
+  name?: string;
+  value?: string;
+  onChange?: (value: string) => void;
+  type?: string;
+  errorMessage?: string;
+  placeholder?: string;
+  required?: boolean;
+  validate?: (value: string) => boolean;
+  mask?: string;
+  autoComplete?: string;
+  className?: string;
+  style?: React.CSSProperties;
+  [x: string]: any;
 }
 
 export default function InputComponent({ label, secureTextEntry }: InputProps) {
