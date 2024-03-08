@@ -1,8 +1,10 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, ImageBackground } from "react-native";
+import globaStyles from '../styles/LoginScreenStyles';
 
 function Events() {
   return (
+    <ImageBackground source={require('../assets/background.jpg')} style={globaStyles.background}>
     <View style={styles.rectangle}>
       <View style={styles.row}>
         <Text style={styles.label}>DIA</Text>
@@ -22,6 +24,7 @@ function Events() {
         />
       </View>
     </View>
+    </ImageBackground>
   );
 }
 

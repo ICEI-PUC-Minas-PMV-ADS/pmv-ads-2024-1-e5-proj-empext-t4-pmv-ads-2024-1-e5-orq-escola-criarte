@@ -1,0 +1,59 @@
+import React from "react";
+import { View, ImageBackground } from "react-native";
+import { useNavigation } from '@react-navigation/native';
+import loginScreenStyles from '../styles/LoginScreenStyles';
+import { Avatar, Button, Card, Text, TouchableRipple, IconButton  } from 'react-native-paper';
+
+const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
+
+function Contacts () {
+    const navigation = useNavigation();
+
+    return(
+        <ImageBackground source={require('../assets/background.jpg')} style={loginScreenStyles.background}>
+            <View style={{ position: 'top', margin: 10}}>
+                <Card>
+                    <TouchableRipple
+                        onPress={() => console.log('Pressed')}
+                        rippleColor="rgba(0, 0, 0, .32)"
+                    >
+                    <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
+                        </TouchableRipple>
+                    <Text variant="bodyMedium">fadjsfbshd fsd hfbsdhj fbsd hfjbsdjhfb sjdhf bsjdhfb sjdhfb sjdhfb sjdhf bsjdhf bsjdhfb sdhfbs dfjhsdb fjh</Text>
+                    <Card.Actions>
+                    <Button>Cancel</Button>
+                    <Button>Ok</Button>
+                    </Card.Actions>
+                    <View >
+                        <Card.Title
+                            title="Card Title"
+                            subtitle="Card Subtitle"
+                            left={(props) => <Avatar.Icon {...props} icon="folder" />}
+                            right={(props) => <IconButton {...props} icon="dots-vertical" onPress={() => {}} />}
+                        />
+                        <Card.Title
+                            title="Card Title"
+                            subtitle="Card Subtitle"
+                            left={(props) => <Avatar.Icon {...props} icon="folder" />}
+                            right={(props) => <IconButton {...props} icon="dots-vertical" onPress={() => {}} />}
+                        />
+                        <Card.Title
+                            title="Card Title"
+                            subtitle="Card Subtitle"
+                            left={(props) => <Avatar.Icon {...props} icon="folder" />}
+                            right={(props) => <IconButton {...props} icon="dots-vertical" onPress={() => {}} />}
+                        />
+                        <Card.Title
+                            title="Card Title"
+                            subtitle="Card Subtitle"
+                            left={(props) => <Avatar.Icon {...props} icon="folder" />}
+                            right={(props) => <IconButton {...props} icon="dots-vertical" onPress={() => {}} />}
+                        />
+                    </View>
+                </Card>
+                </View>
+        </ImageBackground>
+    )
+}
+
+export default Contacts;
