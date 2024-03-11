@@ -98,7 +98,7 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 ## Diagrama de Casos de Uso
 
-<img src="https://private-user-images.githubusercontent.com/103080396/309587661-10a56f24-5092-4b76-bf8a-041d4d030b2a.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MDk1MDcwODQsIm5iZiI6MTcwOTUwNjc4NCwicGF0aCI6Ii8xMDMwODAzOTYvMzA5NTg3NjYxLTEwYTU2ZjI0LTUwOTItNGI3Ni1iZjhhLTA0MWQ0ZDAzMGIyYS5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwMzAzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDMwM1QyMjU5NDRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT05YzkxYTFmMzgyOTMxNGFlYWNiNDRjZmVhNDBlMWU0MjZjODEwMWJiMmNhMDJhYzIyNWVkNzJkMGU2NmM0OGViJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.2S5jv2-z24MGmmPIKZp_LBoGbvUjHS1Xr5w2SPRTi-M" >
+<img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t4-pmv-ads-2024-1-e5-orq-escola-criarte/blob/main/documentos/img/Diagrama%20de%20Caso%20de%20Uso.jpg" >
 
 ## Modelo ER (Projeto Conceitual)
 
