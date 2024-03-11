@@ -113,3 +113,7 @@ A referência abaixo irá auxiliá-lo na geração do artefato “Modelo ER”.
 ## Projeto da Base de Dados
 
 O projeto da base de dados corresponde à representação das entidades e relacionamentos identificadas no Modelo ER, no formato de tabelas, com colunas e chaves primárias/estrangeiras necessárias para representar corretamente as restrições de integridade.
+
+## Kanban
+
+https://trello.com/b/rtGvltvn/escola-criarte
