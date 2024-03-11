@@ -55,7 +55,7 @@ Apresente uma visão geral do que será abordado nesta parte do documento, enume
 
 ## Project Model Canvas
 
-<img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t4-pmv-ads-2024-1-e5-orq-escola-criarte/blob/main/documentos/img/Diagrama%20de%20Caso%20de%20Uso.jpg">
+<img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t4-pmv-ads-2024-1-e5-orq-escola-criarte/blob/main/documentos/img/Project%20Model%20Canvas.jpg">
 
 ## Requisitos
 
