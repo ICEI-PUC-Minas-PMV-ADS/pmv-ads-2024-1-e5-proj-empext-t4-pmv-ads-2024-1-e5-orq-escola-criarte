@@ -55,7 +55,7 @@ Apresente uma visão geral do que será abordado nesta parte do documento, enume
 
 ## Project Model Canvas
 
-<img src="[https://private-user-images.githubusercontent.com/103080396/309572599-5fb75db9-fe51-47b1-9912-d7f8f975565a.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MDk0OTE2NjMsIm5iZiI6MTcwOTQ5MTM2MywicGF0aCI6Ii8xMDMwODAzOTYvMzA5NTcyNTk5LTVmYjc1ZGI5LWZlNTEtNDdiMS05OTEyLWQ3ZjhmOTc1NTY1YS5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwMzAzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDMwM1QxODQyNDNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1lOTg1YzZiOGMxMmIyODc2MjQ5ZTU0OGJjZDI0NGVhZmE0M2U0MDBkODNkMjY3NjY1YjlhYjZhZGQ1MTU5OGI2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.TYkFu81B25tg4ER3URlyMtOyzHxZ5QflsKdZT518_gs](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t4-pmv-ads-2024-1-e5-orq-escola-criarte/issues/2#issue-2165609964)">
+<img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t4-pmv-ads-2024-1-e5-orq-escola-criarte/blob/main/documentos/img/Diagrama%20de%20Caso%20de%20Uso.jpg">
 
 ## Requisitos
 
