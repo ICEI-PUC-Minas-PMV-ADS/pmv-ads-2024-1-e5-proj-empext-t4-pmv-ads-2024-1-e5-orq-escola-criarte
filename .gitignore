@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/codigo-fonte/backend/InformativoOEC/.vs/InformativoOEC/FileContentIndex
+/codigo-fonte/backend/InformativoOEC/InformativoOEC.API/obj/Debug/net7.0/InformativoOEC.API.csproj.AssemblyReference.cache
+/codigo-fonte/backend/InformativoOEC/InformativoOEC.Application/obj/Debug/net7.0/InformativoOEC.Application.csproj.AssemblyReference.cache
