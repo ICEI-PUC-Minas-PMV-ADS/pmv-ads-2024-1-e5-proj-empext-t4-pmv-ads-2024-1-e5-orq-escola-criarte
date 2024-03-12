@@ -13,17 +13,6 @@ function Contacts () {
         <ImageBackground source={require('../assets/background.jpg')} style={loginScreenStyles.background}>
             <View style={{ position: 'top', margin: 10}}>
                 <Card>
-                    <TouchableRipple
-                        onPress={() => console.log('Pressed')}
-                        rippleColor="rgba(0, 0, 0, .32)"
-                    >
-                    <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
-                        </TouchableRipple>
-                    <Text variant="bodyMedium">fadjsfbshd fsd hfbsdhj fbsd hfjbsdjhfb sjdhf bsjdhfb sjdhfb sjdhfb sjdhf bsjdhf bsjdhfb sdhfbs dfjhsdb fjh</Text>
-                    <Card.Actions>
-                    <Button>Cancel</Button>
-                    <Button>Ok</Button>
-                    </Card.Actions>
                     <View >
                         <Card.Title
                             title="Card Title"
