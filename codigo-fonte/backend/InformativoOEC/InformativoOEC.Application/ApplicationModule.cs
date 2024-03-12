@@ -1,5 +1,6 @@
 ﻿using InformativoOEC.Application.Services.Account;
 using InformativoOEC.Application.Services.Authentication;
+using InformativoOEC.Application.Services.Post;
 using InformativoOEC.Application.Services.User;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -16,7 +17,8 @@ public static class ApplicationModule
         services
             .AddScoped<IUserService, UserService>()
             .AddScoped<IAuthService, AuthService>()
-            .AddScoped<ILoginService, LoginService>();
+            .AddScoped<ILoginService, LoginService>()
+            .AddScoped<IPostService, PostService>();
 
         return services;
     }

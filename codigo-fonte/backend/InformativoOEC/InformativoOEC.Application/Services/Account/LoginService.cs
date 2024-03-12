@@ -3,6 +3,7 @@ using InformativoOEC.Application.Models.ViewModels;
 using InformativoOEC.Application.Services.Authentication;
 using InformativoOEC.Core.Exceptions;
 using InformativoOEC.Core.Repositories;
+using System.Security.Claims;
 
 namespace InformativoOEC.Application.Services.Account;
 public class LoginService : ILoginService
@@ -14,6 +15,7 @@ public class LoginService : ILoginService
         _authService = authService;
         _userRepository = userRepository;
     }
+
     public async Task<LoginViewModel> Login(LoginInputModel model)
     {
         string passwordHash = _authService.ComputeSha256Hash(model.Password);
