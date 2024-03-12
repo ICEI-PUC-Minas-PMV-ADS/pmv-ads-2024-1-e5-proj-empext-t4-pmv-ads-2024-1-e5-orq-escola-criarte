@@ -13,5 +13,7 @@ export const inputStyles = StyleSheet.create({
     width: '100%',
     height: 40,
     marginBottom: 10,
+    fontSize: 16,
+    color: 'black',
   },
 });

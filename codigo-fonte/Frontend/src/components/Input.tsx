@@ -1,26 +1,50 @@
-// src/components/Input.tsx
 import React from 'react';
-import { TextInput } from 'react-native-paper';
+import { TextInput, HelperText } from 'react-native-paper';
 import { inputStyles } from '../styles/globalStyles';
 
 interface InputProps {
-  name?: string;
+  id?: string;
   value?: string;
+  validate?: boolean;
+  mask?: string;
   onChange?: (value: string) => void;
-  type?: string;
+  onChangeText?: (value: string) => void;
+  onBlur?: () => void;
+  secureTextEntry?: boolean;
   errorMessage?: string;
   placeholder?: string;
-  required?: boolean;
-  validate?: (value: string) => boolean;
-  mask?: string;
-  autoComplete?: string;
-  className?: string;
-  style?: React.CSSProperties;
-  [x: string]: any;
+  editable?: boolean;
+  // ... other props
 }
 
-export default function InputComponent({ label, secureTextEntry }: InputProps) {
+export default function InputComponent({
+  id,
+  value,
+  validate,
+  onChange,
+  onChangeText,
+  onBlur,
+  secureTextEntry = false,
+  errorMessage = '',
+  placeholder,
+  editable,
+  ...otherProps
+}: InputProps) {
   return (
-    <TextInput label={label} mode="outlined" secureTextEntry={secureTextEntry} style={inputStyles.input} />
+    <>
+      <TextInput
+        id={id}
+        mode="outlined"
+        secureTextEntry={secureTextEntry}
+        style={inputStyles.input}
+        placeholder={placeholder}
+        onChangeText={onChange}
+        onBlur={onBlur}
+        value={value}
+        editable={editable}
+        {...otherProps}
+      />
+      {errorMessage && <HelperText type="error">{errorMessage}</HelperText>}
+    </>
   );
 }
