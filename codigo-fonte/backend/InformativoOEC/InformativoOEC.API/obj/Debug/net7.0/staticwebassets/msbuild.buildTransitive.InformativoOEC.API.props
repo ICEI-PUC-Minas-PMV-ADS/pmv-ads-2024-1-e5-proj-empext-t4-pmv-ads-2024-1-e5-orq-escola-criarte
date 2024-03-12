@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\InformativoOEC.API.props" />
-</Project>
