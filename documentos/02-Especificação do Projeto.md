@@ -1,5 +1,43 @@
 # Especificações do Projeto
 
+## Personas
+
+|    Lucas Oliveira | Informações:                       |                                        |
+|--------------------|------------------------------------|----------------------------------------|
+|<img <img src="img/lucas oliveira.jpg" width = 250>| **Idade:** 48 anos <br> **Ocupação:** Professor de Música|**Aplicativos:**<br><ul>● Instagram <br>● Linkedin <br>● Telegram<br>● WhatsApp <br></ul>|
+|**Motivações:**<br><ul>● Divulgar suas aulas de música de modo atraente, didático e bem explicativo.<br><br>● Conquistar o interesse dos seus alunos e pessoas interessadas em aprender<br>● Explicar seu trabalho com a comunidade<br></ul>|**Frustrações:**<br><ul>● Tenho dificuldades para atrair novos alunos e patrocinadores; <br><br>● Gasto muito tempo para explicar sobre a metodologia que aplico nas aulas de música com meus alunos de todas as idades.<br>● Tenho dificuldades para adquirir financiamento porque as pessoas desconfiam ou duvidam da importância do meu trabalho.<br></ul>|**Hobbies/Histórias:**<br><ul>●Estou ansioso para formar muitos grupos de música de todas as idades e realizar várias apresentações.<br>●  Quero ajudar na educação de jovens e crianças e incentivar a inclusão de pessoas de todas as idades no universo da música.<br>● Gosto de fazer novas amizades e praticar esportes ao ar livre<br></ul>|
+
+
+|    Marina Alves | Informações:                       |                                        |
+|--------------------|------------------------------------|----------------------------------------|
+|<img src="img/marina alves.jpg" width = 250>| **Idade:**  39 anos <br> **Ocupação:** Boleira e dona de casa|**Aplicativos:**<br><ul>● Instagram <br>● Facebook <br>● Telegram<br>● WhatsApp <br></ul>|
+|**Motivações:**<br><ul>● Estar sempre atualizada sobre as apreentações de música do meu filho <br><br>● Compartilhar com meus amigos e familiares as apresentações de música do meu filho. </ul>|**Frustrações:**<br><ul>● Não conseguir lembrar de quando e onde será a apresentação de música do meu filho <br><br>● Dificuldades para explicar a outros pais sobre a importância do trabaho desenvolvido na Escola Criarte. |**Hobbies/Histórias:**<br><ul>● Sou apaixonada por assistir meu filho tocar violino<br>●  Adoro convidar meus amigos para os eventos de música da Escola Criarte <br>● Meu objetivo é sempre acompanhar e ajudar nos trabalhos da escola Criarte. <br></ul>|
+
+
+|   Rafael Oliveira | Informações:                       |                                        |
+|--------------------|------------------------------------|----------------------------------------|
+|<img src="img/rafael oliveira.jpg" width = 250>| **Idade:** 40 anos <br> **Ocupação:** Administrador da Escola Criarte|**Aplicativos:**<br><ul>● Instagram <br>● Linkedin <br>● Telegram<br>● WhatsApp <br></ul>|
+|**Motivações:**<br><ul>● Divulgar as atividades realizadas na escola Criarte para toda população.  <br><br>● Atrair financiamento e voluntários para ajudar nas atividades da escola.  </ul>|**Frustrações:**<br><ul>● Falta de visibilidade completa sobre os detalhes dos trabalhos realizados na escola e sua importância para os alunos.<br><br>● Dificuldade em acompanhar a participação dos pais no aprendizado dos seus filhos.  |**Hobbies/Histórias:**<br><ul>●Adoro ajudar na educação de pessoas de todas as idades <br>● Sempre em busca de maneiras para estimular a criatividade, o raciocínio, a socialização e a sensibilidade de pessoas de todas as idades <br>● Gosto de praticar esportes e relaxar ao ar livre  <br></ul>|
+
+
+|    
+Ana Santos | Informações:                       |                                        |
+|--------------------|------------------------------------|----------------------------------------|
+|<img src="img/ana santos.jpg" width = 250>| **Idade:** 14 anos <br> **Ocupação:** estudante|**Aplicativos:**<br><ul>● Instagram <br>● Facebook <br> ● WhatsApp <br></ul>|
+|**Motivações:**<br><ul>● Participar das apresentações de música com meus colegas e professor  <br><br>● Compartilhar com minha família meus dias de ensaio e minha apresentação com a orquesta da escola Criarte </ul>|**Frustrações:**<br><ul>● Dificuldade para explicar aos meus amigos sobre meu curso de música; <br><br>● Dificuldade para compartilhar minhas apresentações de música com meus amigos e família.  |**Hobbies/Histórias:**<br><ul>● Adoro fazer novas amizades <br>●Gosto de aprender a tocar novas músicas no meu violino  <br>●  Meu objetivo é divulgar meus avanços na música e me tornar uma violinista profissional <br></ul>|
+
+
+|    Roberto Mendes | Informações:                       |                                        |
+|--------------------|------------------------------------|----------------------------------------|
+|<img src="img/roberto mendes.jpg" width = 250>| **Idade:** 75 anos <br> **Ocupação:** Motorista de ônibus aposentado|**Aplicativos:**<br><ul> ● WhatsApp <br></ul>|
+|**Motivações:**<br><ul>● Encontrar novas amizazdes  <br><br>● Aprender um novo instrumento musical.  </ul>|**Frustrações:**<br><ul>●  Ociosidade decorrente da aposentadoria;  <br><br>● Falta de oportunidades para aprender música quando mais jovem.   |**Hobbies/Histórias:**<br><ul>● Gosto de levar minha netinha para o parque e ouvir a banda tocar no correto. <br>● Estou sempre de aprender sobre arte, música, e esporte. <br>●  Adoro passar tempo com a família  <br></ul>|
+
+
+|    Patrícia Maia | Informações:                       |                                        |
+|--------------------|------------------------------------|----------------------------------------|
+|<img src="img/patricia maia.jpg" width = 250>| **Idade:** 25 anos <br> **Ocupação:** secretária |**Aplicativos:**<br><ul>● Instagram <br>● Telegram<br>● WhatsApp <br></ul>|
+|**Motivações:**<br><ul>● Encontrar atividades relacionadas a música, arte, e esportes na internet de modo fácil, rápido e confiável<br><br>● Aproveitar o máximo do tempo livre com atividades de lazer </ul>|**Frustrações:**<br><ul>●  Ter dificuldades em encontrar atividades inclusivas para pesssoas com necessidades especiais<br>● Enfrentar preconceitos devido a minha condição quando pretendo praticar alguma atividade de lazer <br>|**Hobbies/Histórias:**<br><ul>● Gosto de ler, escutar música, passear com os amigos e família <br>● Estou sempre realizando atividade físicas e aprendendo coisas novas <br>●  Adoro viajar para conhecer novos lugares<br></ul>|
+
 <span style="color:red">Pré-requisitos: <a href="1-Documentação de Contexto.md"> Documentação de Contexto</a></span>
 
 Definição do problema e ideia de solução a partir da perspectiva do usuário. É composta pela definição do  diagrama de personas, histórias de usuários, requisitos funcionais e não funcionais além das restrições do projeto.
@@ -17,7 +55,7 @@ Apresente uma visão geral do que será abordado nesta parte do documento, enume
 
 ## Project Model Canvas
 
-<img src="https://private-user-images.githubusercontent.com/103080396/309572599-5fb75db9-fe51-47b1-9912-d7f8f975565a.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MDk0OTE2NjMsIm5iZiI6MTcwOTQ5MTM2MywicGF0aCI6Ii8xMDMwODAzOTYvMzA5NTcyNTk5LTVmYjc1ZGI5LWZlNTEtNDdiMS05OTEyLWQ3ZjhmOTc1NTY1YS5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwMzAzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDMwM1QxODQyNDNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1lOTg1YzZiOGMxMmIyODc2MjQ5ZTU0OGJjZDI0NGVhZmE0M2U0MDBkODNkMjY3NjY1YjlhYjZhZGQ1MTU5OGI2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.TYkFu81B25tg4ER3URlyMtOyzHxZ5QflsKdZT518_gs">
+<img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t4-pmv-ads-2024-1-e5-orq-escola-criarte/blob/main/documentos/img/Project%20Model%20Canvas.jpg">
 
 ## Requisitos
 
@@ -60,16 +98,7 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 ## Diagrama de Casos de Uso
 
-O diagrama de casos de uso é o próximo passo após a elicitação de requisitos, que utiliza um modelo gráfico e uma tabela com as descrições sucintas dos casos de uso e dos atores. Ele contempla a fronteira do sistema e o detalhamento dos requisitos funcionais com a indicação dos atores, casos de uso e seus relacionamentos. 
-
-As referências abaixo irão auxiliá-lo na geração do artefato “Diagrama de Casos de Uso”.
-
-> **Links Úteis**:
-> - [Criando Casos de Uso](https://www.ibm.com/docs/pt-br/elm/6.0?topic=requirements-creating-use-cases)
-> - [Como Criar Diagrama de Caso de Uso: Tutorial Passo a Passo](https://gitmind.com/pt/fazer-diagrama-de-caso-uso.html/)
-> - [Lucidchart](https://www.lucidchart.com/)
-> - [Astah](https://astah.net/)
-> - [Diagrams](https://app.diagrams.net/)
+<img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t4-pmv-ads-2024-1-e5-orq-escola-criarte/blob/main/documentos/img/Diagrama%20de%20Caso%20de%20Uso.jpg" >
 
 ## Modelo ER (Projeto Conceitual)
 
@@ -84,3 +113,7 @@ A referência abaixo irá auxiliá-lo na geração do artefato “Modelo ER”.
 ## Projeto da Base de Dados
 
 O projeto da base de dados corresponde à representação das entidades e relacionamentos identificadas no Modelo ER, no formato de tabelas, com colunas e chaves primárias/estrangeiras necessárias para representar corretamente as restrições de integridade.
+
+## Kanban
+
+https://trello.com/b/rtGvltvn/escola-criarte
