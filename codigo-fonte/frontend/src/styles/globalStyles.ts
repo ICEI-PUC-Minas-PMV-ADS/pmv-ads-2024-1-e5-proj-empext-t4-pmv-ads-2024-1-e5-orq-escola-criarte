@@ -11,6 +11,9 @@ export const buttonStyles = StyleSheet.create({
 export const inputStyles = StyleSheet.create({
   input: {
     width: '100%',
+    height: 40,
     marginBottom: 10,
+    fontSize: 16,
+    color: 'black',
   },
 });
