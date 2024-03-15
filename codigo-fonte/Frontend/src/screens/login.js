@@ -18,8 +18,7 @@ const LoginScreen = () =>{
           <InputComponent label="Senha" secureTextEntry />
           <ButtonComponent mode="text" onPress={() => console.log('Esqueci minha senha')} text="Esqueci minha senha" />
           <ButtonComponent onPress={() => navigation.navigate('Cadastro')} text="Cadastre-se" />
-          <ButtonComponent onPress={() => console.log('Entrar')} text="Entrar" />
-          <Button onPress={() => navigation.navigate('Routes')} mode="contained">Entrar</Button>
+          <ButtonComponent onPress={() => navigation.navigate('Routes')} mode="contained" text="Entrar" />          
         </View>
       </ImageBackground>            
     </SafeAreaProvider>
