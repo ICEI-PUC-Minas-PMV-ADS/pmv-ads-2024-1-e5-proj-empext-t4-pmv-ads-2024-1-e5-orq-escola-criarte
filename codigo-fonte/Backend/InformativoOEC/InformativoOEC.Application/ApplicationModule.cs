@@ -1,5 +1,6 @@
 ﻿using InformativoOEC.Application.Services.Account;
 using InformativoOEC.Application.Services.Authentication;
+using InformativoOEC.Application.Services.Newsfeed;
 using InformativoOEC.Application.Services.Post;
 using InformativoOEC.Application.Services.User;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,7 +19,8 @@ public static class ApplicationModule
             .AddScoped<IUserService, UserService>()
             .AddScoped<IAuthService, AuthService>()
             .AddScoped<ILoginService, LoginService>()
-            .AddScoped<IPostService, PostService>();
+            .AddScoped<IPostService, PostService>()
+            .AddScoped<INewsfeedService, NewsfeedService>();
 
         return services;
     }

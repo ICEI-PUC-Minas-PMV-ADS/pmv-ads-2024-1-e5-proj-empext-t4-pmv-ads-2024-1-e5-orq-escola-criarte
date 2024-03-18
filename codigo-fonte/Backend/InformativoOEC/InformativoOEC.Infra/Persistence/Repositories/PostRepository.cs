@@ -1,5 +1,6 @@
 ﻿using InformativoOEC.Core.Entities;
 using InformativoOEC.Core.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace InformativoOEC.Infra.Persistence.Repositories;
 public class PostRepository : IPostRepository
@@ -13,5 +14,10 @@ public class PostRepository : IPostRepository
     {
         await _context.AddAsync(post);
         await _context.SaveChangesAsync();
+    }
+
+    public async Task<List<Post>> GetAllAsync()
+    {
+        return await _context.Posts.AsNoTracking().ToListAsync();
     }
 }
