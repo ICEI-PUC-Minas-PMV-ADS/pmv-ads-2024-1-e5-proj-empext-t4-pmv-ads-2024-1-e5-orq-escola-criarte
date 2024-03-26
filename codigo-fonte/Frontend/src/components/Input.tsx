@@ -11,10 +11,12 @@ interface InputProps {
   onChangeText?: (value: string) => void;
   onBlur?: () => void;
   secureTextEntry?: boolean;
-  errorMessage?: string;
+  errorMessage?: string  | boolean;
   placeholder?: string;
   editable?: boolean;
-  // ... other props
+  style?: object;
+  placeholderTextColor?: string;
+  
 }
 
 export default function InputComponent({
@@ -28,6 +30,8 @@ export default function InputComponent({
   errorMessage = '',
   placeholder,
   editable,
+  style,
+  placeholderTextColor,
   ...otherProps
 }: InputProps) {
   return (
@@ -36,8 +40,9 @@ export default function InputComponent({
         id={id}
         mode="outlined"
         secureTextEntry={secureTextEntry}
-        style={inputStyles.input}
+        style={[inputStyles.input, style]}
         placeholder={placeholder}
+        placeholderTextColor={'#999999'}
         onChangeText={onChange}
         onBlur={onBlur}
         value={value}

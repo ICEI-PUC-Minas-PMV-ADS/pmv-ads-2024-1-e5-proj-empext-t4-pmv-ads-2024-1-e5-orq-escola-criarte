@@ -5,6 +5,7 @@ export const buttonStyles = StyleSheet.create({
   button: {
     width: '100%',
     marginBottom: 10,
+    
   },
 });
 
@@ -15,5 +16,6 @@ export const inputStyles = StyleSheet.create({
     marginBottom: 10,
     fontSize: 16,
     color: 'black',
+    backgroundColor: 'rgba(255,255,255,0.5)',
   },
 });

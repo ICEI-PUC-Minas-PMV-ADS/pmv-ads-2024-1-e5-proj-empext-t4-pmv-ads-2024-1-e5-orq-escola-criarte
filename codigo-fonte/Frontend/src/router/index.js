@@ -12,7 +12,7 @@ const Tab = createBottomTabNavigator();
 function CustomHeader() {
   return (
     <Appbar.Header>
-      <Avatar.Image size={40} source={require('../assets/background.jpg')} />      
+      <Avatar.Image size={40} source={require('../assets/background.png')} />      
       <Appbar.Content title="Title" titleStyle={{ textAlign: 'center' }} />
       <Appbar.Action icon="dots-vertical"  />
     </Appbar.Header>

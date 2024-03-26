@@ -4,7 +4,7 @@ import globaStyles from '../styles/LoginScreenStyles';
 
 function Events() {
   return (
-    <ImageBackground source={require('../assets/background.jpg')} style={globaStyles.background}>
+    <ImageBackground source={require('../assets/background.png')} style={globaStyles.background}>
     <View style={styles.rectangle}>
       <View style={styles.row}>
         <Text style={styles.label}>DIA</Text>
