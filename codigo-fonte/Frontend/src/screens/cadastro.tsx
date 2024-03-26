@@ -1,176 +1,160 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Platform, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, SafeAreaView, ImageBackground } from 'react-native';
 import { useForm, Controller } from "react-hook-form";
-import DateTimePicker from "@react-native-community/datetimepicker";
 import styles from '../styles/CadastroScreenStyles';
 import InputComponent from '../components/Input';
 import TermosCheckBox from '../components/Checkbox';
 import ButtonComponent from '../components/Button';
-import validaCPF from '../components/ValidarCPF';
-import { insertMaskInCpf } from '../components/cpf';
+import { Ionicons } from '@expo/vector-icons';
+
+// Define a estrutura dos dados do formulário
+interface FormData {
+    nome: string;
+    email: string;
+    senha: string;
+    confirmarSenha: string;
+}
 
 export default function CadastroScreen() {
-    const { control, handleSubmit, formState: { errors, isValid } } = useForm({ mode: 'onChange' });
-    const [termosAceitos, setTermosAceitos] = useState<boolean>(false);
-    const [senhasConferem, setSenhasConferem] = useState<boolean>(false);
-    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-    const [showDatePicker, setShowDatePicker] = useState<boolean>(false);
+    // Inicializa o hook useForm do react-hook-form
+    const { control, handleSubmit, formState: { isValid }, getValues } = useForm<FormData>({ mode: 'onChange' });
 
+    // Estados locais para controle de aceitação de termos e validação de senhas
+    const [termosAceitos, setTermosAceitos] = useState<boolean>(false);
+    const [senhasConferem, setSenhasConferem] = useState<boolean>(true);
+    const [senhaVisivel, setSenhaVisivel] = useState<boolean>(false);
+
+    // Função para lidar com a mudança na aceitação dos termos
     const handleTermosChange = (checked: boolean) => {
         setTermosAceitos(checked);
     };
 
-    const handleSenhas = (checked: boolean) => {
-        setSenhasConferem(checked);
+    // Função para lidar com a mudança na confirmação da senha
+    const handleConfirmarSenhaChange = () => {
+        const values = getValues();
+        setSenhasConferem(values.senha === values.confirmarSenha);
     };
 
-    const handleDateChange = (date: Date) => {
-        setSelectedDate(date);
-        setShowDatePicker(false);
-    };
-
-    const openDatePicker = () => {
-        setShowDatePicker(true);
-    };
-
-    const formatarData = (data: Date) => {
-        const dia = data.getDate().toString().padStart(2, '0');
-        const mes = (data.getMonth() + 1).toString().padStart(2, '0');
-        const ano = data.getFullYear();
-        return `${dia}/${mes}/${ano}`;
-    };
-
-    const handleFormSubmit = (data: any) => {
-        const formData = {
-            ...data,
-            data: selectedDate ? formatarData(selectedDate) : ''
-        };
-        console.log(formData);
-        // Adicione a lógica necessária para lidar com os dados do usuário após a submissão do formulário
+    // Função para lidar com o envio do formulário
+    const handleFormSubmit = (data: FormData) => {
+        console.log(data);
+        // Aqui você pode enviar os dados para o servidor, por exemplo
     };
 
     return (
-        <ScrollView>
-            <View style={styles.container}>
-                <View style={styles.header}>
-                    <Text style={styles.titulo}>Cadastre-se</Text>
-                    <Text style={styles.subTitulo}>Preencha o formulário abaixo para realizar o cadastro</Text>
-                </View>
+        // Estrutura da tela com fundo de imagem e conteúdo centralizado
+        <ImageBackground source={require('../assets/background.png')} style={styles.background}>
+            <SafeAreaView style={styles.container}>
+                <ScrollView style={styles.content}>
+                    <View style={styles.centerContent}>
+                        {/* Cabeçalho da tela */}
+                        <View style={styles.header}>
+                            <Text style={styles.titulo}>Cadastre-se</Text>
+                        </View>
 
-                <View style={styles.formulario}>
-                    <Text style={styles.texto}>Nome Completo:</Text>
-                    <Controller
-                        control={control}
-                        render={({ field: { onChange, onBlur, value } }) => (
-                            <InputComponent
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                value={value}
-                                id="nome"
+                        {/* Formulário de cadastro */}
+                        <View style={styles.formulario}>
+
+                            {/* Campo Nome Completo */}
+                            <Text style={styles.texto}>Nome Completo:</Text>
+                            <Controller
+                                control={control}
+                                render={({ field: { onChange, onBlur, value } }) => (
+                                    <InputComponent
+                                        onBlur={onBlur}
+                                        onChange={onChange}
+                                        placeholder='Digite seu Nome Completo'
+                                        value={value}
+                                        id="nome"
+                                    />
+                                )}
+                                name="nome"
+                                rules={{ required: true }}
+                                defaultValue=""
                             />
-                        )}
-                        name="nome"
-                        rules={{ required: true }}
-                        defaultValue=""
-                    />
 
-                    <Text style={styles.texto}>CPF:</Text>
-                    <Controller
-                        control={control}
-                        render={({ field: { onChange, onBlur, value } }) => (
-                            <InputComponent
-                                onBlur={onBlur}
-                                onChange={text => onChange(insertMaskInCpf(text))}
-                                value={value}
-                                errorMessage={errors.cpf && "CPF inválido!"}
-                                id="cpf"
+                            {/* Campo Email */}
+                            <Text style={styles.texto}>Email:</Text>
+                            <Controller
+                                control={control}
+                                render={({ field: { onChange, onBlur, value } }) => (
+                                    <InputComponent
+                                        onBlur={onBlur}
+                                        onChange={onChange}
+                                        placeholder='exemplo@exemplo.com'
+                                        value={value}
+                                        id="email"
+                                    />
+                                )}
+                                name="email"
+                                rules={{ required: true }}
+                                defaultValue=""
                             />
-                        )}
-                        name="cpf"
-                        rules={{ required: true, validate: value => validaCPF(value) || "CPF inválido!" }}
-                        defaultValue=""
-                    />
 
-                    <Text style={styles.texto}>Data de Nascimento:</Text>
-                    <TouchableOpacity onPress={openDatePicker}>
-                        <InputComponent
-                            editable={false}
-                            value={selectedDate ? selectedDate.toLocaleDateString('pt-BR') : 'Selecione a data'}
-                        />
-                    </TouchableOpacity>
-                    {showDatePicker && (
-                        <DateTimePicker
-                            value={selectedDate || new Date()}
-                            mode="date"
-                            display={Platform.OS === 'android' ? 'spinner' : 'default'}
-                            onChange={(event, date) => {
-                                if (date) {
-                                    handleDateChange(date);
-                                } else {
-                                    setShowDatePicker(false);
-                                }
-                            }}
-                        />
-                    )}
+                            {/* Campo Senha */}
+                            <Text style={styles.texto}>Senha:</Text>
+                            <Controller
+                                control={control}
+                                render={({ field: { onChange, onBlur, value } }) => (
+                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                        <InputComponent
+                                            secureTextEntry={!senhaVisivel}
+                                            onBlur={onBlur}
+                                            onChange={onChange}
+                                            placeholder='**********'
+                                            value={value}
+                                            id="senha"
 
-                    <Text style={styles.texto}>Email:</Text>
-                    <Controller
-                        control={control}
-                        render={({ field: { onChange, onBlur, value } }) => (
-                            <InputComponent
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                value={value}
-                                id="email"
+                                        />
+                                        <TouchableOpacity onPress={() => setSenhaVisivel(!senhaVisivel)}>
+                                            <Ionicons name={senhaVisivel ? 'eye-off' : 'eye'} size={24} color="#413267" style={styles.eyeIcon} />
+                                        </TouchableOpacity>
+                                    </View>
+                                )}
+                                name="senha"
+                                rules={{ required: true }}
+                                defaultValue=""
                             />
-                        )}
-                        name="email"
-                    />
 
-                    <Text style={styles.texto}>Senha:</Text>
-                    <Controller
-                        control={control}
-                        render={({ field: { onChange, onBlur, value } }) => (
-                            <InputComponent
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                value={value}
-                                id="senha"
+                            {/* Campo Confirmar Senha */}
+                            <Text style={styles.texto}>Confirmar Senha:</Text>
+                            <Controller
+                                control={control}
+                                render={({ field: { onChange, onBlur, value } }) => (
+                                    <InputComponent
+                                        secureTextEntry={!senhaVisivel}
+                                        onBlur={() => {
+                                            onBlur();
+                                            handleConfirmarSenhaChange();
+                                        }}
+                                        onChange={onChange}
+                                        placeholder='**********'
+                                        placeholderTextColor= '#999999'
+                                        value={value}
+                                        id="confirmarSenha"
+                                        errorMessage={!senhasConferem && "As senhas devem ser iguais!"}
+                                    />
+                                )}
+                                name="confirmarSenha"
+                                rules={{ required: true }}
+                                defaultValue=""
                             />
-                        )}
-                        name="senha"
-                        rules={{ required: true }}
-                    />
 
-                    <Text style={styles.texto}>Confirmar Senha:</Text>
-                    <Controller
-                        control={control}
-                        render={({ field: { onChange, onBlur, value } }) => (
-                            <InputComponent
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                value={value}
-                                id="confirmarSenha"
-                                errorMessage={errors.confirmarSenha && "As senhas não conferem!"}
+                            {/* Caixa de seleção para aceitar os termos */}
+                            <TermosCheckBox checked={termosAceitos} onValueChange={handleTermosChange} />
+                        </View>
+
+                        {/* Botão para concluir o cadastro */}
+                        <View style={styles.botao}>
+                            <ButtonComponent
+                                onPress={handleSubmit(handleFormSubmit)}
+                                disabled={!termosAceitos || !isValid || !senhasConferem}
+                                text="Concluir Cadastro"
                             />
-                        )}
-                        name="confirmarSenha"
-                        rules={{
-                            required: true,
-                            validate: (value) => value === document.getElementById('senha') || "As senhas não conferem!"
-                        }}
-                    />
-
-                    <TermosCheckBox checked={termosAceitos} onValueChange={handleTermosChange} />
-                </View>
-                <View style={styles.botao}>
-                    <ButtonComponent
-                        onPress={handleSubmit(handleFormSubmit)}
-                        disabled={!termosAceitos || !isValid}
-                        text="Concluir Cadastro"
-                    />
-                </View>
-            </View>
-        </ScrollView>
+                        </View>
+                    </View>
+                </ScrollView>
+            </SafeAreaView>
+        </ImageBackground>
     );
 }

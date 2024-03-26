@@ -6,12 +6,31 @@ interface ButtonProps {
   onPress: () => void;
   text: string;
   disabled?: boolean;
-  mode?: 'text' | 'outlined' | 'contained'; // Defina os modos permitidos aqui
+  mode?: 'text' | 'outlined' | 'contained';
+  editable?: boolean;
+  style?: object;
 }
 
-export default function ButtonComponent({ onPress, disabled = false, text, mode = 'contained' }: ButtonProps) {
+export default function ButtonComponent({ 
+  onPress, 
+  disabled = false, 
+  text, 
+  mode = 'contained',
+  editable,
+  style,
+  ...otherProps
+
+}: ButtonProps) 
+{
+
   return (
-    <Button mode={mode} disabled={disabled} onPress={onPress} style={buttonStyles.button}>
+    <Button 
+      mode={mode} 
+      disabled={disabled} 
+      onPress={onPress} 
+      style={[buttonStyles.button, style]}
+      {...otherProps}
+    >
       {text}
     </Button>
   );

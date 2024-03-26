@@ -17,10 +17,11 @@ const TermosCheckbox: React.FC<TermosCheckboxProps> = ({ onValueChange }) => {
     onValueChange(newValue);
   };
 
+
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
       <Checkbox.Android status={checked ? 'checked' : 'unchecked'} onPress={handlePress} />
-      <Text>Li e concordo com os termos</Text>
+      <Text style={{color: '#413267', fontWeight: 'bold'}}>Li e concordo com os termos</Text>
     </View>
   );
 }

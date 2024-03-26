@@ -10,7 +10,7 @@ function Contacts () {
     const navigation = useNavigation();
 
     return(
-        <ImageBackground source={require('../assets/background.jpg')} style={loginScreenStyles.background}>
+        <ImageBackground source={require('../assets/background.png')} style={loginScreenStyles.background}>
             <View style={{ position: 'top', margin: 10}}>
                 <Card>
                     <View >
