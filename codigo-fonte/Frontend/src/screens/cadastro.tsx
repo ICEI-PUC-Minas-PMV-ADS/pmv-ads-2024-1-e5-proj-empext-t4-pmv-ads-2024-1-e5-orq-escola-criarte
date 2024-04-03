@@ -6,6 +6,8 @@ import InputComponent from '../components/Input';
 import TermosCheckBox from '../components/Checkbox';
 import ButtonComponent from '../components/Button';
 import { Ionicons } from '@expo/vector-icons';
+import Axios from 'axios'
+import axios from 'axios';
 
 // Define a estrutura dos dados do formulário
 interface FormData {
@@ -38,7 +40,27 @@ export default function CadastroScreen() {
     // Função para lidar com o envio do formulário
     const handleFormSubmit = (data: FormData) => {
         console.log(data);
-        // Aqui você pode enviar os dados para o servidor, por exemplo
+        const headers = {
+            'accept':' */*' ,
+            'Content-Type':' application/json' 
+   
+        }
+        const dados = {
+            "name": data.nome,
+            "password": data.senha,
+            "email": data.email,
+            "role": 1       
+        }
+        axios.post ("https://localhost:7290/api/users",dados,{headers}).then((Response
+        )=>
+        {
+            console.log(Response)
+        }
+        ).catch((error)=>
+        {console.log(error)}
+        )
+
+        
     };
 
     return (
