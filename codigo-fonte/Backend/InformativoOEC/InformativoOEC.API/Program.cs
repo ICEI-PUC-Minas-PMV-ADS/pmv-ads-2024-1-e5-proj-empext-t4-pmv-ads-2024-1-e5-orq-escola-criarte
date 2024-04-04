@@ -18,6 +18,17 @@ builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionsFilter))
 builder.Services.AddInfra();
 builder.Services.AddApplication();
 
+// Add CORS Configuration
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.WithOrigins("http://localhost:19006")
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+});
+
 var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]);
 builder.Services.AddAuthentication(options =>
 {
@@ -57,6 +68,9 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+// Use CORS
+app.UseCors();
 
 app.MapControllers();
 
