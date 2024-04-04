@@ -2,6 +2,7 @@
 using InformativoOEC.Core.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.IdentityModel.Tokens;
 using System.Net;
 
 namespace InformativoOEC.API.Filters;
@@ -26,7 +27,7 @@ public class ExceptionsFilter : IExceptionFilter
     {
         var validationErrorException = context.Exception as ValidationErrorsException;
         context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-        if (validationErrorException.Message != null)
+        if (!validationErrorException.Message.IsNullOrEmpty())
         {
             context.Result = new ObjectResult(validationErrorException.Message);
         }
