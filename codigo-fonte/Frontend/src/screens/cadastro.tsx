@@ -16,7 +16,12 @@ interface FormData {
     confirmarSenha: string;
 }
 
-export default function CadastroScreen() {
+interface Props {
+    navigation: any; // você pode definir um tipo mais específico para navigation se preferir
+}
+
+
+export default function CadastroScreen({ navigation }: Props) {
     // Inicializa o hook useForm do react-hook-form
     const { control, handleSubmit, formState: { isValid }, getValues, reset } = useForm<FormData>({ mode: 'onChange' });
 
@@ -56,9 +61,11 @@ export default function CadastroScreen() {
                 console.log(response);
                 setCadastroRealizado(true);
                 reset(); // Limpa o formulário após o cadastro
+                navigation.navigate('Login')
             })
             .catch((error) => {
                 console.log(error);
+                console.log("Erro ao cadastrar")
             });
 
     };

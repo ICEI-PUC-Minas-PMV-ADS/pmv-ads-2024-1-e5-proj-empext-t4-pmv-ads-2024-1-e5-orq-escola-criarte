@@ -18,8 +18,9 @@ const loginScreenStyles = StyleSheet.create({
   logo: {
     width: 200,
     height: 200,
-    marginBottom: 75,
-    marginTop: 50,
+    marginBottom: 5,
+    marginTop: 10
+    ,
   },
 
   buttonConteiner: {
