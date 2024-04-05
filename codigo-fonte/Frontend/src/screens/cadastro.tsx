@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, SafeAreaView, ImageBackground } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, SafeAreaView, ImageBackground, Modal } from 'react-native';
 import { useForm, Controller } from "react-hook-form";
 import styles from '../styles/CadastroScreenStyles';
 import InputComponent from '../components/Input';
 import TermosCheckBox from '../components/Checkbox';
 import ButtonComponent from '../components/Button';
 import { Ionicons } from '@expo/vector-icons';
-import Axios from 'axios'
 import axios from 'axios';
 
 // Define a estrutura dos dados do formulário
@@ -19,12 +18,13 @@ interface FormData {
 
 export default function CadastroScreen() {
     // Inicializa o hook useForm do react-hook-form
-    const { control, handleSubmit, formState: { isValid }, getValues } = useForm<FormData>({ mode: 'onChange' });
+    const { control, handleSubmit, formState: { isValid }, getValues, reset } = useForm<FormData>({ mode: 'onChange' });
 
     // Estados locais para controle de aceitação de termos e validação de senhas
     const [termosAceitos, setTermosAceitos] = useState<boolean>(false);
     const [senhasConferem, setSenhasConferem] = useState<boolean>(true);
     const [senhaVisivel, setSenhaVisivel] = useState<boolean>(false);
+    const [cadastroRealizado, setCadastroRealizado] = useState<boolean>(false);
 
     // Função para lidar com a mudança na aceitação dos termos
     const handleTermosChange = (checked: boolean) => {
@@ -41,30 +41,36 @@ export default function CadastroScreen() {
     const handleFormSubmit = (data: FormData) => {
         console.log(data);
         const headers = {
-            'accept':' */*' ,
-            'Content-Type':' application/json' 
-   
+            'accept': ' */*',
+            'Content-Type': ' application/json'
+
         }
         const dados = {
             "name": data.nome,
             "password": data.senha,
             "email": data.email,
-            "role": 1       
+            "role": 1
         }
-        axios.post ("https://localhost:7290/api/users",dados,{headers}).then((Response
-        )=>
-        {
-            console.log(Response)
-        }
-        ).catch((error)=>
-        {console.log(error)}
-        )
+        axios.post("https://localhost:7290/api/users", dados, { headers })
+            .then((response) => {
+                console.log(response);
+                setCadastroRealizado(true);
+                reset(); // Limpa o formulário após o cadastro
+            })
+            .catch((error) => {
+                console.log(error);
+            });
 
-        
     };
 
+    // Função para fechar o pop-up de cadastro realizado
+    const handleClosePopup = () => {
+        setCadastroRealizado(false);
+    };
+
+
     return (
-        // Estrutura da tela com fundo de imagem e conteúdo centralizado
+
         <ImageBackground source={require('../assets/background.png')} style={styles.background}>
             <SafeAreaView style={styles.container}>
                 <ScrollView style={styles.content}>
@@ -151,7 +157,7 @@ export default function CadastroScreen() {
                                         }}
                                         onChange={onChange}
                                         placeholder='**********'
-                                        placeholderTextColor= '#999999'
+                                        placeholderTextColor='#999999'
                                         value={value}
                                         id="confirmarSenha"
                                         errorMessage={!senhasConferem && "As senhas devem ser iguais!"}
@@ -177,6 +183,21 @@ export default function CadastroScreen() {
                     </View>
                 </ScrollView>
             </SafeAreaView>
+
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={cadastroRealizado}
+                onRequestClose={handleClosePopup}>
+                <View style={styles.popupContainer}>
+                    <View style={styles.popupContent}>
+                        <Text style={styles.popupTitle}>Cadastro Realizado</Text>
+                        <Text style={styles.popupMessage}>Seu cadastro foi realizado com sucesso!</Text>
+                        <ButtonComponent text="Fechar" onPress={handleClosePopup} />
+                    </View>
+                </View>
+            </Modal>
+
         </ImageBackground>
     );
 }
