@@ -6,7 +6,6 @@ import InputComponent from '../components/Input';
 import TermosCheckBox from '../components/Checkbox';
 import ButtonComponent from '../components/Button';
 import { Ionicons } from '@expo/vector-icons';
-import Axios from 'axios'
 import axios from 'axios';
 
 // Define a estrutura dos dados do formulário
@@ -17,7 +16,12 @@ interface FormData {
     confirmarSenha: string;
 }
 
-export default function CadastroScreen() {
+interface Props {
+    navigation: any; // você pode definir um tipo mais específico para navigation se preferir
+}
+
+
+export default function CadastroScreen({ navigation }: Props) {
     // Inicializa o hook useForm do react-hook-form
     const { control, handleSubmit, formState: { isValid }, getValues } = useForm<FormData>({ mode: 'onChange' });
 
@@ -55,9 +59,13 @@ export default function CadastroScreen() {
         )=>
         {
             console.log(Response)
+            navigation.navigate('Login')
         }
         ).catch((error)=>
-        {console.log(error)}
+        {
+            console.log(error)
+            console.log("Erro ao cadastrar")
+        }
         )
 
         

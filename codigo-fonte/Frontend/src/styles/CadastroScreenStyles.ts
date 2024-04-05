@@ -62,7 +62,32 @@ const styles = StyleSheet.create({
   botao: {
     width: '93%',
     marginTop: 30,
-  }
+  },
+
+  popupContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  
+  popupContent: {
+    backgroundColor: 'white',
+    padding: 20,
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+
+  popupTitle: {
+    fontSize: 20,
+    marginBottom: 10,
+  },
+
+  popupMessage: {
+    textAlign: 'center',
+    marginBottom: 10,
+  },
+
 });
 
 export default styles;
