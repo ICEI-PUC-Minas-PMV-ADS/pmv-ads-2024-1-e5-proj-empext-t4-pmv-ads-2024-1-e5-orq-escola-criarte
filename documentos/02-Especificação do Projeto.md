@@ -4,7 +4,7 @@
 
 |    Lucas Oliveira | Informações:                       |                                        |
 |--------------------|------------------------------------|----------------------------------------|
-|<img <img src="img/lucas oliveira.jpg" width = 250>| **Idade:** 48 anos <br> **Ocupação:** Professor de Música|**Aplicativos:**<br><ul>● Instagram <br>● Linkedin <br>● Telegram<br>● WhatsApp <br></ul>|
+|<img src="img/lucas oliveira.jpg" width = 250>| **Idade:** 48 anos <br> **Ocupação:** Professor de Música|**Aplicativos:**<br><ul>● Instagram <br>● Linkedin <br>● Telegram<br>● WhatsApp <br></ul>|
 |**Motivações:**<br><ul>● Divulgar suas aulas de música de modo atraente, didático e bem explicativo.<br><br>● Conquistar o interesse dos seus alunos e pessoas interessadas em aprender<br>● Explicar seu trabalho com a comunidade<br></ul>|**Frustrações:**<br><ul>● Tenho dificuldades para atrair novos alunos e patrocinadores; <br><br>● Gasto muito tempo para explicar sobre a metodologia que aplico nas aulas de música com meus alunos de todas as idades.<br>● Tenho dificuldades para adquirir financiamento porque as pessoas desconfiam ou duvidam da importância do meu trabalho.<br></ul>|**Hobbies/Histórias:**<br><ul>●Estou ansioso para formar muitos grupos de música de todas as idades e realizar várias apresentações.<br>●  Quero ajudar na educação de jovens e crianças e incentivar a inclusão de pessoas de todas as idades no universo da música.<br>● Gosto de fazer novas amizades e praticar esportes ao ar livre<br></ul>|
 
 
