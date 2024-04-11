@@ -43,12 +43,22 @@ public class UserService : IUserService
         _userRepository.Update(user);   
     }
 
+    public async Task<List<UserViewModel>> GetAll()
+    {
+        List<Core.Entities.User> users = await _userRepository.GetAll() ??
+            throw new ValidationErrorsException("Nao existem usuários cadastrados");
+
+        List<UserViewModel> viewModels = users.Select(u => new UserViewModel(u)).ToList();
+
+        return viewModels;
+    }
+
     public async Task<UserViewModel> GetById(Guid id)
     {
         Core.Entities.User user = await _userRepository.GetUserById(id) ??
             throw new ValidationErrorsException("Usuário não existe");
 
-        UserViewModel viewModel = new UserViewModel(user.Name, user.Email);
+        UserViewModel viewModel = new(user.Name, user.Email);
 
         return viewModel;
     }
