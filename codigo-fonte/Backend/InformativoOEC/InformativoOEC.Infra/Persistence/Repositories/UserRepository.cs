@@ -21,6 +21,11 @@ public class UserRepository : IUserRepository
         return await _context.Users.AnyAsync(u => u.Email.Equals(email));
     }
 
+    public async Task<List<User>> GetAll()
+    {
+        return await _context.Users.ToListAsync();
+    }
+
     public async Task<User> GetUserByEmailAndPasswordAsync(string email, string passwordHash)
     {
         User? user = await _context.Users.AsNoTracking().SingleOrDefaultAsync(u => u.Email == email && u.Password == passwordHash);

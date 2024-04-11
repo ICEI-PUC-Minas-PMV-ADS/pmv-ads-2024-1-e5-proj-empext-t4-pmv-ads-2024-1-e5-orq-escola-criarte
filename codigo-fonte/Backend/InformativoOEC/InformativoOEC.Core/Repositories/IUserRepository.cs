@@ -9,4 +9,5 @@ public interface IUserRepository
     Task<bool> ExistsUserWithEmail(string email);
     Task<User> GetUserByEmailAndPasswordAsync(string email, string passwordHash);
     Task<User> GetUserById(Guid id);
+    Task<List<User>> GetAll();
 }

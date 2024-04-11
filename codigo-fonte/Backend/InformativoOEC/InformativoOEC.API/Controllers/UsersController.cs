@@ -42,4 +42,13 @@ public class UsersController : ControllerBase
 
         return NoContent();
     }
+
+    [HttpGet]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> GetAll()
+    {
+        var result = await _userService.GetAll();
+
+        return Ok(result);
+    }
 }
