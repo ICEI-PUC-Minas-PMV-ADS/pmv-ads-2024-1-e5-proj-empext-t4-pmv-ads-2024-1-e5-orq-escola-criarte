@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, SafeAreaView, ImageBackground, Modal } from 'react-native';
+import { View, Text, Image, TouchableOpacity, ScrollView, SafeAreaView, ImageBackground, Modal } from 'react-native';
 import { useForm, Controller } from "react-hook-form";
 import styles from '../styles/CadastroScreenStyles';
 import InputComponent from '../components/Input';
@@ -7,6 +7,9 @@ import TermosCheckBox from '../components/Checkbox';
 import ButtonComponent from '../components/Button';
 import { Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
+import Title from '../components/Title';
+import ImageCheck from '../assets/icon-check.png'
+import ImageClose from '../assets/icon-close.png'
 
 // Define a estrutura dos dados do formulário
 interface FormData {
@@ -30,6 +33,12 @@ export default function CadastroScreen({ navigation }: Props) {
     const [senhasConferem, setSenhasConferem] = useState<boolean>(true);
     const [senhaVisivel, setSenhaVisivel] = useState<boolean>(false);
     const [cadastroRealizado, setCadastroRealizado] = useState<boolean>(false);
+    const [validateInput, setValidateInput] = useState({
+        case: false,
+        number: false,
+        length: false,
+        special: false,
+    })
 
     // Função para lidar com a mudança na aceitação dos termos
     const handleTermosChange = (checked: boolean) => {
@@ -74,6 +83,20 @@ export default function CadastroScreen({ navigation }: Props) {
     const handleClosePopup = () => {
         setCadastroRealizado(false);
     };
+
+    const secureText = (password: string) => {
+        const regexUppercase = RegExp(/^(?=.*[A-Z]).+$/)
+        const regexSpecial = RegExp(/^(?=.*\W).+$/)
+        const regexNumber = RegExp (/^(?=.*[0-9]).+$/)
+        const length = password.length >= 8
+    
+        setValidateInput({
+            case: regexUppercase.test(password),
+            number: regexNumber.test(password),
+            special: regexSpecial.test(password),
+            length
+        })
+    }
 
 
     return (
@@ -136,6 +159,9 @@ export default function CadastroScreen({ navigation }: Props) {
                                             secureTextEntry={!senhaVisivel}
                                             onBlur={onBlur}
                                             onChange={onChange}
+                                            onChangeText={(password) => {
+                                                secureText(password)
+                                            }}
                                             placeholder='**********'
                                             value={value}
                                             id="senha"
@@ -175,15 +201,37 @@ export default function CadastroScreen({ navigation }: Props) {
                                 defaultValue=""
                             />
 
+                            <View>
+                                <Title title='Sua senha deve ter:' />
+
+                                <View style={styles.requisitos}>
+                                    <Image style={styles.checkLogo} source={validateInput.length ? ImageCheck : ImageClose} />
+                                    <Text style={styles.text}> 8 Caracteres</Text>
+                                </View>
+                                <View style={styles.requisitos}>
+                                    <Image style={styles.checkLogo} source={validateInput.number ? ImageCheck : ImageClose} />
+                                    <Text style={styles.text}> Pelo menos um número</Text>
+                                </View>
+                                <View style={styles.requisitos}>
+                                    <Image style={styles.checkLogo} source={validateInput.special ? ImageCheck : ImageClose} />
+                                    <Text style={styles.text}> Pelo menos um caractere especial</Text>
+                                </View>
+                                <View style={styles.requisitos}>
+                                    <Image style={styles.checkLogo} source={validateInput.case ? ImageCheck : ImageClose} />
+                                    <Text style={styles.text}> Pelo menos uma letra maiúscula</Text>
+                                </View>
+
+                            </View>
+
                             {/* Caixa de seleção para aceitar os termos */}
-                            <TermosCheckBox checked={termosAceitos} onValueChange={handleTermosChange} />
+                            <TermosCheckBox style={styles.checkbox} checked={termosAceitos} onValueChange={handleTermosChange} />
                         </View>
 
                         {/* Botão para concluir o cadastro */}
                         <View style={styles.botao}>
                             <ButtonComponent
                                 onPress={handleSubmit(handleFormSubmit)}
-                                disabled={!termosAceitos || !isValid || !senhasConferem}
+                                disabled={!termosAceitos || !isValid || !senhasConferem || !validateInput.case || !validateInput.length || !validateInput.number || !validateInput.special}
                                 text="Concluir Cadastro"
                             />
                         </View>

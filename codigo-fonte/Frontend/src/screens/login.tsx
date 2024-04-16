@@ -7,7 +7,6 @@ import ButtonComponent from '../components/Button';
 import { Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
 import loginScreenStyles from '../styles/LoginScreenStyles';
-import { useNavigation } from '@react-navigation/native';
 
 interface FormData {
     email: string;
@@ -25,37 +24,35 @@ export default function CadastroScreen({ navigation }: Props) {
     const handleFormSubmit = (data: FormData) => {
         console.log(data);
         const headers = {
-            'accept':' */*' ,
-            'Content-Type':' application/json' 
-   
+            'accept': ' */*',
+            'Content-Type': ' application/json'
+
         }
         const dados = {
             "email": data.email,
-            "password": data.senha    
+            "password": data.senha
         }
-        axios.post ("https://localhost:7290/api/account/login",dados,{headers}).then((Response)=>
-        {
+        axios.post("https://localhost:7290/api/account/login", dados, { headers }).then((Response) => {
             console.log(Response)
             console.log("voce está logado")
             navigation.navigate('Routes')
         }
-        ).catch((error)=>
-        {   
+        ).catch((error) => {
             console.log(error)
             console.log("usuário e/ou senha incorretos!")
         }
         )
 
-        
+
     };
 
     return (
         <ImageBackground source={require('../assets/background.png')} style={styles.background}>
             <SafeAreaView style={styles.container}>
-                <ScrollView style={styles.content}>
+                <ScrollView style={styles.content} keyboardShouldPersistTaps="handled">
                     <View style={styles.centerContent}>
                         <View style={styles.header}>
-                        <Image style={loginScreenStyles.logo} source={require('../assets/logo.png')} />
+                            <Image style={loginScreenStyles.logo} source={require('../assets/logo.png')} />
                         </View>
 
                         <View style={styles.formulario}>
@@ -101,24 +98,24 @@ export default function CadastroScreen({ navigation }: Props) {
 
                             <View >
                                 <ButtonComponent
-                                    onPress={handleSubmit(handleFormSubmit)} 
-                                    mode="contained" 
+                                    onPress={handleSubmit(handleFormSubmit)}
+                                    mode="contained"
                                     text="Entrar"
                                 />
-                                 <ButtonComponent
-                                    onPress={handleSubmit(handleFormSubmit)}                                
+                                <ButtonComponent
+                                    onPress={handleSubmit(handleFormSubmit)}
                                     text="Esqueci minha senha"
                                     mode='text'
                                 />
                             </View>
                         </View>
 
-                        <View style={styles.botao}>
-                            <ButtonComponent
-                                onPress={() => navigation.navigate('Cadastro')}                                
-                                text="Cadastrar"
-                            />
-                        </View>
+                    </View>
+                    <View style={styles.botaoCadastro}>
+                        <ButtonComponent
+                            onPress={() => navigation.navigate('Cadastro')}
+                            text="Cadastrar"
+                        />
                     </View>
                 </ScrollView>
             </SafeAreaView>
