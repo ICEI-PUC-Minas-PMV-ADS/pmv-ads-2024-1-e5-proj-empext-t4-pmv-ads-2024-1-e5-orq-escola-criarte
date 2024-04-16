@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, SafeAreaView, ImageBackground } from 'react-native';
+import { View, Text, Image, TouchableOpacity, ScrollView, SafeAreaView, ImageBackground, Modal } from 'react-native';
 import { useForm, Controller } from "react-hook-form";
 import styles from '../styles/CadastroScreenStyles';
 import InputComponent from '../components/Input';
@@ -7,6 +7,9 @@ import TermosCheckBox from '../components/Checkbox';
 import ButtonComponent from '../components/Button';
 import { Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
+import Title from '../components/Title';
+import ImageCheck from '../assets/icon-check.png'
+import ImageClose from '../assets/icon-close.png'
 
 // Define a estrutura dos dados do formulário
 interface FormData {
@@ -23,12 +26,19 @@ interface Props {
 
 export default function CadastroScreen({ navigation }: Props) {
     // Inicializa o hook useForm do react-hook-form
-    const { control, handleSubmit, formState: { isValid }, getValues } = useForm<FormData>({ mode: 'onChange' });
+    const { control, handleSubmit, formState: { isValid }, getValues, reset } = useForm<FormData>({ mode: 'onChange' });
 
     // Estados locais para controle de aceitação de termos e validação de senhas
     const [termosAceitos, setTermosAceitos] = useState<boolean>(false);
     const [senhasConferem, setSenhasConferem] = useState<boolean>(true);
     const [senhaVisivel, setSenhaVisivel] = useState<boolean>(false);
+    const [cadastroRealizado, setCadastroRealizado] = useState<boolean>(false);
+    const [validateInput, setValidateInput] = useState({
+        case: false,
+        number: false,
+        length: false,
+        special: false,
+    })
 
     // Função para lidar com a mudança na aceitação dos termos
     const handleTermosChange = (checked: boolean) => {
@@ -45,34 +55,52 @@ export default function CadastroScreen({ navigation }: Props) {
     const handleFormSubmit = (data: FormData) => {
         console.log(data);
         const headers = {
-            'accept':' */*' ,
-            'Content-Type':' application/json' 
-   
+            'accept': ' */*',
+            'Content-Type': ' application/json'
+
         }
         const dados = {
             "name": data.nome,
             "password": data.senha,
             "email": data.email,
-            "role": 1       
+            "role": 1
         }
-        axios.post ("https://localhost:7290/api/users",dados,{headers}).then((Response
-        )=>
-        {
-            console.log(Response)
-            navigation.navigate('Login')
-        }
-        ).catch((error)=>
-        {
-            console.log(error)
-            console.log("Erro ao cadastrar")
-        }
-        )
+        axios.post("https://localhost:7290/api/users", dados, { headers })
+            .then((response) => {
+                console.log(response);
+                setCadastroRealizado(true);
+                reset(); // Limpa o formulário após o cadastro
+                navigation.navigate('Login')
+            })
+            .catch((error) => {
+                console.log(error);
+                console.log("Erro ao cadastrar")
+            });
 
-        
     };
 
+    // Função para fechar o pop-up de cadastro realizado
+    const handleClosePopup = () => {
+        setCadastroRealizado(false);
+    };
+
+    const secureText = (password: string) => {
+        const regexUppercase = RegExp(/^(?=.*[A-Z]).+$/)
+        const regexSpecial = RegExp(/^(?=.*\W).+$/)
+        const regexNumber = RegExp (/^(?=.*[0-9]).+$/)
+        const length = password.length >= 8
+    
+        setValidateInput({
+            case: regexUppercase.test(password),
+            number: regexNumber.test(password),
+            special: regexSpecial.test(password),
+            length
+        })
+    }
+
+
     return (
-        // Estrutura da tela com fundo de imagem e conteúdo centralizado
+
         <ImageBackground source={require('../assets/background.png')} style={styles.background}>
             <SafeAreaView style={styles.container}>
                 <ScrollView style={styles.content}>
@@ -131,6 +159,9 @@ export default function CadastroScreen({ navigation }: Props) {
                                             secureTextEntry={!senhaVisivel}
                                             onBlur={onBlur}
                                             onChange={onChange}
+                                            onChangeText={(password) => {
+                                                secureText(password)
+                                            }}
                                             placeholder='**********'
                                             value={value}
                                             id="senha"
@@ -159,7 +190,7 @@ export default function CadastroScreen({ navigation }: Props) {
                                         }}
                                         onChange={onChange}
                                         placeholder='**********'
-                                        placeholderTextColor= '#999999'
+                                        placeholderTextColor='#999999'
                                         value={value}
                                         id="confirmarSenha"
                                         errorMessage={!senhasConferem && "As senhas devem ser iguais!"}
@@ -170,21 +201,58 @@ export default function CadastroScreen({ navigation }: Props) {
                                 defaultValue=""
                             />
 
+                            <View>
+                                <Title title='Sua senha deve ter:' />
+
+                                <View style={styles.requisitos}>
+                                    <Image style={styles.checkLogo} source={validateInput.length ? ImageCheck : ImageClose} />
+                                    <Text style={styles.text}> 8 Caracteres</Text>
+                                </View>
+                                <View style={styles.requisitos}>
+                                    <Image style={styles.checkLogo} source={validateInput.number ? ImageCheck : ImageClose} />
+                                    <Text style={styles.text}> Pelo menos um número</Text>
+                                </View>
+                                <View style={styles.requisitos}>
+                                    <Image style={styles.checkLogo} source={validateInput.special ? ImageCheck : ImageClose} />
+                                    <Text style={styles.text}> Pelo menos um caractere especial</Text>
+                                </View>
+                                <View style={styles.requisitos}>
+                                    <Image style={styles.checkLogo} source={validateInput.case ? ImageCheck : ImageClose} />
+                                    <Text style={styles.text}> Pelo menos uma letra maiúscula</Text>
+                                </View>
+
+                            </View>
+
                             {/* Caixa de seleção para aceitar os termos */}
-                            <TermosCheckBox checked={termosAceitos} onValueChange={handleTermosChange} />
+                            <TermosCheckBox style={styles.checkbox} checked={termosAceitos} onValueChange={handleTermosChange} />
                         </View>
 
                         {/* Botão para concluir o cadastro */}
                         <View style={styles.botao}>
                             <ButtonComponent
                                 onPress={handleSubmit(handleFormSubmit)}
-                                disabled={!termosAceitos || !isValid || !senhasConferem}
+                                disabled={!termosAceitos || !isValid || !senhasConferem || !validateInput.case || !validateInput.length || !validateInput.number || !validateInput.special}
                                 text="Concluir Cadastro"
                             />
                         </View>
                     </View>
                 </ScrollView>
             </SafeAreaView>
+
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={cadastroRealizado}
+                onRequestClose={handleClosePopup}>
+                <View style={styles.popupContainer}>
+                    <View style={styles.popupContent}>
+                        <Text style={styles.popupTitle}>Cadastro Realizado</Text>
+                        <Text style={styles.popupMessage}>Seu cadastro foi realizado com sucesso!</Text>
+                        <ButtonComponent text="Fechar" onPress={handleClosePopup} />
+                    </View>
+                </View>
+            </Modal>
+
         </ImageBackground>
     );
 }

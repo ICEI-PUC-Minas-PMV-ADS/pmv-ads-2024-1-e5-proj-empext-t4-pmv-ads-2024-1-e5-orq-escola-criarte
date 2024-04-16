@@ -11,12 +11,12 @@ interface InputProps {
   onChangeText?: (value: string) => void;
   onBlur?: () => void;
   secureTextEntry?: boolean;
-  errorMessage?: string  | boolean;
+  errorMessage?: string | boolean;
   placeholder?: string;
   editable?: boolean;
   style?: object;
   placeholderTextColor?: string;
-  
+
 }
 
 export default function InputComponent({
@@ -43,7 +43,10 @@ export default function InputComponent({
         style={[inputStyles.input, style]}
         placeholder={placeholder}
         placeholderTextColor={'#999999'}
-        onChangeText={onChange}
+        onChangeText={(text) => {
+          onChange && onChange(text);
+          onChangeText && onChangeText(text);
+        }}
         onBlur={onBlur}
         value={value}
         editable={editable}

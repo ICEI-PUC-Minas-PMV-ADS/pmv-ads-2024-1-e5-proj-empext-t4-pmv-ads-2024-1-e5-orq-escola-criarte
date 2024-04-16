@@ -59,9 +59,36 @@ const styles = StyleSheet.create({
     
   },
 
+  requisitos: {
+    marginTop: 4,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  text: {
+    color: '#212121',
+  },
+
+  checkLogo: {
+    width: 10,
+    height: 10,
+  },
+
   botao: {
-    width: '93%',
-    marginTop: 30,
+    width: '85%',
+    alignSelf: 'center',
+    marginTop: 50,
+  },
+
+  checkbox: {
+    marginTop: 25,
+  },
+
+  botaoCadastro: {
+    width: '85%',
+    alignSelf: 'center',
+    marginTop: 140,
+    position: 'relative'
   },
 
   popupContainer: {

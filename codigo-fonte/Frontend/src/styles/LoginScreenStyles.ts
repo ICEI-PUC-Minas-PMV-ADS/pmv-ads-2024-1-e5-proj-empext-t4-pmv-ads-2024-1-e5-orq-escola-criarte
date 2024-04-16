@@ -9,18 +9,11 @@ const loginScreenStyles = StyleSheet.create({
     justifyContent: "center",
   },
 
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    paddingHorizontal: 20,
-  },
-
   logo: {
     width: 200,
     height: 200,
     marginBottom: 5,
-    marginTop: 10
-    ,
+    marginTop: 10,
   },
 
   buttonConteiner: {
