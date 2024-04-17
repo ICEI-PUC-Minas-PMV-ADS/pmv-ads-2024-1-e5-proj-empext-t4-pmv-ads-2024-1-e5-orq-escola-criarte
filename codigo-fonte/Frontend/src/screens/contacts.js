@@ -2,7 +2,7 @@ import React from "react";
 import { View, ImageBackground } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import loginScreenStyles from '../styles/LoginScreenStyles';
-import { Avatar, Button, Card, Text, TouchableRipple, IconButton  } from 'react-native-paper';
+import { Avatar, Card, IconButton  } from 'react-native-paper';
 
 const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
 

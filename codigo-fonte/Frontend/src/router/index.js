@@ -31,7 +31,7 @@ function Routes() {
         name="Events"
         component={EventsScreen}
         options={{
-          tabBarLabel: 'Agenda de Eventos',
+          tabBarLabel: 'Eventos',
           tabBarIcon: ({ color, size }) => <Icon name="calendar" color={color} size={size} />,
           header: () => <CustomHeader />,
         }}
@@ -49,7 +49,7 @@ function Routes() {
         name="Contacts"
         component={ContactsScreen}
         options={{
-          tabBarLabel: 'Contacts',
+          tabBarLabel: 'Contato',
           tabBarIcon: ({ color, size }) => <Icon name="phone" color={color} size={size} />, // Corrigido para "home"
           header: () => <CustomHeader />,
         }}

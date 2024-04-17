@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, SafeAreaView, ImageBackground, Image } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, SafeAreaView, ImageBackground, Image, Modal, Button } from 'react-native';
 import { useForm, Controller } from "react-hook-form";
+import loginScreenStyles from '../styles/LoginScreenStyles';
 import styles from '../styles/CadastroScreenStyles';
 import InputComponent from '../components/Input';
 import ButtonComponent from '../components/Button';
 import { Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
-import loginScreenStyles from '../styles/LoginScreenStyles';
+
 
 interface FormData {
     email: string;
@@ -20,6 +21,7 @@ interface Props {
 export default function CadastroScreen({ navigation }: Props) {
     const { control, handleSubmit, formState: { isValid }, getValues } = useForm<FormData>({ mode: 'onChange' });
     const [senhaVisivel, setSenhaVisivel] = useState<boolean>(false);
+    const [errorModalVisible, setErrorModalVisible] = useState<boolean>(false);
 
     const handleFormSubmit = (data: FormData) => {
         console.log(data);
@@ -40,6 +42,7 @@ export default function CadastroScreen({ navigation }: Props) {
         ).catch((error) => {
             console.log(error)
             console.log("usuário e/ou senha incorretos!")
+            setErrorModalVisible(true);
         }
         )
 
@@ -119,6 +122,27 @@ export default function CadastroScreen({ navigation }: Props) {
                     </View>
                 </ScrollView>
             </SafeAreaView>
+
+            {/* Modal de Erro */}
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={errorModalVisible}
+                onRequestClose={() => {
+                    setErrorModalVisible(false);
+                }}
+
+            >
+                <View style={loginScreenStyles.errorModalContainer}>
+                    <View style={loginScreenStyles.errorModalContent}>
+                        <Text style={loginScreenStyles.errorModalText}>Usuário e/ou senha incorretos!</Text>
+                        <TouchableOpacity onPress={() => setErrorModalVisible(false)} style={loginScreenStyles.errorModalButton}>
+                            <Text style={loginScreenStyles.errorModalButtonText}>OK</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </Modal>
+
         </ImageBackground>
     );
 }
