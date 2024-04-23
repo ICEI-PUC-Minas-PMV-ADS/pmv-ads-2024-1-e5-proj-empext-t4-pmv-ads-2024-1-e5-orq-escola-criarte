@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, SafeAreaView, ImageBackground, Image, Modal, Button } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, SafeAreaView, ImageBackground, Image, Modal, ActivityIndicator } from 'react-native';
 import { useForm, Controller } from "react-hook-form";
 import loginScreenStyles from '../styles/LoginScreenStyles';
 import styles from '../styles/CadastroScreenStyles';
 import InputComponent from '../components/Input';
 import ButtonComponent from '../components/Button';
 import { Ionicons } from '@expo/vector-icons';
+import { saveToken } from '../config/authUtils';
 import axios from 'axios';
 
 
@@ -23,6 +24,13 @@ export default function CadastroScreen({ navigation }: Props) {
     const [senhaVisivel, setSenhaVisivel] = useState<boolean>(false);
     const [errorModalVisible, setErrorModalVisible] = useState<boolean>(false);
 
+    const handleLogin = async (response: any) => {
+
+        const token = response.data.token;
+
+        await saveToken(token);
+    };
+
     const handleFormSubmit = (data: FormData) => {
         console.log(data);
         const headers = {
@@ -36,6 +44,7 @@ export default function CadastroScreen({ navigation }: Props) {
         }
         axios.post("https://localhost:7290/api/account/login", dados, { headers }).then((Response) => {
             console.log(Response)
+            handleLogin(Response);
             console.log("voce está logado")
             navigation.navigate('Routes')
         }
@@ -100,6 +109,16 @@ export default function CadastroScreen({ navigation }: Props) {
                             />
 
                             <View >
+                                <ActivityIndicator
+                                    size="large"
+                                    color="#0000ff" // Defina a cor aqui
+                                    animating={true}
+                                    style={{
+                                        alignSelf: 'center',
+                                        justifyContent: 'center',
+                                        position: 'absolute',
+                                    }}
+                                />
                                 <ButtonComponent
                                     onPress={handleSubmit(handleFormSubmit)}
                                     mode="contained"

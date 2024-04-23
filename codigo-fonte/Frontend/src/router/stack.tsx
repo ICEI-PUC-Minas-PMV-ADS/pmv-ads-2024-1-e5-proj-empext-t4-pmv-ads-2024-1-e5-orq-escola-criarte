@@ -5,6 +5,7 @@ import {NavigationContainer} from '@react-navigation/native'
 import Routes from './index'
 import LoginScreen from '../screens/login';
 import CadastroScreen from '../screens/cadastro'
+import ProfileScreen from '../screens/profile';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,6 +18,7 @@ function MyStack() {
             <Stack.Screen name="Login" component={LoginScreen} />
             <Stack.Screen name="Cadastro" component={CadastroScreen}/>
             <Stack.Screen name="Routes" component={Routes} />
+            <Stack.Screen name="Profile" component={ProfileScreen} />
         </Stack.Navigator>
     </NavigationContainer>
   );
