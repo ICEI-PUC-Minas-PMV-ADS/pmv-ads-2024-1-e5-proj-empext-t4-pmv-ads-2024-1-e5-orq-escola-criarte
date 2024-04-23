@@ -1,5 +1,5 @@
 import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native'
 
 import Routes from './index'
@@ -7,7 +7,16 @@ import LoginScreen from '../screens/login';
 import CadastroScreen from '../screens/cadastro'
 import ProfileScreen from '../screens/profile';
 
-const Stack = createNativeStackNavigator();
+type RootStackParamList = {
+  Login: undefined;
+  Cadastro: undefined;
+  Routes: undefined;
+  Profile: undefined;
+};
+
+export type StackTypes = NativeStackNavigationProp<RootStackParamList>
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function MyStack() {
   return (

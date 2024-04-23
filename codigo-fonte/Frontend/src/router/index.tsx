@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View } from 'react-native';
+import { View, Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Appbar, Avatar, Menu } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -8,12 +8,20 @@ import ContactsScreen from '../screens/contacts';
 import EventsScreen from '../screens/events';
 import ProfileScreen from '../screens/profile';
 import { useNavigation } from '@react-navigation/native';
+import { jwtDecode } from 'jwt-decode';
+import { getToken } from '../config/authUtils';
+import { StackTypes } from './stack';
+
+interface UserData {
+  'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name': string;
+}
 
 const Tab = createBottomTabNavigator();
 
 function CustomHeader() {
   const [visible, setVisible] = React.useState(false);
-  const navigation = useNavigation();
+  const [username, setUsername] = React.useState<string>('');
+  const navigation = useNavigation<StackTypes>();
 
   const openMenu = () => setVisible(true);
 
@@ -29,10 +37,31 @@ function CustomHeader() {
     closeMenu();
   };
 
+  React.useEffect(() => {
+    async function fetchUserData() {
+      try {
+        const token = await getToken();
+        if (token) {
+          const decoded = jwtDecode<UserData>(token);
+          setUsername(decoded['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']);
+        } else {
+          console.log('Token é nulo');
+        }
+      } catch (error) {
+        console.error("Erro ao obter os dados do usuário:", error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
   return (
     <Appbar.Header>
-      <Avatar.Image size={40} source={require('../assets/background.png')} />
-      <Appbar.Content title="Title" titleStyle={{ textAlign: 'center' }} />
+      <Image
+        style={{ width: 40, height: 40, borderRadius: 20, marginLeft: 5 }}
+        source={require('../assets/avatar.png')}
+      />
+      <Appbar.Content title={`Olá, ${username}`} titleStyle={{ textAlign: 'center', fontWeight: 'bold', color: '#413267' }} />
       <View>
         <Menu
           visible={visible}
@@ -51,7 +80,7 @@ function Routes() {
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions={{
-        style: { borderTopWidth: 0 },
+        tabBarStyle: { borderTopWidth: 0 },
       }}
     >
       <Tab.Screen
@@ -59,7 +88,7 @@ function Routes() {
         component={EventsScreen}
         options={{
           tabBarLabel: 'Eventos',
-          tabBarIcon: ({ color, size }) => <Icon name="calendar" color={color} size={size} />,
+          tabBarIcon: ({ size }) => <Icon name="calendar" color={"#413267"} size={size} />,
           header: () => <CustomHeader />,
         }}
       />
@@ -67,8 +96,13 @@ function Routes() {
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarLabel: 'Home',
-          tabBarIcon: ({ color, size }) => <Icon name="home" color={color} size={size} />,
+          tabBarLabel: '',
+          tabBarIcon: ({ size }) => (
+            <Image
+              source={require('../assets/logo.png')}
+              style={{ width: 90, height: 90, marginTop: -50 }}
+            />
+          ),
           header: () => <CustomHeader />,
         }}
       />
@@ -77,7 +111,7 @@ function Routes() {
         component={ContactsScreen}
         options={{
           tabBarLabel: 'Contato',
-          tabBarIcon: ({ color, size }) => <Icon name="phone" color={color} size={size} />,
+          tabBarIcon: ({ color, size }) => <Icon name="phone" color={"#413267"} size={size} />,
           header: () => <CustomHeader />,
         }}
       />

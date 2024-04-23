@@ -16,7 +16,7 @@ interface FormData {
 }
 
 interface Props {
-    navigation: any; // você pode definir um tipo mais específico para navigation se preferir
+    navigation: any;
 }
 
 export default function CadastroScreen({ navigation }: Props) {
@@ -111,7 +111,7 @@ export default function CadastroScreen({ navigation }: Props) {
                             <View >
                                 <ActivityIndicator
                                     size="large"
-                                    color="#0000ff" // Defina a cor aqui
+                                    color="#0000ff"
                                     animating={true}
                                     style={{
                                         alignSelf: 'center',
