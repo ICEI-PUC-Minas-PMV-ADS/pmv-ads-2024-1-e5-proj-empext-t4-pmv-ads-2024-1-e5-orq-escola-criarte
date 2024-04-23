@@ -13,10 +13,9 @@ interface InputProps {
   secureTextEntry?: boolean;
   errorMessage?: string | boolean;
   placeholder?: string;
-  editable?: boolean;
+  disabled?: boolean;
   style?: object;
   placeholderTextColor?: string;
-
 }
 
 export default function InputComponent({
@@ -29,7 +28,7 @@ export default function InputComponent({
   secureTextEntry = false,
   errorMessage = '',
   placeholder,
-  editable,
+  disabled = false,
   style,
   placeholderTextColor,
   ...otherProps
@@ -49,7 +48,7 @@ export default function InputComponent({
         }}
         onBlur={onBlur}
         value={value}
-        editable={editable}
+        disabled={disabled}
         {...otherProps}
       />
       {errorMessage && <HelperText type="error">{errorMessage}</HelperText>}

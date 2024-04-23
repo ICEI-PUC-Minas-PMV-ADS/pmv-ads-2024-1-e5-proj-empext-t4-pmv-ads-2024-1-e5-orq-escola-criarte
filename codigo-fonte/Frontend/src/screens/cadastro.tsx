@@ -10,8 +10,6 @@ import axios from 'axios';
 import Title from '../components/Title';
 import ImageCheck from '../assets/icon-check.png'
 import ImageClose from '../assets/icon-close.png'
-
-// Define a estrutura dos dados do formulário
 interface FormData {
     nome: string;
     email: string;
@@ -20,7 +18,7 @@ interface FormData {
 }
 
 interface Props {
-    navigation: any; // você pode definir um tipo mais específico para navigation se preferir
+    navigation: any;
 }
 
 

@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     },
 
     listItemTitle: {
-        color: '#000',
+        color: '#413267',
         fontWeight: 'bold',
         marginBottom: 5,
     },

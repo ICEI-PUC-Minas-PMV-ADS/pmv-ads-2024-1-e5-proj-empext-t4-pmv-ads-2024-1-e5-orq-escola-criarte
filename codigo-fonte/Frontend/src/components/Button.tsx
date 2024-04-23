@@ -7,7 +7,7 @@ interface ButtonProps {
   text: string;
   disabled?: boolean;
   mode?: 'text' | 'outlined' | 'contained';
-  editable?: boolean;
+  readOnly?: boolean;
   style?: object;
 }
 
@@ -16,18 +16,19 @@ export default function ButtonComponent({
   disabled = false, 
   text, 
   mode = 'contained',
-  editable,
+  readOnly = false,
   style,
   ...otherProps
 
 }: ButtonProps) 
 {
+  const handlePress = readOnly ? () => {} : onPress;
 
   return (
     <Button 
       mode={mode} 
       disabled={disabled} 
-      onPress={onPress} 
+      onPress={handlePress} 
       style={[buttonStyles.button, style]}
       {...otherProps}
     >
