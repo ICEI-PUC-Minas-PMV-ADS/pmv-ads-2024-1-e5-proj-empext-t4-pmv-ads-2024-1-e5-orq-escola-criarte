@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, ScrollView, SafeAreaView, ImageBackground, Modal } from 'react-native';
+import { View, Text, Image, Pressable, TouchableOpacity, ScrollView, SafeAreaView, ImageBackground, Modal } from 'react-native';
 import { useForm, Controller } from "react-hook-form";
 import styles from '../styles/CadastroScreenStyles';
 import InputComponent from '../components/Input';
@@ -165,9 +165,9 @@ export default function CadastroScreen({ navigation }: Props) {
                                             id="senha"
 
                                         />
-                                        <TouchableOpacity onPress={() => setSenhaVisivel(!senhaVisivel)}>
-                                            <Ionicons name={senhaVisivel ? 'eye-off' : 'eye'} size={24} color="#413267" style={styles.eyeIcon} />
-                                        </TouchableOpacity>
+                                        <Pressable onPress={() => setSenhaVisivel(!senhaVisivel)}>
+                                            <Ionicons name={senhaVisivel ? 'eye-off' : 'eye'} size={24} style={styles.eyeIcon} />
+                                        </Pressable>
                                     </View>
                                 )}
                                 name="senha"

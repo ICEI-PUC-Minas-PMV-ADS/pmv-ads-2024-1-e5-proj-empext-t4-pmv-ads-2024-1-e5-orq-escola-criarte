@@ -41,6 +41,8 @@ const styles = StyleSheet.create({
   eyeIcon: {
     marginLeft: -35,
     marginBottom: 10,
+    size: 24, 
+    color:"#413267",
   },
 
   titulo: {
