@@ -28,6 +28,7 @@ const Contacts: React.FC = () => {
                             "CEP 31620-170"
                         }
                         left={() => <Avatar.Icon size={75} icon="google-maps" color="#413267" style={{ marginLeft: 10, backgroundColor: 'transparent' }} />}
+                        onPress={() => Linking.openURL('https://maps.app.goo.gl/K74dzfSDNhNNcAeq8')}
                     />
                     <List.Item style={styles.listItem} titleStyle={styles.listItemTitle}
                         title="Email"
@@ -37,7 +38,7 @@ const Contacts: React.FC = () => {
                     />
                     <List.Item style={styles.listItem} titleStyle={styles.listItemTitle}
                         title="Whatsapp"
-                        description="(31) 93458-8718"
+                        description="(31) 3458-8718"
                         left={() => <Avatar.Icon size={75} icon="whatsapp" color="#413267" style={{ marginLeft: 10, backgroundColor: 'transparent' }} />}
                         onPress={() => Linking.openURL('https://wa.me/553134588718')}
                     />

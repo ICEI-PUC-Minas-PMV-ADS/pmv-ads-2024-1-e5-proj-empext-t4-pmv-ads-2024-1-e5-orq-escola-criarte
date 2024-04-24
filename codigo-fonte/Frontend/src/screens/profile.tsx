@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, ImageBackground, ScrollView, SafeAreaView, TextInput } from 'react-native';
+import { View, Text, Image, ScrollView, SafeAreaView, TextInput, Pressable, ImageBackground } from 'react-native';
 import styles from '../styles/ProfileStyles';
 import ButtonComponent from '../components/Button';
+import { Ionicons } from '@expo/vector-icons';
 import { jwtDecode } from 'jwt-decode';
 import { getToken, api } from '../config/authUtils';
+import Title from '../components/Title';
+import ImageCheck from '../assets/icon-check.png'
+import ImageClose from '../assets/icon-close.png'
 
 interface UserData {
   'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name': string;
@@ -20,11 +24,35 @@ interface Props {
 export default function ProfileScreen({ navigation }: Props) {
   const [userData, setUserData] = useState<UserData | null>(null);
   const [isEditing, setIsEditing] = useState(false);
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [senhaVisivel, setSenhaVisivel] = useState<boolean>(false);
   const [updateError, setUpdateError] = useState(null);
   const role = userData ? userData['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] : '';
+  const [validateInput, setValidateInput] = useState({
+    length: false,
+    number: false,
+    special: false,
+    case: false,
+  });
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordsMatch, setPasswordsMatch] = useState(true);
+
+  const secureText = (password: string, confirmPassword: string) => {
+    const regexUppercase = RegExp(/^(?=.*[A-Z]).+$/);
+    const regexSpecial = RegExp(/^(?=.*\W).+$/);
+    const regexNumber = RegExp(/^(?=.*[0-9]).+$/);
+    const length = password.length >= 8;
+
+    setValidateInput({
+      case: regexUppercase.test(password),
+      number: regexNumber.test(password),
+      special: regexSpecial.test(password),
+      length,
+    });
+
+    setPasswordsMatch(password === confirmPassword);
+  };
 
   async function fetchUserData() {
     try {
@@ -47,10 +75,10 @@ export default function ProfileScreen({ navigation }: Props) {
   const handleSubmit = async () => {
     if (!userData) return;
 
-    console.log('Current state:', { name, email });
+    console.log('Current state:', { role });
 
     try {
-      await updateUser(userData['http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid'], name, email);
+      await updateUser(userData['http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid'], email, userData['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'], role);
       setUpdateError(null);
       fetchUserData();
     } catch (error: any) {
@@ -59,29 +87,45 @@ export default function ProfileScreen({ navigation }: Props) {
     }
   };
 
-  async function updateUser(id: string, name: string, email: string) {
-    const url = `https://localhost:7290/api/users/${id}`;
-    const data = { name, email, password, role };
+  async function updateUser(id: string, email: string, name: string, role: string) {
+    const url = `/users/${id}`;
+    const roleValue = role === 'Admin' ? 1 : 2;
+    const data = {
+      name,
+      password,
+      email,
+      role: roleValue
+    };
 
     console.log('Data being sent:', data, id);
 
     try {
       const response = await api.put(url, data);
-      if (response.status === 200) {
+      if (response.status === 204) {
         console.log('Usuario Atualizado com sucesso');
       } else {
-        console.error('falha na atulização:', response.statusText);
         throw new Error('falha na atulização');
       }
-    } catch (error) {
-      throw error;
+    } catch (error: any) {
+      console.error('Error:', error.message);
     }
   }
 
+  const canSave = () => {
+    return (
+      password === confirmPassword &&
+      validateInput.length &&
+      validateInput.number &&
+      validateInput.special &&
+      validateInput.case
+    );
+  };
+
   const handleCancel = () => {
     setIsEditing(false);
-    setName(userData ? userData['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'] : '');
+
     setEmail(userData ? userData['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'] : '');
+
   };
 
   const handleEditProfile = () => {
@@ -89,60 +133,103 @@ export default function ProfileScreen({ navigation }: Props) {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.content}>
-        <View style={styles.centerContent}>
-          <View style={styles.header}>
-            <Text style={styles.title}>Perfil</Text>
-          </View>
-          {userData && (
-            <View style={styles.profileInfo}>
-              <Image source={require('../assets/avatar.png')} style={styles.avatar} />
-              <Text style={styles.label}>Nome:</Text>
-              {isEditing ? (
-                <TextInput
-                  style={styles.input}
-                  defaultValue={userData['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']}
-                  onChangeText={text => setName(text)}
-                />
-              ) : (
-                <Text style={styles.text}>{userData['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']}</Text>
-              )}
-              <Text style={styles.label}>Email:</Text>
-              {isEditing ? (
-                <TextInput
-                  style={styles.input}
-                  defaultValue={userData['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress']}
-                  onChangeText={text => setEmail(text)}
-                />
-              ) : (
-                <Text style={styles.text}>{userData['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress']}</Text>
-              )}
-              <Text style={styles.label}>Senha:</Text>
-              {isEditing ? (
-                <TextInput
-                  style={styles.input}
-                  secureTextEntry
-                  onChangeText={text => setPassword(text)}
-                />
-              ) : null}
+    <ImageBackground source={require('../assets/background.png')} style={styles.background}>
+      <SafeAreaView style={styles.container}>
+        <ScrollView style={styles.content}>
+          <View style={styles.centerContent}>
+            <View style={styles.header}>
+              <Text style={styles.title}>Perfil</Text>
             </View>
-          )}
-          <View style={styles.buttonContainer}>
-            <ButtonComponent text={isEditing ? "Salvar" : "Editar Perfil"} onPress={isEditing ? handleSubmit : handleEditProfile} />
-            {isEditing && (
-              <ButtonComponent text="Cancelar" onPress={handleCancel} />
+            {userData && (
+              <View style={[styles.profileInfo, { alignItems: 'center' }]}>
+                <Image source={require('../assets/avatar.png')} style={styles.avatar} />
+                <Text style={styles.label}>Nome:</Text>
+                <Text style={styles.text}>{userData['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']}</Text>
+                <Text style={styles.label}>Email:</Text>
+                {isEditing ? (
+                  <TextInput
+                    style={styles.input}
+                    defaultValue={userData['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress']}
+                    onChangeText={text => setEmail(text)}
+                  />
+                ) : (
+                  <Text style={styles.text}>{userData['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress']}</Text>
+                )}
+
+                {isEditing ? (
+                  <>
+                    <Text style={styles.label}>Senha:</Text>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', width: '80%' }}>
+                      <TextInput
+                        style={[styles.input, { flex: 1, width: '100%' }]}
+                        secureTextEntry={!senhaVisivel}
+                        onChangeText={(text) => {
+                          setPassword(text);
+                          secureText(text, confirmPassword);
+                        }}
+                      />
+                      <Pressable onPress={() => setSenhaVisivel(!senhaVisivel)}>
+                        <Ionicons name={senhaVisivel ? 'eye-off' : 'eye'} size={24} style={styles.eyeIcon} />
+                      </Pressable>
+                    </View>
+                  </>
+                ) : null}
+
+                {isEditing ? (
+                  <>
+                    <Text style={styles.label}>Confirmar Senha:</Text>
+                    <TextInput
+                      style={styles.input}
+                      secureTextEntry={!senhaVisivel}
+                      onChangeText={(text) => {
+                        setConfirmPassword(text);
+                        secureText(password, text);
+                      }}
+                    />
+                    {!passwordsMatch && <Text style={{ color: 'red' }}>As senhas não conferem.</Text>}
+                    <View>
+                      <Title title='Sua senha deve ter:' />
+
+                      <View style={styles.requisitos}>
+                        <Image style={styles.checkLogo} source={validateInput.length ? ImageCheck : ImageClose} />
+                        <Text style={styles.text}> 8 Caracteres</Text>
+                      </View>
+                      <View style={styles.requisitos}>
+                        <Image style={styles.checkLogo} source={validateInput.number ? ImageCheck : ImageClose} />
+                        <Text style={styles.text}> Pelo menos um número</Text>
+                      </View>
+                      <View style={styles.requisitos}>
+                        <Image style={styles.checkLogo} source={validateInput.special ? ImageCheck : ImageClose} />
+                        <Text style={styles.text}> Pelo menos um caractere especial</Text>
+                      </View>
+                      <View style={styles.requisitos}>
+                        <Image style={styles.checkLogo} source={validateInput.case ? ImageCheck : ImageClose} />
+                        <Text style={styles.text}> Pelo menos uma letra maiúscula</Text>
+                      </View>
+                    </View>
+                  </>
+                ) : null}
+              </View>
+            )}
+            <View style={styles.buttonContainer}>
+              <ButtonComponent
+                style={{ width: '90%', alignSelf: 'center' }}
+                text={isEditing ? "Salvar" : "Editar Perfil"}
+                onPress={isEditing ? handleSubmit : handleEditProfile}
+                disabled={isEditing ? !canSave() : false}
+              />
+              {isEditing && (
+                <ButtonComponent text="Cancelar" onPress={handleCancel} />
+              )}
+            </View>
+            {!isEditing && (
+              <View style={styles.buttonContainer}>
+                <ButtonComponent style={{ width: '80%', alignSelf: 'center' }} text="Sair" onPress={() => navigation.navigate('Home')} />
+              </View>
             )}
           </View>
-          {!isEditing && (
-            <View style={styles.buttonContainer}>
-              <ButtonComponent text="Sair" onPress={() => navigation.navigate('Home')} />
-            </View>
-          )}
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+        </ScrollView>
+      </SafeAreaView>
+    </ImageBackground>
   );
 }
-
-

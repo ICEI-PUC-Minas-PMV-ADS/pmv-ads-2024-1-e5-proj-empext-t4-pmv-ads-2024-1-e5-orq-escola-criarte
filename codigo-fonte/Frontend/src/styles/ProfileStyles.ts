@@ -4,14 +4,14 @@ const styles = StyleSheet.create({
   
   background: {
     flex: 1,
-    resizeMode: "cover",
-    justifyContent: "center",
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
   },
 
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#F5F5F5',
   },
 
   content: {
@@ -24,28 +24,33 @@ const styles = StyleSheet.create({
   },
 
   header: {
+    width: "100%",
     marginBottom: 20,
+    backgroundColor: "#FFF"
   },
 
   title: {
     marginTop: 10,
+    marginBottom: 10,
+    alignSelf: 'center',
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#413267',
   },
 
   profileInfo: {
-    width: '100%',
+    width: '75%',
     marginBottom: 20,
     padding: 20,
     borderRadius: 10,
-    backgroundColor: '#FFF',
+    backgroundColor: 'rgba(255, 255, 255, 0.9)', 
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 10,
     elevation: 3,
   },
+  
 
   avatar: {
     alignSelf: 'center',
@@ -58,7 +63,9 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#413267',
+    marginBottom: 5,
+    marginTop: 5,
   },
 
   text: {
@@ -67,7 +74,7 @@ const styles = StyleSheet.create({
   },
 
   input: {
-    width: '100%',
+    width: '80%',
     height: 40,
     paddingHorizontal: 10,
     marginTop: 5,
@@ -81,6 +88,23 @@ const styles = StyleSheet.create({
   buttonContainer: {
     width: '80%',
     marginBottom: 10,
+  },
+
+  checkLogo: {
+    width: 10,
+    height: 10,
+  },
+
+  requisitos: {
+    marginTop: 4,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  eyeIcon: {
+    marginLeft: -35,
+    marginBottom: 10,
+    color:"#413267",
   },
 
 });

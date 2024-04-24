@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const api = axios.create({
   baseURL: 'https://localhost:7290/api',
+
 });
 
 api.interceptors.request.use(async (config) => {
@@ -10,17 +11,19 @@ api.interceptors.request.use(async (config) => {
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
+  config.headers['Content-Type'] = 'application/json';
+  config.headers['Accept'] = '*/*';
   return config;
 });
 
 const saveToken = async (token) => {
-    try {
-      await AsyncStorage.setItem('token', token);
-      console.log('Token salvo com sucesso.');
-    } catch (error) {
-      console.error('Erro ao salvar o token do usuário:', error);
-    }
-  };
+  try {
+    await AsyncStorage.setItem('token', token);
+    console.log('Token salvo com sucesso.');
+  } catch (error) {
+    console.error('Erro ao salvar o token do usuário:', error);
+  }
+};
 
 const getToken = async () => {
   try {
