@@ -154,7 +154,7 @@ export default function CadastroScreen({ navigation }: Props) {
             >
                 <View style={loginScreenStyles.errorModalContainer}>
                     <View style={loginScreenStyles.errorModalContent}>
-                        <Text style={loginScreenStyles.errorModalText}>Usuário e/ou senha incorretos!</Text>
+                        <Text style={loginScreenStyles.errorModalText}>Email e/ou senha incorretos!</Text>
                         <TouchableOpacity onPress={() => setErrorModalVisible(false)} style={loginScreenStyles.errorModalButton}>
                             <Text style={loginScreenStyles.errorModalButtonText}>OK</Text>
                         </TouchableOpacity>
