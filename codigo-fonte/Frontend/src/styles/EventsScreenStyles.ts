@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 10,
         right: 10,
+        zIndex: 1,
     },
 
     createEventButtonText: {
