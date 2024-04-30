@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using System.ComponentModel.DataAnnotations;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -40,10 +41,10 @@ public class AuthService : IAuthService
 
         var claims = new List<Claim>
         {
-            new Claim(ClaimTypes.Name, user.Name),
-            new Claim(ClaimTypes.Email, user.Email),
-            new Claim(ClaimTypes.Role, user.Role.ToString()),
-            new Claim(ClaimTypes.PrimarySid, user.Id.ToString())
+            new Claim("user_name", user.Name),
+            new Claim("email", user.Email),
+            new Claim("role", user.Role.ToString()),
+            new Claim("user_id", user.Id.ToString())
         };
 
         var token = new JwtSecurityToken(
