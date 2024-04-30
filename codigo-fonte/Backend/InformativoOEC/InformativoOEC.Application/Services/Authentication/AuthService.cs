@@ -31,9 +31,9 @@ public class AuthService : IAuthService
 
     public string GenerateJwtToken(Core.Entities.User user)
     {
-        var issuer = _configuration["Jwt:Issuer"];
-        var audience = _configuration["Jwt:Audience"];
-        var key = _configuration["Jwt:Key"];
+        var issuer = Environment.GetEnvironmentVariable("Issuer");
+        var audience = Environment.GetEnvironmentVariable("Audience");
+        var key = Environment.GetEnvironmentVariable("Key");
 
         var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
         var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
