@@ -11,12 +11,11 @@ interface InputProps {
   onChangeText?: (value: string) => void;
   onBlur?: () => void;
   secureTextEntry?: boolean;
-  errorMessage?: string  | boolean;
+  errorMessage?: string | boolean;
   placeholder?: string;
-  editable?: boolean;
+  disabled?: boolean;
   style?: object;
   placeholderTextColor?: string;
-  
 }
 
 export default function InputComponent({
@@ -29,7 +28,7 @@ export default function InputComponent({
   secureTextEntry = false,
   errorMessage = '',
   placeholder,
-  editable,
+  disabled = false,
   style,
   placeholderTextColor,
   ...otherProps
@@ -43,10 +42,13 @@ export default function InputComponent({
         style={[inputStyles.input, style]}
         placeholder={placeholder}
         placeholderTextColor={'#999999'}
-        onChangeText={onChange}
+        onChangeText={(text) => {
+          onChange && onChange(text);
+          onChangeText && onChangeText(text);
+        }}
         onBlur={onBlur}
         value={value}
-        editable={editable}
+        disabled={disabled}
         {...otherProps}
       />
       {errorMessage && <HelperText type="error">{errorMessage}</HelperText>}

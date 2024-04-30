@@ -9,18 +9,11 @@ const loginScreenStyles = StyleSheet.create({
     justifyContent: "center",
   },
 
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    paddingHorizontal: 20,
-  },
-
   logo: {
     width: 200,
     height: 200,
     marginBottom: 5,
-    marginTop: 10
-    ,
+    marginTop: 10,
   },
 
   buttonConteiner: {
@@ -31,6 +24,40 @@ const loginScreenStyles = StyleSheet.create({
   botaoCadastrar: {
     width: '80%',
   },
+
+  errorModalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+
+  errorModalContent: {
+    backgroundColor: '#fff',
+    padding: 20,
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+
+  errorModalText: {
+    fontSize: 18,
+    marginBottom: 10,
+  },
+
+  errorModalButton: {
+    marginTop: 10,
+    backgroundColor: '#6750a4',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 5,
+  },
+  errorModalButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+
+
 });
 
 export default loginScreenStyles;

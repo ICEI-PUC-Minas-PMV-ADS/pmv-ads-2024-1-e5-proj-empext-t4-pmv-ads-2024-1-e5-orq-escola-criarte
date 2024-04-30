@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, SafeAreaView, ImageBackground, Image } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, SafeAreaView, ImageBackground, Image, Modal, ActivityIndicator } from 'react-native';
 import { useForm, Controller } from "react-hook-form";
+import loginScreenStyles from '../styles/LoginScreenStyles';
 import styles from '../styles/CadastroScreenStyles';
 import InputComponent from '../components/Input';
 import ButtonComponent from '../components/Button';
 import { Ionicons } from '@expo/vector-icons';
+import { saveToken } from '../config/authUtils';
 import axios from 'axios';
-import loginScreenStyles from '../styles/LoginScreenStyles';
-import { useNavigation } from '@react-navigation/native';
+
 
 interface FormData {
     email: string;
@@ -15,47 +16,55 @@ interface FormData {
 }
 
 interface Props {
-    navigation: any; // você pode definir um tipo mais específico para navigation se preferir
+    navigation: any;
 }
 
 export default function CadastroScreen({ navigation }: Props) {
     const { control, handleSubmit, formState: { isValid }, getValues } = useForm<FormData>({ mode: 'onChange' });
     const [senhaVisivel, setSenhaVisivel] = useState<boolean>(false);
+    const [errorModalVisible, setErrorModalVisible] = useState<boolean>(false);
+
+    const handleLogin = async (response: any) => {
+
+        const token = response.data.token;
+
+        await saveToken(token);
+    };
 
     const handleFormSubmit = (data: FormData) => {
         console.log(data);
         const headers = {
-            'accept':' */*' ,
-            'Content-Type':' application/json' 
-   
+            'accept': ' */*',
+            'Content-Type': ' application/json'
+
         }
         const dados = {
             "email": data.email,
-            "password": data.senha    
+            "password": data.senha
         }
-        axios.post ("https://localhost:7290/api/account/login",dados,{headers}).then((Response)=>
-        {
+        axios.post("https://localhost:7290/api/account/login", dados, { headers }).then((Response) => {
             console.log(Response)
+            handleLogin(Response);
             console.log("voce está logado")
             navigation.navigate('Routes')
         }
-        ).catch((error)=>
-        {   
+        ).catch((error) => {
             console.log(error)
             console.log("usuário e/ou senha incorretos!")
+            setErrorModalVisible(true);
         }
         )
 
-        
+
     };
 
     return (
         <ImageBackground source={require('../assets/background.png')} style={styles.background}>
             <SafeAreaView style={styles.container}>
-                <ScrollView style={styles.content}>
+                <ScrollView style={styles.content} keyboardShouldPersistTaps="handled">
                     <View style={styles.centerContent}>
                         <View style={styles.header}>
-                        <Image style={loginScreenStyles.logo} source={require('../assets/logo.png')} />
+                            <Image style={loginScreenStyles.logo} source={require('../assets/logo.png')} />
                         </View>
 
                         <View style={styles.formulario}>
@@ -100,28 +109,59 @@ export default function CadastroScreen({ navigation }: Props) {
                             />
 
                             <View >
+                                <ActivityIndicator
+                                    size="large"
+                                    color="#0000ff"
+                                    animating={true}
+                                    style={{
+                                        alignSelf: 'center',
+                                        justifyContent: 'center',
+                                        position: 'absolute',
+                                    }}
+                                />
                                 <ButtonComponent
-                                    onPress={handleSubmit(handleFormSubmit)} 
-                                    mode="contained" 
+                                    onPress={handleSubmit(handleFormSubmit)}
+                                    mode="contained"
                                     text="Entrar"
                                 />
-                                 <ButtonComponent
-                                    onPress={handleSubmit(handleFormSubmit)}                                
+                                <ButtonComponent
+                                    onPress={handleSubmit(handleFormSubmit)}
                                     text="Esqueci minha senha"
                                     mode='text'
                                 />
                             </View>
                         </View>
 
-                        <View style={styles.botao}>
-                            <ButtonComponent
-                                onPress={() => navigation.navigate('Cadastro')}                                
-                                text="Cadastrar"
-                            />
-                        </View>
+                    </View>
+                    <View style={styles.botaoCadastro}>
+                        <ButtonComponent
+                            onPress={() => navigation.navigate('Cadastro')}
+                            text="Cadastrar"
+                        />
                     </View>
                 </ScrollView>
             </SafeAreaView>
+
+            {/* Modal de Erro */}
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={errorModalVisible}
+                onRequestClose={() => {
+                    setErrorModalVisible(false);
+                }}
+
+            >
+                <View style={loginScreenStyles.errorModalContainer}>
+                    <View style={loginScreenStyles.errorModalContent}>
+                        <Text style={loginScreenStyles.errorModalText}>Email e/ou senha incorretos!</Text>
+                        <TouchableOpacity onPress={() => setErrorModalVisible(false)} style={loginScreenStyles.errorModalButton}>
+                            <Text style={loginScreenStyles.errorModalButtonText}>OK</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </Modal>
+
         </ImageBackground>
     );
 }
