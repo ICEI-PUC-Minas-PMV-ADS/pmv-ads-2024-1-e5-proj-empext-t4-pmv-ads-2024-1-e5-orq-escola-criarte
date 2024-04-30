@@ -16,9 +16,9 @@ public class UserRepository : IUserRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task<bool> ExistsUserWithEmail(string email)
+    public async Task<bool> ExistsUserWithEmail(string email, Guid id)
     {
-        return await _context.Users.AnyAsync(u => u.Email.Equals(email));
+        return await _context.Users.AnyAsync(u => u.Email.Equals(email) && u.Id != id);
     }
 
     public async Task<List<User>> GetAll()

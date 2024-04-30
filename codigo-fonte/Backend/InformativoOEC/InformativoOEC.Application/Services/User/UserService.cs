@@ -17,11 +17,12 @@ public class UserService : IUserService
     public async Task<Guid> AddAsync(UserInputModel model)
     {
         Validate(model);
-        await ExistsUserWithEmail(model.Email);
 
         string passwordHash = _authService.ComputeSha256Hash(model.Password);
 
         var user = model.ToEntity(passwordHash);
+
+        await ExistsUserWithEmail(model.Email,user.Id);
 
         await _userRepository.AddAsync(user);
 
@@ -31,7 +32,7 @@ public class UserService : IUserService
     public async Task Update(UserInputModel model, Guid id)
     {
         Validate(model);
-        await ExistsUserWithEmail(model.Email);
+        await ExistsUserWithEmail(model.Email, id);
 
         string passwordHash = _authService.ComputeSha256Hash(model.Password);
 
@@ -75,9 +76,9 @@ public class UserService : IUserService
         }
     }
 
-    private async Task ExistsUserWithEmail(string email)
+    private async Task ExistsUserWithEmail(string email, Guid id)
     {
-        bool existisUserWithEmail = await _userRepository.ExistsUserWithEmail(email);
+        bool existisUserWithEmail = await _userRepository.ExistsUserWithEmail(email, id);
         if (existisUserWithEmail) 
         {
             throw new ValidationErrorsException("E-mail já cadastrado");
