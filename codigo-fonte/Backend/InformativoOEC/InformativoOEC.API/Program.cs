@@ -29,7 +29,7 @@ builder.Services.AddCors(options =>
     });
 });
 
-var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]);
+var key = Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("Key"));
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -49,12 +49,6 @@ builder.Services.AddAuthentication(options =>
 
 
 builder.Services.AddSwaggerGen();
-
-//builder.Services.AddAuthentication().AddGoogle(googleOptions =>
-//{
-//    googleOptions.ClientId = builder.Configuration["web:client_id"];
-//    googleOptions.ClientSecret = builder.Configuration["web:client_secret"];
-//});
 
 var app = builder.Build();
 

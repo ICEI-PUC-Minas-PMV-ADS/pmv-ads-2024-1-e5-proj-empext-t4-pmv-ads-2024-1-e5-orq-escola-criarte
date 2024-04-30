@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using System.ComponentModel.DataAnnotations;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -31,19 +32,19 @@ public class AuthService : IAuthService
 
     public string GenerateJwtToken(Core.Entities.User user)
     {
-        var issuer = _configuration["Jwt:Issuer"];
-        var audience = _configuration["Jwt:Audience"];
-        var key = _configuration["Jwt:Key"];
+        var issuer = Environment.GetEnvironmentVariable("Issuer");
+        var audience = Environment.GetEnvironmentVariable("Audience");
+        var key = Environment.GetEnvironmentVariable("Key");
 
         var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
         var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
         var claims = new List<Claim>
         {
-            new Claim(ClaimTypes.Name, user.Name),
-            new Claim(ClaimTypes.Email, user.Email),
-            new Claim(ClaimTypes.Role, user.Role.ToString()),
-            new Claim(ClaimTypes.PrimarySid, user.Id.ToString())
+            new Claim("user_name", user.Name),
+            new Claim("email", user.Email),
+            new Claim("role", user.Role.ToString()),
+            new Claim("user_id", user.Id.ToString())
         };
 
         var token = new JwtSecurityToken(
