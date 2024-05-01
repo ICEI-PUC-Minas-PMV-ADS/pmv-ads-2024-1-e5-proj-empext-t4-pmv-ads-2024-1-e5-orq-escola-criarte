@@ -4,7 +4,6 @@ const styles = StyleSheet.create({
 
     background: {
         flex: 1,
-        resizeMode: "cover",
         justifyContent: "center",
     },
 
@@ -16,15 +15,10 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(255,255,255,0.85)',
         borderRadius: 10,
         marginBottom: 15,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
+        boxShadow: "0px 2px 3.84px rgba(0, 0, 0, 0.25)",
         elevation: 5,
     },
+    
 
     listItemLarge: {
         height: 120,

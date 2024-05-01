@@ -10,10 +10,10 @@ import ImageCheck from '../assets/icon-check.png'
 import ImageClose from '../assets/icon-close.png'
 
 interface UserData {
-  'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name': string;
-  'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress': string;
-  'http://schemas.microsoft.com/ws/2008/06/identity/claims/role': string;
-  'http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid': string;
+  'user_name': string;
+  'email': string;
+  'role': string;
+  'user_id': string;
   exp: number;
 }
 
@@ -28,7 +28,7 @@ export default function ProfileScreen({ navigation }: Props) {
   const [password, setPassword] = useState('');
   const [senhaVisivel, setSenhaVisivel] = useState<boolean>(false);
   const [updateError, setUpdateError] = useState(null);
-  const role = userData ? userData['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] : '';
+  const role = userData ? userData['role'] : '';
   const [validateInput, setValidateInput] = useState({
     length: false,
     number: false,
@@ -78,7 +78,7 @@ export default function ProfileScreen({ navigation }: Props) {
     console.log('Current state:', { role });
 
     try {
-      await updateUser(userData['http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid'], email, userData['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'], role);
+      await updateUser(userData['user_id'], email, userData['user_name'], role);
       setUpdateError(null);
       fetchUserData();
     } catch (error: any) {
@@ -124,7 +124,7 @@ export default function ProfileScreen({ navigation }: Props) {
   const handleCancel = () => {
     setIsEditing(false);
 
-    setEmail(userData ? userData['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'] : '');
+    setEmail(userData ? userData['email'] : '');
 
   };
 
@@ -133,7 +133,7 @@ export default function ProfileScreen({ navigation }: Props) {
   };
 
   return (
-    <ImageBackground source={require('../assets/background.png')} style={styles.background}>
+    <ImageBackground resizeMode="cover" source={require('../assets/background.png')} style={styles.background}>
       <SafeAreaView style={styles.container}>
         <ScrollView style={styles.content}>
           <View style={styles.centerContent}>
@@ -144,16 +144,16 @@ export default function ProfileScreen({ navigation }: Props) {
               <View style={[styles.profileInfo, { alignItems: 'center' }]}>
                 <Image source={require('../assets/avatar.png')} style={styles.avatar} />
                 <Text style={styles.label}>Nome:</Text>
-                <Text style={styles.text}>{userData['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']}</Text>
+                <Text style={styles.text}>{userData['user_name']}</Text>
                 <Text style={styles.label}>Email:</Text>
                 {isEditing ? (
                   <TextInput
                     style={styles.input}
-                    defaultValue={userData['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress']}
+                    defaultValue={userData['email']}
                     onChangeText={text => setEmail(text)}
                   />
                 ) : (
-                  <Text style={styles.text}>{userData['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress']}</Text>
+                  <Text style={styles.text}>{userData['email']}</Text>
                 )}
 
                 {isEditing ? (

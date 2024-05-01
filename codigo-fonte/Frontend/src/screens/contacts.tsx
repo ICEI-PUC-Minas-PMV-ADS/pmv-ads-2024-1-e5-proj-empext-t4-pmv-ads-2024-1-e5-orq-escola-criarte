@@ -5,7 +5,7 @@ import styles from '../styles/ContactsScreenStyles'
 
 const Contacts: React.FC = () => {
     return (
-        <ImageBackground source={require('../assets/background.png')} style={styles.background}>
+        <ImageBackground resizeMode="cover" source={require('../assets/background.png')} style={styles.background}>
             <View style={styles.container}>
                 <List.Section>
                     <List.Item style={[styles.listItem, styles.listItemLarge]} titleStyle={styles.listItemTitle}
