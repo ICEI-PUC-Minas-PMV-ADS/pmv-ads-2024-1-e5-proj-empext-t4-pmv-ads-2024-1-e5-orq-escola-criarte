@@ -12,7 +12,7 @@ interface Props {
 }
 
 interface UserData {
-    'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name': string;
+    'user_name': string;
 }
 
 export default function CreateEventModal({ visible, onClose }: Props) {
@@ -23,6 +23,8 @@ export default function CreateEventModal({ visible, onClose }: Props) {
     const [county, setCounty] = useState('');
     const [image, setImage] = useState<{ uri: string }>({ uri: '' });
     const [username, setUsername] = React.useState<string>('');
+    const [date, setDate] = useState('');
+    const [time, setTime] = useState('');
 
     React.useEffect(() => {
         async function fetchUserData() {
@@ -30,7 +32,7 @@ export default function CreateEventModal({ visible, onClose }: Props) {
                 const token = await getToken();
                 if (token) {
                     const decoded = jwtDecode<UserData>(token);
-                    setUsername(decoded['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']);
+                    setUsername(decoded['user_name']);
                 } else {
                     console.log('Token é nulo');
                 }
@@ -41,6 +43,30 @@ export default function CreateEventModal({ visible, onClose }: Props) {
 
         fetchUserData();
     }, []);
+
+    const handleDateChange = (newDate: string) => {
+        if (/^[0-9/]*$/.test(newDate)) {
+            if (newDate.length === 2 || newDate.length === 5) {
+                newDate += '/';
+            }
+            setDate(newDate);
+        }
+    };
+
+    const handleTimeChange = (newTime: string) => {
+        if (/^[0-9:]*$/.test(newTime)) {
+            if (newTime.length === 2) {
+                newTime += ':';
+            }
+            setTime(newTime);
+        }
+    };
+
+    const handleNumberChange = (newNumber: string) => {
+        if (/^[0-9]*$/.test(newNumber)) {
+            setNumber(newNumber);
+        }
+    };
 
     const selectImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -57,13 +83,17 @@ export default function CreateEventModal({ visible, onClose }: Props) {
     };
 
     const handleSubmit = async () => {
+
+        const [day, month, year] = date.split('/');
+        const formattedDate = `${year}-${month}-${day}T${time}:00.000Z`;
+
         const event = {
             content: {
                 title,
                 body,
             },
             imageURL: image.uri,
-            date: new Date().toISOString(),
+            date: formattedDate,
             address: {
                 street,
                 number,
@@ -83,6 +113,8 @@ export default function CreateEventModal({ visible, onClose }: Props) {
                 setTitle('');
                 setBody('');
                 setStreet('');
+                setDate('');
+                setTime('');
                 setNumber('');
                 setCounty('');
                 setImage({ uri: '' });
@@ -98,6 +130,8 @@ export default function CreateEventModal({ visible, onClose }: Props) {
     const handleCancel = () => {
         setTitle('');
         setBody('');
+        setDate('');
+        setTime('');
         setStreet('');
         setNumber('');
         setCounty('');
@@ -111,12 +145,16 @@ export default function CreateEventModal({ visible, onClose }: Props) {
             <View style={styles.modalContainer}>
                 <View style={styles.modalContent}>
                     {image.uri ? <Image source={image} style={styles.imagePreview} /> : null}
+
                     <Text style={styles.title}>Criar Evento</Text>
                     <TextInput style={styles.input} placeholder="Título" value={title} onChangeText={setTitle} />
                     <TextInput style={styles.descriptionInput} placeholder="Descrição" value={body} onChangeText={setBody} multiline />
+                    <TextInput style={styles.input} placeholder="Data" value={date} onChangeText={handleDateChange} />
+                    <TextInput style={styles.input} placeholder="Hora (HH:MM)" value={time} onChangeText={handleTimeChange} />
                     <TextInput style={styles.input} placeholder="Rua" value={street} onChangeText={setStreet} />
-                    <TextInput style={styles.input} placeholder="Número" value={number} onChangeText={setNumber} />
-                    <TextInput style={styles.input} placeholder="Condado" value={county} onChangeText={setCounty} />
+                    <TextInput style={styles.input} placeholder="Número" value={number} onChangeText={handleNumberChange} />
+                    <TextInput style={styles.input} placeholder="Cidade" value={county} onChangeText={setCounty} />
+                    
                     <Pressable style={styles.button} onPress={selectImage}>
                         <Text style={styles.buttonText}>Selecionar Imagem</Text>
                     </Pressable>

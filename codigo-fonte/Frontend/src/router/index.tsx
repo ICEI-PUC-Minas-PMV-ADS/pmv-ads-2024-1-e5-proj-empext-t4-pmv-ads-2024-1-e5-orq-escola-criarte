@@ -13,7 +13,7 @@ import { getToken } from '../config/authUtils';
 import { StackTypes } from './stack';
 
 interface UserData {
-  'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name': string;
+  'user_name': string;
 }
 
 const Tab = createBottomTabNavigator();
@@ -43,7 +43,7 @@ function CustomHeader() {
         const token = await getToken();
         if (token) {
           const decoded = jwtDecode<UserData>(token);
-          setUsername(decoded['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']);
+          setUsername(decoded['user_name']);
         } else {
           console.log('Token é nulo');
         }

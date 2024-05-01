@@ -15,13 +15,13 @@ const Events = () => {
   const [events, setEvents] = useState<Event[]>([]);
 
   useEffect(() => {
-    api.get<Event[]>('/newsfeed')
+    api.get<Event[]>('') // devo colocar o endpoint para a home
       .then(response => setEvents(response.data))
       .catch(error => console.error(error));
   }, []);
 
   return (
-    <ImageBackground source={require('../assets/background.png')} style={styles.background}>
+    <ImageBackground resizeMode="cover" source={require('../assets/background.png')} style={styles.background}>
       <ScrollView contentContainerStyle={styles.container}>
         {events.map((event, index) => (
           <View key={index} style={styles.rectangle}>

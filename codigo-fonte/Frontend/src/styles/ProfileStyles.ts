@@ -6,7 +6,6 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
-    resizeMode: 'cover',
   },
 
   container: {
@@ -44,12 +43,9 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 10,
     backgroundColor: 'rgba(255, 255, 255, 0.9)', 
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 10,
+    boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.1)",
     elevation: 3,
-  },
+},
   
 
   avatar: {
