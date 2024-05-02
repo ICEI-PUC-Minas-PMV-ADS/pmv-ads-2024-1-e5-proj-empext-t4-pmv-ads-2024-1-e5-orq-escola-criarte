@@ -41,4 +41,13 @@ public class PostsController : ControllerBase
 
         return Ok(result);
     }
+
+    [HttpDelete("{id}")]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> DeleteById(Guid id)
+    {
+        await _postService.DeleteById(id);
+
+        return NoContent();
+    }
 }

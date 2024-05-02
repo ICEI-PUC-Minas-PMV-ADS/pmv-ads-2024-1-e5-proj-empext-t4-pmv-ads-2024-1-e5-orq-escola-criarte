@@ -22,6 +22,11 @@ public class PostService : IPostService
         return new PostViewModel() { Id = post.Id };
     }
 
+    public async Task DeleteById(Guid id)
+    {
+        await _postRepository.DeleteAsync(id);
+    }
+
     public async Task<PostViewModel> GetById(Guid id)
     {
         Core.Entities.Post post = await _postRepository.GetByIdAsync(id) ??
