@@ -5,6 +5,7 @@ public class NewsfeedViewModel
 {
     public NewsfeedViewModel(Core.Entities.Post post)
     {
+        Id = post.Id;
         Content = post.Content;
         ImageURL = post.ImageURL;
         Date = post.Date;
@@ -12,6 +13,7 @@ public class NewsfeedViewModel
         Username = post.Username;
     }
 
+    public Guid Id { get; set; }
     public Content Content { get; set; }
     public string ImageURL { get; set; }
     public DateTime Date { get; set; }
