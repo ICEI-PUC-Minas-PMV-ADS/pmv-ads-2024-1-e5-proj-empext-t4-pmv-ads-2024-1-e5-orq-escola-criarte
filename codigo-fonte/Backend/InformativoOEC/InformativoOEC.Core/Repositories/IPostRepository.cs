@@ -5,4 +5,6 @@ public interface IPostRepository
 {
     Task AddAsync(Post post);
     Task<List<Post>> GetAllAsync();
+    void Update(Post post);
+    Task<Post> GetByIdAsync(Guid id);
 }

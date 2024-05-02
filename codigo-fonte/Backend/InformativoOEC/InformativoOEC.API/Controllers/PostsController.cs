@@ -21,6 +21,24 @@ public class PostsController : ControllerBase
     {
         var result = await _postService.Create(model);
 
+        return Ok(result.Id);
+    }
+
+    [HttpPut("{id}")]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> Update([FromBody] PostInputModel model, Guid id)
+    {
+        await _postService.Update(model, id);
+
+        return NoContent();
+    }
+
+    [HttpGet("{id}")]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> GetById(Guid id)
+    {
+        var result = await _postService.GetById(id);
+
         return Ok(result);
     }
 }

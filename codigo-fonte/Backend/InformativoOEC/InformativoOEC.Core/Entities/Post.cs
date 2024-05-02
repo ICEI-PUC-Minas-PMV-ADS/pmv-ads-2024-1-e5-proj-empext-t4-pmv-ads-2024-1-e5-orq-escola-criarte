@@ -18,4 +18,13 @@ public class Post : BaseEntity
     public DateTime Date { get; private set; }
     public Address Address { get; private set; }
     public string Username { get; private set; }
+
+    public void Update(Content content, string imageURL, DateTime date, Address address, string userName)
+    {
+        Content = content;
+        ImageURL = imageURL;
+        Date =date;
+        Address = address;
+        Username = userName;
+    }
 }

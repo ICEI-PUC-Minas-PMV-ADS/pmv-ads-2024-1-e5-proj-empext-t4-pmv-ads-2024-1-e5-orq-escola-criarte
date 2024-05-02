@@ -20,4 +20,19 @@ public class PostRepository : IPostRepository
     {
         return await _context.Posts.AsNoTracking().ToListAsync();
     }
+
+    public async Task<Post> GetByIdAsync(Guid id)
+    {
+        Post? post =  await _context.Posts
+            .AsNoTracking()
+            .SingleOrDefaultAsync(p => p.Id == id);
+
+        return post;
+    }
+
+    public void Update(Post post)
+    {
+        _context.Update(post);
+        _context.SaveChanges();
+    }
 }
