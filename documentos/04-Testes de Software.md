@@ -8,9 +8,12 @@ Enumere quais cenários de testes foram selecionados para teste. Neste tópico o
 
 
 ## Tela Login
-*Teste 1:* Botão “Cadastrar”
+**Teste 1:** Botão “Cadastrar”
+
 **Objetivo:** Redirecionar para a tela de cadastro
-***Resultado:*** Sucesso, o redirecionamento está acontecendo da forma correta
+
+**Resultado:** Sucesso, o redirecionamento está acontecendo da forma correta
+
 **Melhorias:** - 
 ________________________________________
 **Teste 2:** Botão “Esqueci Minhas Senha”
