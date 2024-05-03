@@ -105,13 +105,13 @@ ________________________________________
 
  **Melhorias:** Trazer retorno visual para o cliente do erro ou sucesso da operação.
 
-`#000000 **Melhorias gerais da tela Meu Perfil:** Permitir o usuário alterar somente o e-mail ou somente a senha, no momento o usuário é obrigado a alterar o e-mail pois não consegue alterar a senha sem mexer no e-mail.
+`**Melhorias gerais da tela Meu Perfil:** Permitir o usuário alterar somente o e-mail ou somente a senha, no momento o usuário é obrigado a alterar o e-mail pois não consegue alterar a senha sem mexer no e-mail.
 E a alteração do e-mail exige que a senha seja inserida ou alterada para confirmar a alteração.
 
-O usuário deve poder alterar o nome dele também no sistema. #000000`
+O usuário deve poder alterar o nome dele também no sistema.`
 
-**Sugestão de melhoria:** Para alteração do e-mail o usuário deve preencher a senha atual para confirmar a alteração.
+`**Sugestão de melhoria:** Para alteração do e-mail o usuário deve preencher a senha atual para confirmar a alteração.
 
 Para alterar a senha o usuário deve inserir a senha atual e inserir a nova senha duas vezes, e a nova senha deverá passar pela validação de requisitos.
 
-Trocar botão da tela de perfil “Sair” por “Voltar”.
+Trocar botão da tela de perfil “Sair” por “Voltar”.`
