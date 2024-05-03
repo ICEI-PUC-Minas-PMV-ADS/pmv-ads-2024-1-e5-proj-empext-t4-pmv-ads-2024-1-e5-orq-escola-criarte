@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, Image, ImageBackground, Pressable, Platform, ScrollView, RefreshControl, Alert } from "react-native";
+import { View, Text, Image, ImageBackground, Pressable, Platform, ScrollView, RefreshControl, Alert, ActivityIndicator } from "react-native";
 import styles from '../styles/EventsScreenStyles';
 import { api, getToken } from '../config/authUtils';
 import { jwtDecode } from 'jwt-decode';
@@ -34,6 +34,8 @@ function Events() {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [refreshing, setRefreshing] = useState(false);
     const [expandedCard, setExpandedCard] = useState<number | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
+
 
     const deleteEvent = async (id: string) => {
         try {
@@ -67,11 +69,11 @@ function Events() {
     };
 
     const fetchEvents = async () => {
+        setIsLoading(true);
         try {
             const response = await api.get<Event[]>('/newsfeed');
             const fetchedEvents = response.data;
 
-            // Organize os eventos por mês aqui
             const organizedEvents = fetchedEvents.reduce((acc: { [key: string]: Event[] }, event: Event) => {
                 const month = new Date(event.date).toLocaleString('default', { month: 'long' }).toUpperCase();
                 if (!acc[month]) {
@@ -87,6 +89,7 @@ function Events() {
         } catch (error) {
             console.error(error);
         }
+        setIsLoading(false);
     };
 
     const fetchUserRole = async () => {
@@ -118,70 +121,77 @@ function Events() {
     return (
         <ImageBackground resizeMode="cover" source={require('../assets/background.png')} style={styles.background}>
             <View style={{ flex: 1 }}>
-                <ScrollView
-                    contentContainerStyle={{ flexGrow: 1, marginBottom: 50 }}
-                    refreshControl={
-                        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-                    }
-                >
-                    {monthOrder.map((month, index) => {
-                        const events = eventsByMonth[month];
-                        if (!events) {
-                            return null;
+                {isLoading ? (
+
+                    <View style={{ height: "100%", justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0, 0, 0, 0.15)' }}>
+                        <ActivityIndicator size="large" color="#413267" style={{ zIndex: 1 }} />
+                    </View>
+                ) : (
+                    <ScrollView
+                        contentContainerStyle={{ flexGrow: 1, marginBottom: 50 }}
+                        refreshControl={
+                            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
                         }
-                        return (
-                            <View key={index}>
-                                <Text style={styles.monthTitle}>{month}</Text>
-                                {events.map((event, index) => (
-                                    <View key={index} style={styles.rectangle}>
-                                        
-                                        <View style={styles.eventDetails}>
-                                            <Text style={styles.eventTitle}>{event.content.title}</Text>
-                                            <Image
-                                                resizeMode="cover"
-                                                source={{ uri: event.imageURL }}
-                                                style={styles.eventImage}
-                                            />
-                                        </View>
-                                        <View style={styles.row}>
-                                            <View style={styles.informaçoes}>
-                                                <Title title="Data" />
-                                                <Text style={styles.label}>{new Date(event.date).toLocaleDateString()}</Text>
+                    >
+                        {monthOrder.map((month, index) => {
+                            const events = eventsByMonth[month];
+                            if (!events) {
+                                return null;
+                            }
+                            return (
+                                <View key={index}>
+                                    <Text style={styles.monthTitle}>{month}</Text>
+                                    {events.map((event, index) => (
+                                        <View key={index} style={styles.rectangle}>
+
+                                            <View style={styles.eventDetails}>
+                                                <Text style={styles.eventTitle}>{event.content.title}</Text>
+                                                <Image
+                                                    resizeMode="cover"
+                                                    source={{ uri: event.imageURL }}
+                                                    style={styles.eventImage}
+                                                />
                                             </View>
-                                            <View style={styles.informaçoes}>
-                                                <Title title="Endereço" />
-                                                <Text style={styles.label}>{event.address.street}, {event.address.number} - {event.address.county}</Text>
+                                            <View style={styles.row}>
+                                                <View style={styles.informaçoes}>
+                                                    <Title title="Data" />
+                                                    <Text style={styles.label}>{new Date(event.date).toLocaleDateString()}</Text>
+                                                </View>
+                                                <View style={styles.informaçoes}>
+                                                    <Title title="Endereço" />
+                                                    <Text style={styles.label}>{event.address.street}, {event.address.number} - {event.address.county}</Text>
+                                                </View>
+                                                <View style={styles.informaçoes}>
+                                                    <Title title="Horário" />
+                                                    <Text style={styles.label}>{new Date(event.date).toLocaleTimeString()}</Text>
+                                                </View>
+                                                {userRole === 'Admin' && (
+                                                    <Pressable
+                                                        style={styles.deleteButton}
+                                                        onPress={() => {
+                                                            console.log('Botão "Deletar" pressionado');
+                                                            confirmDelete(event.id);
+                                                        }}
+                                                    >
+                                                        <Ionicons name="trash-outline" size={24} color="red" />
+                                                    </Pressable>
+                                                )}
                                             </View>
-                                            <View style={styles.informaçoes}>
-                                                <Title title="Horário" />
-                                                <Text style={styles.label}>{new Date(event.date).toLocaleTimeString()}</Text>
-                                            </View>
-                                            {userRole === 'Admin' && (
-                                            <Pressable
-                                                style={styles.deleteButton}
-                                                onPress={() => {
-                                                    console.log('Botão "Deletar" pressionado');
-                                                    confirmDelete(event.id);
-                                                }}
-                                            >
-                                                <Ionicons name="trash-outline" size={24} color="red" />
+                                            <Pressable onPress={() => setExpandedCard(expandedCard === index ? null : index)}>
+                                                <Text style={styles.moreInfo}>Mais informações</Text>
                                             </Pressable>
-                                        )}
+                                            {expandedCard === index && (
+                                                <View style={styles.extraInfo}>
+                                                    <Text style={styles.extraInfoText}>{event.content.body}</Text>
+                                                </View>
+                                            )}
                                         </View>
-                                        <Pressable onPress={() => setExpandedCard(expandedCard === index ? null : index)}>
-                                            <Text style={styles.moreInfo}>Mais informações</Text>
-                                        </Pressable>
-                                        {expandedCard === index && (
-                                            <View style={styles.extraInfo}>
-                                                <Text style={styles.extraInfoText}>{event.content.body}</Text>
-                                            </View>
-                                        )}
-                                    </View>
-                                ))}
-                            </View>
-                        );
-                    })}
-                </ScrollView>
+                                    ))}
+                                </View>
+                            );
+                        })}
+                    </ScrollView>
+                )}
                 {userRole === 'Admin' && (
                     <Pressable
                         style={styles.createEventButton}
@@ -193,7 +203,10 @@ function Events() {
                         <Text style={styles.createEventButtonText}>Criar Evento</Text>
                     </Pressable>
                 )}
-                <CreateEventModal visible={isModalVisible} onClose={closeModal} />
+                <View style={styles.centeredView}>
+                    <CreateEventModal visible={isModalVisible} onClose={closeModal} />
+                </View>
+
             </View>
         </ImageBackground>
     );
