@@ -6,9 +6,8 @@ Enumere quais cenários de testes foram selecionados para teste. Neste tópico o
  
 **Objetivo dos testes:** Verificar se o sistema atende aos requisitos funcionais, requisitos não funcionais e respeita as restrições definidas para o projeto.
 
-## Testes de Requisitos Funcionais:
 
-##Tela Login
+## Tela Login
 **Teste 1:** Botão “Cadastrar”
 **Objetivo:** Redirecionar para a tela de cadastro
 **Resultado:** Sucesso, o redirecionamento está acontecendo da forma correta
