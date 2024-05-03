@@ -9,65 +9,42 @@ Enumere quais cenários de testes foram selecionados para teste. Neste tópico o
 
 ## Tela Login
 - **Teste 1:** Botão “Cadastrar”
-
-**Objetivo:** Redirecionar para a tela de cadastro
-
-**Resultado:** Sucesso, o redirecionamento está acontecendo da forma correta
-
-**Melhorias:** - 
+- **Objetivo:** Redirecionar para a tela de cadastro
+- **Resultado:** Sucesso, o redirecionamento está acontecendo da forma correta
+- **Melhorias:** - 
+_______________________________________
+- **Teste 2:** Botão “Esqueci Minhas Senha”
+- **Objetivo:** Redirecionar para a tela de recuperação de senha
+- **Resultado:** Erro, o botão não está devidamente configurado, a função está sendo a mesma do botão “Entrar”
+- **Melhorias:** Corrigir a função do botão para que realize devidamente sua função
 ________________________________________
-**Teste 2:** Botão “Esqueci Minhas Senha”
-
-**Objetivo:** Redirecionar para a tela de recuperação de senha
-
-**Resultado:** Erro, o botão não está devidamente configurado, a função está sendo a mesma do botão “Entrar”
-
-**Melhorias:** Corrigir a função do botão para que realize devidamente sua função
-________________________________________
-**Teste 3:** Login
-
-**Objetivo:** Validar os dados do usuário para verificar se está cadastrado e redirecionar para a tela inicial da aplicação caso os dados tenham sido devidamente validado
-
-**Resultado:** Ao inserir um dado incorreto no campo de e-mail, apresenta erro ao fazer login, seja este um e-mail inexistente no banco ou outro dado aleatório.
-
+- **Teste 3:** Login
+- **Objetivo:** Validar os dados do usuário para verificar se está cadastrado e redirecionar para a tela inicial da aplicação caso os dados tenham sido devidamente validado
+- **Resultado:** Ao inserir um dado incorreto no campo de e-mail, apresenta erro ao fazer login, seja este um e-mail inexistente no banco ou outro dado aleatório.
 Ao inserir um e-mail correto e senha incorreta também apresenta o erro na tela para o usuário.
-
 Ao inserir e-mail e senha corretos o usuário está sendo devidamente direcionado a tela home da aplicação.
-
-**Melhorias:** - 
+- **Melhorias:** - 
 ________________________________________
-**Teste 4:** Botão visualizar senha
-
-**Objetivo:** Permitir ao usuário visualizar a senha preenchida
-
-**Resultado:** Ao clica no olho no final do campo da senha a mesma pode ser visualizada da forma devida.
-
-**Melhorias:** - 
+- **Teste 4:** Botão visualizar senha
+- **Objetivo:** Permitir ao usuário visualizar a senha preenchida
+- **Resultado:** Ao clica no olho no final do campo da senha a mesma pode ser visualizada da forma devida.
+- **Melhorias:** - 
 
 ## Tela Cadastrar
-**Teste 5:** Preenchimento do campo de e-mail
-
-**Objetivo:** Verificar se o campo e-mail está sendo devidamente validados segundo as regras estabelecidas
-
-**Resultado:** A validação do campo e-mail não está sendo feito da forma devida, pois o cadastro pôde ser concluído mesmo digitando um e-mail inválido;
-
-**Melhorias:** Fazer a validação corretamente do input de e-mail e trazer retorno visual ao usuário sobre o erro cadastro e acrescentar um botão para retornar a tela de login. 
+- **Teste 5:** Preenchimento do campo de e-mail
+- **Objetivo:** Verificar se o campo e-mail está sendo devidamente validados segundo as regras estabelecidas
+- **Resultado:** A validação do campo e-mail não está sendo feito da forma devida, pois o cadastro pôde ser concluído mesmo digitando um e-mail inválido;
+- **Melhorias:** Fazer a validação corretamente do input de e-mail e trazer retorno visual ao usuário sobre o erro cadastro e acrescentar um botão para retornar a tela de login. 
 ________________________________________
-**Teste 6:** Preenchimento do campo de e-mail
-
-**Objetivo:** Verificar se o campo e-mail está sendo devidamente validados segundo as regras estabelecidas
-
-**Resultado:** A validação de duplicidade de e-mail está sendo feito da forma devida, pois o cadastro não pôde ser concluído inserindo um e-mail que já está cadastrado no sistema;
-
-**Melhorias:** Trazer retorno visual ao usuário sobre o erro, de que este email já está cadastrado no sistema.
+- **Teste 6:** Preenchimento do campo de e-mail
+- **Objetivo:** Verificar se o campo e-mail está sendo devidamente validados segundo as regras estabelecidas
+- **Resultado:** A validação de duplicidade de e-mail está sendo feito da forma devida, pois o cadastro não pôde ser concluído inserindo um e-mail que já está cadastrado no sistema;
+- **Melhorias:** Trazer retorno visual ao usuário sobre o erro, de que este email já está cadastrado no sistema.
 ________________________________________
-**Teste 7:** Preenchimento do campo da senha 
-
-**Objetivo:** Verificar se o campo senha está sendo devidamente validados segundo as regras estabelecidas
-
-**Resultado:** A validação da senha está sendo feito da forma devida, pois o cadastro não pôde ser concluído caso o usuário insira uma senha que não cumpra com TODOS os requisitos;
-
-**Melhorias:** -
+- **Teste 7:** Preenchimento do campo da senha 
+- **Objetivo:** Verificar se o campo senha está sendo devidamente validados segundo as regras estabelecidas
+- **Resultado:** A validação da senha está sendo feito da forma devida, pois o cadastro não pôde ser concluído caso o usuário insira uma senha que não cumpra com TODOS os requisitos;
+- **Melhorias:** -
 
 
 ## Tela Home
