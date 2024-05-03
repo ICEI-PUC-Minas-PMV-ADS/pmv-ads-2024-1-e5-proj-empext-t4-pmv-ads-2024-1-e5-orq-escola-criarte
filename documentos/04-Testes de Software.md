@@ -103,12 +103,12 @@ ________________________________________
 
 **Resultado:** A função de alterar a senha funcionam devidamente, contudo não existe retorno visual para o usuário, as informações de erro e sucesso aparecem apenas no console.
 
-`#000000` **Melhorias:** Trazer retorno visual para o cliente do erro ou sucesso da operação.
+ **Melhorias:** Trazer retorno visual para o cliente do erro ou sucesso da operação.
 
-**Melhorias gerais da tela Meu Perfil:** Permitir o usuário alterar somente o e-mail ou somente a senha, no momento o usuário é obrigado a alterar o e-mail pois não consegue alterar a senha sem mexer no e-mail.
+`**Melhorias gerais da tela Meu Perfil:** Permitir o usuário alterar somente o e-mail ou somente a senha, no momento o usuário é obrigado a alterar o e-mail pois não consegue alterar a senha sem mexer no e-mail.
 E a alteração do e-mail exige que a senha seja inserida ou alterada para confirmar a alteração.
 
-O usuário deve poder alterar o nome dele também no sistema.
+O usuário deve poder alterar o nome dele também no sistema.`
 
 **Sugestão de melhoria:** Para alteração do e-mail o usuário deve preencher a senha atual para confirmar a alteração.
 
