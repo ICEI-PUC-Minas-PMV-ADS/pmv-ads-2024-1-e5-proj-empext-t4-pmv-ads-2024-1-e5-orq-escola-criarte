@@ -23,16 +23,22 @@ export default function CadastroScreen({ navigation }: Props) {
     const { control, handleSubmit, formState: { isValid }, getValues } = useForm<FormData>({ mode: 'onChange' });
     const [senhaVisivel, setSenhaVisivel] = useState<boolean>(false);
     const [errorModalVisible, setErrorModalVisible] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleLogin = async (response: any) => {
 
-        const token = response.data.token;
+        setIsLoading(true);
 
+        const token = response.data.token;
         await saveToken(token);
+
+        setIsLoading(false);
+
     };
 
     const handleFormSubmit = (data: FormData) => {
         console.log(data);
+        setIsLoading(true);
         const headers = {
             'accept': ' */*',
             'Content-Type': ' application/json'
@@ -51,10 +57,11 @@ export default function CadastroScreen({ navigation }: Props) {
         ).catch((error) => {
             console.log(error)
             console.log("usuário e/ou senha incorretos!")
+            setIsLoading(false);
             setErrorModalVisible(true);
         }
         )
-
+            .finally(() => setIsLoading(false));
 
     };
 
@@ -108,22 +115,25 @@ export default function CadastroScreen({ navigation }: Props) {
                                 defaultValue=""
                             />
 
-                            <View >
-                                <ActivityIndicator
-                                    size="large"
-                                    color="#0000ff"
-                                    animating={true}
-                                    style={{
-                                        alignSelf: 'center',
-                                        justifyContent: 'center',
-                                        position: 'absolute',
-                                    }}
-                                />
-                                <ButtonComponent
-                                    onPress={handleSubmit(handleFormSubmit)}
-                                    mode="contained"
-                                    text="Entrar"
-                                />
+                            <View>
+                                {isLoading ? (
+                                    <ActivityIndicator
+                                        size="large"
+                                        color="#413267"
+                                        animating={true}
+                                        style={{
+                                            alignSelf: 'center',
+                                            justifyContent: 'center',
+                                            marginBottom: 5,
+                                        }}
+                                    />
+                                ) : (
+                                    <ButtonComponent
+                                        onPress={handleSubmit(handleFormSubmit)}
+                                        mode="contained"
+                                        text="Entrar"
+                                    />
+                                )}
                                 <ButtonComponent
                                     onPress={handleSubmit(handleFormSubmit)}
                                     text="Esqueci minha senha"

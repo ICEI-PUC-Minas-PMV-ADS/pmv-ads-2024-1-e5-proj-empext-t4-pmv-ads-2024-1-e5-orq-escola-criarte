@@ -16,16 +16,17 @@ interface UserData {
     'user_name': string;
 }
 
-export default function CreateEventModal({ visible, onClose, modalStyle }: Props) {
+interface News {
+    title: string;
+    description: string;
+    imageURL: string;
+}
+
+export default function CreateNewsModal({ visible, onClose, modalStyle }: Props) {
     const [title, setTitle] = useState('');
-    const [body, setBody] = useState('');
-    const [street, setStreet] = useState('');
-    const [number, setNumber] = useState('');
-    const [county, setCounty] = useState('');
+    const [description, setDescription] = useState('');
     const [image, setImage] = useState<{ uri: string }>({ uri: '' });
-    const [username, setUsername] = React.useState<string>('');
-    const [date, setDate] = useState('');
-    const [time, setTime] = useState('');
+    const [username, setUsername] = useState<string>('');
 
     React.useEffect(() => {
         async function fetchUserData() {
@@ -45,30 +46,6 @@ export default function CreateEventModal({ visible, onClose, modalStyle }: Props
         fetchUserData();
     }, []);
 
-    const handleDateChange = (newDate: string) => {
-        if (/^[0-9/]*$/.test(newDate)) {
-            if (newDate.length === 2 || newDate.length === 5) {
-                newDate += '/';
-            }
-            setDate(newDate);
-        }
-    };
-
-    const handleTimeChange = (newTime: string) => {
-        if (/^[0-9:]*$/.test(newTime)) {
-            if (newTime.length === 2) {
-                newTime += ':';
-            }
-            setTime(newTime);
-        }
-    };
-
-    const handleNumberChange = (newNumber: string) => {
-        if (/^[0-9]*$/.test(newNumber)) {
-            setNumber(newNumber);
-        }
-    };
-
     const selectImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -84,45 +61,25 @@ export default function CreateEventModal({ visible, onClose, modalStyle }: Props
     };
 
     const handleSubmit = async () => {
-
-        const [day, month, year] = date.split('/');
-        const formattedDate = `${year}-${month}-${day}T${time}:00.000Z`;
-
-        const event = {
-            content: {
-                title,
-                body,
-            },
+        const news: News = {
+            title,
+            description,
             imageURL: image.uri,
-            date: formattedDate,
-            address: {
-                street,
-                number,
-                county,
-            },
-            username: username,
         };
 
-        console.log('Enviando o seguinte objeto para a API:', event);
+        console.log('Enviando o seguinte objeto para a API:', news);
 
         try {
-            const response = await api.post('/posts', event);
+            const response = await api.post('/posts', news);
             if (response.status === 200) {
-
-                console.log('Evento criado com sucesso');
-
+                console.log('Notícia criada com sucesso');
                 setTitle('');
-                setBody('');
-                setStreet('');
-                setDate('');
-                setTime('');
-                setNumber('');
-                setCounty('');
+                setDescription('');
                 setImage({ uri: '' });
+                onClose();
             } else {
-                throw new Error('Falha na criação do evento');
+                throw new Error('Falha na criação da notícia');
             }
-            onClose();
         } catch (error: any) {
             console.error('Error:', error.message);
         }
@@ -130,14 +87,8 @@ export default function CreateEventModal({ visible, onClose, modalStyle }: Props
 
     const handleCancel = () => {
         setTitle('');
-        setBody('');
-        setDate('');
-        setTime('');
-        setStreet('');
-        setNumber('');
-        setCounty('');
+        setDescription('');
         setImage({ uri: '' });
-
         onClose();
     };
 
@@ -148,15 +99,9 @@ export default function CreateEventModal({ visible, onClose, modalStyle }: Props
                     <View style={styles.modalContent}>
                         {image.uri ? <Image source={image} style={styles.imagePreview} /> : null}
 
-                        <Text style={styles.title}>Criar Evento</Text>
+                        <Text style={styles.title}>Criar News</Text>
                         <TextInput style={styles.input} placeholder="Título" value={title} onChangeText={setTitle} />
-                        <TextInput style={styles.descriptionInput} placeholder="Descrição" value={body} onChangeText={setBody} multiline />
-                        <TextInput style={styles.input} placeholder="Data" value={date} onChangeText={handleDateChange} />
-                        <TextInput style={styles.input} placeholder="Hora (HH:MM)" value={time} onChangeText={handleTimeChange} />
-                        <TextInput style={styles.input} placeholder="Rua" value={street} onChangeText={setStreet} />
-                        <TextInput style={styles.input} placeholder="Número" value={number} onChangeText={handleNumberChange} />
-                        <TextInput style={styles.input} placeholder="Cidade" value={county} onChangeText={setCounty} />
-
+                        <TextInput style={styles.descriptionInput} placeholder="Descrição" value={description} onChangeText={setDescription} multiline />
                         <Pressable style={styles.button} onPress={selectImage}>
                             <Text style={styles.buttonText}>Selecionar Imagem</Text>
                         </Pressable>

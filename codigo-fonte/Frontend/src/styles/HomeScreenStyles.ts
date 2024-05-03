@@ -68,6 +68,29 @@ const styles = StyleSheet.create({
         fontSize: 16,
         marginTop: 10,
     },
+
+    createNewsButton: {
+        borderWidth: 1,
+        borderColor: 'rgba(0,0,0,0.2)',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 70,
+        height: 70,
+        backgroundColor: '#413267',
+        borderRadius: 50,
+        position: 'absolute',
+        bottom: 10,
+        right: 10,
+        zIndex: 1,
+    },
+
+    createNewsButtonText: {
+        fontSize: 15,
+        textAlign: 'center',
+        color: "#FFF",
+        fontWeight: 'bold',
+        marginBottom: 3,
+    },
 })
 
 export default styles;

@@ -7,6 +7,13 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
 
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
+    },
+
     rectangle: {
         backgroundColor: 'rgba(255, 255, 255, 0.85)',
         padding: 10,
@@ -103,13 +110,13 @@ const styles = StyleSheet.create({
         textDecorationLine: 'underline',
         marginTop: 10,
     },
-    
+
     extraInfo: {
         padding: 10,
         backgroundColor: 'rgba(255, 255, 255, 0.90)',
         marginTop: 10,
     },
-    
+
     extraInfoText: {
         color: '#333',
         fontSize: 14,
@@ -123,7 +130,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    
+
 });
 
 export default styles;
