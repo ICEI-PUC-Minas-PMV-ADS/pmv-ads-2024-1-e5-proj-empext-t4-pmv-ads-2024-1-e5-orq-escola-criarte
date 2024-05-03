@@ -48,80 +48,51 @@ ________________________________________
 
 
 ## Tela Home
-**Teste 8:** Navegação
-
-**Objetivo:** Verificar se os botões na parte inferior e superior da tela cumprem suas devidas funções
-
-**Resultado:** Na parte superior os botões cumprem suas devidas funções.
-
-**Melhorias:** Finalizar as demais telas para execução dos testes e criar o feed para que os administradores possam criar publicações.
+- **Teste 8:** Navegação
+- **Objetivo:** Verificar se os botões na parte inferior e superior da tela cumprem suas devidas funções
+- **Resultado:** Na parte superior os botões cumprem suas devidas funções.
+- **Melhorias:** Finalizar as demais telas para execução dos testes e criar o feed para que os administradores possam criar publicações.
 
 ## Tela Contato
-**Teste 9:** Funcionalidade dos cards de informação
-
-**Objetivo:** Cada card com a informação de contato, deverá redirecionar o usuário para a tela correspondente a informação apresentada no card, exceto o card de “horário de atendimento”
-
-**Resultado:** -
-
-**Melhorias:** -
+- **Teste 9:** Funcionalidade dos cards de informação
+- **Objetivo:** Cada card com a informação de contato, deverá redirecionar o usuário para a tela correspondente a informação apresentada no card, exceto o card de “horário de atendimento”
+- **Resultado:** -
+- **Melhorias:** -
 
 ## Tela Meu Perfil
-**Teste 10:** Alteração do e-mail do usuário
-
-**Objetivo:** O usuário pode trocar o e-mail de sua conta, desde que não exista esse e-mail já cadastrado no banco de dados.
-
-**Resultado:** A função de alterar a e-mail funcionam devidamente, contudo não existe retorno visual para o usuário, as informações de erro e sucesso aparecem apenas no console.
-
-**Melhorias:** Trazer retorno visual para o cliente do erro ou sucesso da operação.
+- **Teste 10:** Alteração do e-mail do usuário
+- **Objetivo:** O usuário pode trocar o e-mail de sua conta, desde que não exista esse e-mail já cadastrado no banco de dados.
+- **Resultado:** A função de alterar a e-mail funcionam devidamente, contudo não existe retorno visual para o usuário, as informações de erro e sucesso aparecem apenas no console.
+- **Melhorias:** Trazer retorno visual para o cliente do erro ou sucesso da operação.
 ________________________________________
-**Teste 11:** Alteração da senha do usuário
-
-**Objetivo:** O usuário pode trocar a senha de sua conta, desde que cumpra os requisitos de senha do sistema.
-
-**Resultado:** A função de alterar a senha funcionam devidamente, contudo não existe retorno visual para o usuário, as informações de erro e sucesso aparecem apenas no console.
-
- **Melhorias:** Trazer retorno visual para o cliente do erro ou sucesso da operação.
+- **Teste 11:** Alteração da senha do usuário
+- **Objetivo:** O usuário pode trocar a senha de sua conta, desde que cumpra os requisitos de senha do sistema.
+- **Resultado:** A função de alterar a senha funcionam devidamente, contudo não existe retorno visual para o usuário, as informações de erro e sucesso aparecem apenas no console.
+- **Melhorias:** Trazer retorno visual para o cliente do erro ou sucesso da operação.
 ________________________________________
 **`Sugestão de melhoria:`**
-
-` - Permitir o usuário alterar somente o e-mail ou somente a senha, no momento o usuário é obrigado a alterar o e-mail pois não consegue alterar a senha sem mexer no e-mail.`
-
-` - E a alteração do e-mail exige que a senha seja inserida ou alterada para confirmar a alteração.`
-
-` - O usuário deve poder alterar o nome dele também no sistema.`
-
-` - Para alteração do e-mail o usuário deve preencher a senha atual para confirmar a alteração.`
-
-` - Para alterar a senha o usuário deve inserir a senha atual e inserir a nova senha duas vezes, e a nova senha deverá passar pela validação de requisitos.`
-
-` - Trocar botão da tela de perfil “Sair” por “Voltar”.`
+- ` Permitir o usuário alterar somente o e-mail ou somente a senha, no momento o usuário é obrigado a alterar o e-mail pois não consegue alterar a senha sem mexer no e-mail.`
+- ` E a alteração do e-mail exige que a senha seja inserida ou alterada para confirmar a alteração.`
+- ` O usuário deve poder alterar o nome dele também no sistema.`
+- ` Para alteração do e-mail o usuário deve preencher a senha atual para confirmar a alteração.`
+- ` Para alterar a senha o usuário deve inserir a senha atual e inserir a nova senha duas vezes, e a nova senha deverá passar pela validação de requisitos.`
+- ` Trocar botão da tela de perfil “Sair” por “Voltar”.`
 
 ## Tela Eventos
-**Teste 12:** Criação de Evento 
-
-**Objetivo:** O usuário deve criar um evento e visualiza-lo na tela de eventos
-
-**Resultado:** O usuário consegue fazer a criação do evento adequadamente e é possível visualiza-lo na tela de eventos
-
-**Melhorias:** Trazer retorno visual para o cliente do erro ou sucesso da operação.
-
+- **Teste 12:** Criação de Evento 
+- **Objetivo:** O usuário deve criar um evento e visualiza-lo na tela de eventos
+- **Resultado:** O usuário consegue fazer a criação do evento adequadamente e é possível visualiza-lo na tela de eventos
+- **Melhorias:** Trazer retorno visual para o cliente do erro ou sucesso da operação.
 ________________________________________
-**Teste 13:** Deletar Evento 
-
-**Objetivo:** O usuário deve poder deletar um evento criado 
-
-**Resultado:** O usuário consegue fazer a exclusão do evento adequadamente e em seguida o evento desaparece da tela de eventos também
-
-**Melhorias:** Abrir um pop-up para confirmação da exclusão e trazer retorno visual para o cliente do erro ou sucesso da operação.
+- **Teste 13:** Deletar Evento 
+- **Objetivo:** O usuário deve poder deletar um evento criado 
+- **Resultado:** O usuário consegue fazer a exclusão do evento adequadamente e em seguida o evento desaparece da tela de eventos também
+- **Melhorias:** Abrir um pop-up para confirmação da exclusão e trazer retorno visual para o cliente do erro ou sucesso da operação.
 ________________________________________
 **`Sugestão de melhorias:`**
-` - O horário apresenta hora, minutos e segundos, mas basta as horas e os minutos.`
-
-` - O endereço do evento só pede rua e número, é interessante que se consiga buscar o endereço automaticamente utilizando o CEP, e que acrescente o bairro também.`
-
-` - O conteúdo do campo descrição está centralizado, ele deve ficar ajustado a esquerda.`
-
-` - Ao clicar no botão “mais informações” todos os eventos estão mostrando as suas descrições, seria bom que cada card de evento funcionasse de maneira independente.`
-
-` - Ao clicar no endereço do evento ser redirecionado automaticamente para o Google Maps para as coordenadas do endereço. A mesma funcionalidade poderá ser utilizada no card de Contatos com a instituição, pois eventualmente o endereço poderá ser alterado.`
+- ` O horário apresenta hora, minutos e segundos, mas basta as horas e os minutos.`
+- ` O endereço do evento só pede rua e número, é interessante que se consiga buscar o endereço automaticamente utilizando o CEP, e que acrescente o bairro também.`
+- ` O conteúdo do campo descrição está centralizado, ele deve ficar ajustado a esquerda.`
+- ` Ao clicar no botão “mais informações” todos os eventos estão mostrando as suas descrições, seria bom que cada card de evento funcionasse de maneira independente.`
+- ` Ao clicar no endereço do evento ser redirecionado automaticamente para o Google Maps para as coordenadas do endereço. A mesma funcionalidade poderá ser utilizada no card de Contatos com a instituição, pois eventualmente o endereço poderá ser alterado.`
 
