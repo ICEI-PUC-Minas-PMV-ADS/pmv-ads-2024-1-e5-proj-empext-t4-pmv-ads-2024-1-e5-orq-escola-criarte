@@ -23,4 +23,13 @@ public class NewsController : ControllerBase
         return Ok(result.Id);
     }
 
+    [HttpGet]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> GetAll()
+    {
+        var result = await _newsService.GetAll();
+
+        return Ok(result);
+    }
+
 }
