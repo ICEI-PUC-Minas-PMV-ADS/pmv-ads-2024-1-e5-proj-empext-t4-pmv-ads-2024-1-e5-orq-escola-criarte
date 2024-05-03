@@ -20,4 +20,11 @@ public class NewsRepository : INewsRepository
     {
         return await _context.News.AsNoTracking().ToListAsync();
     }
+
+    public async Task<News> GetByIdAsync(Guid id)
+    {
+        News? news = await _context.News.AsNoTracking().SingleOrDefaultAsync(n => n.Id == id);
+
+        return news;
+    }
 }
