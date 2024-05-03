@@ -29,7 +29,8 @@ public static class InfraModule
     {
         services
             .AddScoped<IUserRepository, UserRepository>()
-            .AddScoped<IPostRepository, PostRepository>();
+            .AddScoped<IPostRepository, PostRepository>()
+            .AddScoped<INewsRepository, NewsRepository>();
 
         return services;
     }
