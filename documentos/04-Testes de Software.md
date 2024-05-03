@@ -17,20 +17,101 @@ Enumere quais cenários de testes foram selecionados para teste. Neste tópico o
 **Melhorias:** - 
 ________________________________________
 **Teste 2:** Botão “Esqueci Minhas Senha”
+
 **Objetivo:** Redirecionar para a tela de recuperação de senha
+
 **Resultado:** Erro, o botão não está devidamente configurado, a função está sendo a mesma do botão “Entrar”
+
 **Melhorias:** Corrigir a função do botão para que realize devidamente sua função
 ________________________________________
 **Teste 3:** Login
+
 **Objetivo:** Validar os dados do usuário para verificar se está cadastrado e redirecionar para a tela inicial da aplicação caso os dados tenham sido devidamente validado
+
 **Resultado:** Ao inserir um dado incorreto no campo de e-mail, apresenta erro ao fazer login, seja este um e-mail inexistente no banco ou outro dado aleatório.
 
 Ao inserir um e-mail correto e senha incorreta também apresenta o erro na tela para o usuário.
 
 Ao inserir e-mail e senha corretos o usuário está sendo devidamente direcionado a tela home da aplicação.
+
 **Melhorias:** - 
 ________________________________________
 **Teste 4:** Botão visualizar senha
+
 **Objetivo:** Permitir ao usuário visualizar a senha preenchida
+
 **Resultado:** Ao clica no olho no final do campo da senha a mesma pode ser visualizada da forma devida.
+
 **Melhorias:** - 
+
+## Tela Cadastrar
+**Teste 5:** Preenchimento do campo de e-mail
+
+**Objetivo:** Verificar se o campo e-mail está sendo devidamente validados segundo as regras estabelecidas
+
+**Resultado:** A validação do campo e-mail não está sendo feito da forma devida, pois o cadastro pôde ser concluído mesmo digitando um e-mail inválido;
+
+**Melhorias:** Fazer a validação corretamente do input de e-mail e trazer retorno visual ao usuário sobre o erro cadastro e acrescentar um botão para retornar a tela de login. 
+________________________________________
+**Teste 6:** Preenchimento do campo de e-mail
+
+**Objetivo:** Verificar se o campo e-mail está sendo devidamente validados segundo as regras estabelecidas
+
+**Resultado:** A validação de duplicidade de e-mail está sendo feito da forma devida, pois o cadastro não pôde ser concluído inserindo um e-mail que já está cadastrado no sistema;
+
+**Melhorias:** Trazer retorno visual ao usuário sobre o erro, de que este email já está cadastrado no sistema.
+________________________________________
+**Teste 7:** Preenchimento do campo da senha 
+
+**Objetivo:** Verificar se o campo senha está sendo devidamente validados segundo as regras estabelecidas
+
+**Resultado:** A validação da senha está sendo feito da forma devida, pois o cadastro não pôde ser concluído caso o usuário insira uma senha que não cumpra com TODOS os requisitos;
+
+**Melhorias:** -
+
+
+## Tela Home
+**Teste 8:** Navegação
+
+**Objetivo:** Verificar se os botões na parte inferior e superior da tela cumprem suas devidas funções
+
+**Resultado:** Na parte superior os botões cumprem suas devidas funções.
+
+**Melhorias:** Finalizar as demais telas para execução dos testes e criar o feed para que os administradores possam criar publicações.
+
+## Tela Contato
+**Teste 9:** Funcionalidade dos cards de informação
+
+**Objetivo:** Cada card com a informação de contato, deverá redirecionar o usuário para a tela correspondente a informação apresentada no card, exceto o card de “horário de atendimento”
+
+**Resultado:** -
+
+**Melhorias:** -
+
+## Tela Meu Perfil
+**Teste 10:** Alteração do e-mail do usuário
+
+**Objetivo:** O usuário pode trocar o e-mail de sua conta, desde que não exista esse e-mail já cadastrado no banco de dados.
+
+**Resultado:** A função de alterar a e-mail funcionam devidamente, contudo não existe retorno visual para o usuário, as informações de erro e sucesso aparecem apenas no console.
+
+**Melhorias:** Trazer retorno visual para o cliente do erro ou sucesso da operação.
+	
+**Teste 11:** Alteração da senha do usuário
+
+**Objetivo:** O usuário pode trocar a senha de sua conta, desde que cumpra os requisitos de senha do sistema.
+
+**Resultado:** A função de alterar a senha funcionam devidamente, contudo não existe retorno visual para o usuário, as informações de erro e sucesso aparecem apenas no console.
+
+`#000000` **Melhorias:** Trazer retorno visual para o cliente do erro ou sucesso da operação.
+
+**Melhorias gerais da tela Meu Perfil:** Permitir o usuário alterar somente o e-mail ou somente a senha, no momento o usuário é obrigado a alterar o e-mail pois não consegue alterar a senha sem mexer no e-mail.
+E a alteração do e-mail exige que a senha seja inserida ou alterada para confirmar a alteração.
+
+O usuário deve poder alterar o nome dele também no sistema.
+
+**Sugestão de melhoria:** Para alteração do e-mail o usuário deve preencher a senha atual para confirmar a alteração.
+
+Para alterar a senha o usuário deve inserir a senha atual e inserir a nova senha duas vezes, e a nova senha deverá passar pela validação de requisitos.
+
+Trocar botão da tela de perfil “Sair” por “Voltar”.
