@@ -91,6 +91,39 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 3,
     },
+
+    moreInfo: {
+        padding: 10,
+        backgroundColor: 'rgba(255, 255, 255, 0.90)',
+        textAlign: 'center',
+        color: '#413267',
+        fontSize: 13,
+        fontStyle: 'italic',
+        fontWeight: 'bold',
+        textDecorationLine: 'underline',
+        marginTop: 10,
+    },
+    
+    extraInfo: {
+        padding: 10,
+        backgroundColor: 'rgba(255, 255, 255, 0.90)',
+        marginTop: 10,
+    },
+    
+    extraInfoText: {
+        color: '#333',
+        fontSize: 14,
+        textAlign: 'center',
+    },
+
+    deleteButton: {
+        padding: 10,
+        borderRadius: 5,
+        marginTop: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    
 });
 
 export default styles;
