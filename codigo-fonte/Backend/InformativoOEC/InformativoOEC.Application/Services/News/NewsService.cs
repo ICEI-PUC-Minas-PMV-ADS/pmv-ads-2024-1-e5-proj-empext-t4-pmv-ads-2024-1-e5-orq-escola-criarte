@@ -33,4 +33,13 @@ public class NewsService : INewsService
             throw new ValidationErrorsException(errorMessages);
         }
     }
+
+    public async Task<List<NewsViewModel>> GetAll()
+    {
+        List<Core.Entities.News> news = await _repository.GetAllAsync();
+
+        List<NewsViewModel> viewModels = news.Select(n =>  new NewsViewModel(n)).ToList();
+
+        return viewModels;
+    }
 }

@@ -6,118 +6,115 @@ Enumere quais cenários de testes foram selecionados para teste. Neste tópico o
  
 **Objetivo dos testes:** Verificar se o sistema atende aos requisitos funcionais, requisitos não funcionais e respeita as restrições definidas para o projeto.
 
-## Testes de Requisitos Funcionais:
 
-#### RF-001:
-**Objetivo** A plataforma deve permitir que o usuario faça login em uma conta, a qual será utilizada para visualizar e inscrever-se nos cursos e eventos disponíveis.
+## Tela Login
+**Teste 1:** Botão “Cadastrar”
 
-**Passos:**
-1.	Acessar a aplicação
-2.	Clicar em ‘login’
-3.	Inserir login e senha
-4.	Clicar em ‘entrar’
+**Objetivo:** Redirecionar para a tela de cadastro
 
-**Critérios de Êxito:**
-será redirecionado para o feed 
+**Resultado:** Sucesso, o redirecionamento está acontecendo da forma correta
 
-#### RF-002:
-**Objetivo** Cadastro de Novos Usuários Assegurar que o processo de cadastro de novos usuários na aplicação seja eficiente e seguro.
-**Passos:**
-1.	Acessar a aplicação
-2.	Selecionar a opção ‘Cadastrar-se’ 
-3.	Preencher o formulário de cadastro
-4.	Clicar no botão ‘Cadastrar
+**Melhorias:** - 
+________________________________________
+**Teste 2:** Botão “Esqueci Minhas Senha”
 
-**Critérios de Êxito:**
-Deverá receber a mensagem: ‘Usuário cadastrado com sucesso’
+**Objetivo:** Redirecionar para a tela de recuperação de senha
 
-#### RF-003:
-**Objetivo** Teste de Usabilidade: Verificar se a interface do usuário é intuitiva, fácil de navegar e acessível para todos os usuários.
-**Passos:**
-1.	Acessar a aplicação
-2.	Navegar pelo menu do aplicativo sem dificuldades 
-3.	clareza das informaçoes sobre eventos e cursos
-4.	Facilidade no proceso inscrição
+**Resultado:** Erro, o botão não está devidamente configurado, a função está sendo a mesma do botão “Entrar”
 
-**Critérios de Êxito:**
-A aplicação deve se mostrar inturitiva
+**Melhorias:** Corrigir a função do botão para que realize devidamente sua função
+________________________________________
+**Teste 3:** Login
 
-#### RF-004:
-**Objetivo** Feed de Eventos: Exibir em ordem cronológica todos os eventos tal como: cursos, palestras entre outros comunicados.
-**Passos:**
-1.	Acessar a aplicação
-2.	Navegar até o feed de notícias 
-3.	visualizar os eventos
-4.	increver-se nós eventos
+**Objetivo:** Validar os dados do usuário para verificar se está cadastrado e redirecionar para a tela inicial da aplicação caso os dados tenham sido devidamente validado
 
-**Critérios de Êxito:**
-A aplicação deve exibir os eventos e cadastrar o interesse do usuario corretamente.
+**Resultado:** Ao inserir um dado incorreto no campo de e-mail, apresenta erro ao fazer login, seja este um e-mail inexistente no banco ou outro dado aleatório.
 
-### Requisitos não Funcionais
+Ao inserir um e-mail correto e senha incorreta também apresenta o erro na tela para o usuário.
+
+Ao inserir e-mail e senha corretos o usuário está sendo devidamente direcionado a tela home da aplicação.
+
+**Melhorias:** - 
+________________________________________
+**Teste 4:** Botão visualizar senha
+
+**Objetivo:** Permitir ao usuário visualizar a senha preenchida
+
+**Resultado:** Ao clica no olho no final do campo da senha a mesma pode ser visualizada da forma devida.
+
+**Melhorias:** - 
+
+## Tela Cadastrar
+**Teste 5:** Preenchimento do campo de e-mail
+
+**Objetivo:** Verificar se o campo e-mail está sendo devidamente validados segundo as regras estabelecidas
+
+**Resultado:** A validação do campo e-mail não está sendo feito da forma devida, pois o cadastro pôde ser concluído mesmo digitando um e-mail inválido;
+
+**Melhorias:** Fazer a validação corretamente do input de e-mail e trazer retorno visual ao usuário sobre o erro cadastro e acrescentar um botão para retornar a tela de login. 
+________________________________________
+**Teste 6:** Preenchimento do campo de e-mail
+
+**Objetivo:** Verificar se o campo e-mail está sendo devidamente validados segundo as regras estabelecidas
+
+**Resultado:** A validação de duplicidade de e-mail está sendo feito da forma devida, pois o cadastro não pôde ser concluído inserindo um e-mail que já está cadastrado no sistema;
+
+**Melhorias:** Trazer retorno visual ao usuário sobre o erro, de que este email já está cadastrado no sistema.
+________________________________________
+**Teste 7:** Preenchimento do campo da senha 
+
+**Objetivo:** Verificar se o campo senha está sendo devidamente validados segundo as regras estabelecidas
+
+**Resultado:** A validação da senha está sendo feito da forma devida, pois o cadastro não pôde ser concluído caso o usuário insira uma senha que não cumpra com TODOS os requisitos;
+
+**Melhorias:** -
 
 
-#### RNF-001:
-**Objetivo** Performance: Verificar se a aplicação apresenta bom desempenho, incluindo tempos de resposta rápidos e baixo consumo de recursos.
+## Tela Home
+**Teste 8:** Navegação
 
-**Passos:**
-1.	Utilizar ferramentas de profiling para medir o consumo de CPU
-2.	Realizar testes de carga para avaliar o desempenho da aplicação sob diferentes níveis de utilização.
+**Objetivo:** Verificar se os botões na parte inferior e superior da tela cumprem suas devidas funções
 
-**Critérios de Êxito:**
-A aplicação deve manter tempos de resposta aceitáveis e consumir recursos de forma eficiente, mesmo sob carga intensa.
+**Resultado:** Na parte superior os botões cumprem suas devidas funções.
 
-#### RNF-002:
-**Objetivo** Disponibilidade: Garantir que a aplicação esteja disponível e acessível para os usuários na maior parte do tempo.
-**Passos:**
-1.	Utilizar ferramentas de monitoramento para verificar a disponibilidade da aplicação ao longo do tempo.
-2.	Realizar testes de recuperação de falhas para verificar se a aplicação é capaz de se recuperar de falhas de forma rápida e eficiente.
+**Melhorias:** Finalizar as demais telas para execução dos testes e criar o feed para que os administradores possam criar publicações.
 
-**Critérios de Êxito:**
-A aplicação deve estar disponível para os usuários pelo menos 99,9% do tempo
+## Tela Contato
+**Teste 9:** Funcionalidade dos cards de informação
 
-#### RNF-003:
-**Objetivo** Segurança da Informação: Garantir que a aplicação proteja os dados sensíveis dos usuários contra acessos não autorizados.
-**Passos:**
-1.	Realizar testes de penetração para identificar vulnerabilidades de segurança na aplicação.
-2.	Verificar se a aplicação utiliza práticas recomendadas de segurança, como criptografia de dados e autenticação de usuários.
+**Objetivo:** Cada card com a informação de contato, deverá redirecionar o usuário para a tela correspondente a informação apresentada no card, exceto o card de “horário de atendimento”
 
-**Critérios de Êxito:**
-A aplicação deve proteger os dados sensíveis dos usuários contra acessos não autorizados.
+**Resultado:** -
 
-#### RNF-004:
-**Objetivo** Garantir que a aplicação tenha uma interface intuitiva e fácil de usar, com navegação clara e elementos de design intuitivos, facilitando a busca e utilização pelos clientes.
-**Passos:**
-1.	Utilizar conceitos de User Experience (UX) e User Interface (UI) no desenvolvimento da interface
-2.	Realizar testes de usabilidade com usuários reais para avaliar a facilidade de uso da aplicação.
+**Melhorias:** -
 
-**Critérios de Êxito:**
- A aplicação deve receber avaliações positivas dos usuários quanto à facilidade de uso e clareza da interface.
+## Tela Meu Perfil
+**Teste 10:** Alteração do e-mail do usuário
 
- ## Restrições
+**Objetivo:** O usuário pode trocar o e-mail de sua conta, desde que não exista esse e-mail já cadastrado no banco de dados.
 
-O projeto está restrito pelos itens apresentados na tabela a seguir.
+**Resultado:** A função de alterar a e-mail funcionam devidamente, contudo não existe retorno visual para o usuário, as informações de erro e sucesso aparecem apenas no console.
 
-#### 01
- **Objetivo** O desenvolvimento da aplicação deve ser concluído dentro do prazo estabelecido.
- 
-**Passos:**
-1.	Cumprir o cronograma de desenvolvimento estabelecido, seguindo as datas das Sprints.
+**Melhorias:** Trazer retorno visual para o cliente do erro ou sucesso da operação.
+	
+**Teste 11:** Alteração da senha do usuário
 
-**Critérios de Êxito:**
-Conclusão do desenvolvimento dentro do prazo acordado.
+**Objetivo:** O usuário pode trocar a senha de sua conta, desde que cumpra os requisitos de senha do sistema.
 
-#### 02
- **Objetivo** O desenvolvimento da aplicação deve ser realizado dentro do orçamento financeiro estabelecido para o projeto.
-**Passos:**
-1.	Monitorar regularmente os custos do projeto, incluindo despesas com, ferramentas e infraestrutura.
+**Resultado:** A função de alterar a senha funcionam devidamente, contudo não existe retorno visual para o usuário, as informações de erro e sucesso aparecem apenas no console.
 
-**Critérios de Êxito:**
-Conclusão do projeto dentro do orçamento estabelecido.
+ **Melhorias:** Trazer retorno visual para o cliente do erro ou sucesso da operação.
 
-#### 03
- **Objetivo** Garantir que a aplicação seja facilmente mantida e suportada após o lançamento.
-**Passos:**
-1.	Implementar uma estrutura de código limpa e organizada, facilitando futuras atualizações e correções.
+**`Sugestão de melhoria:`**
 
-**Critérios de Êxito:**
-A aplicação deve ser facilmente atualizável e corrigível.
+` - Permitir o usuário alterar somente o e-mail ou somente a senha, no momento o usuário é obrigado a alterar o e-mail pois não consegue alterar a senha sem mexer no e-mail.`
+
+` - E a alteração do e-mail exige que a senha seja inserida ou alterada para confirmar a alteração.`
+
+` - O usuário deve poder alterar o nome dele também no sistema.`
+
+` - Para alteração do e-mail o usuário deve preencher a senha atual para confirmar a alteração.`
+
+` - Para alterar a senha o usuário deve inserir a senha atual e inserir a nova senha duas vezes, e a nova senha deverá passar pela validação de requisitos.`
+
+` - Trocar botão da tela de perfil “Sair” por “Voltar”.`
