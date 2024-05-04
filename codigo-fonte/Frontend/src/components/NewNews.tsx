@@ -9,6 +9,7 @@ import { jwtDecode } from 'jwt-decode';
 interface Props {
     visible: boolean;
     onClose: () => void;
+    onUpdate: () => void;
     modalStyle?: object;
 }
 
@@ -22,7 +23,7 @@ interface News {
     imageURL: string;
 }
 
-export default function CreateNewsModal({ visible, onClose, modalStyle }: Props) {
+export default function CreateNewsModal({ visible, onClose, modalStyle, onUpdate }: Props) {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [image, setImage] = useState<{ uri: string }>({ uri: '' });
@@ -70,16 +71,21 @@ export default function CreateNewsModal({ visible, onClose, modalStyle }: Props)
         console.log('Enviando o seguinte objeto para a API:', news);
 
         try {
-            const response = await api.post('/posts', news);
+            const response = await api.post('/news', news);
             if (response.status === 200) {
+
                 console.log('Notícia criada com sucesso');
+
                 setTitle('');
                 setDescription('');
                 setImage({ uri: '' });
-                onClose();
+                onUpdate();
+
             } else {
+
                 throw new Error('Falha na criação da notícia');
             }
+            onClose();
         } catch (error: any) {
             console.error('Error:', error.message);
         }
@@ -90,6 +96,7 @@ export default function CreateNewsModal({ visible, onClose, modalStyle }: Props)
         setDescription('');
         setImage({ uri: '' });
         onClose();
+        onUpdate()
     };
 
     return (
