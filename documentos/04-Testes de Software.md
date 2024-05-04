@@ -69,7 +69,7 @@ ________________________________________
 
 
 # Tela Meu Perfil
-- [**Teste 10:** Alteração do e-mail do usuário](https://drive.google.com/file/d/1kTdjtV5OWKXgokShiNSM_YMTSWxOOgiM/view?usp=sharing)
+- [**Teste 10:** Alteração do e-mail do usuário](https://drive.google.com/file/d/1HXOfIuZg9MnX-N-lxWECEZQlN-XupAae/view?usp=sharing)
 - **Objetivo:** O usuário pode trocar o e-mail de sua conta, desde que não exista esse e-mail já cadastrado no banco de dados.
 - **Resultado:** A função de alterar a e-mail funcionam devidamente, contudo não existe retorno visual para o usuário, as informações de erro e sucesso aparecem apenas no console.
 - **Melhorias:** Trazer retorno visual para o cliente do erro ou sucesso da operação.
@@ -90,12 +90,12 @@ ________________________________________
 
 
 # Tela Eventos
-- [**Teste 12:** Criação de Evento](https://drive.google.com/file/d/1uCypuLDiNyh4U6QXtqwe47CUeboUEGlB/view?usp=sharing)
+- [**Teste 12:** Criação de Evento](https://drive.google.com/file/d/1HXNDlFK55qOIvOlizJcXk-tAYUKxisfn/view?usp=sharing)
 - **Objetivo:** O usuário deve criar um evento e visualiza-lo na tela de eventos
 - **Resultado:** O usuário consegue fazer a criação do evento adequadamente e é possível visualiza-lo na tela de eventos
 - **Melhorias:** Trazer retorno visual para o cliente do erro ou sucesso da operação.
 ________________________________________
-- [**Teste 13:** Deletar Evento](https://drive.google.com/file/d/16-dSX0rfZXJx11wcR4OQ8BVtIvs0dWmj/view?usp=sharing)
+- [**Teste 13:** Deletar Evento](https://drive.google.com/file/d/1HV4bJTpMSVdPmjUS65Agz9z3oMCF8y8U/view?usp=sharing)
 - **Objetivo:** O usuário deve poder deletar um evento criado 
 - **Resultado:** O usuário consegue fazer a exclusão do evento adequadamente e em seguida o evento desaparece da tela de eventos também
 - **Melhorias:** Abrir um pop-up para confirmação da exclusão e trazer retorno visual para o cliente do erro ou sucesso da operação.
