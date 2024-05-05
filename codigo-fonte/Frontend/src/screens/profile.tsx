@@ -8,6 +8,8 @@ import { getToken, api } from '../config/authUtils';
 import Title from '../components/Title';
 import ImageCheck from '../assets/icon-check.png'
 import ImageClose from '../assets/icon-close.png'
+import CustomModal from '../components/CustomModal';
+import { useNavigation } from '@react-navigation/native';
 
 interface UserData {
   'user_name': string;
@@ -37,6 +39,7 @@ export default function ProfileScreen({ navigation }: Props) {
   });
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordsMatch, setPasswordsMatch] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const secureText = (password: string, confirmPassword: string) => {
     const regexUppercase = RegExp(/^(?=.*[A-Z]).+$/);
@@ -54,12 +57,17 @@ export default function ProfileScreen({ navigation }: Props) {
     setPasswordsMatch(password === confirmPassword);
   };
 
+  const handleLogout = () => {
+    navigation.navigate('Login');
+  };
+
   async function fetchUserData() {
     try {
       const token = await getToken();
       if (token) {
         const decoded = jwtDecode<UserData>(token);
         setUserData(decoded);
+        console.log(userData);
       } else {
         console.log('Token é nulo');
       }
@@ -103,9 +111,12 @@ export default function ProfileScreen({ navigation }: Props) {
       const response = await api.put(url, data);
       if (response.status === 204) {
         console.log('Usuario Atualizado com sucesso');
+        setModalVisible(true);
+        fetchUserData();
       } else {
         throw new Error('falha na atulização');
       }
+
     } catch (error: any) {
       console.error('Error:', error.message);
     }
@@ -123,7 +134,6 @@ export default function ProfileScreen({ navigation }: Props) {
 
   const handleCancel = () => {
     setIsEditing(false);
-
     setEmail(userData ? userData['email'] : '');
 
   };
@@ -228,6 +238,15 @@ export default function ProfileScreen({ navigation }: Props) {
               </View>
             )}
           </View>
+          {modalVisible && (
+            <CustomModal
+              message="Dados atualizados com sucesso!"
+              onOk={() => {
+                setModalVisible(false);
+                handleLogout();
+              }}
+            />
+          )}
         </ScrollView>
       </SafeAreaView>
     </ImageBackground>

@@ -21,18 +21,24 @@ const News = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
+  const fetchNews = () => {
     setIsLoading(true);
-    api.get<News[]>('')
+    api.get<News[]>('/news')
       .then(response => {
         setNews(response.data);
         setIsLoading(false);
+        console.log(response.data)
       })
       .catch(error => {
         console.error(error);
         setIsLoading(false);
       });
+  };
+
+  useEffect(() => {
+    fetchNews();
   }, []);
+
 
   const fetchUserRole = async () => {
     const token = await getToken();
@@ -48,6 +54,7 @@ const News = () => {
 
   const closeModal = () => {
     setIsModalVisible(false);
+    fetchNews();
   };
 
   return (
@@ -83,7 +90,7 @@ const News = () => {
           </Pressable>
         )}
         <View>
-          <CreateNewsModal visible={isModalVisible} onClose={closeModal} />
+          <CreateNewsModal visible={isModalVisible} onClose={closeModal} onUpdate={fetchNews} />
         </View>
       </View>
     </ImageBackground>
