@@ -4,6 +4,7 @@ import styles from "../styles/HomeScreenStyles";
 import { api, getToken } from '../config/authUtils';
 import { jwtDecode } from 'jwt-decode';
 import CreateNewsModal from "../components/NewNews";
+import { useNavigation } from "@react-navigation/native";
 
 interface News {
   title: string;
@@ -15,11 +16,16 @@ interface UserData {
   'role': string;
 }
 
-const News = () => {
+interface Props {
+  navigation: any;
+}
+
+const News = ({ navigation }: Props) => {
   const [news, setNews] = useState<News[]>([]);
   const [userRole, setUserRole] = useState<string>('');
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  
 
   const fetchNews = () => {
     setIsLoading(true);
@@ -74,6 +80,10 @@ const News = () => {
                 />
                 <Text style={styles.title}>{news.title}</Text>
                 <Text style={styles.body}>{news.description}</Text>
+                <View style={styles.border}/>
+                <Pressable onPress={() => navigation.navigate('Contacts')}>
+                  <Text style={styles.info}>Para mais informações entre em contato</Text>
+                </Pressable>
               </View>
             ))}
           </ScrollView>
