@@ -95,9 +95,11 @@ export default function ProfileScreen({ navigation }: Props) {
     }
   };
 
-  async function updateUser(id: string, email: string, name: string, role: string) {
+  async function updateUser(id: string, emailInput: string, name: string, role: string) {
+    if (!userData) return;
     const url = `/users/${id}`;
     const roleValue = role === 'Admin' ? 1 : 2;
+    const email = emailInput ? emailInput : userData.email;
     const data = {
       name,
       password,

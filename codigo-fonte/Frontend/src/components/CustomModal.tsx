@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Text, View, Button, StyleSheet } from 'react-native';
+import { Modal, Text, View, Pressable, StyleSheet } from 'react-native';
 
 interface CustomModalProps {
   message: string;
@@ -27,12 +27,9 @@ const CustomModal: React.FC<CustomModalProps> = ({ message, onOk }) => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>{message}</Text>
-
-            <Button
-              color={'#413267'}
-              title="OK"
-              onPress={handleOk}
-            />
+            <Pressable style={styles.botao} onPress={handleOk}>
+              <Text style={styles.buttonText}>OK</Text>
+            </Pressable>
           </View>
         </View>
       </Modal>
@@ -47,6 +44,21 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: 'rgba(0,0,0,0.5)',
   },
+
+  botao: {
+    backgroundColor: '#413267',
+    padding: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 75,
+    height: 45,
+    borderRadius: 10,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+  },
+
   modalView: {
     margin: 20,
     backgroundColor: "white",
@@ -55,12 +67,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     elevation: 5
   },
+
   modalText: {
     marginBottom: 15,
     textAlign: "center",
     fontWeight: 'bold',
     fontSize: 15,
   }
+
 });
 
 export default CustomModal;
