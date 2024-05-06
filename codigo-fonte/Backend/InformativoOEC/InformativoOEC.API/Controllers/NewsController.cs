@@ -41,4 +41,12 @@ public class NewsController : ControllerBase
         return Ok(result);
     }
 
+    [HttpDelete("{id}")]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> Delete(Guid id)
+    {
+        await _newsService.DeleteById(id);
+
+        return NoContent();
+    }
 }
