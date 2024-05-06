@@ -5,4 +5,5 @@ public interface INewsRepository
 {
     Task AddAsync(News news);
     Task<List<News>> GetAllAsync();
+    Task<News> GetByIdAsync(Guid id);
 }

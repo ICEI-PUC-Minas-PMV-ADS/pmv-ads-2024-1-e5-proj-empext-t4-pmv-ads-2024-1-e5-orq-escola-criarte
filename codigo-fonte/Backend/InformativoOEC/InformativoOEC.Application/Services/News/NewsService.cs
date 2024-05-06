@@ -42,4 +42,13 @@ public class NewsService : INewsService
 
         return viewModels;
     }
+
+    public async Task<NewsViewModel> GetById(Guid id)
+    {
+        Core.Entities.News news = await _repository.GetByIdAsync(id);
+
+        NewsViewModel viewModel = new(news);
+
+        return viewModel;
+    }
 }

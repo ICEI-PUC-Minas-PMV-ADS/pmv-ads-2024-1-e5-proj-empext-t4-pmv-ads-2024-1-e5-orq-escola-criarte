@@ -59,7 +59,7 @@ public class UserService : IUserService
         Core.Entities.User user = await _userRepository.GetUserById(id) ??
             throw new ValidationErrorsException("Usuário não existe");
 
-        UserViewModel viewModel = new(user.Name, user.Email);
+        UserViewModel viewModel = new(user);
 
         return viewModel;
     }
