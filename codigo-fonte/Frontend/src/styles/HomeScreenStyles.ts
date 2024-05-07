@@ -110,6 +110,14 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 3,
     },
+
+    deleteButton: {
+        padding: 10,
+        borderRadius: 5,
+        marginTop: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
 })
 
 export default styles;
