@@ -16,7 +16,7 @@ public class PostRepository : IPostRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task DeleteAsync(Guid id)
+    public async Task Delete(Guid id)
     {
         Post? post = await _context.Posts.SingleOrDefaultAsync(p => p.Id == id);
 

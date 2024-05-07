@@ -16,6 +16,14 @@ public class NewsRepository : INewsRepository
         await _context.SaveChangesAsync();
     }
 
+    public async Task Delete(Guid id)
+    {
+        News? news = await _context.News.SingleOrDefaultAsync(n => n.Id == id);
+
+        _context.News.Remove(news);
+        _context.SaveChanges();       
+    }
+
     public async Task<List<News>> GetAllAsync()
     {
         return await _context.News.AsNoTracking().ToListAsync();

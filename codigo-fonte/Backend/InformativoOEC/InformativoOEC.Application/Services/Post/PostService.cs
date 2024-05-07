@@ -24,7 +24,7 @@ public class PostService : IPostService
 
     public async Task DeleteById(Guid id)
     {
-        await _postRepository.DeleteAsync(id);
+        await _postRepository.Delete(id);
     }
 
     public async Task<PostViewModel> GetById(Guid id)
