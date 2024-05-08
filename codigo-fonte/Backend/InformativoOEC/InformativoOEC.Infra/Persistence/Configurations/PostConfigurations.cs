@@ -10,7 +10,7 @@ public class PostConfigurations : IEntityTypeConfiguration<Post>
         builder.HasKey(p => p.Id);
 
         builder.Property(p => p.Username).HasMaxLength(100).IsRequired();
-        builder.Property(p => p.ImageURL).IsRequired();
+        builder.Property(p => p.ImageURL).HasColumnType("mediumblob").IsRequired();
         builder.Property(p => p.Date).IsRequired();
 
         builder.OwnsOne(p => p.Content)
