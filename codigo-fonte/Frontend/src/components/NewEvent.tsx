@@ -5,6 +5,7 @@ import { api } from '../config/authUtils';
 import styles from '../styles/ModalCreate';
 import { getToken } from '../config/authUtils';
 import { jwtDecode } from 'jwt-decode';
+import { Buffer } from 'buffer';
 
 interface Props {
     visible: boolean;
@@ -26,6 +27,7 @@ export default function CreateEventModal({ visible, onClose, modalStyle }: Props
     const [username, setUsername] = React.useState<string>('');
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
+    const isFormComplete = title && body && street && number && county && image.uri && date && time;
 
     React.useEffect(() => {
         async function fetchUserData() {
@@ -46,7 +48,7 @@ export default function CreateEventModal({ visible, onClose, modalStyle }: Props
     }, []);
 
     const handleDateChange = (newDate: string) => {
-        if (/^[0-9/]*$/.test(newDate)) {
+        if (/^[0-9/]*$/.test(newDate) && newDate.length <= 10) {
             if (newDate.length === 2 || newDate.length === 5) {
                 newDate += '/';
             }
@@ -55,7 +57,7 @@ export default function CreateEventModal({ visible, onClose, modalStyle }: Props
     };
 
     const handleTimeChange = (newTime: string) => {
-        if (/^[0-9:]*$/.test(newTime)) {
+        if (/^[0-9:]*$/.test(newTime) && newTime.length <= 5) {
             if (newTime.length === 2) {
                 newTime += ':';
             }
@@ -83,17 +85,21 @@ export default function CreateEventModal({ visible, onClose, modalStyle }: Props
         }
     };
 
-    const handleSubmit = async () => {
+    const base64String = image.uri;
+    const base64Data = base64String.replace(/^[\w\d;:\/]+base64,/, '');
+    const byteArray = new Uint8Array(Buffer.from(base64Data, 'base64'));
 
+    const handleSubmit = async () => {
         const [day, month, year] = date.split('/');
-        const formattedDate = `${year}-${month}-${day}T${time}:00.000Z`;
+        const [hour, minute] = time.split(':');
+        const formattedDate = `${year}-${month}-${day}T${hour}:${minute}:00.000Z`;
 
         const event = {
             content: {
                 title,
                 body,
             },
-            imageURL: image.uri,
+            imageURL: byteArray,
             date: formattedDate,
             address: {
                 street,
@@ -160,9 +166,10 @@ export default function CreateEventModal({ visible, onClose, modalStyle }: Props
                         <Pressable style={styles.button} onPress={selectImage}>
                             <Text style={styles.buttonText}>Selecionar Imagem</Text>
                         </Pressable>
-                        <Pressable style={styles.button} onPress={handleSubmit}>
+                        <Pressable style={isFormComplete ? styles.button : styles.buttonDisabled} onPress={handleSubmit} disabled={!isFormComplete}>
                             <Text style={styles.buttonText}>Criar</Text>
                         </Pressable>
+
                         <Pressable style={styles.button} onPress={handleCancel}>
                             <Text style={styles.buttonText}>Cancelar</Text>
                         </Pressable>
