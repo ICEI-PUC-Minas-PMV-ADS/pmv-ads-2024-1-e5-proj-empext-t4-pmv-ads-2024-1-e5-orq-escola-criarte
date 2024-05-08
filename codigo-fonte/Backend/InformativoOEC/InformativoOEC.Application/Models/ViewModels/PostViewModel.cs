@@ -19,7 +19,7 @@ public class PostViewModel
 
     public Guid Id { get; set; }
     public Content Content { get; }
-    public byte[] ImageURL { get; }
+    public string ImageURL { get; }
     public DateTime Date { get; }
     public Address Address { get; }
     public string Username { get; }

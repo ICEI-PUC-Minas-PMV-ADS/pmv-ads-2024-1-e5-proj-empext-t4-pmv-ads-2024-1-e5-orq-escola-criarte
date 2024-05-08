@@ -5,7 +5,7 @@ namespace InformativoOEC.Application.Models.InputModels;
 public class PostInputModel
 {
     public Content Content { get; set; }
-    public byte[] ImageURL { get; set; }
+    public string ImageURL { get; set; }
     public DateTime Date { get; set; }
     public Address Address { get; set; }
     public string Username { get; set; }
