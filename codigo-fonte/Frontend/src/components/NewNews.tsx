@@ -5,6 +5,7 @@ import { api } from '../config/authUtils';
 import styles from '../styles/ModalCreate';
 import { getToken } from '../config/authUtils';
 import { jwtDecode } from 'jwt-decode';
+import { Buffer } from 'buffer';
 
 interface Props {
     visible: boolean;
@@ -20,7 +21,7 @@ interface UserData {
 interface News {
     title: string;
     description: string;
-    imageURL: string;
+    imageURL: Uint8Array;
 }
 
 export default function CreateNewsModal({ visible, onClose, modalStyle, onUpdate }: Props) {
@@ -28,6 +29,7 @@ export default function CreateNewsModal({ visible, onClose, modalStyle, onUpdate
     const [description, setDescription] = useState('');
     const [image, setImage] = useState<{ uri: string }>({ uri: '' });
     const [username, setUsername] = useState<string>('');
+    const isFormComplete = title && description && image.uri;
 
     React.useEffect(() => {
         async function fetchUserData() {
@@ -61,11 +63,15 @@ export default function CreateNewsModal({ visible, onClose, modalStyle, onUpdate
         }
     };
 
+    const base64String = image.uri;
+    const base64Data = base64String.replace(/^[\w\d;:\/]+base64,/, '');
+    const byteArray = new Uint8Array(Buffer.from(base64Data, 'base64'));
+
     const handleSubmit = async () => {
         const news: News = {
             title,
             description,
-            imageURL: image.uri,
+            imageURL: byteArray,
         };
 
         console.log('Enviando o seguinte objeto para a API:', news);
@@ -112,7 +118,7 @@ export default function CreateNewsModal({ visible, onClose, modalStyle, onUpdate
                         <Pressable style={styles.button} onPress={selectImage}>
                             <Text style={styles.buttonText}>Selecionar Imagem</Text>
                         </Pressable>
-                        <Pressable style={styles.button} onPress={handleSubmit}>
+                        <Pressable style={isFormComplete ? styles.button : styles.buttonDisabled} onPress={handleSubmit} disabled={!isFormComplete}>
                             <Text style={styles.buttonText}>Criar</Text>
                         </Pressable>
                         <Pressable style={styles.button} onPress={handleCancel}>

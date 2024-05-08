@@ -236,7 +236,7 @@ export default function ProfileScreen({ navigation }: Props) {
             </View>
             {!isEditing && (
               <View style={styles.buttonContainer}>
-                <ButtonComponent style={{ width: '80%', alignSelf: 'center' }} text="Sair" onPress={() => navigation.navigate('Home')} />
+                <ButtonComponent style={{ width: '80%', alignSelf: 'center' }} text="Voltar" onPress={() => navigation.navigate('Home')} />
               </View>
             )}
           </View>
