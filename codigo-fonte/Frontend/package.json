@@ -33,7 +33,8 @@
     "react-native-screens": "^3.22.0",
     "react-native-splash-screen": "^3.3.0",
     "react-native-web": "~0.19.6",
-    "styled-components": "^6.1.8"
+    "styled-components": "^6.1.8",
+    "expo-image-manipulator": "~11.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
