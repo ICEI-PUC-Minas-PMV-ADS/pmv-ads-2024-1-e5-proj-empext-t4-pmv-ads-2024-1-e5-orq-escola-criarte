@@ -1,5 +1,6 @@
 ﻿using InformativoOEC.Core.Entities;
 using InformativoOEC.Core.ValueObjects;
+using System.Reflection.Metadata;
 
 namespace InformativoOEC.Application.Models.ViewModels;
 public class PostViewModel
@@ -18,7 +19,7 @@ public class PostViewModel
 
     public Guid Id { get; set; }
     public Content Content { get; }
-    public string ImageURL { get; }
+    public byte[] ImageURL { get; }
     public DateTime Date { get; }
     public Address Address { get; }
     public string Username { get; }
