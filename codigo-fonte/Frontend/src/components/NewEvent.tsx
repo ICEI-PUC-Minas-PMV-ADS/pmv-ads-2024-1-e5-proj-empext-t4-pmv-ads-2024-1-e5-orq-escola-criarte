@@ -5,7 +5,7 @@ import { api } from '../config/authUtils';
 import styles from '../styles/ModalCreate';
 import { getToken } from '../config/authUtils';
 import { jwtDecode } from 'jwt-decode';
-import { Buffer } from 'buffer';
+import * as ImageManipulator from 'expo-image-manipulator';
 
 interface Props {
     visible: boolean;
@@ -76,18 +76,21 @@ export default function CreateEventModal({ visible, onClose, modalStyle }: Props
             mediaTypes: ImagePicker.MediaTypeOptions.Images,
             allowsEditing: true,
             aspect: [4, 3],
-            quality: 1,
+            quality: 0.5,
         });
-
+    
         if (!result.canceled) {
             const { uri } = result.assets[0];
-            setImage({ uri });
+    
+            const resizedImage = await ImageManipulator.manipulateAsync(
+                uri,
+                [{ resize: { width: 480 } }],
+                { compress: 0.5, format: ImageManipulator.SaveFormat.JPEG }
+            );
+    
+            setImage({ uri: resizedImage.uri });
         }
     };
-
-    const base64String = image.uri;
-    const base64Data = base64String.replace(/^[\w\d;:\/]+base64,/, '');
-    const byteArray = new Uint8Array(Buffer.from(base64Data, 'base64'));
 
     const handleSubmit = async () => {
         const [day, month, year] = date.split('/');
@@ -99,7 +102,7 @@ export default function CreateEventModal({ visible, onClose, modalStyle }: Props
                 title,
                 body,
             },
-            imageURL: byteArray,
+            imageURL: image.uri,
             date: formattedDate,
             address: {
                 street,

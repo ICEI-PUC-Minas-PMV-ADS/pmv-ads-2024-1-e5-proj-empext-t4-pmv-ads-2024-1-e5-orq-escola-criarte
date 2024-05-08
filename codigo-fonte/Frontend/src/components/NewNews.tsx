@@ -5,7 +5,7 @@ import { api } from '../config/authUtils';
 import styles from '../styles/ModalCreate';
 import { getToken } from '../config/authUtils';
 import { jwtDecode } from 'jwt-decode';
-import { Buffer } from 'buffer';
+import * as ImageManipulator from 'expo-image-manipulator';
 
 interface Props {
     visible: boolean;
@@ -21,7 +21,7 @@ interface UserData {
 interface News {
     title: string;
     description: string;
-    imageURL: Uint8Array;
+    imageURL: string;
 }
 
 export default function CreateNewsModal({ visible, onClose, modalStyle, onUpdate }: Props) {
@@ -54,24 +54,27 @@ export default function CreateNewsModal({ visible, onClose, modalStyle, onUpdate
             mediaTypes: ImagePicker.MediaTypeOptions.Images,
             allowsEditing: true,
             aspect: [4, 3],
-            quality: 5,
+            quality: 1,
         });
-
+    
         if (!result.canceled) {
             const { uri } = result.assets[0];
-            setImage({ uri });
+    
+            const resizedImage = await ImageManipulator.manipulateAsync(
+                uri,
+                [{ resize: { width: 854, height: 480 } }],
+                { compress: 0.5, format: ImageManipulator.SaveFormat.JPEG }
+            );
+    
+            setImage({ uri: resizedImage.uri });
         }
     };
-
-    const base64String = image.uri;
-    const base64Data = base64String.replace(/^[\w\d;:\/]+base64,/, '');
-    const byteArray = new Uint8Array(Buffer.from(base64Data, 'base64'));
 
     const handleSubmit = async () => {
         const news: News = {
             title,
             description,
-            imageURL: byteArray,
+            imageURL: image.uri,
         };
 
         console.log('Enviando o seguinte objeto para a API:', news);
