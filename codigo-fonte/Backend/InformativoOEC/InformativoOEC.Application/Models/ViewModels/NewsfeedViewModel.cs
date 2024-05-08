@@ -1,5 +1,4 @@
 ﻿using InformativoOEC.Core.ValueObjects;
-using System.Reflection.Metadata;
 
 namespace InformativoOEC.Application.Models.ViewModels;
 public class NewsfeedViewModel
@@ -16,7 +15,7 @@ public class NewsfeedViewModel
 
     public Guid Id { get; set; }
     public Content Content { get; set; }
-    public byte[] ImageURL { get; set; }
+    public string ImageURL { get; set; }
     public DateTime Date { get; set; }
     public Address Address { get; set; }
     public string Username { get; set; }
