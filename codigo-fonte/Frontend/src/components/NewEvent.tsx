@@ -6,6 +6,7 @@ import styles from '../styles/ModalCreate';
 import { getToken } from '../config/authUtils';
 import { jwtDecode } from 'jwt-decode';
 import * as ImageManipulator from 'expo-image-manipulator';
+import * as FileSystem from 'expo-file-system';
 
 interface Props {
     visible: boolean;
@@ -88,7 +89,9 @@ export default function CreateEventModal({ visible, onClose, modalStyle }: Props
                 { compress: 0.5, format: ImageManipulator.SaveFormat.JPEG }
             );
     
-            setImage({ uri: resizedImage.uri });
+            const base64Image = await FileSystem.readAsStringAsync(resizedImage.uri, { encoding: FileSystem.EncodingType.Base64 });
+    
+            setImage({ uri: `data:image/jpeg;base64,${base64Image}` });
         }
     };
 

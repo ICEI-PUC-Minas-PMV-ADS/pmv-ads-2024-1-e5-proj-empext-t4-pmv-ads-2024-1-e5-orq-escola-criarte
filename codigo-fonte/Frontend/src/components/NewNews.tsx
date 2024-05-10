@@ -6,6 +6,7 @@ import styles from '../styles/ModalCreate';
 import { getToken } from '../config/authUtils';
 import { jwtDecode } from 'jwt-decode';
 import * as ImageManipulator from 'expo-image-manipulator';
+import * as FileSystem from 'expo-file-system';
 
 interface Props {
     visible: boolean;
@@ -56,17 +57,19 @@ export default function CreateNewsModal({ visible, onClose, modalStyle, onUpdate
             aspect: [4, 3],
             quality: 1,
         });
-    
+
         if (!result.canceled) {
             const { uri } = result.assets[0];
-    
+
             const resizedImage = await ImageManipulator.manipulateAsync(
                 uri,
                 [{ resize: { width: 854, height: 480 } }],
                 { compress: 0.5, format: ImageManipulator.SaveFormat.JPEG }
             );
-    
-            setImage({ uri: resizedImage.uri });
+
+            const base64Image = await FileSystem.readAsStringAsync(resizedImage.uri, { encoding: FileSystem.EncodingType.Base64 });
+
+            setImage({ uri: `data:image/jpeg;base64,${base64Image}` });
         }
     };
 

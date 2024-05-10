@@ -6,6 +6,9 @@ import { jwtDecode } from 'jwt-decode';
 import { Ionicons } from '@expo/vector-icons';
 import CreateEventModal from "../components/NewEvent";
 import Title from "../components/Title";
+import { decode } from "base-64";
+
+global.atob = decode;
 
 interface Event {
     id: string;

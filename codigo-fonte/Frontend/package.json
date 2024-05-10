@@ -18,8 +18,11 @@
     "@react-navigation/stack": "^6.3.25",
     "@types/jwt-decode": "^3.1.0",
     "axios": "^1.6.8",
+    "base-64": "^1.0.0",
     "buffer": "^6.0.3",
     "expo": "^49.0.23",
+    "expo-file-system": "~15.4.5",
+    "expo-image-manipulator": "~11.3.0",
     "expo-image-picker": "~14.3.2",
     "expo-status-bar": "^1.6.0",
     "jwt-decode": "^4.0.0",
@@ -33,12 +36,13 @@
     "react-native-screens": "^3.22.0",
     "react-native-splash-screen": "^3.3.0",
     "react-native-web": "~0.19.6",
-    "styled-components": "^6.1.8",
-    "expo-image-manipulator": "~11.3.0"
+    "styled-components": "^6.1.8"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@types/base-64": "^1.0.2",
     "@types/react": "~18.2.45",
+    "@types/react-native-base64": "^0.2.2",
     "@types/react-native-vector-icons": "^6.4.18",
     "@types/styled-components-react-native": "^5.2.5",
     "typescript": "^5.1.3"
