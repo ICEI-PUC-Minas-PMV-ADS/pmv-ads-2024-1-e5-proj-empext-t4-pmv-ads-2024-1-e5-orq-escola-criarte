@@ -5,6 +5,9 @@ import { api, getToken } from '../config/authUtils';
 import { jwtDecode } from 'jwt-decode';
 import CreateNewsModal from "../components/NewNews";
 import { Ionicons } from '@expo/vector-icons';
+import { decode } from "base-64";
+
+global.atob = decode;
 
 interface News {
   id: string;
@@ -32,9 +35,10 @@ const News = ({ navigation }: Props) => {
     setIsLoading(true);
     api.get<News[]>('/news')
       .then(response => {
-        setNews(response.data);
+        const reversedNews = response.data.reverse();
+        setNews(reversedNews);
         setIsLoading(false);
-        console.log(response.data)
+        console.log(reversedNews)
       })
       .catch(error => {
         console.error(error);
