@@ -11,6 +11,6 @@ public class NewsConfiguration : IEntityTypeConfiguration<News>
 
         builder.Property(n => n.Title).HasMaxLength(150).IsRequired();
         builder.Property(n => n.Description).HasMaxLength(1000).IsRequired();
-        builder.Property(n => n.ImageURL).HasMaxLength(2000).IsRequired();
+        builder.Property(n => n.ImageURL).IsRequired();
     }
 }

@@ -5,6 +5,8 @@ import { api } from '../config/authUtils';
 import styles from '../styles/ModalCreate';
 import { getToken } from '../config/authUtils';
 import { jwtDecode } from 'jwt-decode';
+import * as ImageManipulator from 'expo-image-manipulator';
+import * as FileSystem from 'expo-file-system';
 
 interface Props {
     visible: boolean;
@@ -28,6 +30,7 @@ export default function CreateNewsModal({ visible, onClose, modalStyle, onUpdate
     const [description, setDescription] = useState('');
     const [image, setImage] = useState<{ uri: string }>({ uri: '' });
     const [username, setUsername] = useState<string>('');
+    const isFormComplete = title && description && image.uri;
 
     React.useEffect(() => {
         async function fetchUserData() {
@@ -57,7 +60,16 @@ export default function CreateNewsModal({ visible, onClose, modalStyle, onUpdate
 
         if (!result.canceled) {
             const { uri } = result.assets[0];
-            setImage({ uri });
+
+            const resizedImage = await ImageManipulator.manipulateAsync(
+                uri,
+                [{ resize: { width: 854, height: 480 } }],
+                { compress: 0.5, format: ImageManipulator.SaveFormat.JPEG }
+            );
+
+            const base64Image = await FileSystem.readAsStringAsync(resizedImage.uri, { encoding: FileSystem.EncodingType.Base64 });
+
+            setImage({ uri: `data:image/jpeg;base64,${base64Image}` });
         }
     };
 
@@ -112,7 +124,7 @@ export default function CreateNewsModal({ visible, onClose, modalStyle, onUpdate
                         <Pressable style={styles.button} onPress={selectImage}>
                             <Text style={styles.buttonText}>Selecionar Imagem</Text>
                         </Pressable>
-                        <Pressable style={styles.button} onPress={handleSubmit}>
+                        <Pressable style={isFormComplete ? styles.button : styles.buttonDisabled} onPress={handleSubmit} disabled={!isFormComplete}>
                             <Text style={styles.buttonText}>Criar</Text>
                         </Pressable>
                         <Pressable style={styles.button} onPress={handleCancel}>

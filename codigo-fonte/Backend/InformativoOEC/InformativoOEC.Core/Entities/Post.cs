@@ -1,4 +1,5 @@
 ﻿using InformativoOEC.Core.ValueObjects;
+using System.Reflection.Metadata;
 
 namespace InformativoOEC.Core.Entities;
 public class Post : BaseEntity

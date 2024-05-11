@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://localhost:7290/api',
+  baseURL: 'http://orquestracriarte-001-site1.htempurl.com/api',
 
 });
 
@@ -20,6 +20,7 @@ const saveToken = async (token) => {
   try {
     await AsyncStorage.setItem('token', token);
     console.log('Token salvo com sucesso.');
+    console.log(token);
   } catch (error) {
     console.error('Erro ao salvar o token do usuário:', error);
   }

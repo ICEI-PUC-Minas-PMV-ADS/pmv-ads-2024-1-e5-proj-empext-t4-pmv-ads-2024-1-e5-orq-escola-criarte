@@ -1,5 +1,6 @@
 ﻿using InformativoOEC.Core.Entities;
 using InformativoOEC.Core.ValueObjects;
+using System.Reflection.Metadata;
 
 namespace InformativoOEC.Application.Models.ViewModels;
 public class PostViewModel

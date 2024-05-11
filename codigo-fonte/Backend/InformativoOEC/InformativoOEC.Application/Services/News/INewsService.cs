@@ -7,4 +7,5 @@ public interface INewsService
     Task<NewsViewModel> Create(NewsInputModel input);
     Task<List<NewsViewModel>> GetAll();
     Task<NewsViewModel> GetById(Guid id);
+    Task DeleteById(Guid id);
 }

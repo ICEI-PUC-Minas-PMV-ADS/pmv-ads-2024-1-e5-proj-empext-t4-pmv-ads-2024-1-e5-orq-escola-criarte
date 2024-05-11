@@ -95,9 +95,11 @@ export default function ProfileScreen({ navigation }: Props) {
     }
   };
 
-  async function updateUser(id: string, email: string, name: string, role: string) {
+  async function updateUser(id: string, emailInput: string, name: string, role: string) {
+    if (!userData) return;
     const url = `/users/${id}`;
     const roleValue = role === 'Admin' ? 1 : 2;
+    const email = emailInput ? emailInput : userData.email;
     const data = {
       name,
       password,
@@ -234,7 +236,7 @@ export default function ProfileScreen({ navigation }: Props) {
             </View>
             {!isEditing && (
               <View style={styles.buttonContainer}>
-                <ButtonComponent style={{ width: '80%', alignSelf: 'center' }} text="Sair" onPress={() => navigation.navigate('Home')} />
+                <ButtonComponent style={{ width: '80%', alignSelf: 'center' }} text="Voltar" onPress={() => navigation.navigate('Home')} />
               </View>
             )}
           </View>

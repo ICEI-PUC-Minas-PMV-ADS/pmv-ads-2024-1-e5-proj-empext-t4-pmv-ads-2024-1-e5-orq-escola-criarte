@@ -5,6 +5,8 @@ import { api } from '../config/authUtils';
 import styles from '../styles/ModalCreate';
 import { getToken } from '../config/authUtils';
 import { jwtDecode } from 'jwt-decode';
+import * as ImageManipulator from 'expo-image-manipulator';
+import * as FileSystem from 'expo-file-system';
 
 interface Props {
     visible: boolean;
@@ -26,6 +28,7 @@ export default function CreateEventModal({ visible, onClose, modalStyle }: Props
     const [username, setUsername] = React.useState<string>('');
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
+    const isFormComplete = title && body && street && number && county && image.uri && date && time;
 
     React.useEffect(() => {
         async function fetchUserData() {
@@ -46,7 +49,7 @@ export default function CreateEventModal({ visible, onClose, modalStyle }: Props
     }, []);
 
     const handleDateChange = (newDate: string) => {
-        if (/^[0-9/]*$/.test(newDate)) {
+        if (/^[0-9/]*$/.test(newDate) && newDate.length <= 10) {
             if (newDate.length === 2 || newDate.length === 5) {
                 newDate += '/';
             }
@@ -55,7 +58,7 @@ export default function CreateEventModal({ visible, onClose, modalStyle }: Props
     };
 
     const handleTimeChange = (newTime: string) => {
-        if (/^[0-9:]*$/.test(newTime)) {
+        if (/^[0-9:]*$/.test(newTime) && newTime.length <= 5) {
             if (newTime.length === 2) {
                 newTime += ':';
             }
@@ -76,17 +79,26 @@ export default function CreateEventModal({ visible, onClose, modalStyle }: Props
             aspect: [4, 3],
             quality: 1,
         });
-
+    
         if (!result.canceled) {
             const { uri } = result.assets[0];
-            setImage({ uri });
+    
+            const resizedImage = await ImageManipulator.manipulateAsync(
+                uri,
+                [{ resize: { width: 854, height: 480 } }],
+                { compress: 0.5, format: ImageManipulator.SaveFormat.JPEG }
+            );
+    
+            const base64Image = await FileSystem.readAsStringAsync(resizedImage.uri, { encoding: FileSystem.EncodingType.Base64 });
+    
+            setImage({ uri: `data:image/jpeg;base64,${base64Image}` });
         }
     };
 
     const handleSubmit = async () => {
-
         const [day, month, year] = date.split('/');
-        const formattedDate = `${year}-${month}-${day}T${time}:00.000Z`;
+        const [hour, minute] = time.split(':');
+        const formattedDate = `${year}-${month}-${day}T${hour}:${minute}:00.000Z`;
 
         const event = {
             content: {
@@ -160,9 +172,10 @@ export default function CreateEventModal({ visible, onClose, modalStyle }: Props
                         <Pressable style={styles.button} onPress={selectImage}>
                             <Text style={styles.buttonText}>Selecionar Imagem</Text>
                         </Pressable>
-                        <Pressable style={styles.button} onPress={handleSubmit}>
+                        <Pressable style={isFormComplete ? styles.button : styles.buttonDisabled} onPress={handleSubmit} disabled={!isFormComplete}>
                             <Text style={styles.buttonText}>Criar</Text>
                         </Pressable>
+
                         <Pressable style={styles.button} onPress={handleCancel}>
                             <Text style={styles.buttonText}>Cancelar</Text>
                         </Pressable>

@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
     },
-    
+
     container: {
         padding: 10,
     },
@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     rectangle: {
         margin: 10,
         padding: 10,
-        backgroundColor: "#fff",
+        backgroundColor: 'rgba(255, 255, 255, 0.80)',
         borderRadius: 10,
     },
 
@@ -53,20 +53,39 @@ const styles = StyleSheet.create({
 
     image: {
         width: '100%',
-        height: 200,
+        height: 285,
         resizeMode: 'cover',
         borderRadius: 10,
     },
 
     title: {
-        fontSize: 20,
+        textAlign: 'center',
+        fontSize: 35,
         fontWeight: 'bold',
         marginTop: 10,
+        borderBottomWidth: 2,
+        borderRadius: 5,
     },
 
     body: {
-        fontSize: 16,
+        fontSize: 17,
         marginTop: 10,
+        marginBottom: 10,
+
+    },
+
+    border: {
+        borderBottomWidth: 2,
+    },
+
+    info: {
+        fontSize: 14,
+        fontStyle: 'italic',
+        fontWeight: 'bold',
+        color: '#413267',
+        marginTop: 8,
+        textAlign: 'center',
+        textDecorationLine: 'underline',
     },
 
     createNewsButton: {
@@ -90,6 +109,14 @@ const styles = StyleSheet.create({
         color: "#FFF",
         fontWeight: 'bold',
         marginBottom: 3,
+    },
+
+    deleteButton: {
+        padding: 10,
+        borderRadius: 5,
+        marginTop: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 })
 

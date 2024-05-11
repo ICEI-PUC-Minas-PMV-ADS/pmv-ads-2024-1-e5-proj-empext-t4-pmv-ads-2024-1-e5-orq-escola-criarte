@@ -1,4 +1,5 @@
 ﻿using InformativoOEC.Core.ValueObjects;
+using System.Reflection.Metadata;
 
 namespace InformativoOEC.Application.Models.InputModels;
 public class PostInputModel

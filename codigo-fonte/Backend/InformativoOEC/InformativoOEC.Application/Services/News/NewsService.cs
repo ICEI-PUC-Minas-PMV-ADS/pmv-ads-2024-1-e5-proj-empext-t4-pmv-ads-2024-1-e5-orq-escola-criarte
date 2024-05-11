@@ -36,7 +36,8 @@ public class NewsService : INewsService
 
     public async Task<List<NewsViewModel>> GetAll()
     {
-        List<Core.Entities.News> news = await _repository.GetAllAsync();
+        List<Core.Entities.News> news = await _repository.GetAllAsync() ??
+            throw new ValidationErrorsException("Não existem posts na base de dados");
 
         List<NewsViewModel> viewModels = news.Select(n =>  new NewsViewModel(n)).ToList();
 
@@ -45,10 +46,16 @@ public class NewsService : INewsService
 
     public async Task<NewsViewModel> GetById(Guid id)
     {
-        Core.Entities.News news = await _repository.GetByIdAsync(id);
+        Core.Entities.News? news = await _repository.GetByIdAsync(id) ??
+            throw new ValidationErrorsException("Não existe um post com o id informado");
 
         NewsViewModel viewModel = new(news);
 
         return viewModel;
+    }
+
+    public async Task DeleteById(Guid id)
+    {
+        await _repository.Delete(id);
     }
 }
