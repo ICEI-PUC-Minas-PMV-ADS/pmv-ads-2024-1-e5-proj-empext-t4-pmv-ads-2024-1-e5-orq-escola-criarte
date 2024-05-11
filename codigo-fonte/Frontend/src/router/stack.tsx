@@ -6,12 +6,14 @@ import Routes from './index'
 import LoginScreen from '../screens/login';
 import CadastroScreen from '../screens/cadastro'
 import ProfileScreen from '../screens/profile';
+import EsqSenha from '../screens/esqSenha';
 
 type RootStackParamList = {
   Login: undefined;
   Cadastro: undefined;
   Routes: undefined;
   Profile: undefined;
+  EsqSenha: undefined;
 };
 
 export type StackTypes = NativeStackNavigationProp<RootStackParamList>
@@ -28,6 +30,7 @@ function MyStack() {
             <Stack.Screen name="Cadastro" component={CadastroScreen}/>
             <Stack.Screen name="Routes" component={Routes} />
             <Stack.Screen name="Profile" component={ProfileScreen} />
+            <Stack.Screen name="EsqSenha" component={EsqSenha} />
         </Stack.Navigator>
     </NavigationContainer>
   );
