@@ -4,6 +4,7 @@ namespace InformativoOEC.Core.Repositories;
 public interface INewsRepository
 {
     Task AddAsync(News news);
+    void Update(News news);
     Task<List<News>> GetAllAsync();
     Task<News> GetByIdAsync(Guid id);
     Task Delete(Guid id);
