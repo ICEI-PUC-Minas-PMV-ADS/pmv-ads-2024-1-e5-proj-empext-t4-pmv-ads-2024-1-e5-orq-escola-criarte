@@ -22,6 +22,17 @@ public class NewsService : INewsService
         return new NewsViewModel(news.Id);
     }
 
+    public async Task Update(NewsInputModel input, Guid id)
+    {
+        Validate(input);
+
+        Core.Entities.News news = await _repository.GetByIdAsync(id);
+
+        news.Update(input.Title, input.Description, input.ImageURL);
+
+        _repository.Update(news);
+    }
+
     private static void Validate(NewsInputModel input)
     {
         var validator = new NewsValidation();
