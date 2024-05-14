@@ -154,7 +154,7 @@ export default function ProfileScreen({ navigation }: Props) {
             </View>
             {userData && (
               <View style={[styles.profileInfo, { alignItems: 'center' }]}>
-                <Image source={require('../assets/avatar.png')} style={styles.avatar} />
+                <Image source={require('../assets/logo.png')} style={styles.avatar} />
                 <Text style={styles.label}>Nome:</Text>
                 <Text style={styles.text}>{userData['user_name']}</Text>
                 <Text style={styles.label}>Email:</Text>
