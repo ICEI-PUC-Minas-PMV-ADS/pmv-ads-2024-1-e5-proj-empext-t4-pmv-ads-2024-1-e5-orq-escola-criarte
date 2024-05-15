@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { View, Text, Pressable, StyleSheet, ViewStyle  } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 interface Option {
@@ -11,6 +11,7 @@ interface DropDownProps {
   options: Option[];
   isVisible: boolean;
   setIsVisible: (visible: boolean) => void;
+  style?: ViewStyle;
 }
 
 const DropDown: React.FC<DropDownProps> = ({ options, isVisible, setIsVisible }) => {
@@ -40,7 +41,9 @@ const DropDown: React.FC<DropDownProps> = ({ options, isVisible, setIsVisible })
 
 const styles = StyleSheet.create({
   container: {
-    position: 'relative',
+    position: 'absolute',
+    top: 40,
+    right: 0,
     marginRight: 10,
   },
 
