@@ -116,4 +116,4 @@ O projeto da base de dados corresponde à representação das entidades e relaci
 
 ## Kanban
 
-https://trello.com/b/rtGvltvn/escola-criarte
+https://github.com/orgs/ICEI-PUC-Minas-PMV-ADS/projects/936

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, ScrollView, SafeAreaView, TextInput, Pressable, ImageBackground } from 'react-native';
+import { View, Text, Image, ScrollView, SafeAreaView, TextInput, Pressable, ImageBackground, Modal } from 'react-native';
 import styles from '../styles/ProfileStyles';
 import ButtonComponent from '../components/Button';
 import { Ionicons } from '@expo/vector-icons';
@@ -31,6 +31,7 @@ export default function ProfileScreen({ navigation }: Props) {
   const [senhaVisivel, setSenhaVisivel] = useState<boolean>(false);
   const [updateError, setUpdateError] = useState(null);
   const role = userData ? userData['role'] : '';
+  const [erroCadastro, setErroCadastro] = useState<boolean>(false);
   const [validateInput, setValidateInput] = useState({
     length: false,
     number: false,
@@ -120,9 +121,19 @@ export default function ProfileScreen({ navigation }: Props) {
       }
 
     } catch (error: any) {
-      console.error('Error:', error.message);
+      if (error.response && error.response.status === 400) {
+        setErroCadastro(true);
+      } else {
+        console.log(error);
+        console.error('Error:', error.message);
+      }
+      setErroCadastro(true);
     }
   }
+
+  const handleClosePopup = () => {
+    setErroCadastro(false);
+  };
 
   const canSave = () => {
     return (
@@ -154,7 +165,7 @@ export default function ProfileScreen({ navigation }: Props) {
             </View>
             {userData && (
               <View style={[styles.profileInfo, { alignItems: 'center' }]}>
-                <Image source={require('../assets/avatar.png')} style={styles.avatar} />
+                <Image source={require('../assets/logo.png')} style={styles.avatar} />
                 <Text style={styles.label}>Nome:</Text>
                 <Text style={styles.text}>{userData['user_name']}</Text>
                 <Text style={styles.label}>Email:</Text>
@@ -249,6 +260,19 @@ export default function ProfileScreen({ navigation }: Props) {
             />
           )}
         </ScrollView>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={erroCadastro}
+          onRequestClose={handleClosePopup}>
+          <View style={styles.popupContainer}>
+            <View style={styles.popupContent}>
+              <Text style={styles.popupTitle}>Erro ao cadastrar</Text>
+              <Text style={styles.popupMessage}>Email já cadastrado!</Text>
+              <ButtonComponent text="Fechar" onPress={handleClosePopup} />
+            </View>
+          </View>
+        </Modal>
       </SafeAreaView>
     </ImageBackground>
   );

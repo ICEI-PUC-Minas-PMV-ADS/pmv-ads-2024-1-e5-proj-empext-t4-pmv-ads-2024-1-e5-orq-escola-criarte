@@ -36,7 +36,7 @@ function Events() {
     const [userRole, setUserRole] = useState<string>('');
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [refreshing, setRefreshing] = useState(false);
-    const [expandedCard, setExpandedCard] = useState<number | null>(null);
+    const [expandedCard, setExpandedCard] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(true);
 
 
@@ -180,10 +180,10 @@ function Events() {
                                                     </Pressable>
                                                 )}
                                             </View>
-                                            <Pressable onPress={() => setExpandedCard(expandedCard === index ? null : index)}>
+                                            <Pressable onPress={() => setExpandedCard(expandedCard === event.id ? null : event.id)}>
                                                 <Text style={styles.moreInfo}>Mais informações</Text>
                                             </Pressable>
-                                            {expandedCard === index && (
+                                            {expandedCard === event.id && (
                                                 <View style={styles.extraInfo}>
                                                     <Text style={styles.extraInfoText}>{event.content.body}</Text>
                                                 </View>

@@ -23,6 +23,15 @@ public class NewsController : ControllerBase
         return Ok(result.Id);
     }
 
+    [HttpPut("{id}")]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> Update([FromBody] NewsInputModel input, Guid id)
+    {
+        await _newsService.Update(input, id);
+
+        return NoContent();
+    }
+
     [HttpGet]
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetAll()

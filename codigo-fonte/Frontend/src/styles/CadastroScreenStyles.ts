@@ -99,9 +99,11 @@ const styles = StyleSheet.create({
   },
   
   popupContent: {
+    height: 180,
     backgroundColor: 'white',
     padding: 20,
     borderRadius: 10,
+    justifyContent: 'space-between',
     alignItems: 'center',
   },
 

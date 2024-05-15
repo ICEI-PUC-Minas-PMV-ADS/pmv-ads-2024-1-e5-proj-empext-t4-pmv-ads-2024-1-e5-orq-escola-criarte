@@ -1,19 +1,20 @@
 import * as React from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, Pressable, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Appbar, Avatar, Menu } from 'react-native-paper';
+import { Appbar } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import HomeScreen from '../screens/home';
 import ContactsScreen from '../screens/contacts';
 import EventsScreen from '../screens/events';
-import ProfileScreen from '../screens/profile';
 import { useNavigation } from '@react-navigation/native';
 import { jwtDecode } from 'jwt-decode';
 import { getToken } from '../config/authUtils';
 import { StackTypes } from './stack';
+import DropDown from '../components/DropDown';
 
 interface UserData {
   'user_name': string;
+  'role': string;
 }
 
 const Tab = createBottomTabNavigator();
@@ -22,13 +23,18 @@ function CustomHeader() {
   const [visible, setVisible] = React.useState(false);
   const [username, setUsername] = React.useState<string>('');
   const navigation = useNavigation<StackTypes>();
-
-  const openMenu = () => setVisible(true);
+  const [dropdownVisible, setDropdownVisible] = React.useState(false);
+  const [role, setRole] = React.useState<string>('');
 
   const closeMenu = () => setVisible(false);
 
   const handleLogout = () => {
     navigation.navigate('Login');
+    closeMenu();
+  };
+
+  const handleAdmin = () => {
+    navigation.navigate('Admin');
     closeMenu();
   };
 
@@ -44,6 +50,8 @@ function CustomHeader() {
         if (token) {
           const decoded = jwtDecode<UserData>(token);
           setUsername(decoded['user_name']);
+          setRole(decoded['role']);
+
         } else {
           console.log('Token é nulo');
         }
@@ -55,22 +63,32 @@ function CustomHeader() {
     fetchUserData();
   }, []);
 
+  const options = [
+    { label: 'Perfil', action: handleProfile },
+    { label: 'Sair', action: handleLogout },
+    { label: 'Fechar', action: closeMenu },
+  ];
+
+  if (role === 'Admin') {
+    options.unshift({ label: 'Administração', action: handleAdmin });
+  }
+
   return (
     <Appbar.Header>
+      {dropdownVisible && (
+        <Pressable style={styles.overlay} onPress={() => setDropdownVisible(false)} />
+      )}
       <Image
         style={{ width: 40, height: 40, borderRadius: 20, marginLeft: 5 }}
-        source={require('../assets/avatar.png')}
+        source={require('../assets/logo.png')}
       />
       <Appbar.Content title={`Olá, ${username}`} titleStyle={{ textAlign: 'center', fontWeight: 'bold', color: '#413267' }} />
-      <View>
-        <Menu
-          visible={visible}
-          anchor={<Appbar.Action icon="dots-vertical" onPress={openMenu} />}>
-          <Menu.Item onPress={handleProfile} title="Perfil" />
-          <Menu.Item onPress={handleLogout} title="Sair" />
-          <Menu.Item onPress={closeMenu} title="Fechar" />
-        </Menu>
-      </View>
+
+      <DropDown
+        isVisible={dropdownVisible}
+        setIsVisible={setDropdownVisible}
+        options={options}
+      />
     </Appbar.Header>
   );
 }
@@ -118,5 +136,22 @@ function Routes() {
     </Tab.Navigator>
   );
 }
+
+
+
+
+const styles = StyleSheet.create({
+
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    left: 0,
+    zIndex: 1000,
+    backgroundColor: 'red',
+  },
+
+})
+
 
 export default Routes;

@@ -23,14 +23,17 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    width: "100%",
+    width: 80,
+    height: 45,
     marginBottom: 20,
-    backgroundColor: "#FFF"
+    marginTop: 20,
+    backgroundColor: 'rgba(255, 255, 255, 0.85)',
+    borderRadius: 30,
+    
   },
 
   title: {
-    marginTop: 10,
-    marginBottom: 10,
+    marginTop: 5,
     alignSelf: 'center',
     fontSize: 24,
     fontWeight: 'bold',
@@ -103,6 +106,32 @@ const styles = StyleSheet.create({
     marginLeft: -35,
     marginBottom: 10,
     color:"#413267",
+  },
+
+  popupContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  
+  popupContent: {
+    height: 180,
+    backgroundColor: 'white',
+    padding: 20,
+    borderRadius: 10,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+
+  popupTitle: {
+    fontSize: 20,
+    marginBottom: 10,
+  },
+
+  popupMessage: {
+    textAlign: 'center',
+    marginBottom: 10,
   },
 
 });

@@ -35,4 +35,10 @@ public class NewsRepository : INewsRepository
 
         return news;
     }
+
+    public void Update(News news)
+    {
+        _context.Update(news);
+        _context.SaveChanges();
+    }
 }
