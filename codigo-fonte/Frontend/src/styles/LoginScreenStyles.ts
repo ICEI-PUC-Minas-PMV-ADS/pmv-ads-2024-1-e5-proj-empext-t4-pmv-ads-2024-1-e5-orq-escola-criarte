@@ -5,7 +5,8 @@ const loginScreenStyles = StyleSheet.create({
 
   background: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: 'center'
+    
   },
 
   logo: {

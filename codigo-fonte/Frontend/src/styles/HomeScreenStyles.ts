@@ -60,17 +60,19 @@ const styles = StyleSheet.create({
 
     title: {
         textAlign: 'center',
-        fontSize: 35,
+        fontSize: 20,
         fontWeight: 'bold',
         marginTop: 10,
+        marginBottom: 5,
         borderBottomWidth: 2,
         borderRadius: 5,
     },
 
     body: {
-        fontSize: 17,
+        fontSize: 14,
         marginTop: 10,
         marginBottom: 10,
+        marginLeft: 10
 
     },
 

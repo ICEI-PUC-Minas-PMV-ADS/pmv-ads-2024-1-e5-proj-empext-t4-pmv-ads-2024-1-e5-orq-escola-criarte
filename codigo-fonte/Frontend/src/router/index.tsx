@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { View, Image, Pressable, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Appbar } from 'react-native-paper';
+import { Appbar, withTheme } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import HomeScreen from '../screens/home';
 import ContactsScreen from '../screens/contacts';
@@ -11,6 +11,8 @@ import { jwtDecode } from 'jwt-decode';
 import { getToken } from '../config/authUtils';
 import { StackTypes } from './stack';
 import DropDown from '../components/DropDown';
+import { white } from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 interface UserData {
   'user_name': string;
@@ -118,7 +120,7 @@ function Routes() {
           tabBarIcon: ({ size }) => (
             <Image
               source={require('../assets/logo.png')}
-              style={{ width: 90, height: 90, marginTop: -50 }}
+              style={{ width: 80, height: 80, borderWidth: 4, borderColor: 'white', backgroundColor: 'white', borderRadius: 500, marginTop: -30 }}
             />
           ),
           header: () => <CustomHeader />,

@@ -7,6 +7,7 @@ import LoginScreen from '../screens/login';
 import CadastroScreen from '../screens/cadastro'
 import ProfileScreen from '../screens/profile';
 import AdminScreen from '../screens/admin';
+import EsqSenha from '../screens/esqSenha';
 
 type RootStackParamList = {
   Login: undefined;
@@ -14,6 +15,7 @@ type RootStackParamList = {
   Routes: undefined;
   Profile: undefined;
   Admin: undefined;
+  EsqSenha: undefined;
 };
 
 export type StackTypes = NativeStackNavigationProp<RootStackParamList>
@@ -29,8 +31,9 @@ function MyStack() {
         
             <Stack.Screen name="Login" component={LoginScreen} />
             <Stack.Screen name="Cadastro" component={CadastroScreen}/>
-            <Stack.Screen name="Routes" component={Routes} />
             <Stack.Screen name="Profile" component={ProfileScreen} />
+            <Stack.Screen name="Routes" component={Routes} />
+            <Stack.Screen name="EsqSenha" component={EsqSenha} />
             <Stack.Screen name="Admin" component={AdminScreen} />
         </Stack.Navigator>
     </NavigationContainer>
