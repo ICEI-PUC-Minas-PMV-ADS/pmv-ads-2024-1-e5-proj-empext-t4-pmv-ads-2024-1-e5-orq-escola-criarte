@@ -135,7 +135,7 @@ export default function CadastroScreen({ navigation }: Props) {
                                     />
                                 )}
                                 <ButtonComponent
-                                    onPress={handleSubmit(handleFormSubmit)}
+                                    onPress={() => navigation.navigate('EsqSenha')}
                                     text="Esqueci minha senha"
                                     mode='text'
                                 />
