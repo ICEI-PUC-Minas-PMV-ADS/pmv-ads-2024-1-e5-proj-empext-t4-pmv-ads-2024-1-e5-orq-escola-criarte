@@ -7,7 +7,7 @@ const Contacts: React.FC = () => {
     return (
         <ImageBackground resizeMode="cover" source={require('../assets/background.png')} style={styles.background}>
             <ScrollView>
-            <View style={styles.container}>
+                <View style={styles.container}>
                     <List.Section>
                         <List.Item style={[styles.listItem, styles.listItemLarge]} titleStyle={styles.listItemTitle}
                             title="Horário de Atendimento"
@@ -25,8 +25,8 @@ const Contacts: React.FC = () => {
                         <List.Item style={styles.listItem} titleStyle={styles.listItemTitle}
                             title="Endereço da Sede"
                             description={
-                                "Rua Dresde, 50 - Europa \n" +
-                                "CEP 31620-170"
+                                "Rua Edimburgo, 102 - Europa \n" +
+                                "CEP 31620-530"
                             }
                             left={() => <Avatar.Icon size={75} icon="google-maps" color="#413267" style={{ marginLeft: 10, backgroundColor: 'transparent' }} />}
                             onPress={() => Linking.openURL('https://maps.app.goo.gl/K74dzfSDNhNNcAeq8')}
@@ -49,8 +49,14 @@ const Contacts: React.FC = () => {
                             left={() => <Avatar.Icon size={75} icon="instagram" color="#413267" style={{ marginLeft: 10, backgroundColor: 'transparent' }} />}
                             onPress={() => Linking.openURL('https://www.instagram.com/orquestracriarteoficial')}
                         />
+                        <List.Item style={styles.listItem} titleStyle={styles.listItemTitle}
+                            title="Site"
+                            description="orquestraescolacriarte.com.br"
+                            left={() => <Avatar.Icon size={75} icon="web" color="#413267" style={{ marginLeft: 10, backgroundColor: 'transparent' }} />}
+                            onPress={() => Linking.openURL('https://orquestraescolacriarte.com.br/')}
+                        />
                     </List.Section>
-            </View>
+                </View>
             </ScrollView>
         </ImageBackground>
     )
