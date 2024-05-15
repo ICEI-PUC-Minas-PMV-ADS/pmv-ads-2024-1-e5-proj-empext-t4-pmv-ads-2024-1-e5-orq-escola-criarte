@@ -24,6 +24,7 @@ function CustomHeader() {
   const [username, setUsername] = React.useState<string>('');
   const navigation = useNavigation<StackTypes>();
   const [dropdownVisible, setDropdownVisible] = React.useState(false);
+  const [role, setRole] = React.useState<string>('');
 
   const closeMenu = () => setVisible(false);
 
@@ -49,10 +50,7 @@ function CustomHeader() {
         if (token) {
           const decoded = jwtDecode<UserData>(token);
           setUsername(decoded['user_name']);
-
-          if (decoded['role'] === 'Admin') {
-            setVisible(true);
-          }
+          setRole(decoded['role']);
 
         } else {
           console.log('Token é nulo');
@@ -65,6 +63,16 @@ function CustomHeader() {
     fetchUserData();
   }, []);
 
+  const options = [
+    { label: 'Perfil', action: handleProfile },
+    { label: 'Sair', action: handleLogout },
+    { label: 'Fechar', action: closeMenu },
+  ];
+
+  if (role === 'Admin') {
+    options.unshift({ label: 'Administração', action: handleAdmin });
+  }
+
   return (
     <Appbar.Header>
       {dropdownVisible && (
@@ -75,16 +83,11 @@ function CustomHeader() {
         source={require('../assets/logo.png')}
       />
       <Appbar.Content title={`Olá, ${username}`} titleStyle={{ textAlign: 'center', fontWeight: 'bold', color: '#413267' }} />
-      
+
       <DropDown
         isVisible={dropdownVisible}
         setIsVisible={setDropdownVisible}
-        options={[
-          { label: 'Administração', action: handleAdmin },
-          { label: 'Perfil', action: handleProfile },
-          { label: 'Sair', action: handleLogout },
-          { label: 'Fechar', action: closeMenu },
-        ]}
+        options={options}
       />
     </Appbar.Header>
   );
