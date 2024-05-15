@@ -19,11 +19,12 @@ const styles = StyleSheet.create({
 
   centerContent: {
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center',    
   },
 
   header: {
-    width: 80,
+    width: '100%',   
+    maxWidth: 400, 
     height: 45,
     marginBottom: 20,
     marginTop: 20,
