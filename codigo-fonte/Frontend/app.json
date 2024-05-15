@@ -15,16 +15,32 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "br.com.orquestracriarte.OECinformes"
     },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./src/assets/logo.png",
-        "backgroundColor": "#ffffff"
-      }
+      "android": {
+        "versionCode": "2",
+        "adaptiveIcon": {
+          "foregroundImage": "./src/assets/logo.png",
+          "backgroundColor": "#ffffff"
+        },
+        "package": "br.com.orquestracriarte.OECinformes"
+      },
+      "web": {
+        "favicon": "./src/assets/logo.png"
+      },
+      "extra": {
+        "eas": {
+          "projectId": "5e6875c8-a125-44ea-9076-a336845db01a"
+        }
+      },
+      "package": "br.com.orquestracriarte.OECinformes"
     },
-    "web": {
-      "favicon": "./src/assets/logo.png"
+    "extra": {
+      "eas": {
+        "projectId": "5e6875c8-a125-44ea-9076-a336845db01a"
+      }
     }
   }
 }

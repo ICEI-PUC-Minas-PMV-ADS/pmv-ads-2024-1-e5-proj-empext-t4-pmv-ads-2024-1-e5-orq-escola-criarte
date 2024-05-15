@@ -23,21 +23,33 @@ const styles = StyleSheet.create({
         marginLeft: 5,
     },
 
-    row: {
+    row1: {
+        flexDirection: "row",
+        justifyContent: "center",
+        marginBottom: 5,
+    },
+
+    row2: {
         flexDirection: "row",
         justifyContent: "space-between",
         marginBottom: 5,
     },
 
-    informaçoes: {
+    informaçoes1: {
         flex: 1,
         flexDirection: "column",
         alignItems: "center",
         marginTop: 10,
     },
+    
+    informaçoes2: {
+        flex: 1,
+        flexDirection: "column",
+        alignItems: "center"
+    },
 
     label: {
-        fontWeight: "bold",
+        fontSize: 14,
         flex: 1,
     },
 
@@ -49,13 +61,10 @@ const styles = StyleSheet.create({
         color: '#413267',
         fontSize: 30,
         fontWeight: 'bold',
-        marginLeft: 10,
-        marginRight: 10,
         borderBottomColor: '#413267',
         borderBottomWidth: 3,
         marginTop: 20,
         backgroundColor: 'rgba(255, 255, 255, 0.80)',
-        borderRadius: 15,
         textAlign: 'center',
     },
 
@@ -64,7 +73,7 @@ const styles = StyleSheet.create({
     },
 
     eventTitle: {
-        fontSize: 23,
+        fontSize: 24,
         fontWeight: "bold",
         marginBottom: 15,
         alignSelf: "center",
@@ -92,7 +101,7 @@ const styles = StyleSheet.create({
     },
 
     createEventButtonText: {
-        fontSize: 15,
+        fontSize: 14,
         textAlign: 'center',
         color: "#FFF",
         fontWeight: 'bold',
@@ -104,7 +113,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(255, 255, 255, 0.90)',
         textAlign: 'center',
         color: '#413267',
-        fontSize: 13,
+        fontSize: 14,
         fontStyle: 'italic',
         fontWeight: 'bold',
         textDecorationLine: 'underline',

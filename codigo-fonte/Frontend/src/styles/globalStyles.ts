@@ -14,7 +14,7 @@ export const inputStyles = StyleSheet.create({
     width: '100%',
     height: 40,
     marginBottom: 10,
-    fontSize: 16,
+    fontSize: 14,
     color: 'black',
     backgroundColor: 'rgba(255,255,255,0.85)',
   },

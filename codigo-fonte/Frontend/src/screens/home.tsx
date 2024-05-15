@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ScrollView, View, Image, Alert, ImageBackground, Platform, Text, Pressable, ActivityIndicator } from "react-native";
+import { ScrollView, View, Image, Alert, ImageBackground, Platform, Text, Pressable, ActivityIndicator, Linking } from "react-native";
 import styles from "../styles/HomeScreenStyles";
 import { api, getToken } from '../config/authUtils';
 import { jwtDecode } from 'jwt-decode';
@@ -116,7 +116,7 @@ const News = ({ navigation }: Props) => {
                 <Text style={styles.title}>{news.title}</Text>
                 <Text style={styles.body}>{news.description}</Text>
                 <View style={styles.border} />
-                <Pressable onPress={() => navigation.navigate('Contacts')}>
+                <Pressable onPress={() => Linking.openURL('https://wa.me/553134588718')}>
                   <Text style={styles.info}>Para mais informações entre em contato</Text>
                 </Pressable>
                 {userRole === 'Admin' && (
