@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
   menuItemText: {
     color: '#413267',
     fontWeight: 'bold',
+    textAlign: 'center',
   },
 });
 

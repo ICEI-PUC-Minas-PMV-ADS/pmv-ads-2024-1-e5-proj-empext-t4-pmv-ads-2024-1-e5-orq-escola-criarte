@@ -31,6 +31,7 @@ export default function CadastroScreen({ navigation }: Props) {
     const [senhasConferem, setSenhasConferem] = useState<boolean>(true);
     const [senhaVisivel, setSenhaVisivel] = useState<boolean>(false);
     const [cadastroRealizado, setCadastroRealizado] = useState<boolean>(false);
+    const [erroCadastro, setErroCadastro] = useState<boolean>(false);
     const [validateInput, setValidateInput] = useState({
         case: false,
         number: false,
@@ -67,12 +68,30 @@ export default function CadastroScreen({ navigation }: Props) {
             .then((response) => {
                 console.log(response);
                 setCadastroRealizado(true);
-                reset(); // Limpa o formulário após o cadastro
+                reset();
                 navigation.navigate('Login')
             })
             .catch((error) => {
+                
                 console.log(error);
                 console.log("Erro ao cadastrar")
+            });
+
+        axios.post("http://orquestracriarte-001-site1.htempurl.com/api/users", dados, { headers })
+            .then((response) => {
+                console.log(response);
+                setCadastroRealizado(true);
+                reset();
+                navigation.navigate('Login')
+            })
+            .catch((error) => {
+                if (error.response && error.response.status === 400) {
+                    setErroCadastro(true);
+                } else {
+                    console.log(error);
+                    console.log("Erro ao cadastrar");
+                }
+                setErroCadastro(true);
             });
 
     };
@@ -80,14 +99,15 @@ export default function CadastroScreen({ navigation }: Props) {
     // Função para fechar o pop-up de cadastro realizado
     const handleClosePopup = () => {
         setCadastroRealizado(false);
+        setErroCadastro(false);
     };
 
     const secureText = (password: string) => {
         const regexUppercase = RegExp(/^(?=.*[A-Z]).+$/)
         const regexSpecial = RegExp(/^(?=.*\W).+$/)
-        const regexNumber = RegExp (/^(?=.*[0-9]).+$/)
+        const regexNumber = RegExp(/^(?=.*[0-9]).+$/)
         const length = password.length >= 8
-    
+
         setValidateInput({
             case: regexUppercase.test(password),
             number: regexNumber.test(password),
@@ -246,6 +266,20 @@ export default function CadastroScreen({ navigation }: Props) {
                     <View style={styles.popupContent}>
                         <Text style={styles.popupTitle}>Cadastro Realizado</Text>
                         <Text style={styles.popupMessage}>Seu cadastro foi realizado com sucesso!</Text>
+                        <ButtonComponent text="Fechar" onPress={handleClosePopup} />
+                    </View>
+                </View>
+            </Modal>
+
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={erroCadastro}
+                onRequestClose={handleClosePopup}>
+                <View style={styles.popupContainer}>
+                    <View style={styles.popupContent}>
+                        <Text style={styles.popupTitle}>Erro ao cadastrar</Text>
+                        <Text style={styles.popupMessage}>Email já cadastrado!</Text>
                         <ButtonComponent text="Fechar" onPress={handleClosePopup} />
                     </View>
                 </View>

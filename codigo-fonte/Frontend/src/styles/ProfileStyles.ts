@@ -23,14 +23,17 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    width: "100%",
+    width: 80,
+    height: 45,
     marginBottom: 20,
-    backgroundColor: "#FFF"
+    marginTop: 20,
+    backgroundColor: 'rgba(255, 255, 255, 0.85)',
+    borderRadius: 30,
+    
   },
 
   title: {
-    marginTop: 10,
-    marginBottom: 10,
+    marginTop: 5,
     alignSelf: 'center',
     fontSize: 24,
     fontWeight: 'bold',
