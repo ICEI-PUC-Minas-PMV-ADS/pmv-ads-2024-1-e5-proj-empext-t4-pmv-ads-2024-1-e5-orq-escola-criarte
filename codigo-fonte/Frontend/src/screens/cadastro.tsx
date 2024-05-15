@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, Pressable, TouchableOpacity, ScrollView, SafeAreaView, ImageBackground, Modal } from 'react-native';
+import { View, Text, Image, Pressable, ScrollView, SafeAreaView, ImageBackground, Modal } from 'react-native';
 import { useForm, Controller } from "react-hook-form";
 import styles from '../styles/CadastroScreenStyles';
 import InputComponent from '../components/Input';
@@ -64,18 +64,6 @@ export default function CadastroScreen({ navigation }: Props) {
             "email": data.email,
             "role": 1
         }
-        axios.post("http://orquestracriarte-001-site1.htempurl.com/api/users", dados, { headers })
-            .then((response) => {
-                console.log(response);
-                setCadastroRealizado(true);
-                reset();
-                navigation.navigate('Login')
-            })
-            .catch((error) => {
-                
-                console.log(error);
-                console.log("Erro ao cadastrar")
-            });
 
         axios.post("http://orquestracriarte-001-site1.htempurl.com/api/users", dados, { headers })
             .then((response) => {
