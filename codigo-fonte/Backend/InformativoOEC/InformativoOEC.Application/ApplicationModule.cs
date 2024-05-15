@@ -1,5 +1,6 @@
 ﻿using InformativoOEC.Application.Services.Account;
 using InformativoOEC.Application.Services.Authentication;
+using InformativoOEC.Application.Services.Event;
 using InformativoOEC.Application.Services.News;
 using InformativoOEC.Application.Services.Newsfeed;
 using InformativoOEC.Application.Services.Post;
@@ -22,7 +23,8 @@ public static class ApplicationModule
             .AddScoped<ILoginService, LoginService>()
             .AddScoped<IPostService, PostService>()
             .AddScoped<INewsfeedService, NewsfeedService>()
-            .AddScoped<INewsService, NewsService>();
+            .AddScoped<INewsService, NewsService>()
+            .AddScoped<IEventService, EventService>();
 
         return services;
     }

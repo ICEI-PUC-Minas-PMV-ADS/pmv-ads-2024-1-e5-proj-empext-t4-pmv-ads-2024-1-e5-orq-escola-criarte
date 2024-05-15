@@ -30,7 +30,8 @@ public static class InfraModule
         services
             .AddScoped<IUserRepository, UserRepository>()
             .AddScoped<IPostRepository, PostRepository>()
-            .AddScoped<INewsRepository, NewsRepository>();
+            .AddScoped<INewsRepository, NewsRepository>()
+            .AddScoped<IEventRepository, EventRepository>();
 
         return services;
     }

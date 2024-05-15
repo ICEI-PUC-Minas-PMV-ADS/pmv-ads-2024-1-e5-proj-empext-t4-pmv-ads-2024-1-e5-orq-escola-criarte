@@ -1,5 +1,6 @@
 ﻿using InformativoOEC.Application.Models.InputModels;
 using InformativoOEC.Application.Models.ViewModels;
+using InformativoOEC.Application.Services.Event;
 using InformativoOEC.Core.Exceptions;
 using InformativoOEC.Core.Repositories;
 
@@ -7,9 +8,11 @@ namespace InformativoOEC.Application.Services.Post;
 public class PostService : IPostService
 {
     private readonly IPostRepository _postRepository;
-    public PostService(IPostRepository postRepository)
+    private readonly IEventService _eventService;
+    public PostService(IPostRepository postRepository, IEventService eventService)
     {
         _postRepository = postRepository;
+        _eventService = eventService;
     }
     public async Task<PostViewModel> Create(PostInputModel model)
     {
@@ -18,6 +21,10 @@ public class PostService : IPostService
         Core.Entities.Post post = model.ToEntity();
 
         await _postRepository.AddAsync(post);
+
+        EventInputModel eventInputModel = new(post.Id);
+
+        await _eventService.Create(eventInputModel);
 
         return new PostViewModel() { Id = post.Id };
     }
