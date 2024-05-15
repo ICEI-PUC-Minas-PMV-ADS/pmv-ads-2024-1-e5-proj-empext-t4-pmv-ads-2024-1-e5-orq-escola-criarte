@@ -224,8 +224,7 @@ export default function ProfileScreen({ navigation }: Props) {
               </View>
             )}
             <View style={styles.buttonContainer}>
-              <ButtonComponent
-                style={{ width: '90%', alignSelf: 'center' }}
+              <ButtonComponent                
                 text={isEditing ? "Salvar" : "Editar Perfil"}
                 onPress={isEditing ? handleSubmit : handleEditProfile}
                 disabled={isEditing ? !canSave() : false}
@@ -236,7 +235,7 @@ export default function ProfileScreen({ navigation }: Props) {
             </View>
             {!isEditing && (
               <View style={styles.buttonContainer}>
-                <ButtonComponent style={{ width: '80%', alignSelf: 'center' }} text="Voltar" onPress={() => navigation.navigate('Home')} />
+                <ButtonComponent  text="Voltar" onPress={() => navigation.navigate('Home')} />
               </View>
             )}
           </View>

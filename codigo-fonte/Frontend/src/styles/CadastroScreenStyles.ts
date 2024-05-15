@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   formulario: {
     marginTop: 30,
     flexDirection: 'column',
-    width: '93%',
+    width: '80%',
     maxWidth: 400,
   },
 
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   },
 
   botao: {
-    width: '85%',
+    width: '80%',
     alignSelf: 'center',
     marginTop: 50,
   },
@@ -85,10 +85,10 @@ const styles = StyleSheet.create({
   },
 
   botaoCadastro: {
-    width: '85%',
-    alignSelf: 'center',
-    marginTop: 140,
-    position: 'relative'
+    width: '80%',
+    alignSelf: 'center',    
+    position: 'relative',
+    maxWidth: 400,
   },
 
   popupContainer: {

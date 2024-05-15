@@ -38,13 +38,14 @@ const styles = StyleSheet.create({
   },
 
   profileInfo: {
-    width: '75%',
+    width: '80%',
     marginBottom: 20,
     padding: 20,
     borderRadius: 10,
     backgroundColor: 'rgba(255, 255, 255, 0.9)', 
     boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.1)",
     elevation: 3,
+    maxWidth: 400
 },
   
 
@@ -84,6 +85,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     width: '80%',
     marginBottom: 10,
+    maxWidth: 400
   },
 
   checkLogo: {

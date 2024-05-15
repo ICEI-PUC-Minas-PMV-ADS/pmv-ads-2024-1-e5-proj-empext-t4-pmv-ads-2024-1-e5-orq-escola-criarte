@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import ButtonComponent from "../components/Button";
+import InputComponent from "../components/Input";
+import { View, ImageBackground } from "react-native";
+import styles from "../styles/CadastroScreenStyles";
 
 // Importe a função sendEmail
 
@@ -52,16 +56,19 @@ export default function EsqSenha() {
   };
 
   return (
-    <>
-      <input
-        type="email"
-        value={email}
-        onChange={handleEmailChange}
-        placeholder="Digite seu e-mail"
-      />
-      <button onClick={handlePasswordReset} disabled={isLoading}>
-        {isLoading ? 'Carregando...' : 'Recuperar Senha'}
-      </button>
-    </>
+    <ImageBackground resizeMode="cover" source={require('../assets/background.png')} style={styles.background}>
+      <View style={styles.centerContent}>
+        <View style={styles.formulario}>
+          <InputComponent        
+            value={email}        
+            placeholder="Digite seu e-mail"
+          />
+          <ButtonComponent 
+            onPress={handlePasswordReset} disabled={isLoading}
+            text="Recuperar senha"
+          />
+        </View>
+      </View>
+    </ImageBackground>
   );
 }
