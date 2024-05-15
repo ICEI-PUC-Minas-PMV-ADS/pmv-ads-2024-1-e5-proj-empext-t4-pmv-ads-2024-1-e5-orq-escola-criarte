@@ -167,7 +167,7 @@ export default function CreateEventModal({ visible, onClose, modalStyle }: Props
                         <TextInput style={styles.input} placeholder="Hora (HH:MM)" value={time} onChangeText={handleTimeChange} />
                         <TextInput style={styles.input} placeholder="Rua" value={street} onChangeText={setStreet} />
                         <TextInput style={styles.input} placeholder="Número" value={number} onChangeText={handleNumberChange} />
-                        <TextInput style={styles.input} placeholder="Cidade" value={county} onChangeText={setCounty} />
+                        <TextInput style={styles.input} placeholder="Bairro" value={county} onChangeText={setCounty} />
 
                         <Pressable style={styles.button} onPress={selectImage}>
                             <Text style={styles.buttonText}>Selecionar Imagem</Text>

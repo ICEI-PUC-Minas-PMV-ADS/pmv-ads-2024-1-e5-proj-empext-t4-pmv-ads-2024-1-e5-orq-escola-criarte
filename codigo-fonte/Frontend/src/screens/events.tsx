@@ -155,16 +155,12 @@ function Events() {
                                                     style={styles.eventImage}
                                                 />
                                             </View>
-                                            <View style={styles.row}>
-                                                <View style={styles.informaçoes}>
+                                            <View style={styles.row1}>
+                                                <View style={styles.informaçoes1}>
                                                     <Title title="Data" />
                                                     <Text style={styles.label}>{new Date(event.date).toLocaleDateString()}</Text>
                                                 </View>
-                                                <View style={styles.informaçoes}>
-                                                    <Title title="Endereço" />
-                                                    <Text style={styles.label}>{event.address.street}, {event.address.number} - {event.address.county}</Text>
-                                                </View>
-                                                <View style={styles.informaçoes}>
+                                                <View style={styles.informaçoes1}>
                                                     <Title title="Horário" />
                                                     <Text style={styles.label}>{new Date(event.date).toLocaleTimeString()}</Text>
                                                 </View>
@@ -179,6 +175,12 @@ function Events() {
                                                         <Ionicons name="trash-outline" size={24} color="red" />
                                                     </Pressable>
                                                 )}
+                                            </View>
+                                            <View style={styles.row2}>
+                                                <View style={styles.informaçoes2}>
+                                                    <Title title="Endereço" />
+                                                    <Text style={styles.label}>{event.address.street}, {event.address.number} - {event.address.county}</Text>
+                                                </View>
                                             </View>
                                             <Pressable onPress={() => setExpandedCard(expandedCard === event.id ? null : event.id)}>
                                                 <Text style={styles.moreInfo}>Mais informações</Text>
