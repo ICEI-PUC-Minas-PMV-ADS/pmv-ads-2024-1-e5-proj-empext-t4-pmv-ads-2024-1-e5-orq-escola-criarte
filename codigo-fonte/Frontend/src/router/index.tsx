@@ -100,7 +100,7 @@ function Routes() {
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions={{
-        tabBarStyle: { borderTopWidth: 0 },
+        tabBarStyle: { borderTopWidth: 0, marginBottom: 5 },
       }}
     >
       <Tab.Screen
