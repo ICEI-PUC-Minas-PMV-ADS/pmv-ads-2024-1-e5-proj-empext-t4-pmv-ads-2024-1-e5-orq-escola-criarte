@@ -9,5 +9,5 @@ public class EventPersonInputModel
     public EventPersonEnum PersonType { get; set; }
     public Guid EventId { get; set; }
 
-    public EventPerson ToEntity() => new(UserName, Email, PersonType);
+    public EventPerson ToEntity() => new(UserName, Email, PersonType, EventId);
 }

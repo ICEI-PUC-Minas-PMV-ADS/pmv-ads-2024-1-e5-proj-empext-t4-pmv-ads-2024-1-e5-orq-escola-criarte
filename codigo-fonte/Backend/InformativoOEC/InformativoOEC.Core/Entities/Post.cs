@@ -20,6 +20,8 @@ public class Post : BaseEntity
     public Address Address { get; private set; }
     public string Username { get; private set; }
 
+    public virtual Event Event { get; set; }
+
     public void Update(Content content, string imageURL, DateTime date, Address address, string userName)
     {
         Content = content;

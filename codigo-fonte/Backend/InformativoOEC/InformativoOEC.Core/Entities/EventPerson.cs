@@ -3,11 +3,12 @@
 namespace InformativoOEC.Core.Entities;
 public class EventPerson : BaseEntity
 {
-    public EventPerson(string userName, string email, EventPersonEnum personType)
+    public EventPerson(string userName, string email, EventPersonEnum personType, Guid eventId)
     {
         UserName = userName;
         Email = email;
         PersonType = personType;
+        EventId = eventId;
     }
 
     public string UserName { get; private set; }
@@ -15,5 +16,5 @@ public class EventPerson : BaseEntity
     public EventPersonEnum PersonType { get; private set; }
 
     public Guid EventId { get; set; }
-    public virtual Event Event { get; set; }
+    //public virtual Event Event { get; set; }
 }

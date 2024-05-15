@@ -39,6 +39,12 @@ public class PostService : IPostService
         Core.Entities.Post post = await _postRepository.GetByIdAsync(id) ??
             throw new ValidationErrorsException("Post com este id não existe");
 
+        if (post.Event == null)
+        {
+            post.Event = new();
+            post.Event.Id = Guid.Empty;
+        }
+
         PostViewModel viewModel = new(post);
 
         return viewModel;

@@ -18,7 +18,6 @@ public class EventPersonValidation : AbstractValidator<EventPersonInputModel>
             .WithMessage("Email inválido");
 
         RuleFor(e => e.PersonType)
-            .NotEmpty()
             .NotNull()
             .WithMessage("Tipo de participante não pode ser nulo ou vazio");
 

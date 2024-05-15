@@ -40,6 +40,6 @@ public class ExceptionsFilter : IExceptionFilter
     private static void ThrowUnknownError(ExceptionContext context)
     {
         context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-        context.Result = new ObjectResult(new ErrorViewModel("Erro Desconhecido"));
+        context.Result = new ObjectResult(new ErrorViewModel(context.Exception.Message));
     }
 }

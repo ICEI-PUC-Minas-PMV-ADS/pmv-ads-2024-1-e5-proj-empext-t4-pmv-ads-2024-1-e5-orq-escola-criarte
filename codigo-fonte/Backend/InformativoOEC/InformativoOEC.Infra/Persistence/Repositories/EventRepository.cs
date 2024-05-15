@@ -1,5 +1,6 @@
 ﻿using InformativoOEC.Core.Entities;
 using InformativoOEC.Core.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace InformativoOEC.Infra.Persistence.Repositories;
 public class EventRepository : IEventRepository
@@ -13,5 +14,12 @@ public class EventRepository : IEventRepository
     {
         await _context.AddAsync(@event);
         await _context.SaveChangesAsync();
+    }
+
+    public Task<Event> GetEventById(Guid id)
+    {
+        Task<Event?> @event = _context.Events.AsNoTracking().SingleOrDefaultAsync(e => e.Id == id);
+
+        return @event;
     }
 }
