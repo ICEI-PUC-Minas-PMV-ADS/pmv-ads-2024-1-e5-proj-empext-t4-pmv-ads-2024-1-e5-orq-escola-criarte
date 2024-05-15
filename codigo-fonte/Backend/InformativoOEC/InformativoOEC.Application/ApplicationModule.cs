@@ -5,6 +5,8 @@ using InformativoOEC.Application.Services.News;
 using InformativoOEC.Application.Services.Newsfeed;
 using InformativoOEC.Application.Services.Post;
 using InformativoOEC.Application.Services.User;
+using InformativoOEC.Core.Repositories;
+using InformativoOEC.Infra.Persistence.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace InformativoOEC.Application;
@@ -24,7 +26,8 @@ public static class ApplicationModule
             .AddScoped<IPostService, PostService>()
             .AddScoped<INewsfeedService, NewsfeedService>()
             .AddScoped<INewsService, NewsService>()
-            .AddScoped<IEventService, EventService>();
+            .AddScoped<IEventService, EventService>()
+            .AddScoped<IEventPersonRepository, EventPersonRepository>();
 
         return services;
     }
