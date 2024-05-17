@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://orquestracriarte-001-site1.htempurl.com/api',
+  baseURL: 'https://orquestracriarte-001-site1.htempurl.com/api',
 
 });
 

@@ -48,7 +48,7 @@ export default function CadastroScreen({ navigation }: Props) {
             "email": data.email,
             "password": data.senha
         }
-        axios.post("http://orquestracriarte-001-site1.htempurl.com/api/account/login", dados, { headers }).then((Response) => {
+        axios.post("https://orquestracriarte-001-site1.htempurl.com/api/account/login", dados, { headers }).then((Response) => {
             console.log(Response)
             handleLogin(Response);
             console.log("voce está logado")

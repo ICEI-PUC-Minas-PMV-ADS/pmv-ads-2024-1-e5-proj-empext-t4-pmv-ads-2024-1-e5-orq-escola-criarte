@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "OEC Informes",
-    "slug": "OEC Informes",
+    "owner": "criart",
+    "name": "MeuProjeto",
+    "slug": "MeuProjeto",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/logo copy.png",
@@ -19,29 +20,28 @@
       "bundleIdentifier": "br.com.orquestracriarte.OECinformes"
     },
     "android": {
-      "android": {
-        "versionCode": "2",
-        "adaptiveIcon": {
-          "foregroundImage": "./src/assets/logo copy.png",
-          "backgroundColor": "#ffffff"
-        },
-        "package": "br.com.orquestracriarte.OECinformes"
+      "versionCode": "2",
+      "adaptiveIcon": {
+        "foregroundImage": "./src/assets/logo copy.png",
+        "backgroundColor": "#ffffff"
       },
-      "web": {
-        "favicon": "./src/assets/logo copy.png"
-      },
-      "extra": {
-        "eas": {
-          "projectId": "5e6875c8-a125-44ea-9076-a336845db01a"
-        }
-      },
-      "package": "br.com.orquestracriarte.OECinformes"
+      "package": "br.com.orquestracriarte.OECinformes",
+      "usesCleartextTraffic": true,
+      "permissions": [
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.CHANGE_NETWORK_STATE",
+        "android.permission.MODIFY_AUDIO_SETTINGS",
+        "android.permission.WAKE_LOCK"
+      ]
+    },
+    "web": {
+      "favicon": "./src/assets/logo copy.png"
     },
     "extra": {
       "eas": {
         "projectId": "5e6875c8-a125-44ea-9076-a336845db01a"
       }
-    },
-    "owner": "criart"
+    }
   }
 }

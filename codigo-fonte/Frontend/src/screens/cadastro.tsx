@@ -65,7 +65,7 @@ export default function CadastroScreen({ navigation }: Props) {
             "role": 1
         }
 
-        axios.post("http://orquestracriarte-001-site1.htempurl.com/api/users", dados, { headers })
+        axios.post("https://orquestracriarte-001-site1.htempurl.com/api/users", dados, { headers })
             .then((response) => {
                 console.log(response);
                 setCadastroRealizado(true);
