@@ -1,4 +1,7 @@
 ﻿using InformativoOEC.Application.Models.InputModels;
+using InformativoOEC.Application.Models.ViewModels;
+using InformativoOEC.Core.Entities;
+using InformativoOEC.Core.Enums;
 using InformativoOEC.Core.Exceptions;
 using InformativoOEC.Core.Repositories;
 
@@ -35,5 +38,16 @@ public class EventPersonService : IEventPersonService
             var errorMessages = result.Errors.Select(err => err.ErrorMessage).ToList();
             throw new ValidationErrorsException(errorMessages);
         }
+    }
+
+    public async Task<EventPersonViewModel> GetEventPeople(Guid eventId, EventPersonEnum personType)
+    {
+        List<Core.Entities.EventPerson> eventPeople = await _repository.GetEventPeople(eventId, personType);
+
+        var eventPeopleModel = eventPeople.Select(ep => new EventPersonModel(ep)).ToList();
+
+        var viewModel = new EventPersonViewModel(eventPeopleModel.Count, eventPeopleModel);
+
+        return viewModel;
     }
 }

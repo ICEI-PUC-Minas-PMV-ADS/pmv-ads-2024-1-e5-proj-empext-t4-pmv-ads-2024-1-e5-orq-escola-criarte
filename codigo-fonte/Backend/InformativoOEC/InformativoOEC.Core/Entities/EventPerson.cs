@@ -16,5 +16,5 @@ public class EventPerson : BaseEntity
     public EventPersonEnum PersonType { get; private set; }
 
     public Guid EventId { get; set; }
-    //public virtual Event Event { get; set; }
+    public virtual Event Event { get; set; }
 }

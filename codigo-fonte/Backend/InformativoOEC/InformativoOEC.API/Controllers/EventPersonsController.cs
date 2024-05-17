@@ -1,7 +1,7 @@
 ﻿using InformativoOEC.Application.Models.InputModels;
 using InformativoOEC.Application.Services.EventPerson;
+using InformativoOEC.Core.Enums;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InformativoOEC.API.Controllers;
@@ -17,11 +17,19 @@ public class EventPersonsController : ControllerBase
     }
 
     [HttpPost]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, User")]
     public async Task<IActionResult> Create([FromBody] EventPersonInputModel input)
     {
         await _eventPersonService.Create(input);
 
         return Ok();
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetEventPeopleByEventId(Guid eventId, EventPersonEnum personType)
+    {
+        var result = await _eventPersonService.GetEventPeople(eventId, personType);
+
+        return Ok(result);
     }
 }

@@ -2,5 +2,6 @@
 public enum EventPersonEnum
 {
     Musician,
-    Viewer
+    Viewer,
+    None
 }
