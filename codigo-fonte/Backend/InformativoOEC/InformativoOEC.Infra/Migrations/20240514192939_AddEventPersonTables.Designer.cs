@@ -3,6 +3,7 @@ using System;
 using InformativoOEC.Infra;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InformativoOEC.Infra.Migrations
 {
     [DbContext(typeof(InformativoOECDbContext))]
-    partial class InformativoOECDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240514192939_AddEventPersonTables")]
+    partial class AddEventPersonTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,8 +39,7 @@ namespace InformativoOEC.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PostId")
-                        .IsUnique();
+                    b.HasIndex("PostId");
 
                     b.ToTable("Events");
                 });
@@ -176,11 +178,13 @@ namespace InformativoOEC.Infra.Migrations
 
             modelBuilder.Entity("InformativoOEC.Core.Entities.Event", b =>
                 {
-                    b.HasOne("InformativoOEC.Core.Entities.Post", null)
-                        .WithOne("Event")
-                        .HasForeignKey("InformativoOEC.Core.Entities.Event", "PostId")
+                    b.HasOne("InformativoOEC.Core.Entities.Post", "Post")
+                        .WithMany()
+                        .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Post");
                 });
 
             modelBuilder.Entity("InformativoOEC.Core.Entities.EventPerson", b =>
@@ -262,12 +266,6 @@ namespace InformativoOEC.Infra.Migrations
             modelBuilder.Entity("InformativoOEC.Core.Entities.Event", b =>
                 {
                     b.Navigation("EventPersons");
-                });
-
-            modelBuilder.Entity("InformativoOEC.Core.Entities.Post", b =>
-                {
-                    b.Navigation("Event")
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

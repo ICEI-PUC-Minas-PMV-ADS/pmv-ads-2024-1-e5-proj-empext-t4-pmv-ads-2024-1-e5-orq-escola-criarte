@@ -33,6 +33,7 @@ public class PostRepository : IPostRepository
     {
         Post? post =  await _context.Posts
             .AsNoTracking()
+            .Include(e => e.Event)
             .SingleOrDefaultAsync(p => p.Id == id);
 
         return post;
