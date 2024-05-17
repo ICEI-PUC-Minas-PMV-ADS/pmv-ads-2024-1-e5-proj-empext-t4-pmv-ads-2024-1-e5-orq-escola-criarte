@@ -31,8 +31,9 @@ const styles = StyleSheet.create({
     },
 
     horarios: {
-        flexDirection: 'row', 
+        flexDirection: 'column', 
         justifyContent: 'space-between',
+        marginLeft: 5,
     },
 });
 

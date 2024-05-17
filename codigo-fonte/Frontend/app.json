@@ -22,7 +22,7 @@
     "android": {
       "versionCode": "2",
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/logo copy.png",
+        "foregroundImage": "./src/assets/logo-icon.png",
         "backgroundColor": "#ffffff"
       },
       "package": "br.com.orquestracriarte.OECinformes",
@@ -36,7 +36,7 @@
       ]
     },
     "web": {
-      "favicon": "./src/assets/logo copy.png"
+      "favicon": "./src/assets/logo-icon.png"
     },
     "extra": {
       "eas": {

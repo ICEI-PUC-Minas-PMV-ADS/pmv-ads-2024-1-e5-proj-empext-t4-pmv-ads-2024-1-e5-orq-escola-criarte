@@ -12,12 +12,13 @@ const Contacts: React.FC = () => {
                         <List.Item style={[styles.listItem, styles.listItemLarge]} titleStyle={styles.listItemTitle}
                             title="Horário de Atendimento"
                             description={() =>
-                                <View>
-                                    <View style={styles.horarios}>
-                                        <Text style={{ marginBottom: 5 }}><Text style={{ fontWeight: 'bold', color: '#413267' }}>Quarta e Quinta:</Text> 09h às 17h, 14h às 20h</Text>
-                                        <Text style={{ marginBottom: 5 }}><Text style={{ fontWeight: 'bold', color: '#413267' }}>Sexta:</Text> 09h às 11h, 14h às 16h</Text>
+                                <View style={styles.horarios}>
+                                    <View><Text style={{ marginBottom: 5 }}><Text style={{ fontWeight: 'bold', color: '#413267' }}>Quarta e Quinta:</Text> 09h às 17h, 14h às 20h</Text>
                                     </View>
-                                    <Text><Text style={{ fontWeight: 'bold', color: '#413267' }}>Sábado:</Text> 08h30 às 12h</Text>
+                                    <View><Text style={{ marginBottom: 5 }}><Text style={{ fontWeight: 'bold', color: '#413267' }}>Sexta:</Text> 09h às 11h, 14h às 16h</Text>
+                                    </View>
+                                    <View><Text><Text style={{ fontWeight: 'bold', color: '#413267' }}>Sábado:</Text> 08h30 às 12h</Text>
+                                    </View>
                                 </View>
                             }
                             left={() => <Avatar.Icon size={75} icon="clock-outline" color="#413267" style={{ marginLeft: 10, backgroundColor: 'transparent' }} />}

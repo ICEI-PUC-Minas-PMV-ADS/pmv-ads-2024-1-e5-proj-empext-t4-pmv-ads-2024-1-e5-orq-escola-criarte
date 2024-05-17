@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { View, Image, Pressable, StyleSheet } from 'react-native';
+import { Image, Pressable } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Appbar, withTheme } from 'react-native-paper';
+import { Appbar } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import HomeScreen from '../screens/home';
 import ContactsScreen from '../screens/contacts';
@@ -11,8 +11,6 @@ import { jwtDecode } from 'jwt-decode';
 import { getToken } from '../config/authUtils';
 import { StackTypes } from './stack';
 import DropDown from '../components/DropDown';
-import { white } from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 interface UserData {
   'user_name': string;
@@ -73,16 +71,36 @@ function Routes() {
     options.unshift({ label: 'Administração', action: handleAdmin });
   }
 
+  function formatUsername(username: string) {
+    const words = username.split(' ');
+    let formattedName = words[0];
+
+    for (let i = 1; i < words.length; i++) {
+      if ((formattedName.length + words[i].length + 1) > 15) break;
+      formattedName += ' ' + words[i];
+    }
+
+    return formattedName;
+  }
+
+
   const CustomHeader = () => (
     <Appbar.Header>
 
-      <Image
-        style={{ width: 40, height: 40, borderRadius: 20, marginLeft: 5 }}
-        source={require('../assets/logo.png')}
+      <Pressable
+        onPress={() => navigation.navigate('Profile')}
+      >
+        <Image
+          style={{ width: 40, height: 40, borderRadius: 20, marginLeft: 5 }}
+          source={require('../assets/logo.png')}
+        />
+      </Pressable>
+
+      <Appbar.Content
+        title={`Olá, ${formatUsername(username)}`}
+        titleStyle={{ textAlign: 'center', fontWeight: 'bold', color: '#413267', marginRight: 20 }}
       />
 
-      <Appbar.Content title={`Olá, ${username}`} titleStyle={{ textAlign: 'center', fontWeight: 'bold', color: '#413267', marginRight: 20 }} />
-    
     </Appbar.Header>
   );
 
@@ -127,7 +145,7 @@ function Routes() {
           }}
         />
       </Tab.Navigator>
-      
+
       {dropdownVisible && (
         <Pressable
           style={{
