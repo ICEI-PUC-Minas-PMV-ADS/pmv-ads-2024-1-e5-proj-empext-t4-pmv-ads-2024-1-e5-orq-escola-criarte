@@ -5,7 +5,7 @@
     "slug": "MeuProjeto",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./src/assets/logo.png",
+    "icon": "./src/assets/logo copy.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./src/assets/splash.png",
@@ -22,7 +22,7 @@
     "android": {
       "versionCode": "2",
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/logo.png",
+        "foregroundImage": "./src/assets/logo copy.png",
         "backgroundColor": "#ffffff"
       },
       "package": "br.com.orquestracriarte.OECinformes",
@@ -36,7 +36,7 @@
       ]
     },
     "web": {
-      "favicon": "./src/assets/logo.png"
+      "favicon": "./src/assets/logo copy.png"
     },
     "extra": {
       "eas": {
