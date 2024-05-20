@@ -1,8 +1,8 @@
 {
   "expo": {
-    "owner": "tiotaylor",
+    "owner": "criart",
     "name": "OEC Informes",
-    "slug": "oec-informes-ws-rocscqu11ch-cbc0sz",
+    "slug": "oec-informes",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/logo-icon.png",
@@ -40,7 +40,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "c26d4875-b753-401a-bafb-905b2b219de9"
+        "projectId": "b4b4312a-5c9b-47dc-b527-e14e39ad5662"
       }
     }
   }
