@@ -1,11 +1,11 @@
 {
   "expo": {
     "owner": "criart",
-    "name": "MeuProjeto",
-    "slug": "MeuProjeto",
+    "name": "OEC Informes",
+    "slug": "oec-informes",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./src/assets/logo copy.png",
+    "icon": "./src/assets/logo-icon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./src/assets/splash.png",
@@ -40,7 +40,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "5e6875c8-a125-44ea-9076-a336845db01a"
+        "projectId": "b4b4312a-5c9b-47dc-b527-e14e39ad5662"
       }
     }
   }

@@ -3,6 +3,7 @@ using System;
 using InformativoOEC.Infra;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InformativoOEC.Infra.Migrations
 {
     [DbContext(typeof(InformativoOECDbContext))]
-    partial class InformativoOECDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240514185134_AddTableEvent")]
+    partial class AddTableEvent
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,40 +31,17 @@ namespace InformativoOEC.Infra.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<Guid>("PostId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PostId")
-                        .IsUnique();
-
-                    b.ToTable("Events");
-                });
-
-            modelBuilder.Entity("InformativoOEC.Core.Entities.EventPerson", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
-
-                    b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("datetime(6)");
-
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("varchar(200)");
 
-                    b.Property<Guid>("EventId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<string>("PersonType")
+                    b.Property<string>("EventPerson")
                         .IsRequired()
                         .HasColumnType("varchar(50)");
+
+                    b.Property<Guid>("PostId")
+                        .HasColumnType("char(36)");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
@@ -73,9 +53,9 @@ namespace InformativoOEC.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EventId");
+                    b.HasIndex("PostId");
 
-                    b.ToTable("EventPersons");
+                    b.ToTable("Events");
                 });
 
             modelBuilder.Entity("InformativoOEC.Core.Entities.News", b =>
@@ -176,22 +156,13 @@ namespace InformativoOEC.Infra.Migrations
 
             modelBuilder.Entity("InformativoOEC.Core.Entities.Event", b =>
                 {
-                    b.HasOne("InformativoOEC.Core.Entities.Post", null)
-                        .WithOne("Event")
-                        .HasForeignKey("InformativoOEC.Core.Entities.Event", "PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("InformativoOEC.Core.Entities.EventPerson", b =>
-                {
-                    b.HasOne("InformativoOEC.Core.Entities.Event", "Event")
-                        .WithMany("EventPersons")
-                        .HasForeignKey("EventId")
+                    b.HasOne("InformativoOEC.Core.Entities.Post", "Post")
+                        .WithMany()
+                        .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Event");
+                    b.Navigation("Post");
                 });
 
             modelBuilder.Entity("InformativoOEC.Core.Entities.Post", b =>
@@ -256,17 +227,6 @@ namespace InformativoOEC.Infra.Migrations
                         .IsRequired();
 
                     b.Navigation("Content")
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("InformativoOEC.Core.Entities.Event", b =>
-                {
-                    b.Navigation("EventPersons");
-                });
-
-            modelBuilder.Entity("InformativoOEC.Core.Entities.Post", b =>
-                {
-                    b.Navigation("Event")
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

@@ -13,6 +13,7 @@ public class PostViewModel
         Date = post.Date;
         Address = post.Address;
         Username = post.Username;
+        EventId = post.Event.Id;
     }
 
     public PostViewModel() { }
@@ -23,4 +24,5 @@ public class PostViewModel
     public DateTime Date { get; }
     public Address Address { get; }
     public string Username { get; }
+    public Guid? EventId { get; set; }
 }

@@ -3,6 +3,7 @@ using System;
 using InformativoOEC.Infra;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InformativoOEC.Infra.Migrations
 {
     [DbContext(typeof(InformativoOECDbContext))]
-    partial class InformativoOECDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240515181617_AddFKPosts")]
+    partial class AddFKPosts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -72,8 +75,6 @@ namespace InformativoOEC.Infra.Migrations
                         .HasColumnType("varchar(200)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EventId");
 
                     b.ToTable("EventPersons");
                 });
@@ -183,17 +184,6 @@ namespace InformativoOEC.Infra.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("InformativoOEC.Core.Entities.EventPerson", b =>
-                {
-                    b.HasOne("InformativoOEC.Core.Entities.Event", "Event")
-                        .WithMany("EventPersons")
-                        .HasForeignKey("EventId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Event");
-                });
-
             modelBuilder.Entity("InformativoOEC.Core.Entities.Post", b =>
                 {
                     b.OwnsOne("InformativoOEC.Core.ValueObjects.Address", "Address", b1 =>
@@ -257,11 +247,6 @@ namespace InformativoOEC.Infra.Migrations
 
                     b.Navigation("Content")
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("InformativoOEC.Core.Entities.Event", b =>
-                {
-                    b.Navigation("EventPersons");
                 });
 
             modelBuilder.Entity("InformativoOEC.Core.Entities.Post", b =>

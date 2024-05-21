@@ -10,6 +10,8 @@ public class InformativoOECDbContext : DbContext
     public DbSet<User> Users { get; set; }
     public DbSet<Post> Posts { get; set; }
     public DbSet<News> News { get; set; }
+    public DbSet<Event> Events { get; set; }
+    public DbSet<EventPerson> EventPersons { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
