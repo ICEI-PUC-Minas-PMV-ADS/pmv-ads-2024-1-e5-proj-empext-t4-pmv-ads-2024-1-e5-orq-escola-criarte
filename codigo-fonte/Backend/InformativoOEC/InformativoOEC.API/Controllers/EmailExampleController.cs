@@ -13,7 +13,7 @@ public class EmailExampleController : ControllerBase
     public async Task<IActionResult> SendEmailByGmail()
     {
         try
-        {
+        {           
             var email = new MimeMessage();
 
             email.From.Add(new MailboxAddress("Escola Criarte", "orquestracriarteapp@gmail.com"));
