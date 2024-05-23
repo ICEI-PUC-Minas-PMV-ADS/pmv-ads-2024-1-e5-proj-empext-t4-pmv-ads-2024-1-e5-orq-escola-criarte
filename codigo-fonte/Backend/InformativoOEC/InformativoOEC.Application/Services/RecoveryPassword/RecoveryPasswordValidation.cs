@@ -11,5 +11,10 @@ public class RecoveryPasswordValidation : AbstractValidator<RecoveryPasswordInpu
             .NotEmpty()
             .EmailAddress()
             .WithMessage("Endereço de e-mail inválido");
+
+        RuleFor(r => r.Username)
+            .NotNull()
+            .NotEmpty()
+            .WithMessage("Username não pode ser nulo ou vazio");
     }
 }

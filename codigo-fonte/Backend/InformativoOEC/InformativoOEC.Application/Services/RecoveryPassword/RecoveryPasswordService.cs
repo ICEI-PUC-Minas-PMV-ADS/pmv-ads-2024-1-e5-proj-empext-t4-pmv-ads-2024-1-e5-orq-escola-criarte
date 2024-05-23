@@ -1,14 +1,17 @@
 ﻿using InformativoOEC.Application.Models.InputModels;
 using InformativoOEC.Core.Exceptions;
 using InformativoOEC.Core.Repositories;
+using InformativoOEC.Infra.SendEmail;
 
 namespace InformativoOEC.Application.Services.RecoveryPassword;
 public class RecoveryPasswordService : IRecoveryPasswordService
 {
     private readonly IRecoveryPasswordRepository _repository;
-    public RecoveryPasswordService(IRecoveryPasswordRepository repository)
+    private readonly ISendEmailService _sendEmail;
+    public RecoveryPasswordService(IRecoveryPasswordRepository repository, ISendEmailService sendEmail)
     {
         _repository = repository;
+        _sendEmail = sendEmail;
     }
     public async Task Create(RecoveryPasswordInputModel input)
     {
@@ -20,7 +23,8 @@ public class RecoveryPasswordService : IRecoveryPasswordService
 
         await _repository.AddAsync(recovery);
 
-        //enviar email para o usuário informando o código
+        EmailModel email = new(input.Username, input.Email, code);
+        await _sendEmail.Send(email);
     }
 
     private void Validate(RecoveryPasswordInputModel input)
