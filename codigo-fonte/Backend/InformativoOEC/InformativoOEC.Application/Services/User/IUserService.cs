@@ -6,6 +6,7 @@ public interface IUserService
 {
     Task<Guid> AddAsync(UserInputModel model);
     Task Update(UserInputModel model, Guid id);
+    Task Update(UpdatePasswordInputModel input);
 
     Task<UserViewModel> GetById(Guid id);
     Task<List<UserViewModel>> GetAll();
