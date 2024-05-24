@@ -52,9 +52,9 @@ const styles = StyleSheet.create({
     },
 
     image: {
-        width: '100%',
-        height: 285,
-        resizeMode: 'cover',
+        width: 'auto',
+        height: 300,
+        resizeMode:'contain',
         borderRadius: 10,
     },
 
