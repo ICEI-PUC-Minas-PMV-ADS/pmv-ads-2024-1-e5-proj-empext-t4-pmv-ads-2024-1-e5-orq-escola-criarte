@@ -27,6 +27,13 @@ public class RecoveryPasswordService : IRecoveryPasswordService
         await _sendEmail.Send(email);
     }
 
+    public async Task<bool> GetCodeByEmail(string email, long code)
+    {
+        var isValid = await _repository.GetCodeByEmail(email, code);
+
+        return isValid;
+    }
+
     private void Validate(RecoveryPasswordInputModel input)
     {
         var validator = new RecoveryPasswordValidation();

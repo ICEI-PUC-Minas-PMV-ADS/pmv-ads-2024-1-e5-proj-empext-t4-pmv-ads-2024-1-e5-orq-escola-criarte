@@ -16,7 +16,7 @@ public class RecoveryPasswordController : ControllerBase
     }
 
     [HttpPost]
-    [Authorize(Roles = "Admin, User")]
+    [AllowAnonymous]
     public async Task<IActionResult> EmailRecovery(RecoveryPasswordInputModel input)
     {
         await _service.Create(input);
@@ -24,37 +24,12 @@ public class RecoveryPasswordController : ControllerBase
         return Ok();
     }
 
-    //[HttpPost]
-    //public async Task<IActionResult> SendEmailByGmail()
-    //{
-    //    try
-    //    {           
-    //        var email = new MimeMessage();
+    [HttpGet]
+    [AllowAnonymous]
+    public async Task<IActionResult> ValidateCode(string email, long code)
+    {
+        bool result = await _service.GetCodeByEmail(email, code);
 
-    //        email.From.Add(new MailboxAddress("Escola Criarte", "orquestracriarteapp@gmail.com"));
-    //        email.To.Add(new MailboxAddress("Bruno", "bruno.olympio.ferreira@gmail.com"));
-
-    //        email.Subject = "Teste e-mail";
-    //        email.Body = new TextPart(MimeKit.Text.TextFormat.Html)
-    //        {
-    //            Text = "<b>Testando email</b>"
-    //        };
-
-    //        using (var smtp = new SmtpClient())
-    //        {
-    //            smtp.Connect("smtp.gmail.com", 587, false);
-
-    //            smtp.Authenticate("orquestracriarteapp@gmail.com", "jbfy ecds xdzk jbkr");
-
-    //            smtp.Send(email);
-    //            smtp.Disconnect(true);
-    //        }
-
-    //        return Ok();
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        throw new Exception(ex.Message, ex.InnerException);
-    //    }
-    //}
+        return Ok(result);
+    }
 }
