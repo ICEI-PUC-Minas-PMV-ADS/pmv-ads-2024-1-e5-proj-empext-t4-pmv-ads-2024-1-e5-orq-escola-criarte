@@ -26,7 +26,21 @@ public class PostService : IPostService
 
         await _eventService.Create(eventInputModel);
 
+        await ControlPostsHandler();
+
         return new PostViewModel() { Id = post.Id };
+    }
+
+    private async Task ControlPostsHandler()
+    {
+        var postList = await _postRepository.GetAllAsync();
+        string? limit = Environment.GetEnvironmentVariable("limit");
+
+        if (postList.Count >= Convert.ToInt32(limit))
+        {
+            var lastPost = postList.Select(p => p.Id).LastOrDefault();
+            await _postRepository.Delete(lastPost);
+        }
     }
 
     public async Task DeleteById(Guid id)
