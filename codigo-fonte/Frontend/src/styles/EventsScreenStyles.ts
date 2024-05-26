@@ -35,17 +35,36 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
 
+    row3: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 10,
+    },
+
     informaçoes1: {
         flex: 1,
         flexDirection: "column",
         alignItems: "center",
         marginTop: 10,
     },
-    
+
     informaçoes2: {
         flex: 1,
         flexDirection: "column",
         alignItems: "center"
+    },
+
+    joinButton: {
+        flex: 1,
+        borderRadius: 5,
+        paddingVertical: 10,
+        marginHorizontal: 5,
+        alignItems: 'center',
+    },
+
+    joinButtonText: {
+        color: '#fff',
+        fontWeight: 'bold',
     },
 
     label: {

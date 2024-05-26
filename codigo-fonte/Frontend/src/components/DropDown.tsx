@@ -42,9 +42,10 @@ const DropDown: React.FC<DropDownProps> = ({ options, isVisible, setIsVisible })
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
-    top: 20,
+    top: 0,
+    marginTop: '13%',
     right: 0,
-    marginRight: 10,
+    marginRight: '1.5%',
   },
 
   iconContainer: {
@@ -54,9 +55,9 @@ const styles = StyleSheet.create({
   dropdown: {
     position: 'absolute',
     backgroundColor: '#FFFFFF',
-    width: 350,
-    top: 40,
-    right: 20,
+    width: 150,
+    top: 44,
+    right: -10,
     zIndex: 1000,
     borderRadius: 5,
   },

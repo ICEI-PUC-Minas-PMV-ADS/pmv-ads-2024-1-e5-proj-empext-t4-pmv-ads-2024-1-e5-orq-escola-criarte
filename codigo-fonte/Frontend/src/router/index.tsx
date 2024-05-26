@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Image, Pressable } from 'react-native';
+import { Image, Pressable, View, Text } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Appbar } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -85,23 +85,23 @@ function Routes() {
 
 
   const CustomHeader = () => (
+
+
     <Appbar.Header>
+      <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
 
-      <Pressable
-        onPress={() => navigation.navigate('Profile')}
-      >
-        <Image
-          style={{ width: 40, height: 40, borderRadius: 20, marginLeft: 5 }}
-          source={require('../assets/logo.png')}
-        />
-      </Pressable>
+        <Pressable onPress={() => navigation.navigate('Profile')}>
+          <Image style={{ width: 40, height: 40, borderRadius: 20, marginLeft: 15 }} source={require('../assets/logo.png')} />
+        </Pressable>
 
-      <Appbar.Content
-        title={`Olá, ${formatUsername(username)}`}
-        titleStyle={{ textAlign: 'center', fontWeight: 'bold', color: '#413267', marginRight: 20 }}
-      />
+        <View>
+          <Text style={{ color: '#413267', textAlign: 'center', fontSize: 20 }}>Olá, {formatUsername(username)}</Text>
+        </View>
 
+        <View style={{ width: 30, height: 30, marginRight: 15 }}></View>
+      </View>
     </Appbar.Header>
+
   );
 
   return (
@@ -165,7 +165,7 @@ function Routes() {
         isVisible={dropdownVisible}
         setIsVisible={setDropdownVisible}
         options={options}
-        style={{ zIndex: 2000 }}
+        style={{ zIndex: 2000, marginTop: 10 }}
       />
 
     </>
