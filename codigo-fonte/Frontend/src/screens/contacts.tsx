@@ -17,7 +17,7 @@ const Contacts: React.FC = () => {
                                     </View>
                                     <View><Text style={{ marginBottom: 5 }}><Text style={{ fontWeight: 'bold', color: '#413267' }}>Sexta:</Text> 09h às 11h, 14h às 16h</Text>
                                     </View>
-                                    <View><Text><Text style={{ fontWeight: 'bold', color: '#413267' }}>Sábado:</Text> 08h30 às 12h</Text>
+                                    <View><Text style={{ marginBottom: 5 }}><Text style={{ fontWeight: 'bold', color: '#413267' }}>Sábado:</Text> 08h30 às 12h</Text>
                                     </View>
                                 </View>
                             }

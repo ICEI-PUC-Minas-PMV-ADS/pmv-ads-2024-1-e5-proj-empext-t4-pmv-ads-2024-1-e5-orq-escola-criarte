@@ -28,17 +28,22 @@ interface Event {
 
 interface UserData {
     'role': string;
+    'email': string;
+    'user_name': string;
 }
 
 function Events() {
     const [events, setEvents] = useState<Event[]>([]);
     const [eventsByMonth, setEventsByMonth] = useState<{ [key: string]: Event[] }>({});
     const [userRole, setUserRole] = useState<string>('');
+    const [userEmail, setUserEmail] = useState<string>('');
+    const [userName, setUserName] = useState<string>('');
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [refreshing, setRefreshing] = useState(false);
     const [expandedCard, setExpandedCard] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(true);
-
+    const [selectedEventType, setSelectedEventType] = useState<{ [eventId: string]: number | null }>({});
+    const [confirmedEvents, setConfirmedEvents] = useState<string[]>([]);
 
     const deleteEvent = async (id: string) => {
         try {
@@ -46,6 +51,60 @@ function Events() {
             fetchEvents();
         } catch (error) {
             console.error(error);
+        }
+    };
+
+    const showConfirmationAlert = (eventId: string, eventType: number) => {
+        Alert.alert(
+            "Confirmar Presença",
+            `Você deseja confirmar presença como ${eventType === 0 ? 'Músico' : 'Espectador'}?`,
+            [
+                {
+                    text: "Cancelar",
+                    onPress: () => console.log("Confirmação cancelada"),
+                    style: "cancel"
+                },
+                {
+                    text: "OK",
+                    onPress: () => handleJoinEvent(eventId, eventType),
+                }
+            ],
+            { cancelable: false }
+        );
+    };
+
+    const handleEventTypeChange = (eventId: string, eventType: number) => {
+        if (selectedEventType[eventId] !== undefined) return; // Se já foi selecionado, não fazer nada
+
+        showConfirmationAlert(eventId, eventType);
+    };
+
+    const handleJoinEvent = async (eventId: string, eventType: number) => {
+        try {
+            const postResponse = await api.get(`/posts/${eventId}`);
+
+            const eventIdFromResponse = postResponse.data.eventId;
+
+            if (!eventIdFromResponse) {
+                console.error('eventId não encontrado na resposta da API do post.');
+                return;
+            }
+
+            const payload = {
+                userName: userName,
+                email: userEmail,
+                personType: eventType,
+                eventId: eventIdFromResponse
+            };
+
+            console.log('Dados enviados para a API eventpersons:', payload);
+
+            await api.post('/eventpersons', payload);
+
+            setConfirmedEvents(prevState => [...prevState, eventId]);
+            setSelectedEventType(prevState => ({ ...prevState, [eventId]: eventType }));
+        } catch (error) {
+            console.error('Erro ao fazer a solicitação POST:', error);
         }
     };
 
@@ -88,7 +147,6 @@ function Events() {
 
             setEvents(fetchedEvents);
             setEventsByMonth(organizedEvents);
-            console.log(organizedEvents);
         } catch (error) {
             console.error(error);
         }
@@ -100,6 +158,8 @@ function Events() {
         if (token) {
             const decoded = jwtDecode<UserData>(token);
             setUserRole(decoded['role']);
+            setUserEmail(decoded['email']);
+            setUserName(decoded['user_name']);
         }
     };
 
@@ -182,6 +242,22 @@ function Events() {
                                                     <Text style={styles.label}>{event.address.street}, {event.address.number} - {event.address.county}</Text>
                                                 </View>
                                             </View>
+                                            <View style={styles.row3}>
+                                                <Pressable
+                                                    style={[styles.joinButton, { backgroundColor: selectedEventType[event.id] === 0 ? '#413267' : '#ccc' }]}
+                                                    onPress={() => handleEventTypeChange(event.id, 0)}
+                                                    disabled={confirmedEvents.includes(event.id)}
+                                                >
+                                                    <Text style={styles.joinButtonText}>Músico</Text>
+                                                </Pressable>
+                                                <Pressable
+                                                    style={[styles.joinButton, { backgroundColor: selectedEventType[event.id] === 1 ? '#413267' : '#ccc' }]}
+                                                    onPress={() => handleEventTypeChange(event.id, 1)}
+                                                    disabled={confirmedEvents.includes(event.id)}
+                                                >
+                                                    <Text style={styles.joinButtonText}>Espectador</Text>
+                                                </Pressable>
+                                            </View>
                                             <Pressable onPress={() => setExpandedCard(expandedCard === event.id ? null : event.id)}>
                                                 <Text style={styles.moreInfo}>Mais informações</Text>
                                             </Pressable>
@@ -190,6 +266,7 @@ function Events() {
                                                     <Text style={styles.extraInfoText}>{event.content.body}</Text>
                                                 </View>
                                             )}
+
                                         </View>
                                     ))}
                                 </View>

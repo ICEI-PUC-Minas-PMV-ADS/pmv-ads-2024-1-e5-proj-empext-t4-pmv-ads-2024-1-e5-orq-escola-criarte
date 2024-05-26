@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     
 
     listItemLarge: {
-        height: 120,
+        height: 'auto',
     },
 
     listItemTitle: {

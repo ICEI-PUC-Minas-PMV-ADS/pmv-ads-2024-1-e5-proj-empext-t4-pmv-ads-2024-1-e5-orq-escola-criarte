@@ -38,7 +38,6 @@ const News = ({ navigation }: Props) => {
         const reversedNews = response.data.reverse();
         setNews(reversedNews);
         setIsLoading(false);
-        console.log(reversedNews)
       })
       .catch(error => {
         console.error(error);
