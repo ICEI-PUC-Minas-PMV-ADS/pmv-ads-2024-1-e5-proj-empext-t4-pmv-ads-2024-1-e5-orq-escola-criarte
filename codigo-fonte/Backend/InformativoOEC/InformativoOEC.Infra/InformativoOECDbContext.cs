@@ -12,6 +12,7 @@ public class InformativoOECDbContext : DbContext
     public DbSet<News> News { get; set; }
     public DbSet<Event> Events { get; set; }
     public DbSet<EventPerson> EventPersons { get; set; }
+    public DbSet<RecoveryPassword> RecoveryPasswords { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

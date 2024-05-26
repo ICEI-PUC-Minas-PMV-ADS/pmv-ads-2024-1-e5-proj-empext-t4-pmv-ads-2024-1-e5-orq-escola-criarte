@@ -26,6 +26,13 @@ public class UserRepository : IUserRepository
         return await _context.Users.ToListAsync();
     }
 
+    public async Task<User> GetUserByEmail(string email)
+    {
+        User? user = await _context.Users.AsNoTracking().SingleOrDefaultAsync(u => u.Email == email);
+
+        return user;
+    }
+
     public async Task<User> GetUserByEmailAndPasswordAsync(string email, string passwordHash)
     {
         User? user = await _context.Users.AsNoTracking().SingleOrDefaultAsync(u => u.Email == email && u.Password == passwordHash);
@@ -34,7 +41,7 @@ public class UserRepository : IUserRepository
 
     public async Task<User> GetUserById(Guid id)
     {
-        User? user = _context.Users.AsNoTracking().SingleOrDefault(u => u.Id == id);
+        User? user = await _context.Users.AsNoTracking().SingleOrDefaultAsync(u => u.Id == id);
 
         return user;
     }

@@ -19,7 +19,21 @@ public class NewsService : INewsService
 
         await _repository.AddAsync(news);
 
+        await ControlNewsHandler();
+
         return new NewsViewModel(news.Id);
+    }
+
+    private async Task ControlNewsHandler()
+    {
+        var newsList = await _repository.GetAllAsync();
+        string? limit = Environment.GetEnvironmentVariable("limit");
+
+        if (newsList.Count >= Convert.ToInt32(limit))
+        {
+            var lastNews = newsList.Select(n => n.Id).LastOrDefault();
+            await _repository.Delete(lastNews);
+        }
     }
 
     public async Task Update(NewsInputModel input, Guid id)

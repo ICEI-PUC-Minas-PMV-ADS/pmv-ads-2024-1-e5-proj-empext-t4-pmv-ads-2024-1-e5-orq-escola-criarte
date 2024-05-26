@@ -44,6 +44,20 @@ public class UserService : IUserService
         _userRepository.Update(user);   
     }
 
+    public async Task Update(UpdatePasswordInputModel input)
+    {
+        PasswordValidate(input.Password);
+
+        string passwordHash = _authService.ComputeSha256Hash(input.Password);
+
+        Core.Entities.User user = await _userRepository.GetUserByEmail(input.Email) ??
+            throw new ValidationErrorsException("Usuário não existe");
+
+        user.Update(input.Email, passwordHash);
+
+        _userRepository.Update(user);
+    }
+
     public async Task<List<UserViewModel>> GetAll()
     {
         List<Core.Entities.User> users = await _userRepository.GetAll() ??
@@ -68,6 +82,18 @@ public class UserService : IUserService
     {
         var validator = new UserValidator();
         var result = validator.Validate(model);
+
+        if (!result.IsValid)
+        {
+            var errorMessages = result.Errors.Select(error => error.ErrorMessage).ToList();
+            throw new ValidationErrorsException(errorMessages);
+        }
+    }
+
+    private static void PasswordValidate(string password)
+    {
+        var validator = new PasswordValidator(password);
+        var result = validator.Validate(password);
 
         if (!result.IsValid)
         {

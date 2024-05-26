@@ -54,7 +54,7 @@ export default function CreateNewsModal({ visible, onClose, modalStyle, onUpdate
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.Images,
             allowsEditing: true,
-            aspect: [4, 3],
+            aspect: [1, 1],
             quality: 1,
         });
 
@@ -63,7 +63,7 @@ export default function CreateNewsModal({ visible, onClose, modalStyle, onUpdate
 
             const resizedImage = await ImageManipulator.manipulateAsync(
                 uri,
-                [{ resize: { width: 854, height: 480 } }],
+                [{ resize: { width: 800, height: 800 } }],
                 { compress: 0.5, format: ImageManipulator.SaveFormat.JPEG }
             );
 

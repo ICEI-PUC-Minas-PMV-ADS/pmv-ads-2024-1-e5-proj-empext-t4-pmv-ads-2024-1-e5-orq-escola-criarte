@@ -10,4 +10,5 @@ public interface IUserRepository
     Task<User> GetUserByEmailAndPasswordAsync(string email, string passwordHash);
     Task<User> GetUserById(Guid id);
     Task<List<User>> GetAll();
+    Task<User> GetUserByEmail(string email);
 }

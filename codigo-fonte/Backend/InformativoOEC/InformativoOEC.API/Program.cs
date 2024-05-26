@@ -2,7 +2,6 @@ using InformativoOEC.API.Filters;
 using InformativoOEC.Application;
 using InformativoOEC.Infra;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -17,6 +16,10 @@ builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionsFilter))
 
 builder.Services.AddInfra();
 builder.Services.AddApplication();
+
+builder.Services
+    .AddFluentEmail("postmaster@oquestracriarte.net")
+    .AddSmtpSender("mail.oquestracriarte.net", 8889);
 
 // Add CORS Configuration
 builder.Services.AddCors(options =>
