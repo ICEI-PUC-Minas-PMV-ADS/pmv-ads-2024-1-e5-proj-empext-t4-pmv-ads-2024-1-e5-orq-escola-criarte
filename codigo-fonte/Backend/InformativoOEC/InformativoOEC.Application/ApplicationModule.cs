@@ -5,6 +5,7 @@ using InformativoOEC.Application.Services.EventPerson;
 using InformativoOEC.Application.Services.News;
 using InformativoOEC.Application.Services.Newsfeed;
 using InformativoOEC.Application.Services.Post;
+using InformativoOEC.Application.Services.RecoveryPassword;
 using InformativoOEC.Application.Services.User;
 using InformativoOEC.Core.Repositories;
 using InformativoOEC.Infra.Persistence.Repositories;
@@ -28,7 +29,8 @@ public static class ApplicationModule
             .AddScoped<INewsfeedService, NewsfeedService>()
             .AddScoped<INewsService, NewsService>()
             .AddScoped<IEventService, EventService>()
-            .AddScoped<IEventPersonService, EventPersonService>();
+            .AddScoped<IEventPersonService, EventPersonService>()
+            .AddScoped<IRecoveryPasswordService, RecoveryPasswordService>();
 
         return services;
     }

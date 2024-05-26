@@ -1,5 +1,6 @@
 ﻿using InformativoOEC.Core.Repositories;
 using InformativoOEC.Infra.Persistence.Repositories;
+using InformativoOEC.Infra.SendEmail;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,7 +13,7 @@ public static class InfraModule
 
         AddDb(services, connectionString);
         AddRepositories(services);
-
+        AddInfraServices(services);
     }
 
     private static IServiceCollection AddDb(this IServiceCollection services, string? connectionString)
@@ -32,7 +33,16 @@ public static class InfraModule
             .AddScoped<IPostRepository, PostRepository>()
             .AddScoped<INewsRepository, NewsRepository>()
             .AddScoped<IEventRepository, EventRepository>()
-            .AddScoped<IEventPersonRepository, EventPersonRepository>();
+            .AddScoped<IEventPersonRepository, EventPersonRepository>()
+            .AddScoped<IRecoveryPasswordRepository, RecoveryPasswordRepository>();
+
+        return services;
+    }
+
+    private static IServiceCollection AddInfraServices(this IServiceCollection services)
+    {
+        services
+            .AddScoped<ISendEmailService, SendEmailService>();
 
         return services;
     }
