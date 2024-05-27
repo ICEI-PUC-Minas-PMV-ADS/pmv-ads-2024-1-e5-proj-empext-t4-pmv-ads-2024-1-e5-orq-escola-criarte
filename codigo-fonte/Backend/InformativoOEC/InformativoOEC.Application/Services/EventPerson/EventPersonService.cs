@@ -23,6 +23,13 @@ public class EventPersonService : IEventPersonService
 
         if (@event is null) throw new ValidationErrorsException("Não existe um evento com o id informado");
 
+        bool existPersonInCurrentEvent = await _repository.GetEventPersonByEvent(@event.Id, input.Email);
+
+        if (existPersonInCurrentEvent)
+        {
+            throw new ValidationErrorsException("Usuário já cadastrado para este evento");
+        }
+
         Core.Entities.EventPerson eventPerson = input.ToEntity();
 
         await _repository.AddAsync(eventPerson);
