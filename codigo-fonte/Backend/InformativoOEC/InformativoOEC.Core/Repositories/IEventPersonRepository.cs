@@ -6,4 +6,5 @@ public interface IEventPersonRepository
 {
     Task AddAsync(EventPerson eventPerson);
     Task<List<EventPerson>> GetEventPeople(Guid eventId, EventPersonEnum personType);
+    Task<bool> GetEventPersonByEvent(Guid eventId, string email);
 }

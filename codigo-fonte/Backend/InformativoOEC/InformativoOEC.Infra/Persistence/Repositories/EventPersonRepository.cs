@@ -30,4 +30,11 @@ public class EventPersonRepository : IEventPersonRepository
 
         return await eventPeople.ToListAsync();
     }
+
+    public async Task<bool> GetEventPersonByEvent(Guid eventId, string email)
+    {
+        bool existPersonInEvent = await _context.EventPersons.Where(ep => ep.EventId == eventId && ep.Email == email).AnyAsync();
+
+        return existPersonInEvent;
+    }
 }
