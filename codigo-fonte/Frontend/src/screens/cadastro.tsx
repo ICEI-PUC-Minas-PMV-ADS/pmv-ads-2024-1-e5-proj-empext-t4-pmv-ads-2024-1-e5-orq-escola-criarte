@@ -62,7 +62,7 @@ export default function CadastroScreen({ navigation }: Props) {
             "name": data.nome,
             "password": data.senha,
             "email": data.email,
-            "role": 1
+            "role": 2,
         }
 
         axios.post("https://orquestracriarte-001-site1.htempurl.com/api/users", dados, { headers })
