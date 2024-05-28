@@ -33,7 +33,7 @@ public class NewsController : ControllerBase
     }
 
     [HttpGet]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, User")]
     public async Task<IActionResult> GetAll()
     {
         var result = await _newsService.GetAll();
@@ -43,7 +43,7 @@ public class NewsController : ControllerBase
 
     [HttpGet("{id}")]
     [Authorize(Roles = "Admin")]
-    public async Task<IActionResult> GetAll(Guid id)
+    public async Task<IActionResult> GetById(Guid id)
     {
         var result = await _newsService.GetById(id);
 
