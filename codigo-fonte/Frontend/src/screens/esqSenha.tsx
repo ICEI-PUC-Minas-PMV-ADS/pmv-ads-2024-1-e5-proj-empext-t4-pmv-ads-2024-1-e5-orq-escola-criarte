@@ -3,35 +3,44 @@ import axios from 'axios';
 import ButtonComponent from "../components/Button";
 import InputComponent from "../components/Input";
 import { View, ImageBackground } from "react-native";
-import styles from "../styles/CadastroScreenStyles";
+import styles from "../styles/EditPassword";
+import { useForm, Controller } from "react-hook-form";
 
-// Importe a função sendEmail
+// Definição da interface FormData
+interface FormData {
+  email: string;
+}
 
+// Definição da interface Props
+interface Props {
+  navigation: any;
+}
 
-export default function EsqSenha() {
-  const [email, setEmail] = useState("");
+const EsqSenha: React.FC<Props> = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
+  const { control, handleSubmit, formState: { isValid }, getValues, reset } = useForm<FormData>({ mode: 'onChange' });
 
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
-  };
 
-  const fetchEvents = async (email: string) => {
+
+  const handlePasswordReset = async ({ email }: FormData) => {
     try {
       setIsLoading(true);
-      const response = await axios.get('https://localhost:7290/api/users');
-      const users = response.data;
+      const data = {
+        username: "user",
+        email: email,
+      };
 
-      // Busca pelo usuário com o e-mail solicitado
-      const user = users.find((user: any) => user.email === email);
+      console.log('Enviando o seguinte objeto para a API:', data);
 
-      if (user) {
-        console.log(user);
-        // Chama a função sendEmail se o usuário for encontrado
-        
-      } else {
-        console.log(`Usuário com o e-mail ${email} não encontrado.`);
-      }
+
+      //const response = await axios.post('https://orquestracriarte-001-site1.htempurl.com/api/recoverypassword/email-recovery', data);
+
+      // Verificação de resposta da API
+      //if (response.status === 200) {
+      navigation.navigate('CodeScr');
+      //} else {
+      //  console.error(`Erro: ${response.status} - ${response.statusText}`);
+      //}
     } catch (error) {
       console.error(`Erro ao buscar usuários: ${error}`);
     } finally {
@@ -39,36 +48,37 @@ export default function EsqSenha() {
     }
   };
 
-  const handlePasswordReset = async () => {
-    try {
-      // Se o usuário existir, você gera uma nova senha aleatória e atualiza no banco de dados.
-
-      // Gera uma nova senha aleatória
-      let novaSenha = Math.random().toString(36).slice(-8);
-
-      // Atualize a senha do usuário no banco de dados aqui
-
-      // Busca o usuário e chama a função fetchEvents
-      await fetchEvents(email);
-    } catch (error) {
-      console.error(`Erro ao redefinir a senha: ${error}`);
-    }
-  };
-
   return (
     <ImageBackground resizeMode="cover" source={require('../assets/background.png')} style={styles.background}>
       <View style={styles.centerContent}>
-        <View style={styles.formulario}>
-          <InputComponent        
-            value={email}        
-            placeholder="Digite seu e-mail"
-          />
-          <ButtonComponent 
-            onPress={handlePasswordReset} disabled={isLoading}
-            text="Recuperar senha"
-          />
+        <View style={styles.backgroundBox}>
+          <View style={styles.formulario}>
+            <Controller
+              control={control}
+              render={({ field: { onChange, onBlur, value } }) => (
+                <InputComponent
+                  onBlur={onBlur}
+                  onChange={onChange}
+                  placeholder='Digite seu Email'
+                  value={value}
+                  id="email"
+                />
+              )}
+              name="email"
+              rules={{ required: true }}
+              defaultValue=""
+            />
+
+            <ButtonComponent
+              onPress={handleSubmit(handlePasswordReset)}
+              disabled={isLoading}
+              text="Recuperar senha"
+            />
+          </View>
         </View>
       </View>
     </ImageBackground>
   );
 }
+
+export default EsqSenha;
