@@ -15,18 +15,28 @@ const styles = StyleSheet.create({
     },
 
     formulario: {
-        marginTop: 30,
         flexDirection: 'column',
-        width: '80%',
-        maxWidth: 400,
+        marginTop: 30,
+        width: 350,
     },
 
     backgroundBox: {
+        alignItems: 'center',
+        justifyContent: 'center',
         backgroundColor: 'white',
+        minWidth: 400,
         width: 'auto',
-        height: 'auto',
+        height: "auto",
         borderRadius: 15,
-        
+        borderColor: 'gray',
+        borderWidth: 1,
+    },
+
+    title: {
+        fontWeight: 'bold',
+        color: '#413267',
+        fontSize: 18,
+        marginBottom: 10,
     }
 
 })

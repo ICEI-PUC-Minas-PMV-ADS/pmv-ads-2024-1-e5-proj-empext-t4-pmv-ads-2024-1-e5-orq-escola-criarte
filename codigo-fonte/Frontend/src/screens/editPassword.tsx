@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, ScrollView, SafeAreaView, TextInput, Pressable, ImageBackground, Modal } from 'react-native';
+import { View, Text, Image, ScrollView, SafeAreaView, TextInput, Pressable, ImageBackground, Modal, Alert } from 'react-native';
 import styles from '../styles/ProfileStyles';
 import ButtonComponent from '../components/Button';
 import { Ionicons } from '@expo/vector-icons';
-import { jwtDecode } from 'jwt-decode';
-import { getToken, api } from '../config/authUtils';
+import { getEmail } from '../config/authUtils';
 import Title from '../components/Title';
 import ImageCheck from '../assets/icon-check.png'
 import ImageClose from '../assets/icon-close.png'
 import CustomModal from '../components/CustomModal';
-import { useNavigation } from '@react-navigation/native';
+import { useForm } from 'react-hook-form';
+import axios from 'axios';
 
 interface UserData {
-  'user_name': string;
-  'email': string;
-  'role': string;
-  'user_id': string;
-  exp: number;
+  user_name: string;
+  email: string;
+}
+
+interface FormData {
+  email: string;
+  password: string;
 }
 
 interface Props {
@@ -24,14 +26,11 @@ interface Props {
 }
 
 export default function EditPassword({ navigation }: Props) {
-  const [userData, setUserData] = useState<UserData | null>(null);
   const [isEditing, setIsEditing] = useState(false);
-  const [email, setEmail] = useState('');
+  const [userData, setUserData] = useState<UserData | null>(null);
   const [password, setPassword] = useState('');
-  const [senhaVisivel, setSenhaVisivel] = useState<boolean>(false);
-  const [updateError, setUpdateError] = useState(null);
-  const role = userData ? userData['role'] : '';
-  const [erroCadastro, setErroCadastro] = useState<boolean>(false);
+  const [email, setEmail] = useState('');
+  const [senhaVisivel, setSenhaVisivel] = useState(false);
   const [validateInput, setValidateInput] = useState({
     length: false,
     number: false,
@@ -41,6 +40,13 @@ export default function EditPassword({ navigation }: Props) {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordsMatch, setPasswordsMatch] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
+  const { control, handleSubmit, formState: { isValid }, setValue } = useForm<FormData>({
+    mode: 'onChange',
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
 
   const secureText = (password: string, confirmPassword: string) => {
     const regexUppercase = RegExp(/^(?=.*[A-Z]).+$/);
@@ -58,22 +64,10 @@ export default function EditPassword({ navigation }: Props) {
     setPasswordsMatch(password === confirmPassword);
   };
 
-  const handleLogout = () => {
-    navigation.navigate('Login');
-  };
-
-  async function fetchUserData() {
-    try {
-      const token = await getToken();
-      if (token) {
-        const decoded = jwtDecode<UserData>(token);
-        setUserData(decoded);
-        console.log(userData);
-      } else {
-        console.log('Token é nulo');
-      }
-    } catch (error) {
-      console.error("Erro ao obter os dados do usuário:", error);
+  const fetchUserData = async () => {
+    const emailObtido = await getEmail();
+    if (emailObtido !== null) {
+      setEmail(emailObtido);
     }
   };
 
@@ -81,39 +75,36 @@ export default function EditPassword({ navigation }: Props) {
     fetchUserData();
   }, []);
 
-  const handleSubmit = async () => {
-    if (!userData) return;
+  const handleLogout = () => {
+    navigation.navigate('Login');
+  };
 
-    console.log('Current state:', { role });
+  const handleSubmitForm = async () => {
+    if (!email || !password) return;
+
+    console.log('Current state:', { email, password });
 
     try {
-      await updateUser(userData['user_id'], email, userData['user_name'], role);
-      setUpdateError(null);
-      fetchUserData();
+      await updateUser(email, password);
+
     } catch (error: any) {
       console.error('Error updating user:', error);
-      setUpdateError(error.message);
+
     }
   };
 
-  async function updateUser(id: string, emailInput: string, name: string, role: string) {
-    if (!userData) return;
-    const url = `/users/${id}`;
-    const roleValue = role === 'Admin' ? 1 : 2;
-    const email = emailInput ? emailInput : userData.email;
+  async function updateUser(emailInput: string, passwordInput: string) {
     const data = {
-      name,
-      password,
-      email,
-      role: roleValue
+      email: emailInput,
+      password: passwordInput,
     };
 
-    console.log('Data being sent:', data, id);
+    console.log('Data being sent:', data);
 
     try {
-      const response = await api.put(url, data);
+      const response = await axios.put('https://orquestracriarte-001-site1.htempurl.com/api/recoverypassword/update-password', data);
       if (response.status === 204) {
-        console.log('Usuario Atualizado com sucesso');
+        console.log('Senha atualizada com sucesso');
         setModalVisible(true);
         fetchUserData();
       } else {
@@ -122,18 +113,12 @@ export default function EditPassword({ navigation }: Props) {
 
     } catch (error: any) {
       if (error.response && error.response.status === 400) {
-        setErroCadastro(true);
+
       } else {
-        console.log(error);
         console.error('Error:', error.message);
       }
-      setErroCadastro(true);
     }
   }
-
-  const handleClosePopup = () => {
-    setErroCadastro(false);
-  };
 
   const canSave = () => {
     return (
@@ -147,8 +132,7 @@ export default function EditPassword({ navigation }: Props) {
 
   const handleCancel = () => {
     setIsEditing(false);
-    setEmail(userData ? userData['email'] : '');
-
+    setEmail(userData ? userData.email : '');
   };
 
   const handleEditProfile = () => {
@@ -167,19 +151,20 @@ export default function EditPassword({ navigation }: Props) {
               <View style={[styles.profileInfo, { alignItems: 'center' }]}>
                 <Image source={require('../assets/logo.png')} style={styles.avatar} />
                 <Text style={styles.label}>Nome:</Text>
-                <Text style={styles.text}>{userData['user_name']}</Text>
+                <Text style={styles.text}>{userData.user_name}</Text>
                 <Text style={styles.label}>Email:</Text>
-                {isEditing ? (
-                  <TextInput
-                    style={styles.input}
-                    defaultValue={userData['email']}
-                    onChangeText={text => setEmail(text)}
-                  />
-                ) : (
-                  <Text style={styles.text}>{userData['email']}</Text>
-                )}
+                {isEditing
+                  ? (
+                    <TextInput
+                      style={styles.input}
+                      defaultValue={userData.email}
+                      onChangeText={text => setEmail(text)}
+                    />
+                  ) : (
+                    <Text style={styles.text}>{userData.email}</Text>
+                  )}
 
-                {isEditing ? (
+                {isEditing && (
                   <>
                     <Text style={styles.label}>Senha:</Text>
                     <View style={{ flexDirection: 'row', alignItems: 'center', width: '80%' }}>
@@ -195,11 +180,7 @@ export default function EditPassword({ navigation }: Props) {
                         <Ionicons name={senhaVisivel ? 'eye-off' : 'eye'} size={24} style={styles.eyeIcon} />
                       </Pressable>
                     </View>
-                  </>
-                ) : null}
 
-                {isEditing ? (
-                  <>
                     <Text style={styles.label}>Confirmar Senha:</Text>
                     <TextInput
                       style={styles.input}
@@ -231,13 +212,13 @@ export default function EditPassword({ navigation }: Props) {
                       </View>
                     </View>
                   </>
-                ) : null}
+                )}
               </View>
             )}
             <View style={styles.buttonContainer}>
-              <ButtonComponent                
+              <ButtonComponent
                 text={isEditing ? "Salvar" : "Editar Perfil"}
-                onPress={isEditing ? handleSubmit : handleEditProfile}
+                onPress={isEditing ? handleSubmitForm : handleEditProfile}
                 disabled={isEditing ? !canSave() : false}
               />
               {isEditing && (
@@ -246,13 +227,13 @@ export default function EditPassword({ navigation }: Props) {
             </View>
             {!isEditing && (
               <View style={styles.buttonContainer}>
-                <ButtonComponent  text="Voltar" onPress={() => navigation.navigate('Home')} />
+                <ButtonComponent text="Voltar" onPress={() => navigation.navigate('Home')} />
               </View>
             )}
           </View>
           {modalVisible && (
             <CustomModal
-              message="Dados atualizados com sucesso!"
+              message="Senha atualizada com sucesso!"
               onOk={() => {
                 setModalVisible(false);
                 handleLogout();
@@ -260,19 +241,6 @@ export default function EditPassword({ navigation }: Props) {
             />
           )}
         </ScrollView>
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={erroCadastro}
-          onRequestClose={handleClosePopup}>
-          <View style={styles.popupContainer}>
-            <View style={styles.popupContent}>
-              <Text style={styles.popupTitle}>Erro ao cadastrar</Text>
-              <Text style={styles.popupMessage}>Email já cadastrado!</Text>
-              <ButtonComponent text="Fechar" onPress={handleClosePopup} />
-            </View>
-          </View>
-        </Modal>
       </SafeAreaView>
     </ImageBackground>
   );
