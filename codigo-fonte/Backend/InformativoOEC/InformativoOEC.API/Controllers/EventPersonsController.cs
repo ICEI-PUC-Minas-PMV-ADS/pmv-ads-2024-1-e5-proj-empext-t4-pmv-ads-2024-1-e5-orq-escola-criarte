@@ -26,6 +26,7 @@ public class EventPersonsController : ControllerBase
     }
 
     [HttpGet]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetEventPeopleByEventId(Guid eventId, EventPersonEnum personType)
     {
         var result = await _eventPersonService.GetEventPeople(eventId, personType);

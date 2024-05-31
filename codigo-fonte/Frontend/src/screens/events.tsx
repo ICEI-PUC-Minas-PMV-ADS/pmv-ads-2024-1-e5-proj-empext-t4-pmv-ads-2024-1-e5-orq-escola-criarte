@@ -7,6 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import CreateEventModal from "../components/NewEvent";
 import Title from "../components/Title";
 import { decode } from "base-64";
+import axios from 'axios';
 
 global.atob = decode;
 
@@ -80,9 +81,10 @@ function Events() {
     };
 
     const handleJoinEvent = async (eventId: string, eventType: number) => {
+        console.log('Iniciando handleJoinEvent para eventId:', eventId, 'e eventType:', eventType);
+
         try {
             const postResponse = await api.get(`/posts/${eventId}`);
-
             const eventIdFromResponse = postResponse.data.eventId;
 
             if (!eventIdFromResponse) {
@@ -100,11 +102,24 @@ function Events() {
             console.log('Dados enviados para a API eventpersons:', payload);
 
             await api.post('/eventpersons', payload);
+            console.log('Solicitação POST bem-sucedida');
 
             setConfirmedEvents(prevState => [...prevState, eventId]);
             setSelectedEventType(prevState => ({ ...prevState, [eventId]: eventType }));
         } catch (error) {
-            console.error('Erro ao fazer a solicitação POST:', error);
+            if (axios.isAxiosError(error)) {
+                if (error.response && error.response.status === 400 && error.response.data === "Usuário já cadastrado para este evento") {
+                    Alert.alert("Erro", "Você já se cadastrou para este evento");
+                } else if (error.response) {
+                    console.error('Erro ao fazer a solicitação POST:', error.response.data);
+                } else {
+                    console.error('Erro ao fazer a solicitação POST:', error.message);
+                }
+            } else if (error instanceof Error) {
+                console.error('Erro ao fazer a solicitação POST:', error.message);
+            } else {
+                console.error('Erro desconhecido ao fazer a solicitação POST:', error);
+            }
         }
     };
 
@@ -201,6 +216,7 @@ function Events() {
                             if (!events) {
                                 return null;
                             }
+
                             return (
                                 <View key={index}>
                                     <Text style={styles.monthTitle}>{month}</Text>
