@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, ScrollView, SafeAreaView, TextInput, Pressable, ImageBackground, Modal, Alert } from 'react-native';
-import styles from '../styles/ProfileStyles';
+import { View, Text, Image, ScrollView, SafeAreaView, TextInput, Pressable, ImageBackground, Modal } from 'react-native';
+import styles from '../styles/EditPassword';
 import ButtonComponent from '../components/Button';
 import { Ionicons } from '@expo/vector-icons';
 import { getEmail } from '../config/authUtils';
 import Title from '../components/Title';
-import ImageCheck from '../assets/icon-check.png'
-import ImageClose from '../assets/icon-close.png'
-import CustomModal from '../components/CustomModal';
+import ImageCheck from '../assets/icon-check.png';
+import ImageClose from '../assets/icon-close.png';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
@@ -26,8 +25,6 @@ interface Props {
 }
 
 export default function EditPassword({ navigation }: Props) {
-  const [isEditing, setIsEditing] = useState(false);
-  const [userData, setUserData] = useState<UserData | null>(null);
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [senhaVisivel, setSenhaVisivel] = useState(false);
@@ -64,15 +61,15 @@ export default function EditPassword({ navigation }: Props) {
     setPasswordsMatch(password === confirmPassword);
   };
 
-  const fetchUserData = async () => {
-    const emailObtido = await getEmail();
-    if (emailObtido !== null) {
-      setEmail(emailObtido);
-    }
-  };
-
   useEffect(() => {
-    fetchUserData();
+    const fetchEmail = async () => {
+      const emailObtido = await getEmail();
+      if (emailObtido !== null) {
+        setEmail(emailObtido);
+      }
+    };
+
+    fetchEmail();
   }, []);
 
   const handleLogout = () => {
@@ -103,10 +100,9 @@ export default function EditPassword({ navigation }: Props) {
 
     try {
       const response = await axios.put('https://orquestracriarte-001-site1.htempurl.com/api/recoverypassword/update-password', data);
-      if (response.status === 204) {
+      if (response.status === 200) {
         console.log('Senha atualizada com sucesso');
         setModalVisible(true);
-        fetchUserData();
       } else {
         throw new Error('falha na atulização');
       }
@@ -130,116 +126,70 @@ export default function EditPassword({ navigation }: Props) {
     );
   };
 
-  const handleCancel = () => {
-    setIsEditing(false);
-    setEmail(userData ? userData.email : '');
-  };
-
-  const handleEditProfile = () => {
-    setIsEditing(!isEditing);
-  };
-
   return (
     <ImageBackground resizeMode="cover" source={require('../assets/background.png')} style={styles.background}>
-      <SafeAreaView style={styles.container}>
-        <ScrollView style={styles.content}>
-          <View style={styles.centerContent}>
-            <View style={styles.header}>
-              <Text style={styles.title}>Redefina sua Senha</Text>
-            </View>
-            {userData && (
-              <View style={[styles.profileInfo, { alignItems: 'center' }]}>
-                <Image source={require('../assets/logo.png')} style={styles.avatar} />
-                <Text style={styles.label}>Nome:</Text>
-                <Text style={styles.text}>{userData.user_name}</Text>
-                <Text style={styles.label}>Email:</Text>
-                {isEditing
-                  ? (
-                    <TextInput
-                      style={styles.input}
-                      defaultValue={userData.email}
-                      onChangeText={text => setEmail(text)}
-                    />
-                  ) : (
-                    <Text style={styles.text}>{userData.email}</Text>
-                  )}
-
-                {isEditing && (
-                  <>
-                    <Text style={styles.label}>Senha:</Text>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', width: '80%' }}>
-                      <TextInput
-                        style={[styles.input, { flex: 1, width: '100%' }]}
-                        secureTextEntry={!senhaVisivel}
-                        onChangeText={(text) => {
-                          setPassword(text);
-                          secureText(text, confirmPassword);
-                        }}
-                      />
-                      <Pressable onPress={() => setSenhaVisivel(!senhaVisivel)}>
-                        <Ionicons name={senhaVisivel ? 'eye-off' : 'eye'} size={24} style={styles.eyeIcon} />
-                      </Pressable>
-                    </View>
-
-                    <Text style={styles.label}>Confirmar Senha:</Text>
-                    <TextInput
-                      style={styles.input}
-                      secureTextEntry={!senhaVisivel}
-                      onChangeText={(text) => {
-                        setConfirmPassword(text);
-                        secureText(password, text);
-                      }}
-                    />
-                    {!passwordsMatch && <Text style={{ color: 'red' }}>As senhas não conferem.</Text>}
-                    <View>
-                      <Title title='Sua senha deve ter:' />
-
-                      <View style={styles.requisitos}>
-                        <Image style={styles.checkLogo} source={validateInput.length ? ImageCheck : ImageClose} />
-                        <Text style={styles.text}> 8 Caracteres</Text>
-                      </View>
-                      <View style={styles.requisitos}>
-                        <Image style={styles.checkLogo} source={validateInput.number ? ImageCheck : ImageClose} />
-                        <Text style={styles.text}> Pelo menos um número</Text>
-                      </View>
-                      <View style={styles.requisitos}>
-                        <Image style={styles.checkLogo} source={validateInput.special ? ImageCheck : ImageClose} />
-                        <Text style={styles.text}> Pelo menos um caractere especial</Text>
-                      </View>
-                      <View style={styles.requisitos}>
-                        <Image style={styles.checkLogo} source={validateInput.case ? ImageCheck : ImageClose} />
-                        <Text style={styles.text}> Pelo menos uma letra maiúscula</Text>
-                      </View>
-                    </View>
-                  </>
-                )}
-              </View>
-            )}
-            <View style={styles.buttonContainer}>
-              <ButtonComponent
-                text={isEditing ? "Salvar" : "Editar Perfil"}
-                onPress={isEditing ? handleSubmitForm : handleEditProfile}
-                disabled={isEditing ? !canSave() : false}
-              />
-              {isEditing && (
-                <ButtonComponent text="Cancelar" onPress={handleCancel} />
-              )}
-            </View>
-            {!isEditing && (
-              <View style={styles.buttonContainer}>
-                <ButtonComponent text="Voltar" onPress={() => navigation.navigate('Home')} />
-              </View>
-            )}
+      <SafeAreaView style={{ flex: 1 }}>
+        <ScrollView contentContainerStyle={styles.content}>
+          <View style={styles.header}>
+            <Text style={styles.headerTitle}>Redefina sua Senha</Text>
           </View>
-          {modalVisible && (
-            <CustomModal
-              message="Senha atualizada com sucesso!"
-              onOk={() => {
-                setModalVisible(false);
-                handleLogout();
+          <View style={[styles.centerContent, styles.backgroundBox]}>
+
+            <Text style={styles.label}>Email:</Text>
+            <Text style={styles.text}>{email}</Text>
+
+            <Text style={styles.label}>Nova Senha:</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', width: '80%' }}>
+              <TextInput
+                style={[styles.input, { flex: 1, width: '100%' }]}
+                secureTextEntry={!senhaVisivel}
+                onChangeText={(text) => {
+                  setPassword(text);
+                  secureText(text, confirmPassword);
+                }}
+              />
+              <Pressable onPress={() => setSenhaVisivel(!senhaVisivel)}>
+                <Ionicons name={senhaVisivel ? 'eye-off' : 'eye'} size={24} style={styles.eyeIcon} />
+              </Pressable>
+            </View>
+
+            <Text style={styles.label}>Confirmar nova Senha:</Text>
+            <TextInput
+              style={styles.input}
+              secureTextEntry={!senhaVisivel}
+              onChangeText={(text) => {
+                setConfirmPassword(text);
+                secureText(password, text);
               }}
             />
-          )}
+            {!passwordsMatch && <Text style={{ color: 'red' }}>As senhas não conferem.</Text>}
+            <View>
+              <Title title='Sua senha deve ter:' />
+
+              <View style={styles.requisitos}>
+                <Image style={styles.checkLogo} source={validateInput.length ? ImageCheck : ImageClose} />
+                <Text style={styles.text}> 8 Caracteres</Text>
+              </View>
+              <View style={styles.requisitos}>
+                <Image style={styles.checkLogo} source={validateInput.number ? ImageCheck : ImageClose} />
+                <Text style={styles.text}> Pelo menos um número</Text>
+              </View>
+              <View style={styles.requisitos}>
+                <Image style={styles.checkLogo} source={validateInput.special ? ImageCheck : ImageClose} />
+                <Text style={styles.text}> Pelo menos um caractere especial</Text>
+              </View>
+              <View style={styles.requisitos}>
+                <Image style={styles.checkLogo} source={validateInput.case ? ImageCheck : ImageClose} />
+                <Text style={styles.text}> Pelo menos uma letra maiúscula</Text>
+              </View>
+            </View>
+            <View style={{ marginTop: 15, width: '100%', alignItems: 'center' }}>
+              <View style={styles.buttonContainer}>
+                <ButtonComponent text="Salvar" onPress={handleSubmitForm} disabled={!canSave()} />
+              </View>
+            </View>
+
+          </View>
         </ScrollView>
       </SafeAreaView>
     </ImageBackground>

@@ -6,6 +6,7 @@ import ButtonComponent from "../components/Button";
 import InputComponent from "../components/Input";
 import styles from "../styles/EditPassword";
 import { saveEmail } from '../config/authUtils';
+import axios from "axios";
 
 interface FormData {
   email: string;
@@ -36,12 +37,11 @@ const EsqSenha: React.FC<Props> = ({ navigation }) => {
 
       //const response = await axios.post('https://orquestracriarte-001-site1.htempurl.com/api/recoverypassword/email-recovery', data);
 
-      // Verificação de resposta da API
-      //if (response.status === 200) {
+      // if (response.status === 200) {
 
-      //} else {
-      //  console.error(`Erro: ${response.status} - ${response.statusText}`);
-      //}
+      // } else {
+      //   console.error(`Erro: ${response.status} - ${response.statusText}`);
+      // }
     } catch (error) {
       console.error(`Erro ao buscar usuários: ${error}`);
     } finally {
