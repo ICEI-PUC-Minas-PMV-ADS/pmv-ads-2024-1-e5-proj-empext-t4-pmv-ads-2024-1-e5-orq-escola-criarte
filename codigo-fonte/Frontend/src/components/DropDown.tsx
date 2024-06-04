@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   container: {
     position: 'absolute',
     top: 0,
-    marginTop: '13%',
+    marginTop: '4%',
     right: 0,
     marginRight: '1.5%',
   },
@@ -54,10 +54,10 @@ const styles = StyleSheet.create({
 
   dropdown: {
     position: 'absolute',
-    backgroundColor: '#FFFFFF',
-    width: 150,
-    top: 44,
-    right: -10,
+    backgroundColor: 'rgba(255,255,255, 1)',
+    width: 355,
+    top: 40,
+    right: 10,
     zIndex: 1000,
     borderRadius: 5,
   },
@@ -66,7 +66,6 @@ const styles = StyleSheet.create({
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#DDD',
-    borderRadius: 5,
   },
 
   menuItemText: {
