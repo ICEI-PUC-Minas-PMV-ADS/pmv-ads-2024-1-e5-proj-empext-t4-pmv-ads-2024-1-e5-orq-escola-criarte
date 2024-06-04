@@ -16,48 +16,64 @@ const styles = StyleSheet.create({
 
     rectangle: {
         backgroundColor: 'rgba(255, 255, 255, 0.85)',
-        padding: 10,
         borderRadius: 10,
         marginTop: 15,
         marginRight: 5,
         marginLeft: 5,
     },
 
+    text1: {
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+
     row1: {
-        flexDirection: "row",
+        paddingTop: 5,
+        backgroundColor: 'rgba(80, 80, 80, 0.25)',
+        borderTopWidth: 3,
+        flexDirection: "column",
         justifyContent: "center",
-        marginBottom: 5,
     },
 
     row2: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        marginBottom: 5,
+        backgroundColor: 'rgba(80, 80, 80, 0.25)',
+        paddingBottom: 5,
+        borderBottomWidth: 1,
+        flexDirection: "column",
+        justifyContent: "center",
     },
 
     row3: {
+        paddingTop: 10,
+        flexDirection: 'row',
+        justifyContent: 'center',
+    },
+
+    row4: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginTop: 10,
     },
 
     informaçoes1: {
+        paddingLeft: 20,
         flex: 1,
-        flexDirection: "column",
-        alignItems: "center",
-        marginTop: 10,
+        flexDirection: "row",
+        alignItems: "center"
     },
 
     informaçoes2: {
+        paddingLeft: 20,
         flex: 1,
-        flexDirection: "column",
+        flexDirection: "row",
         alignItems: "center"
     },
 
     joinButton: {
+        backgroundColor: 'rgba(103,80,164,1)',
         flex: 1,
         borderRadius: 5,
-        paddingVertical: 10,
+        paddingVertical: 5,
         marginHorizontal: 5,
         alignItems: 'center',
     },
@@ -94,12 +110,13 @@ const styles = StyleSheet.create({
     eventTitle: {
         fontSize: 24,
         fontWeight: "bold",
-        marginBottom: 15,
+        marginBottom: 2,
         alignSelf: "center",
     },
 
     eventImage: {
-        width: "100%",
+        marginLeft: 10,
+        marginRight: 10,
         height: 300,
         borderRadius: 5,
     },
@@ -129,7 +146,6 @@ const styles = StyleSheet.create({
 
     moreInfo: {
         padding: 10,
-        backgroundColor: 'rgba(255, 255, 255, 0.90)',
         textAlign: 'center',
         color: '#413267',
         fontSize: 14,
@@ -141,7 +157,6 @@ const styles = StyleSheet.create({
 
     extraInfo: {
         padding: 10,
-        backgroundColor: 'rgba(255, 255, 255, 0.90)',
         marginTop: 10,
     },
 

@@ -226,48 +226,40 @@ function Events() {
                                             <View style={styles.eventDetails}>
                                                 <Text style={styles.eventTitle}>{event.content.title}</Text>
                                                 <Image
-                                                    resizeMode="cover"
+                                                    resizeMode="contain"
                                                     source={{ uri: event.imageURL }}
                                                     style={styles.eventImage}
                                                 />
                                             </View>
                                             <View style={styles.row1}>
                                                 <View style={styles.informaçoes1}>
-                                                    <Title title="Data" />
+                                                    <Title title="Data         | " />
                                                     <Text style={styles.label}>{new Date(event.date).toLocaleDateString()}</Text>
                                                 </View>
                                                 <View style={styles.informaçoes1}>
-                                                    <Title title="Horário" />
+                                                    <Title title="Horário    | " />
                                                     <Text style={styles.label}>{new Date(event.date).toLocaleTimeString()}</Text>
                                                 </View>
-                                                {userRole === 'Admin' && (
-                                                    <Pressable
-                                                        style={styles.deleteButton}
-                                                        onPress={() => {
-                                                            console.log('Botão "Deletar" pressionado');
-                                                            confirmDelete(event.id);
-                                                        }}
-                                                    >
-                                                        <Ionicons name="trash-outline" size={24} color="red" />
-                                                    </Pressable>
-                                                )}
                                             </View>
                                             <View style={styles.row2}>
                                                 <View style={styles.informaçoes2}>
-                                                    <Title title="Endereço" />
+                                                    <Title title="Endereço | " />
                                                     <Text style={styles.label}>{event.address.street}, {event.address.number} - {event.address.county}</Text>
                                                 </View>
                                             </View>
                                             <View style={styles.row3}>
+                                                <Text style={styles.text1}>Vou ao evento como:</Text>
+                                            </View>
+                                            <View style={styles.row4}>
                                                 <Pressable
-                                                    style={[styles.joinButton, { backgroundColor: selectedEventType[event.id] === 0 ? '#413267' : '#ccc' }]}
+                                                    style={[styles.joinButton, { backgroundColor: selectedEventType[event.id] === 0 ? '#413267' : '#6750A4' }]}
                                                     onPress={() => handleEventTypeChange(event.id, 0)}
                                                     disabled={confirmedEvents.includes(event.id)}
                                                 >
                                                     <Text style={styles.joinButtonText}>Músico</Text>
                                                 </Pressable>
                                                 <Pressable
-                                                    style={[styles.joinButton, { backgroundColor: selectedEventType[event.id] === 1 ? '#413267' : '#ccc' }]}
+                                                    style={[styles.joinButton, { backgroundColor: selectedEventType[event.id] === 1 ? '#413267' : '#6750A4' }]}
                                                     onPress={() => handleEventTypeChange(event.id, 1)}
                                                     disabled={confirmedEvents.includes(event.id)}
                                                 >
@@ -282,7 +274,17 @@ function Events() {
                                                     <Text style={styles.extraInfoText}>{event.content.body}</Text>
                                                 </View>
                                             )}
-
+                                            {userRole === 'Admin' && (
+                                                <Pressable
+                                                    style={styles.deleteButton}
+                                                    onPress={() => {
+                                                        console.log('Botão "Deletar" pressionado');
+                                                        confirmDelete(event.id);
+                                                    }}
+                                                >
+                                                    <Ionicons name="trash-outline" size={24} color="red" />
+                                                </Pressable>
+                                            )}
                                         </View>
                                     ))}
                                 </View>
