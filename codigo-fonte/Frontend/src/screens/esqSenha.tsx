@@ -68,6 +68,7 @@ const EsqSenha: React.FC<Props> = ({ navigation }) => {
               control={control}
               render={({ field: { onChange, onBlur, value } }) => (
                 <InputComponent
+                  style={styles.input}
                   onBlur={onBlur}
                   onChange={onChange}
                   placeholder='exemplo@email.com'
