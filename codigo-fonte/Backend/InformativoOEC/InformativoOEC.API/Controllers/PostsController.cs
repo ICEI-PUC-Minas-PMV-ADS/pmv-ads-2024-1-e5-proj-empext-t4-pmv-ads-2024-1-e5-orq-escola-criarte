@@ -34,7 +34,7 @@ public class PostsController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, User")]
     public async Task<IActionResult> GetById(Guid id)
     {
         var result = await _postService.GetById(id);
