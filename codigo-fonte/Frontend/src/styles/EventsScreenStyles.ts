@@ -23,20 +23,19 @@ const styles = StyleSheet.create({
     },
 
     text1: {
-        fontSize: 20,
+        fontSize: 18,
         fontWeight: 'bold',
     },
 
     row1: {
+        marginTop: 10,
         paddingTop: 5,
-        backgroundColor: 'rgba(80, 80, 80, 0.25)',
-        borderTopWidth: 3,
+        borderTopWidth: 1,
         flexDirection: "column",
         justifyContent: "center",
     },
 
     row2: {
-        backgroundColor: 'rgba(80, 80, 80, 0.25)',
         paddingBottom: 5,
         borderBottomWidth: 1,
         flexDirection: "column",
@@ -108,16 +107,16 @@ const styles = StyleSheet.create({
     },
 
     eventTitle: {
-        fontSize: 24,
+        fontSize: 20,
         fontWeight: "bold",
-        marginBottom: 2,
+        marginTop: 10,
         alignSelf: "center",
     },
 
     eventImage: {
         marginLeft: 10,
         marginRight: 10,
-        height: 300,
+        height: 350,
         borderRadius: 5,
     },
 
