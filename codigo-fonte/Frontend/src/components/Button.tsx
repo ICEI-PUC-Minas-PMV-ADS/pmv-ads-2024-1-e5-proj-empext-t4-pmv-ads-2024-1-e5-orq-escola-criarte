@@ -9,6 +9,7 @@ interface ButtonProps {
   mode?: 'text' | 'outlined' | 'contained';
   readOnly?: boolean;
   style?: object;
+  isLoading?: boolean;
 }
 
 export default function ButtonComponent({ 
@@ -18,8 +19,8 @@ export default function ButtonComponent({
   mode = 'contained',
   readOnly = false,
   style,
+  isLoading = false,
   ...otherProps
-
 }: ButtonProps) 
 {
   const handlePress = readOnly ? () => {} : onPress;
@@ -27,9 +28,10 @@ export default function ButtonComponent({
   return (
     <Button 
       mode={mode} 
-      disabled={disabled} 
+      disabled={disabled || isLoading}
       onPress={handlePress} 
       style={[buttonStyles.button, style]}
+      loading={isLoading}
       {...otherProps}
     >
       {text}

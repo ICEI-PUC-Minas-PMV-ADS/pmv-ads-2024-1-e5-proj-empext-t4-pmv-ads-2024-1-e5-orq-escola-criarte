@@ -1,5 +1,5 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const api = axios.create({
   baseURL: 'https://orquestracriarte-001-site1.htempurl.com/api',
@@ -41,4 +41,29 @@ const getToken = async () => {
   }
 };
 
-export { saveToken, getToken, api };
+const saveEmail = async (email) => {
+  try {
+    await AsyncStorage.setItem('email', email);
+    console.log('Email salvo com sucesso.');
+    console.log(email);
+  } catch (error) {
+    console.error('Erro ao salvar o email do usuário:', error);
+  }
+};
+
+const getEmail = async () => {
+  try {
+    const email = await AsyncStorage.getItem('email');
+    if (email !== null) {
+      return email;
+    } else {
+      console.log('Nenhum email encontrado.');
+      return null;
+    }
+  } catch (error) {
+    console.error('Erro ao obter o email:', error);
+    return null;
+  }
+};
+
+export { saveToken, getToken, saveEmail, getEmail, api };
