@@ -14,6 +14,7 @@ interface InputProps {
   errorMessage?: string | boolean;
   placeholder?: string;
   disabled?: boolean;
+  editable?: boolean;
   style?: object;
   placeholderTextColor?: string;
 }
@@ -29,6 +30,7 @@ export default function InputComponent({
   errorMessage = '',
   placeholder,
   disabled = false,
+  editable = true,
   style,
   placeholderTextColor,
   ...otherProps
@@ -49,6 +51,7 @@ export default function InputComponent({
         onBlur={onBlur}
         value={value}
         disabled={disabled}
+        editable={editable}
         {...otherProps}
       />
       {errorMessage && <HelperText type="error">{errorMessage}</HelperText>}

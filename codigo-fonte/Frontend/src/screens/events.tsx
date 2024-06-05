@@ -7,6 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import CreateEventModal from "../components/NewEvent";
 import Title from "../components/Title";
 import { decode } from "base-64";
+import axios from 'axios';
 
 global.atob = decode;
 
@@ -80,9 +81,10 @@ function Events() {
     };
 
     const handleJoinEvent = async (eventId: string, eventType: number) => {
+        console.log('Iniciando handleJoinEvent para eventId:', eventId, 'e eventType:', eventType);
+
         try {
             const postResponse = await api.get(`/posts/${eventId}`);
-
             const eventIdFromResponse = postResponse.data.eventId;
 
             if (!eventIdFromResponse) {
@@ -100,11 +102,24 @@ function Events() {
             console.log('Dados enviados para a API eventpersons:', payload);
 
             await api.post('/eventpersons', payload);
+            console.log('Solicitação POST bem-sucedida');
 
             setConfirmedEvents(prevState => [...prevState, eventId]);
             setSelectedEventType(prevState => ({ ...prevState, [eventId]: eventType }));
         } catch (error) {
-            console.error('Erro ao fazer a solicitação POST:', error);
+            if (axios.isAxiosError(error)) {
+                if (error.response && error.response.status === 400 && error.response.data === "Usuário já cadastrado para este evento") {
+                    Alert.alert("Erro", "Você já se cadastrou para este evento");
+                } else if (error.response) {
+                    console.error('Erro ao fazer a solicitação POST:', error.response.data);
+                } else {
+                    console.error('Erro ao fazer a solicitação POST:', error.message);
+                }
+            } else if (error instanceof Error) {
+                console.error('Erro ao fazer a solicitação POST:', error.message);
+            } else {
+                console.error('Erro desconhecido ao fazer a solicitação POST:', error);
+            }
         }
     };
 
@@ -201,6 +216,7 @@ function Events() {
                             if (!events) {
                                 return null;
                             }
+
                             return (
                                 <View key={index}>
                                     <Text style={styles.monthTitle}>{month}</Text>
@@ -210,48 +226,40 @@ function Events() {
                                             <View style={styles.eventDetails}>
                                                 <Text style={styles.eventTitle}>{event.content.title}</Text>
                                                 <Image
-                                                    resizeMode="cover"
+                                                    resizeMode="contain"
                                                     source={{ uri: event.imageURL }}
                                                     style={styles.eventImage}
                                                 />
                                             </View>
                                             <View style={styles.row1}>
                                                 <View style={styles.informaçoes1}>
-                                                    <Title title="Data" />
+                                                    <Title title="Data         | " />
                                                     <Text style={styles.label}>{new Date(event.date).toLocaleDateString()}</Text>
                                                 </View>
                                                 <View style={styles.informaçoes1}>
-                                                    <Title title="Horário" />
+                                                    <Title title="Horário    | " />
                                                     <Text style={styles.label}>{new Date(event.date).toLocaleTimeString()}</Text>
                                                 </View>
-                                                {userRole === 'Admin' && (
-                                                    <Pressable
-                                                        style={styles.deleteButton}
-                                                        onPress={() => {
-                                                            console.log('Botão "Deletar" pressionado');
-                                                            confirmDelete(event.id);
-                                                        }}
-                                                    >
-                                                        <Ionicons name="trash-outline" size={24} color="red" />
-                                                    </Pressable>
-                                                )}
                                             </View>
                                             <View style={styles.row2}>
                                                 <View style={styles.informaçoes2}>
-                                                    <Title title="Endereço" />
+                                                    <Title title="Endereço | " />
                                                     <Text style={styles.label}>{event.address.street}, {event.address.number} - {event.address.county}</Text>
                                                 </View>
                                             </View>
                                             <View style={styles.row3}>
+                                                <Text style={styles.text1}>Vou ao evento como:</Text>
+                                            </View>
+                                            <View style={styles.row4}>
                                                 <Pressable
-                                                    style={[styles.joinButton, { backgroundColor: selectedEventType[event.id] === 0 ? '#413267' : '#ccc' }]}
+                                                    style={[styles.joinButton, { backgroundColor: selectedEventType[event.id] === 0 ? '#413267' : '#6750A4' }]}
                                                     onPress={() => handleEventTypeChange(event.id, 0)}
                                                     disabled={confirmedEvents.includes(event.id)}
                                                 >
                                                     <Text style={styles.joinButtonText}>Músico</Text>
                                                 </Pressable>
                                                 <Pressable
-                                                    style={[styles.joinButton, { backgroundColor: selectedEventType[event.id] === 1 ? '#413267' : '#ccc' }]}
+                                                    style={[styles.joinButton, { backgroundColor: selectedEventType[event.id] === 1 ? '#413267' : '#6750A4' }]}
                                                     onPress={() => handleEventTypeChange(event.id, 1)}
                                                     disabled={confirmedEvents.includes(event.id)}
                                                 >
@@ -266,7 +274,17 @@ function Events() {
                                                     <Text style={styles.extraInfoText}>{event.content.body}</Text>
                                                 </View>
                                             )}
-
+                                            {userRole === 'Admin' && (
+                                                <Pressable
+                                                    style={styles.deleteButton}
+                                                    onPress={() => {
+                                                        console.log('Botão "Deletar" pressionado');
+                                                        confirmDelete(event.id);
+                                                    }}
+                                                >
+                                                    <Ionicons name="trash-outline" size={24} color="red" />
+                                                </Pressable>
+                                            )}
                                         </View>
                                     ))}
                                 </View>

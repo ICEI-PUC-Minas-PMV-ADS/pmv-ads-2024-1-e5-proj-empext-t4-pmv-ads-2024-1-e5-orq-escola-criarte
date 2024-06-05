@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
 
     rectangle: {
         margin: 10,
-        padding: 10,
         backgroundColor: 'rgba(255, 255, 255, 0.80)',
         borderRadius: 10,
     },
@@ -53,7 +52,7 @@ const styles = StyleSheet.create({
 
     image: {
         width: 'auto',
-        height: 300,
+        height:'auto',
         resizeMode:'contain',
         borderRadius: 10,
     },
@@ -63,21 +62,18 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         marginTop: 10,
-        marginBottom: 5,
-        borderBottomWidth: 2,
-        borderRadius: 5,
+        paddingBottom: 10,
+        borderBottomWidth: 3
     },
 
     body: {
         fontSize: 14,
-        marginTop: 10,
-        marginBottom: 10,
-        marginLeft: 10
-
+        padding: 10,
+        backgroundColor: 'rgba(80, 80, 80, 0.25)'
     },
 
     border: {
-        borderBottomWidth: 2,
+        borderBottomWidth: 1,
     },
 
     info: {

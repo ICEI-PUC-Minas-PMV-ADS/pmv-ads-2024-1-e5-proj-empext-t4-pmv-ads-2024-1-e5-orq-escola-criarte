@@ -140,7 +140,7 @@ function Routes() {
           component={ContactsScreen}
           options={{
             tabBarLabel: 'Contato',
-            tabBarIcon: ({ color, size }) => <Icon name="phone" color={"#413267"} size={size} />,
+            tabBarIcon: ({ size }) => <Icon name="phone" color={"#413267"} size={size} />,
             header: () => <CustomHeader />,
           }}
         />
