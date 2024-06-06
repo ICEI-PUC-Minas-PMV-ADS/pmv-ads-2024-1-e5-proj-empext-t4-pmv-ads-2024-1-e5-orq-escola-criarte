@@ -224,12 +224,12 @@ function Events() {
                                         <View key={index} style={styles.rectangle}>
 
                                             <View style={styles.eventDetails}>
-                                                <Text style={styles.eventTitle}>{event.content.title}</Text>
                                                 <Image
                                                     resizeMode="contain"
                                                     source={{ uri: event.imageURL }}
                                                     style={styles.eventImage}
                                                 />
+                                                <Text style={styles.eventTitle}>{event.content.title}</Text>
                                             </View>
                                             <View style={styles.row1}>
                                                 <View style={styles.informaçoes1}>
