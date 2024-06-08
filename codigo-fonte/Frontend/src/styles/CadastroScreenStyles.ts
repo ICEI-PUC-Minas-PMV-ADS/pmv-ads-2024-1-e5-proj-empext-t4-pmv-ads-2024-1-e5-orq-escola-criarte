@@ -80,18 +80,15 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
 
-  SignInButton: {
-    marginTop: 15,
-  },
-
   checkbox: {
     marginTop: 25,
   },
 
   botaoCadastro: {
     width: '80%',
+    position: "absolute",
+    bottom: 0,
     alignSelf: 'center',
-    position: 'relative',
     maxWidth: 400,
     marginBottom: 10,
   },
