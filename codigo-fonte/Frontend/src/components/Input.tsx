@@ -1,6 +1,7 @@
 import React from 'react';
 import { TextInput, HelperText } from 'react-native-paper';
 import { inputStyles } from '../styles/globalStyles';
+import { View } from 'react-native';
 
 interface InputProps {
   id?: string;

@@ -10,8 +10,6 @@ const loginScreenStyles = StyleSheet.create({
   },
 
   logo: {
-    width: 200,
-    height: 200,
     marginBottom: 5,
     marginTop: 10,
   },
@@ -51,6 +49,7 @@ const loginScreenStyles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 5,
   },
+  
   errorModalButtonText: {
     color: '#fff',
     fontSize: 16,

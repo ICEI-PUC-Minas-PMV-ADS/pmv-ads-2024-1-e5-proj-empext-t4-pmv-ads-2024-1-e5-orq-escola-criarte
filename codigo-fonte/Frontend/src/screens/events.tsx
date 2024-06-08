@@ -75,7 +75,7 @@ function Events() {
     };
 
     const handleEventTypeChange = (eventId: string, eventType: number) => {
-        if (selectedEventType[eventId] !== undefined) return; // Se já foi selecionado, não fazer nada
+        if (selectedEventType[eventId] !== undefined) return;
 
         showConfirmationAlert(eventId, eventType);
     };
