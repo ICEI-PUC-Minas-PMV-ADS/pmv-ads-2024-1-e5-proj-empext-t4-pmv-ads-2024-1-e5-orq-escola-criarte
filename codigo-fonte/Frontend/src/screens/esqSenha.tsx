@@ -35,13 +35,13 @@ const EsqSenha: React.FC<Props> = ({ navigation }) => {
 
       console.log('Enviando o seguinte objeto para a API:', data);
 
-      //const response = await axios.post('https://orquestracriarte-001-site1.htempurl.com/api/recoverypassword/email-recovery', data);
+      const response = await axios.post('https://orquestracriarte-001-site1.htempurl.com/api/recoverypassword/email-recovery', data);
 
-      // if (response.status === 200) {
+      if (response.status === 200) {
 
-      // } else {
-      //   console.error(`Erro: ${response.status} - ${response.statusText}`);
-      // }
+      } else {
+        console.error(`Erro: ${response.status} - ${response.statusText}`);
+      }
     } catch (error) {
       console.error(`Erro ao buscar usuários: ${error}`);
     } finally {
