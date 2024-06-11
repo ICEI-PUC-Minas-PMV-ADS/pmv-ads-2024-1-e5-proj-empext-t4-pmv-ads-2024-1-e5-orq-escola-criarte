@@ -197,7 +197,7 @@ function Events() {
     const monthOrder = ['JANEIRO', 'FEVEREIRO', 'MARÇO', 'ABRIL', 'MAIO', 'JUNHO', 'JULHO', 'AGOSTO', 'SETEMBRO', 'OUTUBRO', 'NOVEMBRO', 'DEZEMBRO'];
 
     return (
-        <ImageBackground resizeMode="cover" source={require('../assets/background.png')} style={styles.background}>
+        <ImageBackground resizeMode="cover" source={require('../assets/background.jpg')} style={styles.background}>
             <View style={{ flex: 1 }}>
                 {isLoading ? (
 

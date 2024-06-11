@@ -5,8 +5,8 @@ const styles = StyleSheet.create({
 
   background: {
     flex: 1,
-    justifyContent: 'center'
 
+    justifyContent: 'center'
   },
 
   container: {
@@ -71,7 +71,6 @@ const styles = StyleSheet.create({
 
   botaoCadastro: {
     width: '80%',
-
     bottom: 0,
     alignSelf: 'center',
     maxWidth: 400,

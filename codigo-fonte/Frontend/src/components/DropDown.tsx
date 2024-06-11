@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   container: {
     position: 'absolute',
     top: 0,
-    marginTop: '5%',
+    marginTop: 44,
     right: 0,
     marginRight: '1.5%',
   },

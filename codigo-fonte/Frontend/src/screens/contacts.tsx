@@ -16,7 +16,7 @@ const Contacts: React.FC = () => {
         setCopiedPixKey(true);
     }
     return (
-        <ImageBackground resizeMode="cover" source={require('../assets/background.png')} style={styles.background}>
+        <ImageBackground resizeMode="cover" source={require('../assets/background.jpg')} style={styles.background}>
             <ScrollView>
                 <View style={styles.container}>
                     <List.Section>

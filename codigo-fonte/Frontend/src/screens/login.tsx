@@ -78,7 +78,7 @@ export default function CadastroScreen({ navigation }: Props) {
             extraScrollHeight={Platform.select({ android: 100, ios: 130 })}
             keyboardOpeningTime={0}
         >
-            <ImageBackground resizeMode="cover" source={require('../assets/background.png')} style={styles.background}>
+            <ImageBackground resizeMode='cover' source={require('../assets/background.jpg')} style={styles.background}>
                 <SafeAreaView style={styles.container}>
                     <View style={styles.content}>
                         <View style={styles.centerContent}>
@@ -148,16 +148,15 @@ export default function CadastroScreen({ navigation }: Props) {
                                         text="Esqueci minha senha"
                                         mode='text'
                                     />
+                                    <ButtonComponent
+                                        onPress={() => navigation.navigate('Cadastro')}
+                                        text="Cadastrar"
+                                    />
                                 </View>
                             </View>
                         </View>
                     </View>
-                    <View style={styles.botaoCadastro}>
-                        <ButtonComponent
-                            onPress={() => navigation.navigate('Cadastro')}
-                            text="Cadastrar"
-                        />
-                    </View>
+
                 </SafeAreaView>
                 {/* Modal de Erro */}
                 <Modal

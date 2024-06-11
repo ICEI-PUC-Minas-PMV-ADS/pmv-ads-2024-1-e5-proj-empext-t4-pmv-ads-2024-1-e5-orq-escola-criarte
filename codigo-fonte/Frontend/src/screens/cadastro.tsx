@@ -108,7 +108,7 @@ export default function CadastroScreen({ navigation }: Props) {
 
     return (
 
-        <ImageBackground resizeMode="cover" source={require('../assets/background.png')} style={styles.background}>
+        <ImageBackground resizeMode="cover" source={require('../assets/background.jpg')} style={styles.background}>
             <SafeAreaView style={styles.container}>
                 <ScrollView style={styles.content} contentContainerStyle={styles.scrollContentContainer}>
                     <View style={styles.centerContent}>

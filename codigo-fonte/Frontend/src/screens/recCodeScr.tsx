@@ -70,7 +70,7 @@ export default function CodeScr({ navigation }: Props) {
   };
 
   return (
-    <ImageBackground resizeMode="cover" source={require('../assets/background.png')} style={styles.background}>
+    <ImageBackground resizeMode="cover" source={require('../assets/background.jpg')} style={styles.background}>
       <View style={styles.centerContent}>
         <View style={styles.backgroundBox}>
           <View style={styles.formulario}>
