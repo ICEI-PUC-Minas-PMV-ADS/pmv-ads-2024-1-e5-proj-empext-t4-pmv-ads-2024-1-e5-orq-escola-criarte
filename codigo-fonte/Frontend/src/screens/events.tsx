@@ -75,7 +75,7 @@ function Events() {
     };
 
     const handleEventTypeChange = (eventId: string, eventType: number) => {
-        if (selectedEventType[eventId] !== undefined) return; // Se já foi selecionado, não fazer nada
+        if (selectedEventType[eventId] !== undefined) return;
 
         showConfirmationAlert(eventId, eventType);
     };
@@ -197,7 +197,7 @@ function Events() {
     const monthOrder = ['JANEIRO', 'FEVEREIRO', 'MARÇO', 'ABRIL', 'MAIO', 'JUNHO', 'JULHO', 'AGOSTO', 'SETEMBRO', 'OUTUBRO', 'NOVEMBRO', 'DEZEMBRO'];
 
     return (
-        <ImageBackground resizeMode="cover" source={require('../assets/background.png')} style={styles.background}>
+        <ImageBackground resizeMode="cover" source={require('../assets/background.jpg')} style={styles.background}>
             <View style={{ flex: 1 }}>
                 {isLoading ? (
 
@@ -224,12 +224,12 @@ function Events() {
                                         <View key={index} style={styles.rectangle}>
 
                                             <View style={styles.eventDetails}>
-                                                <Text style={styles.eventTitle}>{event.content.title}</Text>
                                                 <Image
                                                     resizeMode="contain"
                                                     source={{ uri: event.imageURL }}
                                                     style={styles.eventImage}
                                                 />
+                                                <Text style={styles.eventTitle}>{event.content.title}</Text>
                                             </View>
                                             <View style={styles.row1}>
                                                 <View style={styles.informaçoes1}>

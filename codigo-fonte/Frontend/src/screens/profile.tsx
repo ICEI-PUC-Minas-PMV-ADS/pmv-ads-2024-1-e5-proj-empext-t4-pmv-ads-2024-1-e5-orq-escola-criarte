@@ -156,7 +156,7 @@ export default function ProfileScreen({ navigation }: Props) {
   };
 
   return (
-    <ImageBackground resizeMode="cover" source={require('../assets/background.png')} style={styles.background}>
+    <ImageBackground resizeMode="cover" source={require('../assets/background.jpg')} style={styles.background}>
       <SafeAreaView style={styles.container}>
         <ScrollView style={styles.content}>
           <View style={styles.centerContent}>

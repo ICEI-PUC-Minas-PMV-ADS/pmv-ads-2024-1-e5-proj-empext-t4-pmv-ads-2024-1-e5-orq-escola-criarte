@@ -98,7 +98,7 @@ const News = ({ navigation }: Props) => {
   };
 
   return (
-    <ImageBackground resizeMode="cover" source={require('../assets/background.png')} style={styles.background}>
+    <ImageBackground resizeMode="cover" source={require('../assets/background.jpg')} style={styles.background}>
       <View style={{ flex: 1 }}>
         {isLoading ? (
           <View style={{ height: "100%", justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0, 0, 0, 0.15)' }}>
