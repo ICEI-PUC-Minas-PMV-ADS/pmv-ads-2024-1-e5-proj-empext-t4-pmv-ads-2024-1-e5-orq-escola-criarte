@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   container: {
     position: 'absolute',
     top: 0,
-    marginTop: 44,
+    marginTop: '4%',
     right: 0,
     marginRight: '1.5%',
   },
@@ -54,8 +54,8 @@ const styles = StyleSheet.create({
 
   dropdown: {
     position: 'absolute',
-    backgroundColor: '#FFFFFF',
-    width: 150,
+    backgroundColor: '#ffffff',
+    width: 250,
     top: 44,
     right: -10,
     zIndex: 1000,

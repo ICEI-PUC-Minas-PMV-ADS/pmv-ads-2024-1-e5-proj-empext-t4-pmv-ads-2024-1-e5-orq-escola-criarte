@@ -75,8 +75,8 @@ const styles = StyleSheet.create({
   },
 
   input: {
-    width: '80%',
-    height: 40,
+    width: '90%',
+    height: 50,
     paddingHorizontal: 10,
     marginTop: 5,
     marginBottom: 15,
@@ -107,6 +107,7 @@ const styles = StyleSheet.create({
     marginLeft: -35,
     marginBottom: 10,
     color:"#413267",
+    textAlign: 'center'
   },
 
   popupContainer: {

@@ -182,7 +182,7 @@ export default function ProfileScreen({ navigation }: Props) {
                 {isEditing ? (
                   <>
                     <Text style={styles.label}>Senha:</Text>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', width: '80%' }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', width: '90%' }}>
                       <TextInput
                         style={[styles.input, { flex: 1, width: '100%' }]}
                         secureTextEntry={!senhaVisivel}
