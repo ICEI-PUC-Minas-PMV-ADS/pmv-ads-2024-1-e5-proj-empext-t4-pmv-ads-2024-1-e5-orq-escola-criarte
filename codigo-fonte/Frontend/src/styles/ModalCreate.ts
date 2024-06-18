@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     },
 
     modalContainer: {
+        marginTop: '10%',
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
@@ -21,7 +22,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         padding: 20,
         borderRadius: 10,
-        width: '80%',
+        width: '90%',
     },
 
     title: {
@@ -53,9 +54,13 @@ const styles = StyleSheet.create({
         padding: 10,
         marginTop: 10,
         borderRadius: 5,
+        height: 50,
+        justifyContent: 'center'
     },
 
     buttonDisabled: {
+        height: 50,
+        fontSize: 16,
         padding: 10,
         marginTop: 10,
         borderRadius: 5,
@@ -63,6 +68,7 @@ const styles = StyleSheet.create({
     },
 
     buttonText: {
+        fontSize: 16,
         color: 'white',
         textAlign: 'center',
     },

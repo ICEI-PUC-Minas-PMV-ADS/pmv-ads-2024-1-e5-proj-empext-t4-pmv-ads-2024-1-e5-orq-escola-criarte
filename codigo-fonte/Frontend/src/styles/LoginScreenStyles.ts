@@ -1,5 +1,5 @@
 // src/styles/LoginScreenStyles.ts
-import {Platform, StatusBar, StyleSheet } from 'react-native';
+import { Platform, StatusBar, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
 
@@ -51,9 +51,13 @@ const styles = StyleSheet.create({
   },
 
   eyeIcon: {
-    marginLeft: -35,
+    marginLeft: -45,
     marginBottom: 10,
+    paddingTop: 5,
     color: "#413267",
+    width: 40,
+    height: 40,
+    textAlign: 'center'
   },
 
   buttonConteiner: {
