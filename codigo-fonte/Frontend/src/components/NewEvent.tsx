@@ -115,7 +115,7 @@ export default function CreateEventModal({ visible, onClose, modalStyle }: Props
             username: username,
         };
 
-        console.log('Enviando o seguinte objeto para a API:', event);
+        // console.log('Enviando o seguinte objeto para a API:', event);
 
         try {
             const response = await api.post('/posts', event);
