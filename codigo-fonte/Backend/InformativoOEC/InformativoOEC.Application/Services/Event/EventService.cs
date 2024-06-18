@@ -9,12 +9,10 @@ public class EventService : IEventService
     {
         _repository = repository;
     }
-    public Task Create(EventInputModel input)
+    public async Task Create(EventInputModel input)
     {
         var @event = input.ToEntity();
 
-        _repository.AddAsync(@event);
-
-        return Task.CompletedTask;
+        await _repository.AddAsync(@event);
     }
 }
