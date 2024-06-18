@@ -211,7 +211,7 @@ export default function ProfileScreen({ navigation }: Props) {
                     />
                     {!passwordsMatch && <Text style={{ color: 'red' }}>As senhas não conferem.</Text>}
                     <View>
-                      <Title title='Sua senha deve ter:' />
+                      <Title title='Sua senha deve conter:' />
 
                       <View style={styles.requisitos}>
                         <Image style={styles.checkLogo} source={validateInput.length ? ImageCheck : ImageClose} />

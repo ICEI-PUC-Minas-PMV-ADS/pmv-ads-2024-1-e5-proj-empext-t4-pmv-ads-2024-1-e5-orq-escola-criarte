@@ -22,17 +22,17 @@ const styles = StyleSheet.create({
 
     formulario: {
         flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
         marginTop: 30,
         width: 350,
     },
 
-    backgroundBox: {
+    backgroundBox: {       
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'white',
-        minWidth: 400,
-        width: 'auto',
-        height: "auto",
+        backgroundColor: 'white',  
+        height: 'auto',      
         borderRadius: 15,
         borderColor: 'gray',
         borderWidth: 1,
@@ -73,13 +73,13 @@ const styles = StyleSheet.create({
     },
 
     text: {
-        fontSize: 20,
+        fontSize: 16,
         color: '#666',
     },
 
     input: {
         width: '80%',
-        height: 40,
+        height: 48,
         paddingHorizontal: 10,
         marginTop: 5,
         marginBottom: 15,

@@ -80,6 +80,7 @@ export default function CodeScr({ navigation }: Props) {
               name="email"
               render={({ field: { value } }) => (
                 <InputComponent
+                  style={styles.input}
                   id="Email"
                   placeholder="Digite seu email"
                   value={value}
@@ -93,6 +94,7 @@ export default function CodeScr({ navigation }: Props) {
               name="code"
               render={({ field: { onChange, onBlur, value } }) => (
                 <InputComponent
+                  style={styles.input}
                   id="Código"
                   placeholder="Digite o código"
                   onChangeText={onChange}
@@ -106,6 +108,7 @@ export default function CodeScr({ navigation }: Props) {
               <ActivityIndicator style={{marginBottom: 10}} size="large" color="#413267" />
             ) : (
               <ButtonComponent
+                style={{ width: '80%', alignSelf: 'center' }}
                 onPress={handleSubmit(handlePasswordReset)}
                 disabled={!isValid || isLoading}
                 text="Enviar Código"

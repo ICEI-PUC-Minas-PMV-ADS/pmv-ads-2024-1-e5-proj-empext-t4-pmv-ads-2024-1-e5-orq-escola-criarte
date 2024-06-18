@@ -103,8 +103,9 @@ export default function EditPassword({ navigation }: Props) {
       if (response.status === 200) {
         console.log('Senha atualizada com sucesso');
         setModalVisible(true);
+        navigation.navigate('Login');
       } else {
-        throw new Error('falha na atulização');
+        throw new Error('falha na atualização');
       }
 
     } catch (error: any) {
@@ -164,7 +165,7 @@ export default function EditPassword({ navigation }: Props) {
             />
             {!passwordsMatch && <Text style={{ color: 'red' }}>As senhas não conferem.</Text>}
             <View>
-              <Title title='Sua senha deve ter:' />
+              <Title title='Sua senha deve conter:' />
 
               <View style={styles.requisitos}>
                 <Image style={styles.checkLogo} source={validateInput.length ? ImageCheck : ImageClose} />
