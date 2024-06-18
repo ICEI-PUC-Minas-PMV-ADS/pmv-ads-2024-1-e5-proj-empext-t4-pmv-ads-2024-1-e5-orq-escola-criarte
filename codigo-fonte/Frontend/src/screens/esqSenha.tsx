@@ -35,13 +35,13 @@ const EsqSenha: React.FC<Props> = ({ navigation }) => {
 
       console.log('Enviando o seguinte objeto para a API:', data);
 
-      //const response = await axios.post('https://orquestracriarte-001-site1.htempurl.com/api/recoverypassword/email-recovery', data);
+      const response = await axios.post('https://orquestracriarte-001-site1.htempurl.com/api/recoverypassword/email-recovery', data);
 
-      // if (response.status === 200) {
+      if (response.status === 200) {
 
-      // } else {
-      //   console.error(`Erro: ${response.status} - ${response.statusText}`);
-      // }
+      } else {
+        console.error(`Erro: ${response.status} - ${response.statusText}`);
+      }
     } catch (error) {
       console.error(`Erro ao buscar usuários: ${error}`);
     } finally {
@@ -59,7 +59,7 @@ const EsqSenha: React.FC<Props> = ({ navigation }) => {
   };
 
   return (
-    <ImageBackground resizeMode="cover" source={require('../assets/background.png')} style={styles.background}>
+    <ImageBackground resizeMode="cover" source={require('../assets/background.jpg')} style={styles.background}>
       <View style={styles.centerContent}>
         <View style={styles.backgroundBox}>
           <View style={styles.formulario}>

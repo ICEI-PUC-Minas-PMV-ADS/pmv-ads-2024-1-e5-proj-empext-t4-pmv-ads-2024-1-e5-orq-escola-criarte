@@ -5,6 +5,7 @@ import styles from '../styles/CadastroScreenStyles';
 import InputComponent from '../components/Input';
 import TermosCheckBox from '../components/Checkbox';
 import ButtonComponent from '../components/Button';
+import TermosModal from '../components/ModalTermos';
 import { Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
 import Title from '../components/Title';
@@ -107,10 +108,11 @@ export default function CadastroScreen({ navigation }: Props) {
 
     return (
 
-        <ImageBackground resizeMode="cover" source={require('../assets/background.png')} style={styles.background}>
+        <ImageBackground resizeMode="cover" source={require('../assets/background.jpg')} style={styles.background}>
             <SafeAreaView style={styles.container}>
-                <ScrollView style={styles.content}>
+                <ScrollView style={styles.content} contentContainerStyle={styles.scrollContentContainer}>
                     <View style={styles.centerContent}>
+                        
                         {/* Cabeçalho da tela */}
                         <View style={styles.header}>
                             <Text style={styles.titulo}>Cadastre-se</Text>
@@ -118,7 +120,6 @@ export default function CadastroScreen({ navigation }: Props) {
 
                         {/* Formulário de cadastro */}
                         <View style={styles.formulario}>
-
                             {/* Campo Nome Completo */}
                             <Text style={styles.texto}>Nome Completo:</Text>
                             <Controller
@@ -171,7 +172,6 @@ export default function CadastroScreen({ navigation }: Props) {
                                             placeholder='**********'
                                             value={value}
                                             id="senha"
-
                                         />
                                         <Pressable onPress={() => setSenhaVisivel(!senhaVisivel)}>
                                             <Ionicons name={senhaVisivel ? 'eye-off' : 'eye'} size={24} style={styles.eyeIcon} />
@@ -226,7 +226,6 @@ export default function CadastroScreen({ navigation }: Props) {
                                     <Image style={styles.checkLogo} source={validateInput.case ? ImageCheck : ImageClose} />
                                     <Text style={styles.text}> Pelo menos uma letra maiúscula</Text>
                                 </View>
-
                             </View>
 
                             {/* Caixa de seleção para aceitar os termos */}
@@ -272,7 +271,7 @@ export default function CadastroScreen({ navigation }: Props) {
                     </View>
                 </View>
             </Modal>
-
         </ImageBackground>
+
     );
 }

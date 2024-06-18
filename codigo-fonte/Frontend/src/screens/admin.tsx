@@ -77,7 +77,7 @@ export default function AdminScreen() {
 
   return (
     <>
-      <ImageBackground resizeMode="cover" source={require('../assets/background.png')} style={styles.background}>
+      <ImageBackground resizeMode="cover" source={require('../assets/background.jpg')} style={styles.background}>
         <View style={styles.header}>
           <Text style={styles.hederText}>Relatório Admin</Text>
         </View>

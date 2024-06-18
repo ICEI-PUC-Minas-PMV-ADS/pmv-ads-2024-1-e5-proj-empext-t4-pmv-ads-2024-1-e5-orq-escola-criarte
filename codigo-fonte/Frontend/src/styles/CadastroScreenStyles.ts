@@ -1,21 +1,19 @@
 import { Platform, StatusBar, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-
   background: {
     flex: 1,
     justifyContent: "center",
   },
 
   centerContent: {
-    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
 
   container: {
-    marginTop: 50,
-    height: '100%',
+    flex: 1,
+    marginTop: 10,
   },
 
   content: {
@@ -23,15 +21,18 @@ const styles = StyleSheet.create({
     paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
 
+  scrollContentContainer: {
+    paddingBottom: 50,
+  },
+
   header: {
-    flex: 1,
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 5,
     marginVertical: 10,
   },
 
   formulario: {
-    marginTop: 30,
+    marginTop: 5,
     flexDirection: 'column',
     width: '80%',
     maxWidth: 400,
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
   eyeIcon: {
     marginLeft: -35,
     marginBottom: 10,
-    color:"#413267",
+    color: "#413267",
   },
 
   titulo: {
@@ -56,7 +57,6 @@ const styles = StyleSheet.create({
     color: '#413267',
     lineHeight: 24,
     marginBottom: 5,
-    
   },
 
   requisitos: {
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   botao: {
     width: '80%',
     alignSelf: 'center',
-    marginTop: 50,
+    marginTop: 5,
   },
 
   checkbox: {
@@ -86,9 +86,11 @@ const styles = StyleSheet.create({
 
   botaoCadastro: {
     width: '80%',
-    alignSelf: 'center',    
-    position: 'relative',
+    position: "absolute",
+    bottom: 0,
+    alignSelf: 'center',
     maxWidth: 400,
+    marginBottom: 10,
   },
 
   popupContainer: {
@@ -97,7 +99,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
-  
+
   popupContent: {
     height: 180,
     backgroundColor: 'white',
@@ -116,7 +118,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 10,
   },
-
 });
 
 export default styles;

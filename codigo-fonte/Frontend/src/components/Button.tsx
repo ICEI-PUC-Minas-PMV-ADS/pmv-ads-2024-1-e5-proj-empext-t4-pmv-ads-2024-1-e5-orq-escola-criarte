@@ -31,6 +31,7 @@ export default function ButtonComponent({
       disabled={disabled || isLoading}
       onPress={handlePress} 
       style={[buttonStyles.button, style]}
+      labelStyle={buttonStyles.text}
       loading={isLoading}
       {...otherProps}
     >

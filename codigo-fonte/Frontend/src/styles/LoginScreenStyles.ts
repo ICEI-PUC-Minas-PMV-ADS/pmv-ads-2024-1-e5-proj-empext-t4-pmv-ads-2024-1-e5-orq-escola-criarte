@@ -1,19 +1,63 @@
 // src/styles/LoginScreenStyles.ts
-import { StyleSheet } from 'react-native';
+import { Platform, StatusBar, StyleSheet } from 'react-native';
 
-const loginScreenStyles = StyleSheet.create({
+const styles = StyleSheet.create({
 
   background: {
     flex: 1,
+
     justifyContent: 'center'
-    
+  },
+
+  container: {
+    flex: 1,
+    marginTop: 10,
+  },
+
+  content: {
+    flex: 1,
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+  },
+
+  centerContent: {
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   logo: {
-    width: 200,
-    height: 200,
     marginBottom: 5,
     marginTop: 10,
+  },
+
+  header: {
+    alignItems: 'center',
+    marginBottom: 5,
+    marginVertical: 10,
+  },
+
+  formulario: {
+    marginTop: 5,
+    flexDirection: 'column',
+    width: '80%',
+    maxWidth: 400,
+  },
+
+  texto: {
+    fontWeight: 'bold',
+    fontSize: 17,
+    color: '#413267',
+    lineHeight: 24,
+    marginBottom: 5,
+  },
+
+  eyeIcon: {
+    marginLeft: -45,
+    marginBottom: 10,
+    paddingTop: 5,
+    color: "#413267",
+    width: 40,
+    height: 40,
+    textAlign: 'center'
   },
 
   buttonConteiner: {
@@ -23,6 +67,18 @@ const loginScreenStyles = StyleSheet.create({
 
   botaoCadastrar: {
     width: '80%',
+  },
+
+  SignInButton: {
+    marginTop: 15,
+  },
+
+  botaoCadastro: {
+    width: '80%',
+    bottom: 0,
+    alignSelf: 'center',
+    maxWidth: 400,
+    marginBottom: 10,
   },
 
   errorModalContainer: {
@@ -51,6 +107,7 @@ const loginScreenStyles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 5,
   },
+
   errorModalButtonText: {
     color: '#fff',
     fontSize: 16,
@@ -60,4 +117,4 @@ const loginScreenStyles = StyleSheet.create({
 
 });
 
-export default loginScreenStyles;
+export default styles;

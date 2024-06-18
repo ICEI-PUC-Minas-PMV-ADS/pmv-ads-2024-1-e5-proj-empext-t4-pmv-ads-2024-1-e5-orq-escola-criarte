@@ -35,6 +35,14 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         marginLeft: 5,
     },
+
+    piximage: {
+        width: 50,
+        height: 50,
+        borderRadius: 25,
+        marginLeft: 20,
+        marginRight: 20
+      },
 });
 
 export default styles;

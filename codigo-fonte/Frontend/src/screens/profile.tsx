@@ -156,7 +156,7 @@ export default function ProfileScreen({ navigation }: Props) {
   };
 
   return (
-    <ImageBackground resizeMode="cover" source={require('../assets/background.png')} style={styles.background}>
+    <ImageBackground resizeMode="cover" source={require('../assets/background.jpg')} style={styles.background}>
       <SafeAreaView style={styles.container}>
         <ScrollView style={styles.content}>
           <View style={styles.centerContent}>
@@ -182,7 +182,7 @@ export default function ProfileScreen({ navigation }: Props) {
                 {isEditing ? (
                   <>
                     <Text style={styles.label}>Senha:</Text>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', width: '80%' }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', width: '90%' }}>
                       <TextInput
                         style={[styles.input, { flex: 1, width: '100%' }]}
                         secureTextEntry={!senhaVisivel}
