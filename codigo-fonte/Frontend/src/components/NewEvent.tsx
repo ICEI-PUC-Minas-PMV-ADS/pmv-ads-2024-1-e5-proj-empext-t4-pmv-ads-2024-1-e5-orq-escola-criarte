@@ -163,8 +163,8 @@ export default function CreateEventModal({ visible, onClose, modalStyle }: Props
                         <Text style={styles.title}>Criar Evento</Text>
                         <TextInput style={styles.input} placeholder="Título" value={title} onChangeText={setTitle} />
                         <TextInput style={styles.descriptionInput} placeholder="Descrição" value={body} onChangeText={setBody} multiline />
-                        <TextInput style={styles.input} placeholder="Data" value={date} onChangeText={handleDateChange} />
-                        <TextInput style={styles.input} placeholder="Hora (HH:MM)" value={time} onChangeText={handleTimeChange} />
+                        <TextInput style={styles.input} placeholder="Data (dd/mm/yyyy)" value={date} onChangeText={handleDateChange} />
+                        <TextInput style={styles.input} placeholder="Hora (hh:mm)" value={time} onChangeText={handleTimeChange} />
                         <TextInput style={styles.input} placeholder="Rua" value={street} onChangeText={setStreet} />
                         <TextInput style={styles.input} placeholder="Número" value={number} onChangeText={handleNumberChange} />
                         <TextInput style={styles.input} placeholder="Bairro" value={county} onChangeText={setCounty} />
