@@ -1,0 +1,26 @@
+message: Please cite this software using these metadata.
+title: Informativo OEC
+authors:
+  - family-names: Roberto Olympio Ferreira
+    given-names: Bruno
+  - family-names: Henrique Monteiro Cal
+    given-names: Guilherme
+  - family-names: Alves De Souza
+    given-names: Rafael
+  - family-names: Ramos Berger
+    given-names: Lúcia Raquel
+  - family-names: Henrique Caetano Soares
+  - given-names: Pedro
+    family-names: Do Carmo Alves
+  - given-names: Warlen
+    - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: Oliveira Caetano
+    given-names: João Carlos
+keywords:
+ Informativo
+ Orquestra
+ Escola
+repository-code: https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t4-pmv-ads-2024-1-e5-orq-escola-criarte
+version: 1.0.0
+date-released: 2024-06-20
