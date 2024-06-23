@@ -20,7 +20,7 @@
       "bundleIdentifier": "br.com.orquestracriarte.OECinformes"
     },
     "android": {
-      "versionCode": "7",
+      "versionCode": "9",
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/logo-icon.png",
         "backgroundColor": "#ffffff"

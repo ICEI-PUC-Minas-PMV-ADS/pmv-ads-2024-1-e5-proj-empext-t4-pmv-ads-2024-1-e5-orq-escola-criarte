@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { Checkbox } from 'react-native-paper';
 import TermosModal from './ModalTermos';
+import PrivacyModal from './PrivacyTermos';
 
 interface TermosCheckboxProps {
   checked: boolean;
@@ -19,7 +20,7 @@ const TermosCheckbox: React.FC<TermosCheckboxProps> = ({ onValueChange, style })
   };
 
   return (
-    <View style={[{ flexDirection: 'row', alignItems: 'center', marginLeft: -15 }, style]}>
+    <View style={[{ flexDirection: 'row', alignItems: 'center', marginLeft: -25 }, style]}>
       <TouchableOpacity
         onPress={handlePress}
         accessibilityRole="checkbox"
@@ -27,18 +28,22 @@ const TermosCheckbox: React.FC<TermosCheckboxProps> = ({ onValueChange, style })
         accessibilityState={{ checked }}
         style={{ flexDirection: 'row', alignItems: 'center' }}
       >
-        <View style={{ transform: [{scale: 1.1}], justifyContent: 'center', alignItems: 'center' }}>
+        <View style={{ transform: [{ scale: 1.1 }], justifyContent: 'center', alignItems: 'center' }}>
           <Checkbox.Android
             status={checked ? 'checked' : 'unchecked'}
             onPress={handlePress}
           />
         </View>
 
-        <Text style={{ color: '#413267', fontWeight: 'bold', marginRight: 3 }}>
+        <Text style={{ color: '#413267', fontSize: 12, marginRight: 3 }}>
           Li e concordo com os
         </Text>
       </TouchableOpacity>
       <TermosModal />
+      <Text style={{ color: '#413267', fontSize: 12, marginRight: 3,marginLeft: 3 }}>
+        e a
+      </Text>
+      <PrivacyModal />
     </View>
   );
 };
