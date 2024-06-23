@@ -16,9 +16,18 @@ Enumere quais cenários de testes foram selecionados para teste. Neste tópico o
 
 _______________________________________
 - [**Teste 2:** Botão “Esqueci Minhas Senha”](https://drive.google.com/file/d/1uQ9vvGRXtEHB2W5-YT9k7QTXvrTV9--l/view?usp=sharing)
+- [**Teste 2:** Botão “Esqueci Minhas Senha”](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t4-pmv-ads-2024-1-e5-orq-escola-criarte/assets/91221827/eafb1419-fae7-4842-b9d8-d7c8a764aa4c)
+
+- **Objetivo:** Redirecionar para a tela de confirmação "Um código para recuperar sua senha foi enviado para seu e-mail"
+- **Resultado:** Sucesso, botão devidamente configurado, está ocorrendo o redirecionamento para a tela de Recuperação de Senha na qual existe um campo para digitar o e-mail já cadastrado e um botão "Recuperar senha"
+- **Melhorias:** -
+
+_______________________________________
+- [**Teste 3:** Botão “Recuperar Senha”](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t4-pmv-ads-2024-1-e5-orq-escola-criarte/assets/91221827/eafb1419-fae7-4842-b9d8-d7c8a764aa4c)
 - **Objetivo:** Redirecionar para a tela de recuperação de senha
-- **Resultado:** Erro, o botão não está devidamente configurado, a função está sendo a mesma do botão “Entrar”
-- **Melhorias:** Corrigir a função do botão para que realize devidamente sua função
+- **Resultado:** Sucesso, botão devidamente configurado, está ocorrendo o redirecionamento para a tela de confirmação com o seguinte comunicado:""Um código para recuperar sua senha foi enviado para seu e-mail" e este e-mail está sendo enviado com sucesso, como observado na imagem 
+- **Melhorias:** -
+
 ________________________________________
 - [**Teste 3:** Login](https://drive.google.com/file/d/1jLeW6Rc4Pu0Yx7sR9zE34qWFiUSgkdE6/view?usp=sharing)
 - **Objetivo:** Validar os dados do usuário para verificar se está cadastrado e redirecionar para a tela inicial da aplicação caso os dados tenham sido devidamente validado
