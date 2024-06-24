@@ -43,21 +43,13 @@
 
 # Utilização das Tecnologias no Desenvolvimento de Software
 
-1. **Laravel para API**
+Visual Studio Code(desenvolvimento do código)
 
-Definição das endpoints da API e suas funcionalidades nas user stories, como "ao enviar uma requisição POST para `/usuarios`, deve criar um novo usuário".
-   - **Processo**: 
-     - **Backend**: Desenvolvimento da lógica de negócios utilizando Laravel, um framework PHP conhecido por sua simplicidade e eficiência no desenvolvimento de APIs. Laravel facilita a implementação de autenticação, autorização e gerenciamento de recursos.
+Typescript e React native Expo(front-end)
 
-2. **MySQL para Banco de Dados**
-   - **Backend**: Implementação do banco de dados utilizando MySQL, uma das bases de dados relacionais mais populares e robustas. Criação de tabelas, relações e consultas necessárias para suportar a aplicação.
+Asp .Net Core 6(back-end)
 
-3. **React Native para Front e Back End**
+MySQL para Banco de Dados
 
-Detalhamento das interações de usuário e lógica de negócio, como "ao clicar no botão de login, deve autenticar o usuário via API e navegar para a tela principal".
-   - **Processo**: 
-     - **Front-end**: Desenvolvimento da interface de usuário em React Native, que permite criar aplicativos móveis nativos para Android a partir de uma única base de código JavaScript.
-     - **Backend**: Utilização de funcionalidades backend simples, como gerenciamento de estado e lógica de negócios leve diretamente no React Native, com operações mais complexas delegadas para a API Laravel.
-   - **Teste**: Testes unitários e de integração para verificar a funcionalidade e usabilidade do aplicativo em dispositivos móveis.
-   - **Implementação/Publicação**: Publicação do aplicativo nas lojas de aplicativos (Google Play), incluindo documentação e tutoriais para os usuários finais.
+
 
