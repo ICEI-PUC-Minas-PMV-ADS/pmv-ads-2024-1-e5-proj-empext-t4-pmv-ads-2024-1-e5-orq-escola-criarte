@@ -25,7 +25,8 @@ _______________________________________
 _______________________________________
 - [**Teste 3:** Botão “Recuperar Senha”](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t4-pmv-ads-2024-1-e5-orq-escola-criarte/assets/91221827/eafb1419-fae7-4842-b9d8-d7c8a764aa4c)
 - **Objetivo:** Redirecionar para a tela de recuperação de senha
-- **Resultado:** Sucesso, botão devidamente configurado, está ocorrendo o redirecionamento para a tela de confirmação com o seguinte comunicado:""Um código para recuperar sua senha foi enviado para seu e-mail" e este e-mail está sendo enviado com sucesso, como observado na imagem 
+- **Resultado:** Sucesso, botão devidamente configurado, está ocorrendo o redirecionamento para a tela de confirmação com o seguinte comunicado:""Um código para recuperar sua senha foi enviado para seu e-mail" e este e-mail está sendo enviado com sucesso, como observado na imagem abaixo
+- <img src="img/recuperasenha.jpeg" width = 200>
 - **Melhorias:** -
 
 ________________________________________
