@@ -23,7 +23,7 @@ A ONG Escola Criarte ensina música clássica para jovens de regiões periféric
 
 ## Instruções de utilização
 
-Assim que a primeira versão do sistema estiver disponível, deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação.
+Você pode baixar a última versão do APK [aqui](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t4-pmv-ads-2024-1-e5-orq-escola-criarte/blob/c69b3f4ddfd98da69f2437d5df45a9fc94385db0/OEC%20Informes%20v9.apk).
 
 # Documentação
 
