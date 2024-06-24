@@ -16,18 +16,28 @@ Enumere quais cenários de testes foram selecionados para teste. Neste tópico o
 
 _______________________________________
 - [**Teste 2:** Botão “Esqueci Minhas Senha”](https://drive.google.com/file/d/1uQ9vvGRXtEHB2W5-YT9k7QTXvrTV9--l/view?usp=sharing)
+- [**Teste 2:** Botão “Esqueci Minhas Senha”](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t4-pmv-ads-2024-1-e5-orq-escola-criarte/assets/91221827/eafb1419-fae7-4842-b9d8-d7c8a764aa4c)
+
+- **Objetivo:** Redirecionar para a tela de confirmação "Um código para recuperar sua senha foi enviado para seu e-mail"
+- **Resultado:** Sucesso, botão devidamente configurado, está ocorrendo o redirecionamento para a tela de Recuperação de Senha na qual existe um campo para digitar o e-mail já cadastrado e um botão "Recuperar senha"
+- **Melhorias:** -
+
+_______________________________________
+- [**Teste 3:** Botão “Recuperar Senha”](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t4-pmv-ads-2024-1-e5-orq-escola-criarte/assets/91221827/eafb1419-fae7-4842-b9d8-d7c8a764aa4c)
 - **Objetivo:** Redirecionar para a tela de recuperação de senha
-- **Resultado:** Erro, o botão não está devidamente configurado, a função está sendo a mesma do botão “Entrar”
-- **Melhorias:** Corrigir a função do botão para que realize devidamente sua função
+- **Resultado:** Sucesso, botão devidamente configurado, está ocorrendo o redirecionamento para a tela de confirmação com o seguinte comunicado:""Um código para recuperar sua senha foi enviado para seu e-mail" e este e-mail está sendo enviado com sucesso, como observado na imagem abaixo
+- <img src="img/recuperasenha.jpeg" width = 200>
+- **Melhorias:** -
+
 ________________________________________
-- [**Teste 3:** Login](https://drive.google.com/file/d/1jLeW6Rc4Pu0Yx7sR9zE34qWFiUSgkdE6/view?usp=sharing)
+- [**Teste 4:** Login](https://drive.google.com/file/d/1jLeW6Rc4Pu0Yx7sR9zE34qWFiUSgkdE6/view?usp=sharing)
 - **Objetivo:** Validar os dados do usuário para verificar se está cadastrado e redirecionar para a tela inicial da aplicação caso os dados tenham sido devidamente validado
 - **Resultado:** Ao inserir um dado incorreto no campo de e-mail, apresenta erro ao fazer login, seja este um e-mail inexistente no banco ou outro dado aleatório.
 Ao inserir um e-mail correto e senha incorreta também apresenta o erro na tela para o usuário.
 Ao inserir e-mail e senha corretos o usuário está sendo devidamente direcionado a tela home da aplicação.
 - **Melhorias:** - 
 ________________________________________
-- [**Teste 4:** Botão visualizar senha](https://drive.google.com/file/d/1RPwr9nhNw1Pi6YUuRVN3TPze-N8VJWFj/view?usp=sharing)
+- [**Teste 5:** Botão visualizar senha](https://drive.google.com/file/d/1RPwr9nhNw1Pi6YUuRVN3TPze-N8VJWFj/view?usp=sharing)
 - **Objetivo:** Permitir ao usuário visualizar a senha preenchida
 - **Resultado:** Ao clica no olho no final do campo da senha a mesma pode ser visualizada da forma devida.
 - **Melhorias:** - 
@@ -35,17 +45,17 @@ ________________________________________
 
 
 # Tela Cadastrar
-- [**Teste 5:** Preenchimento do campo de e-mail](https://drive.google.com/file/d/1hbd2sCXfLK4p-ajFbmejTGyQ5ORwZYpV/view?usp=sharing)
+- [**Teste 6:** Preenchimento do campo de e-mail](https://drive.google.com/file/d/1hbd2sCXfLK4p-ajFbmejTGyQ5ORwZYpV/view?usp=sharing)
 - **Objetivo:** Verificar se o campo e-mail está sendo devidamente validados segundo as regras estabelecidas
 - **Resultado:** A validação do campo e-mail não está sendo feito da forma devida, pois o cadastro pôde ser concluído mesmo digitando um e-mail inválido;
 - **Melhorias:** Fazer a validação corretamente do input de e-mail e trazer retorno visual ao usuário sobre o erro cadastro e acrescentar um botão para retornar a tela de login. 
 ________________________________________
-- [**Teste 6:** Preenchimento do campo de e-mail](https://drive.google.com/file/d/19hj5zCK53ROrMg32coF1AnHOBuy-5D0a/view?usp=sharing)
+- [**Teste 7:** Preenchimento do campo de e-mail](https://drive.google.com/file/d/19hj5zCK53ROrMg32coF1AnHOBuy-5D0a/view?usp=sharing)
 - **Objetivo:** Verificar se o campo e-mail está sendo devidamente validados segundo as regras estabelecidas
 - **Resultado:** A validação de duplicidade de e-mail está sendo feito da forma devida, pois o cadastro não pôde ser concluído inserindo um e-mail que já está cadastrado no sistema;
 - **Melhorias:** Trazer retorno visual ao usuário sobre o erro, de que este email já está cadastrado no sistema.
 ________________________________________
-- [**Teste 7:** Preenchimento do campo da senha](https://drive.google.com/file/d/14mjOEbMLtVHn4GV23SSV_4H285Vmze8y/view?usp=sharing)
+- [**Teste 8:** Preenchimento do campo da senha](https://drive.google.com/file/d/14mjOEbMLtVHn4GV23SSV_4H285Vmze8y/view?usp=sharing)
 - **Objetivo:** Verificar se o campo senha está sendo devidamente validados segundo as regras estabelecidas
 - **Resultado:** A validação da senha está sendo feito da forma devida, pois o cadastro não pôde ser concluído caso o usuário insira uma senha que não cumpra com TODOS os requisitos;
 - **Melhorias:** -
@@ -53,7 +63,7 @@ ________________________________________
 
 
 # Tela Home
-- [**Teste 8:** Navegação](https://drive.google.com/file/d/1fqPS0CySOOUk_Iu2GIjxPTlGGg0EB_RJ/view?usp=sharing)
+- [**Teste 9:** Navegação](https://drive.google.com/file/d/1fqPS0CySOOUk_Iu2GIjxPTlGGg0EB_RJ/view?usp=sharing)
 - **Objetivo:** Verificar se os botões na parte inferior e superior da tela cumprem suas devidas funções
 - **Resultado:** Na parte superior os botões cumprem suas devidas funções.
 - **Melhorias:** Finalizar as demais telas para execução dos testes e criar o feed para que os administradores possam criar publicações.
@@ -61,7 +71,7 @@ ________________________________________
 
 
 # Tela Contato
-- [**Teste 9:** Funcionalidade dos cards de informação](https://drive.google.com/file/d/1GMf1EqUYoa5tQsUJTEFZbcp0O8Z06Y-P/view?usp=sharing)
+- [**Teste 10:** Funcionalidade dos cards de informação](https://drive.google.com/file/d/1GMf1EqUYoa5tQsUJTEFZbcp0O8Z06Y-P/view?usp=sharing)
 - **Objetivo:** Cada card com a informação de contato, deverá redirecionar o usuário para a tela correspondente a informação apresentada no card, exceto o card de “horário de atendimento”
 - **Resultado:** -
 - **Melhorias:** -
@@ -69,12 +79,12 @@ ________________________________________
 
 
 # Tela Meu Perfil
-- [**Teste 10:** Alteração do e-mail do usuário](https://drive.google.com/file/d/1HXOfIuZg9MnX-N-lxWECEZQlN-XupAae/view?usp=sharing)
+- [**Teste 11:** Alteração do e-mail do usuário](https://drive.google.com/file/d/1HXOfIuZg9MnX-N-lxWECEZQlN-XupAae/view?usp=sharing)
 - **Objetivo:** O usuário pode trocar o e-mail de sua conta, desde que não exista esse e-mail já cadastrado no banco de dados.
 - **Resultado:** A função de alterar a e-mail funcionam devidamente, contudo não existe retorno visual para o usuário, as informações de erro e sucesso aparecem apenas no console.
 - **Melhorias:** Trazer retorno visual para o cliente do erro ou sucesso da operação.
 ________________________________________
-- **Teste 11:** Alteração da senha do usuário
+- **Teste 12:** Alteração da senha do usuário
 - **Objetivo:** O usuário pode trocar a senha de sua conta, desde que cumpra os requisitos de senha do sistema.
 - **Resultado:** A função de alterar a senha funcionam devidamente, contudo não existe retorno visual para o usuário, as informações de erro e sucesso aparecem apenas no console.
 - **Melhorias:** Trazer retorno visual para o cliente do erro ou sucesso da operação.
@@ -90,12 +100,12 @@ ________________________________________
 
 
 # Tela Eventos
-- [**Teste 12:** Criação de Evento](https://drive.google.com/file/d/1HXNDlFK55qOIvOlizJcXk-tAYUKxisfn/view?usp=sharing)
+- [**Teste 13:** Criação de Evento](https://drive.google.com/file/d/1HXNDlFK55qOIvOlizJcXk-tAYUKxisfn/view?usp=sharing)
 - **Objetivo:** O usuário deve criar um evento e visualiza-lo na tela de eventos
 - **Resultado:** O usuário consegue fazer a criação do evento adequadamente e é possível visualiza-lo na tela de eventos
 - **Melhorias:** Trazer retorno visual para o cliente do erro ou sucesso da operação.
 ________________________________________
-- [**Teste 13:** Deletar Evento](https://drive.google.com/file/d/1HV4bJTpMSVdPmjUS65Agz9z3oMCF8y8U/view?usp=sharing)
+- [**Teste 14:** Deletar Evento](https://drive.google.com/file/d/1HV4bJTpMSVdPmjUS65Agz9z3oMCF8y8U/view?usp=sharing)
 - **Objetivo:** O usuário deve poder deletar um evento criado 
 - **Resultado:** O usuário consegue fazer a exclusão do evento adequadamente e em seguida o evento desaparece da tela de eventos também
 - **Melhorias:** Abrir um pop-up para confirmação da exclusão e trazer retorno visual para o cliente do erro ou sucesso da operação.
